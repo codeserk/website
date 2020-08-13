@@ -1,23 +1,47 @@
-.DS_Store
-node_modules
-/dist
+.env
 
-
-# local env files
-.env.local
-.env.*.local
-
-# Log files
+# Logs
+logs
+*.log
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
 
-# Editor directories and files
-.idea
+# Dependencies
+node_modules/
+
+# Coverage
+coverage
+
+# Transpiled files
+build/
+dist/
+.nuxt
+
+# Versions
+public
+
+# Dynamic Assets
+static/media/
+tmp/
+assets/static/
+
+# VS Code
 .vscode
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+!.vscode/tasks.js
+
+# JetBrains IDEs
+.idea/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Misc
+.DS_Store
+
+# PWA
+sw.*
+
+# firebase
+.firebase
