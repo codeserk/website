@@ -1,5 +1,6 @@
 <template>
   <div id="scene">
+    <div id="header">José Cámara    @codeserk</div>
     <div
       id="background"
         :style="{
@@ -147,13 +148,25 @@ body {
     right: 0;
 
     &.layer-top {
-        background-position: top center;
-        mask-position: top center;
+        background-position: top;
+        mask-position: top;
     }
     &.layer-bottom {
-        background-position: bottom center;
-        mask-position: bottom center;
+        background-position: bottom;
+        mask-position: bottom;
     }
+}
+
+#header {
+  font-size: 150px;
+  position: fixed;
+  text-align: center;
+  z-index: 5;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  right: 0;
+  color: white;
 }
 
 #background {
@@ -165,8 +178,7 @@ body {
 #moon {
     top: 5vw;
     right: 5vw;
-    height: 30vh;
-    max-height: 60vh;
+    height: 20vh;
     background-repeat: no-repeat;
     mask-repeat: no-repeat;
     background-position: top right;
@@ -175,32 +187,31 @@ body {
 }
 
 #clouds-far {
-    top: 0;
-    bottom: 0;
+    height: 20vh;
+    top: 0vh;
     animation: moveRight 6000s infinite steps($low-fps * 6000);
-    background-size: 100vw;
-    mask-size: 100vw;
+    background-size: contain;
+    mask-size: contain;
     left: 0;
-    width: 500vw;
+    right: -400vw;
 }
 #clouds-near {
-    top: 0;
-    bottom: 30vh;
+    height: 20vh;
+    bottom: 20vh;
     animation: moveRight 3000s infinite steps($low-fps * 3000);
-    background-size: 100vw;
-    mask-size: 100vw;
-    right: 0;
-    width: 500vw;
+    background-size: contain;
+    mask-size: contain;
+    left: 0vw;
+    right: -400vw;
 }
 
 #mountain-far {
-    top: 0;
+    height: 60vh;
     bottom: 14vh;
-    // animation: moveLeft 3000s infinite steps($low-fps * 3000);
     background-position: bottom right;
     mask-position: bottom right;
-    background-size: 100vw;
-    mask-size: 100vw;
+    background-size: contain;
+    mask-size: contain;
     right: 0;
     left: 0;
 }
@@ -222,42 +233,43 @@ body {
         height: 11vh;
     }
     #clouds-near {
-        bottom: 20vh;
+        height: 10vh;
+        bottom: 12vh;
     }
 }
 
 #mountains-near {
-    top: 0;
+    height:40vh;
     bottom: 0;
     // animation: moveLeft 2000s infinite steps($low-fps * 2000);
     background-position: bottom right;
     mask-position: bottom right;
-    background-size: 80vw;
-    mask-size: 80vw;
+    background-size: contain;
+    mask-size: contain;
     right: 0;
     left: 0;
 }
 
 #trees-far {
-    top: 0;
+    height: 30vh;
     bottom: 0;
     // animation: moveLeft 400s infinite steps($high-fps * 400);
     background-position: bottom right;
     mask-position: bottom right;
-    background-size: 80vw;
-    mask-size: 80vw;
+    background-size: contain;
+    mask-size: contain;
     right: 0;
     left: 0;
 }
 
 #trees-near {
-    top: 0;
+    height: 30vh;
     bottom: 0;
     // animation: moveLeft 200s infinite steps($high-fps * 200);
     background-position: bottom right;
     mask-position: bottom right;
-    background-size: 80vw;
-    mask-size: 80vw;
+    background-size: contain;
+    mask-size: contain;
     right: 0;
     left: 0;
 }

@@ -2,12 +2,24 @@
 @import "~/assets/css/colors";
 @import "~/assets/css/variables";
 
+@font-face {
+    font-family: 'Web_DOS-V_TWN16';
+    src: url("/fonts/Web_DOS-V_TWN16.woff") format("woff");
+    font-weight: normal;
+    font-style: normal
+}
+
 @mixin square($screen, $squares) {
     @media (min-width: theme('screens.#{$screen}')) {
-        &, .image-container, .image-container img {
+
+        &,
+        .image-container,
+        .image-container img {
             width: calc((theme('screens.#{$screen}') - 96px - #{(($squares - 1) * 2)}rem) / #{$squares}) !important;
         }
-        .image-container, .image-container img {
+
+        .image-container,
+        .image-container img {
             height: calc((theme('screens.#{$screen}') - #{(($squares - 1) * 2)}rem) / #{$squares});
         }
     }
@@ -15,10 +27,15 @@
 
 @mixin mobileSquare($squares) {
     @media (max-width: theme('screens.sm')) {
-        &, .image-container, .image-container img {
+
+        &,
+        .image-container,
+        .image-container img {
             width: calc((100vw - #{(($squares))}rem) / #{$squares}) !important;
         }
-        .image-container, .image-container img {
+
+        .image-container,
+        .image-container img {
             height: calc((100vw - #{(($squares))}rem) / #{$squares});
         }
     }
@@ -58,15 +75,22 @@ body::-webkit-scrollbar-track {
 .page-enter-active {
     transition: all .3s .3s ease-in-out;
 }
+
 .page-leave-active {
     transition: all .3s ease-in-out;
 }
-.page-enter, .page-leave-to {
+
+.page-enter,
+.page-leave-to {
     transform: translateX(10px);
     opacity: 0;
 }
 
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
     font-family: $font-header;
     font-size: 2em;
 }
@@ -74,6 +98,7 @@ h1, h2, h3, h4, h5 {
 .link {
     position: relative;
     outline: none !important;
+
     &::before {
         content: '';
         position: absolute;
@@ -85,41 +110,60 @@ h1, h2, h3, h4, h5 {
         transform: scale3d(0, 1, 1);
         transition: transform 0.3s ease-in-out;
         transform-origin: center right;
-      }
-      &:hover::before, &.active::before {
+    }
+
+    &:hover::before,
+    &.active::before {
         transform: scale3d(1, 1, 1);
         transform-origin: center left;
-      }
+    }
 }
 
 .content {
-    h1, h2, h3, h4, p, img, ul, ol {
+
+    h1,
+    h2,
+    h3,
+    h4,
+    p,
+    img,
+    ul,
+    ol {
         margin-bottom: 1em;
     }
-    ul, ol {
+
+    ul,
+    ol {
         margin-left: 1em;
     }
+
     h1 {
         font-size: 2.6rem;
     }
+
     h2 {
         font-size: 2.2rem;
     }
+
     h3 {
         font-size: 1.8rem;
     }
+
     h4 {
         font-size: 1.4rem;
     }
+
     ul {
         list-style-type: disc;
         list-style-position: inside;
     }
+
     ol {
         list-style-type: decimal;
         list-style-position: inside;
     }
-    > * {
+
+    >* {
         margin-bottom: 1em;
     }
 }
@@ -128,6 +172,7 @@ $pswp__assets-path: "~photoswipe/src/css/default-skin/";
 
 .square-container {
     margin-bottom: -1rem;
+
     @media (min-width: theme('screens.sm')) {
         margin-left: -1rem;
         margin-right: -1rem;
@@ -139,6 +184,7 @@ $pswp__assets-path: "~photoswipe/src/css/default-skin/";
     margin-left: 0.5rem;
     margin-right: 0.5rem;
     margin-bottom: 1rem;
+
     @media (min-width: theme('screens.sm')) {
         margin-left: 1rem;
         margin-right: 1rem;
@@ -148,15 +194,19 @@ $pswp__assets-path: "~photoswipe/src/css/default-skin/";
     &.xs\:square-5 {
         @include mobileSquare(5);
     }
+
     &.xs\:square-4 {
         @include mobileSquare(4);
     }
+
     &.xs\:square-3 {
         @include mobileSquare(3);
     }
+
     &.xs\:square-2 {
         @include mobileSquare(2);
     }
+
     &.xs\:square-1 {
         @include mobileSquare(1);
     }
@@ -164,12 +214,15 @@ $pswp__assets-path: "~photoswipe/src/css/default-skin/";
     &.sm\:square-4 {
         @include square('sm', 4);
     }
+
     &.sm\:square-3 {
         @include square('sm', 3);
     }
+
     &.sm\:square-2 {
         @include square('sm', 2);
     }
+
     &.sm\:square-1 {
         @include square('sm', 1);
     }
@@ -177,15 +230,19 @@ $pswp__assets-path: "~photoswipe/src/css/default-skin/";
     &.sm\:square-5 {
         @include square('sm', 5);
     }
+
     &.sm\:square-4 {
         @include square('sm', 4);
     }
+
     &.sm\:square-3 {
         @include square('sm', 3);
     }
+
     &.sm\:square-2 {
         @include square('sm', 2);
     }
+
     &.sm\:square-1 {
         @include square('sm', 1);
     }
@@ -193,15 +250,19 @@ $pswp__assets-path: "~photoswipe/src/css/default-skin/";
     &.md\:square-5 {
         @include square('md', 5);
     }
+
     &.md\:square-4 {
         @include square('md', 4);
     }
+
     &.md\:square-3 {
         @include square('md', 3);
     }
+
     &.md\:square-2 {
         @include square('md', 2);
     }
+
     &.md\:square-1 {
         @include square('md', 1);
     }
@@ -209,15 +270,19 @@ $pswp__assets-path: "~photoswipe/src/css/default-skin/";
     &.lg\:square-5 {
         @include square('lg', 5);
     }
+
     &.lg\:square-4 {
         @include square('lg', 4);
     }
+
     &.lg\:square-3 {
         @include square('lg', 3);
     }
+
     &.lg\:square-2 {
         @include square('lg', 2);
     }
+
     &.lg\:square-1 {
         @include square('lg', 1);
     }
@@ -225,15 +290,19 @@ $pswp__assets-path: "~photoswipe/src/css/default-skin/";
     &.xl\:square-5 {
         @include square('xl', 5);
     }
+
     &.xl\:square-4 {
         @include square('xl', 4);
     }
+
     &.xl\:square-3 {
         @include square('xl', 3);
     }
+
     &.xl\:square-2 {
         @include square('xl', 2);
     }
+
     &.xl\:square-1 {
         @include square('xl', 1);
     }
@@ -241,82 +310,96 @@ $pswp__assets-path: "~photoswipe/src/css/default-skin/";
 
 .blur-enter-active,
 .blur-leave-active {
-  transition: all 1s ease-in-out;
-  transform: scale(1);
-  filter: blur(0px);
+    transition: all 1s ease-in-out;
+    transform: scale(1);
+    filter: blur(0px);
 }
+
 .blur-enter,
 .blur-leave-to {
-  transform: scale(1.1);
-  filter: blur(4px);
+    transform: scale(1.1);
+    filter: blur(4px);
 }
 
 .blur-fade-enter-active /deep/ img,
 .blur-fade-leave-active /deep/ img {
-  transition: all 0.4s ease-in-out !important;
-  transform: scale(1) !important;
-  opacity: 1 !important;
+    transition: all 0.4s ease-in-out !important;
+    transform: scale(1) !important;
+    opacity: 1 !important;
 }
+
 .blur-fade-enter /deep/ img,
 .blur-fade-leave-to /deep/ img {
-  transform: scale(1.1) !important;
-  filter: blur(4px) !important;
-  opacity: 0 !important;
+    transform: scale(1.1) !important;
+    filter: blur(4px) !important;
+    opacity: 0 !important;
 }
 
 .slide-fade-enter-active {
-  transition: all 0.2s 0.2s ease-in-out;
+    transition: all 0.2s 0.2s ease-in-out;
 }
+
 .slide-fade-leave-active {
-  transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
 }
+
 .slide-fade-enter,
 .slide-fade-leave-to {
-  transform: translate3d(10px, 0, 0);
-  opacity: 0;
+    transform: translate3d(10px, 0, 0);
+    opacity: 0;
 }
 
 .slide-fade-right-enter-active {
-  transition: all 0.2s 0.2s ease-in-out;
+    transition: all 0.2s 0.2s ease-in-out;
 }
+
 .slide-fade-right-leave-active {
-  transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
 }
+
 .slide-fade-right-enter,
 .slide-fade-right-leave-to {
-  transform: translate3d(-10px, 0, 0);
-  opacity: 0;
+    transform: translate3d(-10px, 0, 0);
+    opacity: 0;
 }
 
 .slide-fade-up-enter-active {
-  transition: all 0.2s 0.2s ease-in-out;
-}
-.slide-fade-up-leave-active {
-  transition: all 0.2s ease-in-out;
-}
-.slide-fade-up-enter,
-.slide-fade-up-leave-to {
-  transform: translate3d(0, 10px, 0);
-  opacity: 0;
+    transition: all 0.2s 0.2s ease-in-out;
 }
 
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .4s ease-in-out;
+.slide-fade-up-leave-active {
+    transition: all 0.2s ease-in-out;
 }
-.fade-enter, .fade-leave-to {
-  opacity: 0 !important;
+
+.slide-fade-up-enter,
+.slide-fade-up-leave-to {
+    transform: translate3d(0, 10px, 0);
+    opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity .4s ease-in-out;
+}
+
+.fade-enter,
+.fade-leave-to {
+    opacity: 0 !important;
 }
 
 img {
-  user-select: none;
+    user-select: none;
 }
 
-nav.px-mobile, p.px-mobile, div.px-mobile {
+nav.px-mobile,
+p.px-mobile,
+div.px-mobile {
     @media (max-width: theme('screens.sm')) {
         padding-left: 0.5rem;
         padding-right: 0.5rem;
 
-        p.px-mobile, div.px-mobile {
+        p.px-mobile,
+        div.px-mobile {
             padding-left: 0;
             padding-right: 0;
         }
@@ -325,6 +408,7 @@ nav.px-mobile, p.px-mobile, div.px-mobile {
 
 [data-aos="appear"] {
     opacity: 0.3;
+
     &.aos-animate {
         opacity: 1;
     }
@@ -333,9 +417,11 @@ nav.px-mobile, p.px-mobile, div.px-mobile {
 .pswp__bg {
     background-color: white;
 }
+
 .pswp__top-bar {
     display: none;
 }
+
 .pswp__caption {
     display: none;
 }

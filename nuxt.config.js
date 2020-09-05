@@ -150,7 +150,6 @@ export default {
       // Facebook
       // { property: 'fb:app_id', content: socialNetworks.facebook.id }
     ]
-
   },
 
   pwa: {
