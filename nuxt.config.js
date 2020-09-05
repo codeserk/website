@@ -10,7 +10,6 @@ export default {
   ],
   css: [
     '@/assets/css/main.scss',
-    '@/assets/css/wordpress.scss',
     'photoswipe/src/css/main.scss',
     'photoswipe/src/css/default-skin/default-skin.scss'
   ],

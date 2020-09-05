@@ -21,38 +21,6 @@ export default {
   },
 
   async asyncData({ store, error, route, params, $source }) {
-    if (!store.getters.background) {
-      const common = await $source.resolve('/__common', ({ query }) =>
-        query(
-          `
-              query common {
-                  pages {
-                    id
-                    inMenu: extra(path: "acf.inMenu")
-                    order
-                    title
-                    link
-                    parentId
-                  }
-
-                  home: postBySlug(slug: "home", type: "pages") {
-                    id
-                    background { image(resolution: Large) { src } }
-                    logo {
-                      image(resolution: Small, format: png) { src }
-                      placeholder: image(resolution: Placeholder, format: png, output: Inline) { src }
-                    }
-                  }
-              }
-          `
-        )
-      )
-
-      store.dispatch('setMenuItems', common.pages)
-      store.dispatch('setBackground', common.home.background)
-      store.dispatch('setLogo', common.home.logo)
-    }
-
     if (route.path === '/' || route.path === '') {
       return {
         page: {}
@@ -64,7 +32,7 @@ export default {
       query(
         `
             query page($slug: String!) {
-                page: postBySlug(slug: $slug, type: "pages") {
+                page: postBySlug(slug: $slug, type: "page") {
                     id title content dom
                 }
             }

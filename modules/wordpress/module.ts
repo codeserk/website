@@ -4,14 +4,22 @@ import * as path from 'path'
 import { press } from '@codeserk/press-core'
 import { media } from '@codeserk/press-media'
 import { MediaServiceResolver } from '@codeserk/press-graphql-media'
-import { wordpress } from '@codeserk/press-source-wordpress'
+import { filesystem } from '@codeserk/press-source-filesystem'
 import { graphql, GraphQLSchemaBuilder } from '@codeserk/press-graphql'
 
 require('dotenv').config()
 
 export default async function wordpressModule(this: any) {
-  // Setup wordpress module
-  wordpress.setupWordpressClient(process.env.SOURCE_WORDPRESS_URL!)
+  // Setup filesystem module
+  filesystem
+    .withConfig({ basePath: path.resolve(__dirname, '../../content') })
+    .withJSONParser()
+    .withMarkdownParser()
+    .withPropertiesParser()
+    .withJavaScriptParser()
+    .withTOMLParser()
+    .withTypeScriptParser()
+    .withYAMLParser()
 
   // Setup media module
   media.withConfig({
@@ -50,12 +58,12 @@ export default async function wordpressModule(this: any) {
         product_tag: 'etiqueta'
       }
     })
-    .withMediaRepository(wordpress.mediaClientRepository)
-    .withPostRepository(wordpress.postClientRepository)
-    .withPostTypeRepository(wordpress.postTypeClientRepository)
-    .withTaxonomyRepository(wordpress.taxonomyClientRepository)
-    .withTermRepository(wordpress.termClientRepository)
-    .withUserRepository(wordpress.userClientRepository)
+    .withMediaRepository(filesystem.mediaRepository)
+    .withPostRepository(filesystem.postRepository)
+    .withPostTypeRepository(filesystem.postTypeRepository)
+    .withTaxonomyRepository(filesystem.taxonomyRepository)
+    .withTermRepository(filesystem.termRepository)
+    .withUserRepository(filesystem.userRepository)
     .withMediaService(media.service)
 
   // GraphGL

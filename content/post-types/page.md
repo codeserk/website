@@ -1,0 +1,4 @@
+---
+slug: page
+name: Page
+---
