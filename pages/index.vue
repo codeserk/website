@@ -189,7 +189,7 @@ body {
 #clouds-far {
     height: 20vh;
     top: 0vh;
-    animation: moveRight 6000s infinite steps($low-fps * 6000);
+    animation: moveRight 3000s infinite steps($low-fps * 3000);
     background-size: contain;
     mask-size: contain;
     left: 0;
@@ -198,7 +198,7 @@ body {
 #clouds-near {
     height: 20vh;
     bottom: 20vh;
-    animation: moveRight 3000s infinite steps($low-fps * 3000);
+    animation: moveRight 1000s infinite steps($low-fps * 1000);
     background-size: contain;
     mask-size: contain;
     left: 0vw;
