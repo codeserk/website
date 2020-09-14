@@ -6,6 +6,7 @@ import { media } from '@codeserk/press-media'
 import { MediaServiceResolver } from '@codeserk/press-graphql-media'
 import { filesystem } from '@codeserk/press-source-filesystem'
 import { graphql, GraphQLSchemaBuilder } from '@codeserk/press-graphql'
+import { ApolloServer } from 'apollo-server'
 
 require('dotenv').config()
 
@@ -79,10 +80,13 @@ export default async function wordpressModule(this: any) {
     .build()
 
   // Start
+  let server: ApolloServer | undefined
   try {
-    const { server } = await graphql.withPort(port)
+    const response = await graphql.withPort(port)
       .withSchema(schemas)
       .startServer()
+
+    server = response.server
   } catch (error) {
     console.error(error)
   }
@@ -110,5 +114,11 @@ export default async function wordpressModule(this: any) {
     src: path.resolve(__dirname, 'plugin.client.ts'),
     fileName: 'wordpress.plugin.client.ts',
     mode: 'client'
+  })
+
+  this.nuxt.hook('close', async () => {
+    if (server) {
+      await server.stop()
+    }
   })
 }

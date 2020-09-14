@@ -1,11 +1,11 @@
 <template>
   <div>
-    <layout-header />
-
     <div
-      :class="{ 'wrapper--page': !isHome }"
       class="wrapper"
     >
+      <client-only>
+        <background />
+      </client-only>
       <Nuxt  />
     </div>
 
@@ -20,13 +20,15 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 
+import Background from '../components/layout/scene/background'
 import { debounce } from '~/utils/debounce'
-import LayoutHeader from '~/components/layout/layout-header'
+// import LayoutHeader from '~/components/layout/layout-header'
 import LayoutFooter from '~/components/layout/layout-footer'
 
 export default {
   components: {
-    LayoutHeader,
+    Background,
+    // LayoutHeader,
     LayoutFooter,
     CookiesPopup: () => import('~/components/layout/cookies-popup')
   },

@@ -33,12 +33,16 @@ export default {
     port: 3020
   },
 
+  watch: [
+    '~/content/**/*'
+  ],
+
   serverMiddleware: [
     '~server/redirects.ts'
   ],
   plugins: [
     '~/plugins/composition-api.js',
-    '~/plugins/global-components.js',
+    { src: '~/plugins/global-components.js', mode: 'client' },
     '~/plugins/lazyload.js',
     '~/plugins/jsonld',
     { src: '@/plugins/aos', mode: 'client' },
@@ -100,8 +104,8 @@ export default {
 
     async routes() {
       const uri = process.env.IS_GENERATING
-        ? 'http://localhost:4011'
-        : 'http://localhost:4010'
+        ? 'http://localhost:4021'
+        : 'http://localhost:4020'
       const client = new Client(uri)
       const { pages } = await client.query(`
                 query {
@@ -110,8 +114,8 @@ export default {
             `)
 
       return [
-        '/',
-        ...pages.map(page => page.link)
+        '/'
+        // ...pages.map(page => page.link)
       ]
     }
   },

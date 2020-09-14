@@ -24,7 +24,7 @@
       </router-link>
     </div>
 
-    <nav class="menu container mx-auto">
+    <nav v-if="false" class="menu container mx-auto">
       <popper
         v-for="item of menuItems"
         :key="item.id"

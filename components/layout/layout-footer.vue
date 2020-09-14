@@ -82,7 +82,7 @@ export default {
 @import '~/assets/css/variables';
 
 footer {
-  background: black;
+  background: #08080E33;
   color: white;
   min-height: 100vh;
   display: flex;

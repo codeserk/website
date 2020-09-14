@@ -5,6 +5,7 @@
 ** Default: https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js
 */
 module.exports = {
+  purge: false,
   variants: ['responsive', 'group-hover', 'hover', 'focus', 'first', 'last'],
   theme: {
     screens: {
