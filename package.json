@@ -77,6 +77,13 @@
     "nuxt-webfontloader": "^1.1.0",
     "prettier": "^1.19.1",
     "sass-loader": "^7.3.1",
+    "stylelint": "^13.7.2",
+    "stylelint-a11y": "^1.2.3",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-order": "^4.1.0",
+    "stylelint-processor-styled-components": "^1.10.0",
+    "stylelint-scss": "^3.18.0",
     "toml": "^3.0.0",
     "typescript": "^3.9.7",
     "vue-eslint-parser": "^7.0.0"

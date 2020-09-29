@@ -50,35 +50,59 @@ export default {
 
 <style lang="scss" scoped>
 .page-wrapper .container {
-  padding: 48px;
   position: relative;
   max-width: 600px;
+  padding: 48px;
 
-  &:before {
+  &::before {
     content: '';
     position: absolute;
-    left: 1px;
     top: 1px;
-    bottom: 1px;
     right: 1px;
+    bottom: 1px;
+    left: 1px;
+    z-index: -1;
     margin-right: 1ch;
     border: 0.5ch solid white;
-    z-index: -1;
-    box-shadow: 1ch 1rem 0 white;
     background-color: #0F090C;
+    box-shadow: 1ch 1rem 0 white;
   }
 }
 
 h1 {
-  font-size: 3rem;
   vertical-align: baseline;
+  font-size: 3rem;
   letter-spacing: 10px;
 }
 
 .language {
-  margin: 5rem 0;
   position: relative;
   z-index: 1;
+  margin: 5rem 0;
+
+  @media (max-width: theme('screens.xl')) {
+    margin: 8rem 0;
+  }
+
+  @media (max-width: theme('screens.lg')) {
+    margin: 0 0 6rem 0;
+
+    .short-description {
+      position: relative;
+      top: unset !important;
+      right: unset !important;
+      left: unset !important;
+      width: auto;
+      max-width: unset;
+      padding: 0;
+      &::before {
+        display: none;
+      }
+      &::after {
+        display: none;
+      }
+    }
+  }
 
   .language-progress {
     display: flex;
@@ -92,37 +116,37 @@ h1 {
 
     .language-bar {
       position: relative;
-      border: 4px solid white;
       flex: 2;
       height: 2rem;
+      border: 4px solid white;
       border-radius: 4px;
 
       .language-bar-width {
-        background: white;
         height: 100%;
+        background: white;
       }
 
       .language-bar-status {
         position: absolute;
-        text-align: center;
         top: -0.25rem;
-        left: 0;
         right: 0;
-        mix-blend-mode: difference;
+        left: 0;
         line-height: 2rem;
+        text-align: center;
         text-transform: uppercase;
+        mix-blend-mode: difference;
       }
     }
   }
 
   .short-description {
     position: absolute;
+    top: -50%;
     width: calc((100vw - 600px) / 2 - 10px);
     max-width: 400px;
-    top: -50%;
     padding: 1em;
 
-    &:after {
+    &::after {
       content: '';
       position: absolute;
       top: 30px;
@@ -133,41 +157,17 @@ h1 {
   &:nth-child(odd) .short-description {
     left: calc(100% + 60px);
 
-    &:after {
-      left: -14px;
+    &::after {
       right: calc(100% - 2px);
+      left: -14px;
     }
   }
   &:nth-child(even) .short-description {
     right: calc(100% + 60px);
 
-    &:after {
-      left: calc(100% - 2px);
+    &::after {
       right: -14px;
-    }
-  }
-
-  @media (max-width: theme('screens.xl')) {
-    margin: 8rem 0;
-  }
-
-  @media (max-width: theme('screens.lg')) {
-    margin: 0rem 0 6rem 0;
-
-    .short-description {
-      position: relative;
-      padding: 0;
-      width: auto;
-      max-width: unset;
-      top: unset !important;
-      left: unset !important;
-      right: unset !important;
-      &:before {
-        display: none;
-      }
-      &:after {
-        display: none;
-      }
+      left: calc(100% - 2px);
     }
   }
 }

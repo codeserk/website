@@ -98,29 +98,29 @@ export default {
     transform: translate3d(-10px, 0, 0);
   }
   100% {
-    transform: translate3d(0px, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
 #scene-foreground {
-  user-select: none;
   position: absolute;
   top: 100%;
-  left: 0;
   right: 0;
+  left: 0;
+  user-select: none;
 }
 
 .layer {
-  image-rendering: pixelated;
-  background-repeat: repeat-x;
-  mask-repeat: repeat-x;
+  position: absolute;
+  right: 0;
+  left: 0;
   background-size: contain;
+  background-repeat: repeat-x;
+  transition: background-color 0.4s ease-in;
+  image-rendering: pixelated;
+  mask-repeat: repeat-x;
   mask-size: contain;
   background-blend-mode: multiply;
-  position: absolute;
-  transition: background-color 0.4s ease-in;
-  left: 0;
-  right: 0;
 
   &.layer-top {
     background-position: top;
@@ -133,27 +133,27 @@ export default {
 }
 
 #trees-far {
-  height: 30vh;
   bottom: 0;
-  background-position: bottom right;
-  mask-position: bottom right;
-  background-size: contain;
-  mask-size: contain;
-  left: 0px;
+  left: 0;
   width: calc(100vw + 20px);
+  height: 30vh;
+  background-position: bottom right;
+  background-size: contain;
   animation: MovementBottom 4s steps(2) alternate infinite;
+  mask-position: bottom right;
+  mask-size: contain;
 }
 
 #trees-near {
-  height: 30vh;
   bottom: 0;
-  background-position: bottom right;
-  mask-position: bottom right;
-  background-size: contain;
-  mask-size: contain;
-  left: 0px;
+  left: 0;
   width: calc(100vw + 20px);
+  height: 30vh;
+  background-position: bottom right;
+  background-size: contain;
   animation: MovementBottom 2s steps(2) alternate infinite;
+  mask-position: bottom right;
+  mask-size: contain;
 }
 
 </style>

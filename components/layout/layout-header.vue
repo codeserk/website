@@ -125,187 +125,40 @@ export default {
 @import "~/assets/css/variables";
 
 header {
-  height: 100vh;
-  width: 100vw;
   position: relative;
+  width: 100vw;
+  height: 100vh;
   transition: all 0.4s ease-in-out;
   transition-delay: 0.1s;
-
-  .background {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: 0;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center bottom;
-    z-index: -1;
-  }
-
-  .social-icons {
-    position: absolute;
-    right: 0px;
-    color: white;
-    padding: 10px;
-    z-index: 1;
-    transition: all 0.4s ease-in-out;
-
-    &__icon {
-      filter: drop-shadow(0 0 1px black) drop-shadow(0 0 1px black) drop-shadow(0 0 1px black);
-      margin-left: 20px;
-    }
-  }
-
-  .title {
-    z-index: -1;
-    display: flex;
-    height: calc(100% - 40px);
-    justify-content: center;
-    align-items: center;
-    font-family: $font-header;
-    color: white;
-    filter: drop-shadow(0 0 1px black) drop-shadow(0 0 1px black) drop-shadow(0 0 1px black) drop-shadow(0 0 1px black);
-    text-align: center;
-    transition: all 0.4s ease-in-out;
-
-    @media (min-width: theme('screens.md')) {
-      height: calc(100% - 100px);
-    }
-
-    h1 {
-      font-size: 3em;
-      letter-spacing: 0.2em;
-      line-height: 120px;
-      color: white;
-      transition: font-size 0.4s ease-in-out;
-
-      @media (max-width: theme('screens.sm')) {
-        font-size: 4em;
-      }
-      @media (min-width: theme('screens.xs')) {
-        font-size: 4em;
-      }
-      @media (min-width: theme('screens.sm')) {
-        font-size: 5em;
-      }
-      @media (min-width: theme('screens.md')) {
-        font-size: 6em;
-      }
-      @media (min-width: theme('screens.lg')) {
-        font-size: 8em;
-      }
-    }
-  }
-
-  .menu {
-    font-family: $font-header;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100px;
-    width: 100%;
-    background: black;
-    z-index: 1;
-    display: none;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 2em;
-    transition: all 0.4s ease-in-out;
-
-    .menu-item {
-      flex: 1;
-      position: relative;
-      text-align: center;
-      text-transform: uppercase;
-      color: white;
-      filter: drop-shadow(0 0 1px black) drop-shadow(0 0 1px black) drop-shadow(0 0 1px black);
-    }
-
-    .popper {
-      font-size: 0.75em;
-      min-width: 100px;
-      li {
-        padding: 10px;
-      }
-      .link::before {
-        background-color: black;
-      }
-    }
-
-    @media (min-width: theme('screens.sm')) {
-      display: flex;
-    }
-  }
-
-  &.header--minimized {
-    height: 250px;
-    background-position: center bottom -20px;
-
-    .title {
-      @media (min-width: theme('screens.md')) {
-        height: calc(100% - 40px);
-      }
-
-      h1 {
-        @media (max-width: theme('screens.sm')) {
-          font-size: 3em;
-        }
-      }
-    }
-
-    .menu {
-      background: transparent;
-      height: 70px;
-    }
-  }
-
-  .mobile-overlay {
-    position: fixed;
-    z-index: 1;
-    background: $color-background;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-    opacity: 1;
-  }
-
-  .mobile-menu {
-    display: none;
-    z-index: 2;
-  }
 
   @media (max-width: theme('screens.sm')) {
     .mobile-menu {
       position: absolute;
-      display: block;
       top: $header-height-xs / 2;
       left: 20px;
+      display: block;
       filter: drop-shadow(0 0 1px black) drop-shadow(0 0 1px black) drop-shadow(0 0 1px black);
       transform: translate3d(0, -50%, 0);
       .nav-icon {
         width: 26px;
 
-        &:after,
-        &:before,
+        &::after,
+        &::before,
         div {
-          background-color:white;
-          border-radius: 3px;
           content: '';
           display: block;
           height: 4px;
           margin: 8px 0;
+          border-radius: 3px;
+          background-color:white;
           transition: all .4s ease-in-out;
         }
 
-        &--active:before {
+        &--active::before {
           transform: translateY(12px) rotate(135deg);
         }
 
-        &--active:after {
+        &--active::after {
           transform: translateY(-12px) rotate(-135deg);
         }
 
@@ -316,8 +169,8 @@ header {
     }
 
     .social-icons {
-      font-size: 26px;
       padding: 11px 20px;
+      font-size: 26px;
       &__icon {
         margin-left: 25px;
       }
@@ -347,11 +200,11 @@ header {
       }
 
       .title {
-        margin-left: 40px;
+        overflow: hidden;
         height: $header-height-xs;
+        margin-left: 40px;
         line-height: $header-height-xs;
         text-overflow: ellipsis;
-        overflow: hidden;
         h1 {
           font-size: 3em;
           @media (max-width: 500px) {
@@ -368,43 +221,190 @@ header {
     }
   }
 
+  .background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    background-color: 0;
+    background-position: center bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .social-icons {
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    padding: 10px;
+    color: white;
+    transition: all 0.4s ease-in-out;
+
+    &__icon {
+      margin-left: 20px;
+      filter: drop-shadow(0 0 1px black) drop-shadow(0 0 1px black) drop-shadow(0 0 1px black);
+    }
+  }
+
+  .title {
+    z-index: -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100% - 40px);
+    color: white;
+    font-family: $font-header;
+    text-align: center;
+    filter: drop-shadow(0 0 1px black) drop-shadow(0 0 1px black) drop-shadow(0 0 1px black) drop-shadow(0 0 1px black);
+    transition: all 0.4s ease-in-out;
+
+    @media (min-width: theme('screens.md')) {
+      height: calc(100% - 100px);
+    }
+
+    h1 {
+      color: white;
+      font-size: 3em;
+      line-height: 120px;
+      letter-spacing: 0.2em;
+      transition: font-size 0.4s ease-in-out;
+
+      @media (max-width: theme('screens.sm')) {
+        font-size: 4em;
+      }
+      @media (min-width: theme('screens.xs')) {
+        font-size: 4em;
+      }
+      @media (min-width: theme('screens.sm')) {
+        font-size: 5em;
+      }
+      @media (min-width: theme('screens.md')) {
+        font-size: 6em;
+      }
+      @media (min-width: theme('screens.lg')) {
+        font-size: 8em;
+      }
+    }
+  }
+
+  .menu {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100px;
+    background: black;
+    font-size: 2em;
+    font-family: $font-header;
+    transition: all 0.4s ease-in-out;
+
+    @media (min-width: theme('screens.sm')) {
+      display: flex;
+    }
+
+    .menu-item {
+      position: relative;
+      flex: 1;
+      color: white;
+      text-align: center;
+      text-transform: uppercase;
+      filter: drop-shadow(0 0 1px black) drop-shadow(0 0 1px black) drop-shadow(0 0 1px black);
+    }
+
+    .popper {
+      min-width: 100px;
+      font-size: 0.75em;
+      li {
+        padding: 10px;
+      }
+      .link::before {
+        background-color: black;
+      }
+    }
+  }
+
+  &.header--minimized {
+    height: 250px;
+    background-position: center bottom -20px;
+
+    .title {
+      @media (min-width: theme('screens.md')) {
+        height: calc(100% - 40px);
+      }
+
+      h1 {
+        @media (max-width: theme('screens.sm')) {
+          font-size: 3em;
+        }
+      }
+    }
+
+    .menu {
+      height: 70px;
+      background: transparent;
+    }
+  }
+
+  .mobile-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    background: $color-background;
+    opacity: 1;
+  }
+
+  .mobile-menu {
+    z-index: 2;
+    display: none;
+  }
+
   .mobile-body {
     position: fixed;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     z-index: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
     align-content: space-around;
+    align-items: center;
     justify-content: space-around;
     padding: 10% 15%;
 
     &__menu {
-      font-family: $font-header;
       display: flex;
+      flex: 1;
       flex-direction: column;
-      font-size: 2.5em;
       align-content: center;
       justify-content: space-around;
-      flex: 1;
       margin-bottom: 1em;
+      font-size: 2.5em;
+      font-family: $font-header;
 
       &__item {
-        color: white;
-        text-transform: uppercase;
         margin-bottom: 1em;
+        color: white;
         text-align: center;
+        text-transform: uppercase;
       }
     }
 
     &__social {
-      color: white;
       display: flex;
       justify-content: space-around;
       width: 100%;
+      color: white;
 
       &__icon {
         font-size: 1.5em;

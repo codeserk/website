@@ -46,7 +46,7 @@ export default {
 <style lang="scss" scoped>
 .page-wrapper {
   position: relative;
-padding: 4rem 0;
+  padding: 4rem 0;
 }
 .container {
   position: relative;
@@ -56,42 +56,42 @@ padding: 4rem 0;
   justify-content: center;
   height: 100%;
 
-  &:before {
+  &::before {
     content: '';
     position: absolute;
     top: -50px;
     bottom: -200px;
     left: 0;
+    z-index: -1;
     margin-left: calc(30% - 32px);
     border-right: 8px solid white;
-    z-index: -1;
   }
 
   .item {
     position: relative;
+    display: bolck;
     flex: 1;
     justify-content: space-between;
-    display: bolck;
     margin: 2em 0;
 
-    &:before {
+    &::before {
       content: '';
       position: absolute;
       top: 50px;
-      left: 100px;
       right: 100px;
-      border-bottom: 8px solid white;
+      left: 100px;
       z-index: -1;
+      border-bottom: 8px solid white;
     }
 
     .block {
       &.left {
-        width: 30%;
         float: left;
+        width: 30%;
       }
       &.right {
-        width: 65%;
         float: right;
+        width: 65%;
       }
     }
   }

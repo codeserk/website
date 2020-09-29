@@ -85,10 +85,10 @@ export default {
 .slide-left-leave-active,
 .slide-right-enter-active,
 .slide-right-leave-active {
+  overflow: hidden;
+  transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
   transition-duration: 0.5s;
   transition-property: height, opacity, transform;
-  transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
-  overflow: hidden;
 }
 
 .slide-left-enter,

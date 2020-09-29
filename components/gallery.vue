@@ -289,24 +289,24 @@ export default {
 .slider {
   display: flex;
   align-items: center;
-  background: $color-background;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  background: $color-background;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
 
   .slider-item {
     position: relative;
-    flex-shrink: 0;
     flex: 1;
+    flex-shrink: 0;
     min-width: 100%;
     height: 100%;
-    scroll-snap-align: start;
-    background: $color-background;
     padding-bottom: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background: $color-background;
     background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    scroll-snap-align: start;
 
     .slider-item-overlay {
       position: absolute;
@@ -315,8 +315,8 @@ export default {
       bottom: 0;
       left: 0;
       background: $color-background;
-      transition: opacity 0.4s ease-in-out;
       opacity: 1;
+      transition: opacity 0.4s ease-in-out;
     }
 
     &--ready {
@@ -334,36 +334,36 @@ export default {
 
 .secondary {
   align-items: center;
+  justify-content: space-between;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  justify-content: space-between;
 
   .figure {
-    background: $color-background;
+    position: relative;
     flex: 1;
+    flex-shrink: 0;
     min-width: calc(50% - 1px);
     height: 100%;
-    flex-shrink: 0;
     margin: 4px 2px;
-    scroll-snap-align: start;
     padding-bottom: calc(50% - 1px);
-    position: relative;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background: $color-background;
     background-position: center;
-
-    &:first-child {
-      margin-left: 0px;
-    }
-    &:last-child {
-      margin-right: 0px;
-    }
+    background-size: cover;
+    background-repeat: no-repeat;
+    scroll-snap-align: start;
 
     @media (min-width: 1024px) {
       min-width: calc(33.33333% - 1px);
       padding-bottom: calc(33.33333% - 1px);
+    }
+
+    &:first-child {
+      margin-left: 0;
+    }
+    &:last-child {
+      margin-right: 0;
     }
     .figure-overlay {
       position: absolute;
@@ -372,8 +372,8 @@ export default {
       bottom: 0;
       left: 0;
       background: $color-background;
-      transition: opacity 0.4s ease-in-out;
       opacity: 0.8;
+      transition: opacity 0.4s ease-in-out;
     }
 
     &--ready {

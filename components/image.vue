@@ -75,6 +75,8 @@ export default {
 <style scoped lang="scss">
 .image-placeholder {
   overflow: hidden;
+  overflow: hidden;
+  width: auto;
   line-height: 0;
   &--rounded {
     border-radius: 100%;
@@ -82,18 +84,14 @@ export default {
       border-radius: 100%;
     }
   }
-  overflow: hidden;
-  width: auto;
 }
 img {
-  border-radius: inherit !important;
-
   width: 100%;
   height: 100%;
-
-  transition: filter ease-in-out 1s, opacity ease-in-out 0.4s;
+  border-radius: inherit !important;
   opacity: 0;
   filter: blur(8px);
+  transition: filter ease-in-out 1s, opacity ease-in-out 0.4s;
 
   &[lazy='loading'] {
     opacity: 0.9;
@@ -101,11 +99,11 @@ img {
   }
   &[lazy='loaded'] {
     opacity: 1;
-    filter: blur(0px);
+    filter: blur(0);
   }
 
   &:hover {
-    filter: blur(0px) brightness(1.05);
+    filter: blur(0) brightness(1.05);
   }
 }
 </style>

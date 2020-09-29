@@ -82,11 +82,11 @@ export default {
 @import '~/assets/css/variables';
 
 footer {
-  background: #08080EAA;
-  color: white;
-  min-height: 100vh;
   display: flex;
   align-items: center;
+  min-height: 100vh;
+  background: #08080EAA;
+  color: white;
 
   .footer-container {
     align-items: center;
@@ -97,7 +97,7 @@ footer {
 }
 
 .footer-logo {
- align-items: center;
+  align-items: center;
 }
 
 .footer-links {
@@ -107,25 +107,25 @@ footer {
 
   &__pages {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
     flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
 
     .menu-item {
-      font-family: $font-header;
-      text-transform: uppercase;
+      margin-bottom: 10px;
+      padding: 0 20px;
       color: white;
       font-size: 1.5rem;
-      padding: 0 20px;
-      margin-bottom: 10px;
+      font-family: $font-header;
       text-align: right;
+      text-transform: uppercase;
 
       .sub-menu-item {
-        font-size: 1rem;
-        color: #DEDEDE;
-        padding: 0;
         margin-top: 5px;
-        margin-bottom: 0px;
+        margin-bottom: 0;
+        padding: 0;
+        color: #DEDEDE;
+        font-size: 1rem;
       }
     }
   }
@@ -134,16 +134,16 @@ footer {
 .social-icons {
   display: flex;
   justify-content: space-evenly;
-  color: white;
-  padding: 10px;
-  font-size: 26px;
-  padding: 11px 20px;
-  text-align: center;
   margin-top: 1em;
+  padding: 10px;
+  padding: 11px 20px;
+  color: white;
+  font-size: 26px;
+  text-align: center;
 
   &__icon {
-    filter: drop-shadow(0 0 1px black) drop-shadow(0 0 1px black) drop-shadow(0 0 1px black);
     flex: 1;
+    filter: drop-shadow(0 0 1px black) drop-shadow(0 0 1px black) drop-shadow(0 0 1px black);
   }
 }
 

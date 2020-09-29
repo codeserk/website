@@ -86,34 +86,33 @@ export default {
 
 #header {
   position: absolute;
-
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 10vw;
-  text-align: center;
-  z-index: 5;
   top: 0;
+  right: 0;
   bottom: 0;
   left: 0;
-  right: 0;
+  z-index: 2;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   color: white;
-  letter-spacing: 0.2em;
+  font-size: 10vw;
   line-height: 1em;
+  letter-spacing: 0.2em;
+  text-align: center;
 
   h1 {
-    font-size: 1.2em;
     position: relative;
     overflow: hidden;
+    font-size: 1.2em;
 
     &::after {
       position: absolute;
-      left: 0;
-      right: 0;
       top: 0;
+      right: 0;
       bottom: 0;
+      left: 0;
       z-index: 1;
       animation: textAppear 0.5s ease-in-out;
     }
@@ -122,9 +121,9 @@ export default {
     font-size: 1.1em;
   }
   p {
-    letter-spacing: 0;
     margin-top: 10vh;
     font-size: 0.6em;
+    letter-spacing: 0;
   }
 }
 

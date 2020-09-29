@@ -87,8 +87,8 @@ export default {
   padding-bottom: 4em;
 }
 .title {
-  text-align: center;
   margin-bottom: 0.5em;
   font-size: 4em;
+  text-align: center;
 }
 </style>

@@ -57,38 +57,38 @@ export default {
 @import "~/assets/css/colors";
 
 .cookies-popup {
-  font-size: 0.75rem;
-  z-index: 1000;
   position: fixed;
-  background: white;
-  border: 1px solid black;
-  border-radius: 4px;
-  width: 240px;
   right: 1rem;
   bottom: 1rem;
+  z-index: 1000;
+  width: 240px;
   padding: 1rem;
+  border: 1px solid black;
+  border-radius: 4px;
+  background: white;
+  font-size: 0.75rem;
+
+  @media (max-width: theme('screens.sm')) {
+    left: 50%;
+    transform: translate3d(-50%, 0, 0);
+  }
 
   &__buttons {
-    margin-top: 1rem;
     display: flex;
     justify-content: space-between;
+    margin-top: 1rem;
 
     &__accept {
       padding: 4px 8px;
-      text-transform: uppercase;
+      border-radius: 10px;
       background: $color-primary;
       color: white;
-      border-radius: 10px;
+      text-transform: uppercase;
     }
   }
 
   .link::before {
     background-color: black;
-  }
-
-  @media (max-width: theme('screens.sm')) {
-    left: 50%;
-    transform: translate3d(-50%, 0, 0);
   }
 }
 </style>

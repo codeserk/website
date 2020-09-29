@@ -119,32 +119,32 @@ export default {
 
 <style lang="scss" scoped>
 #scene {
-  height: 100vh;
-  width: 100vw;
   position: fixed;
   top: 0;
-  left: 0;
   right: 0;
   bottom: 0;
+  left: 0;
   z-index: -1;
+  width: 100vw;
+  height: 100vh;
   image-rendering: pixelated;
 }
 
 .layer {
-    position: absolute;
-    background: red;
-    mix-blend-mode: multiply;
+  position: absolute;
+  background: red;
+  mix-blend-mode: multiply;
 }
 
 #mountain-far {
-    bottom: 15vh;
-    width: 100vw;
+  bottom: 15vh;
+  width: 100vw;
 }
 
 #mountains-near {
-    left: 0;
-    width: 100vw;
-    bottom: 0;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
 }
 
 </style>

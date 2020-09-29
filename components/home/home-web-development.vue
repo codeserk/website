@@ -66,17 +66,29 @@ export default {
 <style lang="scss" scoped>
 .web-development {
   display: flex;
-  height: 100%;
   align-items: stretch;
   justify-content: center;
+  height: 100%;
   background: #08080E99;
+
+  @media (max-width: theme('screens.md')) {
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    .block {
+      flex: 1;
+      width: 100%;
+      margin: 1rem auto;
+      transform: skewY(-3deg) translate3d(0, 1rem, 0);
+    }
+  }
 
   .frontend, .devops, .backend {
     flex: 1;
-    padding: 2rem;
-    margin: 8px;
-    border-radius: 12px;
     max-width: 600px;
+    margin: 8px;
+    padding: 2rem;
+    border-radius: 12px;
   }
   .frontend {
     // background: #575fa255;
@@ -89,26 +101,14 @@ export default {
   }
 
   .language-bar {
-    border: 4px solid white;
     width: 100%;
     height: 2rem;
+    border: 4px solid white;
     border-radius: 4px;
 
     .language-bar-width {
-      background: white;
       height: 100%;
-    }
-  }
-
-  @media (max-width: theme('screens.md')) {
-    flex-direction: column;
-    align-items: center;
-    justify-items: center;
-    .block {
-      width: 100%;
-      transform: skewY(-3deg) translate3d(0, 1rem, 0);
-      flex: 1;
-      margin: 1rem auto;
+      background: white;
     }
   }
 }

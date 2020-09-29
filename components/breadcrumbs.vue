@@ -20,11 +20,11 @@ export default {
 <style lang="scss" scoped>
   .breadcrumbs {
     &__item {
-      color: #4B5667;
-      text-transform: uppercase;
-      font-size: 0.75rem;
-      opacity: 0.6;
       margin-right: 0.5rem;
+      color: #4B5667;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      opacity: 0.6;
 
       &::after {
         content: '/';

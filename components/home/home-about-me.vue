@@ -20,31 +20,31 @@
 
 <style lang="scss" scoped>
 .page-wrapper .container {
-  // transform: skewY(-2deg);
-  padding: 48px;
   position: relative;
   max-width: 600px;
+  // transform: skewY(-2deg);
+  padding: 48px;
 
-  &:before {
+  &::before {
     content: '';
     // transform: skewY(2deg);
     position: absolute;
-    left: 1px;
     top: 1px;
-    bottom: 1px;
     right: 1px;
+    bottom: 1px;
+    left: 1px;
+    z-index: -1;
     margin-right: 1ch;
     border: 0.5ch solid white;
-    z-index: -1;
+    background-color: #0F090C;
     -webkit-box-shadow: 1ch 1rem 0 white;
     box-shadow: 1ch 1rem 0 white;
-    background-color: #0F090C;
   }
 }
 
 h1 {
-  font-size: 3rem;
   vertical-align: baseline;
+  font-size: 3rem;
   letter-spacing: 10px;;
 }
 
@@ -55,25 +55,24 @@ img {
 
 .text-appear {
   position: relative;
-  &:after {
+  &::after {
     content: '';
     position: absolute;
-    left: 0;
-    right: 0;
     top: 0;
+    right: 0;
     bottom: 0;
+    left: 0;
     // animation: textAppear 1s linear infinite;
   }
-
 }
 
 dt {
   float: left;
   clear: left;
   width: 200px;
-  text-align: left;
-  font-weight: bold;
   color: green;
+  font-weight: bold;
+  text-align: left;
 }
 dt::after {
   content: ":";

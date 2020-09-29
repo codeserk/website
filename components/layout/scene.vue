@@ -204,13 +204,13 @@ export default {
 
 <style lang="scss">
 #scene {
-  user-select: none;
-  transition: background 0.4s ease-in;
   position: fixed;
   top: 0;
-  left: 0;
   right: 0;
   bottom: 0;
+  left: 0;
+  user-select: none;
+  transition: background 0.4s ease-in;
 
   .scene-fixed {
     .layer {
@@ -220,23 +220,23 @@ export default {
   .scene-absolute {
     // position: absolute;
     top: 0;
-    left: 0;
     right: 0;
     bottom: 0;
+    left: 0;
   }
 }
 
 .layer {
-  image-rendering: pixelated;
-  background-repeat: repeat-x;
-  mask-repeat: repeat-x;
+  position: absolute;
+  right: 0;
+  left: 0;
   background-size: contain;
+  background-repeat: repeat-x;
+  transition: background-color 0.4s ease-in;
+  image-rendering: pixelated;
+  mask-repeat: repeat-x;
   mask-size: contain;
   background-blend-mode: multiply;
-  position: absolute;
-  transition: background-color 0.4s ease-in;
-  left: 0;
-  right: 0;
 
   &.layer-top {
     background-position: top;
@@ -262,49 +262,49 @@ export default {
   top: 5vw;
   right: 5vw;
   height: 20vh;
+  background-position: top right;
   background-repeat: no-repeat;
   mask-repeat: no-repeat;
-  background-position: top right;
   mask-position: top right;
 }
 
 #clouds-far {
+  top: 0;
+  right: 0;
+  left: 0;
   height: 20vh;
-  top: 0vh;
   background-size: contain;
   mask-size: contain;
-  left: 0;
-  right: 0;
 }
 #clouds-near {
-  height: 20vh;
+  right: 0;
   bottom: 20vh;
+  left: 0;
+  height: 20vh;
   background-size: contain;
   mask-size: contain;
-  left: 0vw;
-  right: 0;
 }
 
 #mountain-far {
-  height: 60vh;
-  bottom: 14vh;
-  background-position: bottom right;
-  mask-position: bottom right;
-  background-size: contain;
-  mask-size: contain;
   right: 0;
+  bottom: 14vh;
   left: 0;
+  height: 60vh;
+  background-position: bottom right;
+  background-size: contain;
+  mask-position: bottom right;
+  mask-size: contain;
 }
 #mountain-far-cover {
+  bottom: 0;
+  height: 15vh;
   background-repeat: repeat;
   mask-repeat: repeat;
-  height: 15vh;
-  bottom: 0;
 }
 
 @media (max-width: theme("screens.sm")) {
   #background {
-    bottom: 0vh;
+    bottom: 0;
   }
   #mountain-far {
     bottom: 10vh;
@@ -313,41 +313,41 @@ export default {
     height: 11vh;
   }
   #clouds-near {
-    height: 10vh;
     bottom: 12vh;
+    height: 10vh;
   }
 }
 
 #mountains-near {
-  height: 40vh;
-  bottom: 0;
-  background-position: bottom right;
-  mask-position: bottom right;
-  background-size: contain;
-  mask-size: contain;
   right: 0;
+  bottom: 0;
   left: 0;
+  height: 40vh;
+  background-position: bottom right;
+  background-size: contain;
+  mask-position: bottom right;
+  mask-size: contain;
 }
 
 #trees-far {
-  height: 30vh;
-  bottom: 0;
-  background-position: bottom right;
-  mask-position: bottom right;
-  background-size: contain;
-  mask-size: contain;
   right: 0;
+  bottom: 0;
   left: 0;
+  height: 30vh;
+  background-position: bottom right;
+  background-size: contain;
+  mask-position: bottom right;
+  mask-size: contain;
 }
 
 #trees-near {
-  height: 30vh;
-  bottom: 0;
-  background-position: bottom right;
-  mask-position: bottom right;
-  background-size: contain;
-  mask-size: contain;
   right: 0;
+  bottom: 0;
   left: 0;
+  height: 30vh;
+  background-position: bottom right;
+  background-size: contain;
+  mask-position: bottom right;
+  mask-size: contain;
 }
 </style>

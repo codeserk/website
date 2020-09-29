@@ -76,29 +76,29 @@ export default {
 .subtitle-container--sticky {
   position: -webkit-sticky;
   position: sticky;
-  top: 0px;
+  top: 0;
   z-index: 1;
 }
 .subtitle {
   position: relative;
-  margin-bottom: 0px;
+  margin-bottom: 0;
 
   h2 {
-    color: $color-grey;
-    padding: 0.5em 1em;
-    line-height: 40px;
     margin-bottom: 0;
+    padding: 0.5em 1em;
+    color: $color-grey;
     font-size: 3rem;
+    line-height: 40px;
   }
 
   h3 {
-    color: $color-grey;
-    padding: 0.5em 1em;
-    line-height: 40px;
-    margin-bottom: 0;
-    font-size: 2rem;
-    margin-left: 1em;
     margin-right: 1em;
+    margin-bottom: 0;
+    margin-left: 1em;
+    padding: 0.5em 1em;
+    color: $color-grey;
+    font-size: 2rem;
+    line-height: 40px;
   }
 }
 </style>
