@@ -13,7 +13,7 @@
         'mask-image': `url('/scene/background.png')`,
         'background-color': backgroundColor,
       }"
-      class="layer layyer-bottom layer-fixed"
+      class="layer layer-bottom layer-fixed"
     />
     <div
       id="moon"
@@ -113,7 +113,7 @@ export default {
   props: {
     color: {
       type: String,
-      default: '#575fa2'
+      default: '#575fa2' // '#AA6B8C' //  '#575fa2'
     },
 
     animated: {
@@ -173,8 +173,8 @@ export default {
     // Positions
     positions() {
       return {
-        cloudsFar: this.frame * 1,
-        cloudsNear: this.frame * 3,
+        cloudsFar: this.frame * 1 % window.innerWidth,
+        cloudsNear: this.frame * 3 % window.innerWidth,
         treesFar: Math.cos(this.frame * this.treesFarMult) * 4,
         treesNear: Math.cos(this.frame * this.treesNearMult)
       }
@@ -203,7 +203,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 #scene-background {
   user-select: none;

@@ -77,25 +77,13 @@ export default {
   position: -webkit-sticky;
   position: sticky;
   top: 0px;
-  background: white;
   z-index: 1;
 }
 .subtitle {
   position: relative;
   margin-bottom: 0px;
 
-  &::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    border-bottom: 1px solid $color-grey;
-    left: 0;
-    right: 0;
-    z-index: -1;
-  }
-
   h2 {
-    background: white;
     color: $color-grey;
     padding: 0.5em 1em;
     line-height: 40px;
@@ -104,7 +92,6 @@ export default {
   }
 
   h3 {
-    background: white;
     color: $color-grey;
     padding: 0.5em 1em;
     line-height: 40px;

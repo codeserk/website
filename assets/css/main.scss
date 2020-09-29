@@ -8,6 +8,10 @@
     font-weight: normal;
     font-style: normal
 }
+@font-face {
+    font-family: og-emoji;
+    src: url("/fonts/og-dcm-emoji.ttf");
+  }
 
 @mixin square($screen, $squares) {
     @media (min-width: theme('screens.#{$screen}')) {
@@ -41,16 +45,42 @@
     }
 }
 
+.page-wrapper {
+    display: block;
+    color: white;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    padding-top: 4rem;
+
+    &.full {
+      min-height: 100vh;
+    }
+    &.color {
+      background: #08080E99;
+    }
+}
+
+.skew, .skew-left {
+    transform: skewY(-3deg) translate3d(0, 1rem, 0);
+}
+.skew-right {
+    transform: skewY(3deg) translate3d(0, 1rem, 0);
+}
+
 body {
     background-color: #08080E;
     font-family: $font-body;
+    font-size: 20px;
     color: $color-grey;
     overflow: overlay;
     overflow-x: hidden;
+    word-break: break-word;
+    hyphens: auto;
 }
 
-body::-webkit-scrollbar-track {
-    background: transparent
+body::-webkit-scrollbar {
+    display: none;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -123,7 +153,6 @@ h5 {
 }
 
 .content {
-
     h1,
     h2,
     h3,
@@ -133,6 +162,12 @@ h5 {
     ul,
     ol {
         margin-bottom: 1em;
+    }
+
+    h1, h2 {
+      text-align: center;
+      display: block;
+      border-bottom: 4px solid white;
     }
 
     ul,
@@ -417,6 +452,14 @@ div.px-mobile {
     }
 }
 
+[data-aos="clip"] {
+  clip-path: inset(0 100% 0 0);
+
+  &.aos-animate {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
 .pswp__bg {
     background-color: white;
 }
@@ -435,5 +478,35 @@ div.px-mobile {
         padding-right: 48px;
     }
 }
+
+// Container blocks
+.block {
+    z-index: 2;
+    // transform: skewY(-2deg);
+    padding: 48px;
+    position: relative;
+    // max-width: 600px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      left: 1px;
+      top: 1px;
+      bottom: 1px;
+      right: 1px;
+      margin-right: 1ch;
+      border: 0.5ch solid white;
+      z-index: -1;
+      -webkit-box-shadow: 1ch 1rem 0 white;
+      box-shadow: 1ch 1rem 0 white;
+      background-color: #0F090C;
+    }
+
+    &.small {
+        max-width: 600px;
+        margin: auto;
+    }
+  }
+
 
 /* purgecss end ignore */

@@ -23,8 +23,8 @@ export default {
 
   fontawesome: {
     icons: {
-      solid: ['faCaretLeft', 'faCaretRight'],
-      brands: ['faFacebook', 'faYoutube', 'faInstagram']
+      solid: true,
+      brands: true
     }
   },
 
@@ -34,7 +34,7 @@ export default {
   },
 
   watch: [
-    '~/content/**/*'
+    // '~/content/**/*'
   ],
 
   serverMiddleware: [

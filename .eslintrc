@@ -38,7 +38,7 @@
         "require-await": "off"
         // Apply prettier rules when using ESLint
         // https://prettier.io/docs/en/integrating-with-linters.html
-        // "prettier/prettier": "error",
+        // "prettier/prettier": "error"
         // "sort-imports-es6-autofix/sort-imports-es6": ["error", {
         //   "ignoreCase": false,
         //   "ignoreMemberSort": false,
