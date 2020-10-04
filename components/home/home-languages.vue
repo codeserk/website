@@ -4,11 +4,15 @@
       <h2 class="text-appear">Languages 👓</h2>
 
       <div
-        v-for="language in sortedLanguages" :key="language.id"
+        v-for="language in sortedLanguages"
+        :key="language.id"
         class="language"
       >
         <div class="language-progress">
-          <router-link :to="`/languages/${language.slug}`" class="language-name">
+          <router-link
+            :to="`/languages/${language.slug}`"
+            class="language-name"
+          >
             <span v-text="language.name" />
           </router-link>
           <div class="language-bar">
@@ -26,7 +30,6 @@
           class="short-description block"
         />
       </div>
-
     </div>
   </div>
 </template>
@@ -36,15 +39,17 @@ export default {
   props: {
     languages: {
       type: Array,
-      default: () => ([])
-    }
+      default: () => [],
+    },
   },
 
   computed: {
-    sortedLanguages () {
-      return [...this.languages].sort((langA, langB) => langA.order - langB.order)
-    }
-  }
+    sortedLanguages() {
+      return [...this.languages].sort(
+        (langA, langB) => langA.order - langB.order,
+      )
+    },
+  },
 }
 </script>
 
@@ -64,7 +69,7 @@ export default {
     z-index: -1;
     margin-right: 1ch;
     border: 0.5ch solid white;
-    background-color: #0F090C;
+    background-color: #0f090c;
     box-shadow: 1ch 1rem 0 white;
   }
 }

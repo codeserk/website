@@ -5,7 +5,7 @@ extra:
     order: 5
     status: adopted
     knowledge: 30
-    icon: kt
+    icon: kotlin
     scopes:
         - android
         - backend

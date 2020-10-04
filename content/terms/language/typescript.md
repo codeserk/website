@@ -5,7 +5,7 @@ extra:
     order: 1
     status: adopted
     knowledge: 90
-    icon: microsoft
+    icon: ts
     scopes:
         - frontend
         - backend

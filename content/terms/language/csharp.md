@@ -5,7 +5,7 @@ extra:
     order: 7
     status: adopted
     knowledge: 50
-    icon: c-sharp
+    icon: csharp
     scopes:
         - game-dev
     shortDescription: Some interesting features, but not my favourite 😵. Used in Unity to develop games.
