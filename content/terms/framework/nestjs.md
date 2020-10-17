@@ -4,7 +4,7 @@ name: NestJS
 extra:
   status: adopted
   knowledge: 75
-  shortDescription: Great backend framework, fully written in TS.
   kind: backend
+  summary: Great backend framework, fully written in TypeScript. Documentation is full of cats, what else can I ask for? 🐱.
 ---
 

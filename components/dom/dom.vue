@@ -11,34 +11,37 @@ export default {
     DomSubtitle: () => import('./dom-subtitle'),
     DomImage: () => import('./dom-image'),
     DomText: () => import('./dom-text'),
-    DomLink: () => import('./dom-link')
+    DomLink: () => import('./dom-link'),
+
+    // Special components
+    Chip: () => import('~/components/chip'),
   },
 
   props: {
     tag: {
       type: String,
-      default: 'div'
+      default: 'div',
     },
 
     children: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
 
     text: {
       type: String,
-      default: ''
+      default: '',
     },
 
     attributes: {
       type: Object,
-      default: () => ({})
+      default: () => ({}),
     },
 
     aos: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
 
   computed: {
@@ -61,7 +64,7 @@ export default {
       }
 
       return 'dom-default'
-    }
-  }
+    },
+  },
 }
 </script>

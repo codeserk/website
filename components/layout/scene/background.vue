@@ -32,7 +32,7 @@
         '-webkit-mask-image': `url('/scene/clouds-far.png')`,
         'mask-image': `url('/scene/clouds-far.png')`,
         'background-color': layerColor,
-        'transform': `translate3d(${positions.cloudsFar}px, 0px, 0px)`
+        transform: `translate3d(${positions.cloudsFar}px, 0px, 0px)`,
       }"
       class="layer layer-top layer-fixed"
     />
@@ -53,7 +53,7 @@
         'background-image': `url('/scene/mountain-far.png')`,
         '-webkit-mask-image': `url('/scene/mountain-far.png')`,
         'mask-image': `url('/scene/mountain-far.png')`,
-        'background-color': layerColor
+        'background-color': layerColor,
       }"
       class="layer layer-bottom layer-fixed"
     />
@@ -65,7 +65,7 @@
         '-webkit-mask-image': `url('/scene/clouds-near.png')`,
         'mask-image': `url('/scene/clouds-near.png')`,
         'background-color': layerColor,
-        'transform': `translate3d(${positions.cloudsNear}px, 0px, 0px)`
+        transform: `translate3d(${positions.cloudsNear}px, 0px, 0px)`,
       }"
       class="layer layer-bottom layer-fixed"
     />
@@ -76,7 +76,7 @@
         'background-image': `url('/scene/mountains-near.png')`,
         '-webkit-mask-image': `url('/scene/mountains-near.png')`,
         'mask-image': `url('/scene/mountains-near.png')`,
-        'background-color': layerColor
+        'background-color': layerColor,
       }"
       class="layer layer-bottom layer-fixed"
     />
@@ -86,7 +86,7 @@
         'background-color': layerColor,
         'background-image': `url('/scene/trees-far.png')`,
         '-webkit-mask-image': `url('/scene/trees-far.png')`,
-        'transform': `translate3d(${positions.treesFar}px, 0px, 0px)`
+        transform: `translate3d(${positions.treesFar}px, 0px, 0px)`,
       }"
       class="layer layer-bottom"
     />
@@ -96,7 +96,7 @@
         'background-color': layerColor,
         'background-image': `url('/scene/trees-near.png')`,
         '-webkit-mask-image': `url('/scene/trees-near.png')`,
-        'transform': `translate3d(${positions.treesNear}px, 0px, 0px)`
+        transform: `translate3d(${positions.treesNear}px, 0px, 0px)`,
       }"
       class="layer layer-bottom"
     />
@@ -113,13 +113,13 @@ export default {
   props: {
     color: {
       type: String,
-      default: '#575fa2' // '#AA6B8C' //  '#575fa2'
+      default: '#575fa2', // '#AA6B8C' //  '#575fa2'
     },
 
     animated: {
       type: Boolean,
-      default: true
-    }
+      default: true,
+    },
   },
 
   data: () => ({
@@ -131,14 +131,13 @@ export default {
       mountainFar: { src: '/scene/mountain-far.png' },
       mountainsNear: { src: '/scene/mountains-near.png' },
       treesFar: { src: '/scene/trees-far.png' },
-      treesNear: { src: '/scene/trees-near.png' }
+      treesNear: { src: '/scene/trees-near.png' },
     },
 
     treesFarMult: Math.PI / 8,
     treesNearMult: Math.PI / 2,
 
-    tick: 0
-
+    tick: 0,
   }),
 
   computed: {
@@ -146,7 +145,7 @@ export default {
       return Object.values(this.images).some(image => !image.ready)
     },
 
-    layerColor () {
+    layerColor() {
       if (this.isLoading) {
         return '#000000'
       }
@@ -154,7 +153,7 @@ export default {
       return this.color
     },
 
-    backgroundColor () {
+    backgroundColor() {
       if (this.isLoading) {
         return '#000000'
       }
@@ -162,7 +161,7 @@ export default {
       return lightenDarkenColor(this.color, 51)
     },
 
-    moonColor () {
+    moonColor() {
       if (this.isLoading) {
         return '#000000'
       }
@@ -173,16 +172,16 @@ export default {
     // Positions
     positions() {
       return {
-        cloudsFar: this.frame * 1 % window.innerWidth,
-        cloudsNear: this.frame * 3 % window.innerWidth,
+        cloudsFar: (this.frame * 1) % window.innerWidth,
+        cloudsNear: (this.frame * 3) % window.innerWidth,
         treesFar: Math.cos(this.frame * this.treesFarMult) * 4,
-        treesNear: Math.cos(this.frame * this.treesNearMult)
+        treesNear: Math.cos(this.frame * this.treesNearMult),
       }
     },
 
-    frame () {
-      return this.tick * 2 / FPS
-    }
+    frame() {
+      return (this.tick * 2) / FPS
+    },
   },
 
   mounted() {
@@ -199,12 +198,11 @@ export default {
     setInterval(() => {
       this.tick++
     }, 1000 / FPS)
-  }
+  },
 }
 </script>
 
 <style lang="scss" scoped>
-
 #scene-background {
   position: fixed;
   top: 0;
@@ -290,7 +288,7 @@ export default {
   mask-repeat: repeat;
 }
 
-@media (max-width: theme("screens.sm")) {
+@media (max-width: theme('screens.sm')) {
   #background {
     bottom: 0;
   }
@@ -338,5 +336,4 @@ export default {
   mask-position: bottom right;
   mask-size: contain;
 }
-
 </style>

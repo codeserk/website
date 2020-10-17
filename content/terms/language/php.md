@@ -1,0 +1,24 @@
+---
+slug: php
+name: PHP
+extra:
+    order: 10
+    status: deprecated
+    knowledge: 75
+    scopes:
+        - backend
+    summary: It was fun, but it is over. Deprecated because it was very limited to request-based architecture.
+---
+
+I started learning PHP in college, it was very easy to learn, but deep inside we knew that this language was a joke compared to other langauges we were learning at that moment (Java, C/C++). We can't deny that we could build the easiest backend services back then, but something wasn't right.
+
+I forgot about this language after I passed those subjects in the degree, and it was like that for some good time.
+
+Later on, I started working at [Square 1](/career/square-1) where they were starting to try [Laravel](/framework/laravel) (an _excellent_ PHP framework). I have to admit that Laravel is awesome, it's built using some good design patterns to combine other already adopted libraries (mostly symfony stuff). It was pleasant to learn/use this framework for a couple of years, and it was the right tool for msot of the projects (simple websites).
+
+However, I discovered it wasn't that great for enterprise (and huge) applications when I joined [Coosto](/career/coosto).
+* There is no easy way to create consumers for message brokers, so we had to use another language for that part, which had to make http request to the PHP API, not great.
+* It's request-based and every time it gets a request the **WHOLE APPLICATION** is bootstraped. That means: new redis connections, new database connections, new everything. That was often translated to _Too many connections_ kind of errors.
+* _Not sure about the latest versions_, but it was very difficult to use types. I remember we defined that certain method had to return `boolean` and that threw **RUNTIME ERRORS** because certain variable (which was actually a `boolean`), didn't look like a `boolean` for the executor.
+
+It was fun, but it is over.

@@ -9,7 +9,7 @@ extra:
     scopes:
         - frontend
         - backend
-    shortDescription: I have been using JavaScript since the dark ages (even) before JQuery, but I've moved to `TypeScript`.
+    summary: I have been using JavaScript since the dark ages (even) before JQuery, but I've moved to `TypeScript`.
 ---
 
 I have been using JavaScript since the dark ages (even) before JQuery. It was a nice discovery, after some years using _serious_ languages, such as `C`/`C++`.

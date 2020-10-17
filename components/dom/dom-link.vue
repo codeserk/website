@@ -1,5 +1,5 @@
 <template>
-  <a :href="link" :target="target" class="px-mobile underline" v-text="text" />
+  <a :href="link" :target="target" v-text="text" class="px-mobile underline" />
 </template>
 
 <script>
@@ -26,7 +26,7 @@ export default {
       }
 
       return '__blank'
-    }
-  }
+    },
+  },
 }
 </script>

@@ -1,25 +1,43 @@
 <template>
-  <div>
-    <div id="header">
-      <h1>José Cámara</h1>
-      <h2>@codeserk</h2>
+  <main>
+    <header class="header">
+      <h1>José Cámara <span class="subtitle">@codeserk</span></h1>
+    </header>
+
+    <div class="sections">
+      <section>
+        <h2>About me 🐱🎶</h2>
+        <about-me />
+      </section>
+
+      <section>
+        <h2>Languages 👓</h2>
+        <languages :languages="languages" />
+      </section>
+
+      <section>
+        <h2>Career 📱</h2>
+        <career :career="career" />
+      </section>
+
+      <section>
+        <h2>Web Development @</h2>
+        <web-development
+          :frameworks="frameworks"
+          :databases="databases"
+          :technologies="technologies"
+          :message-brokers="messageBrokers"
+        />
+      </section>
     </div>
-
-    <div class="page-wrapper full"></div>
-
-    <about-me />
-    <career :career="career" />
-    <languages :languages="languages" />
-    <web-development :languages="languages" />
-
-  </div>
+  </main>
 </template>
 
 <script>
 import { lightenDarkenColor } from '../utils/color'
 import AboutMe from '../components/home/home-about-me'
 import Career from '../components/home/home-career'
-import WebDevelopment from '../components/home/home-web-development'
+import WebDevelopment from '../components/home/web-development'
 import Languages from '../components/home/home-languages'
 
 export default {
@@ -27,18 +45,18 @@ export default {
     AboutMe,
     Career,
     Languages,
-    WebDevelopment
+    WebDevelopment,
   },
 
   data: () => ({
     lighten: 0,
-    mainColor: '#575fa2'
+    mainColor: '#175fa2',
   }),
 
   computed: {
-    color () {
+    color() {
       return lightenDarkenColor(this.mainColor, 0)
-    }
+    },
   },
 
   async asyncData({ store, error, route, params, $source }) {
@@ -47,55 +65,82 @@ export default {
         `
           query index {
             career: posts(type: "career") {
-              id title content dom
+              id slug title content dom
               startDate: extra(path: "startDate")
+              endDate: extra(path: "endDate")
+              position: extra(path: "position")
+              areas: terms(taxonomy: "development-area") { id slug name order: extra(path: "order") }
+              languages: terms(taxonomy: "language") { id slug name order: extra(path: "order") }
+              frameworks: terms(taxonomy: "framework") { id slug name order: extra(path: "order") }
+              databases: terms(taxonomy: "database") { id slug name order: extra(path: "order") }
+              brokers: terms(taxonomy: "message-broker") { id slug name order: extra(path: "order") }
+              technologies: terms(taxonomy: "technology") { id slug name order: extra(path: "order") }
+            }
+
+            areas: terms(taxonomy: "development-area") {
+              id slug name
+              order: extra(path: "order")
             }
 
             languages: terms(taxonomy: "language") {
               id slug name
               order: extra(path: "order")
-              icon: extra(path: "icon")
-              scopes: extra(path: "scopes")
-              knowledge: extra(path: "knowledge")
-              shortDescription: extra(path: "shortDescription")
               status: extra(path: "status")
+              knowledge: extra(path: "knowledge")
+              scopes: extra(path: "scopes")
+              summary: extra(path: "summary")
+            }
+
+            frameworks: terms(taxonomy: "framework") {
+              id link slug name
+              order: extra(path: "order")
+              status: extra(path: "status")
+              knowledge: extra(path: "knowledge")
+              kind: extra(path: "kind")
+              summary: extra(path: "summary")
+            }
+
+            databases: terms(taxonomy: "database") {
+              id slug name
+              order: extra(path: "order")
+              status: extra(path: "status")
+              knowledge: extra(path: "knowledge")
+              summary: extra(path: "summary")
+            }
+
+            technologies: terms(taxonomy: "technology") {
+              id slug name
+              order: extra(path: "order")
+              status: extra(path: "status")
+              knowledge: extra(path: "knowledge")
+              scopes: extra(path: "scopes")
+              summary: extra(path: "summary")
+            }
+
+            messageBrokers: terms(taxonomy: "message-broker") {
+              id slug name
+              order: extra(path: "order")
+              status: extra(path: "status")
+              knowledge: extra(path: "knowledge")
+              summary: extra(path: "summary")
             }
           }
-        `
-      )
+        `,
+      ),
     )
 
     return data
-  }
+  },
 }
 </script>
 
-<style lang="scss">
-
-@keyframes textAppear {
-  0% { content: '████████████████████' }
-  25% { content: '▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓' }
-  50% { content: '▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒' }
-  75% { content: '░░░░░░░░░░░░░░░░░░░░' }
-  100% { content: ' ' }
-}
-
-.container {
-  z-index: 2;
-}
-
-#header {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 2;
-  z-index: 5;
+<style lang="scss" scoped>
+.header {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-height: 100vh;
   color: white;
   font-size: 10vw;
   line-height: 1em;
@@ -116,9 +161,10 @@ export default {
       z-index: 1;
       animation: textAppear 0.5s ease-in-out;
     }
-  }
-  h2 {
-    font-size: 1.1em;
+    .subtitle {
+      display: block;
+      font-size: 0.75em;
+    }
   }
   p {
     margin-top: 10vh;
@@ -127,4 +173,19 @@ export default {
   }
 }
 
+.sections {
+  padding: 64px 0;
+  background: #08080e99;
+
+  section {
+    margin-bottom: 128px;
+    color: white;
+
+    h2 {
+      margin-bottom: 0.5em;
+      font-size: 4em;
+      text-align: center;
+    }
+  }
+}
 </style>

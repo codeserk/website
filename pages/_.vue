@@ -1,5 +1,8 @@
 <template>
-  <div v-show="!isHome" class="page py-6 container mx-auto main overflow-hidden">
+  <div
+    v-show="!isHome"
+    class="page py-6 container mx-auto main overflow-hidden"
+  >
     <h2 class="title">{{ page.title }}</h2>
 
     <dom-content v-bind="page.dom" class="mx-auto" aos="fade-up" />
@@ -11,19 +14,19 @@ import { generateSeoMeta } from '../utils/seo'
 
 export default {
   components: {
-    DomContent: () => import('~/components/dom/dom-content')
+    DomContent: () => import('~/components/dom/dom-content'),
   },
 
   computed: {
     isHome() {
       return this.$route.path === '/' || this.$route.path === ''
-    }
+    },
   },
 
   async asyncData({ store, error, route, params, $source }) {
     if (route.path === '/' || route.path === '') {
       return {
-        page: {}
+        page: {},
       }
     }
 
@@ -37,8 +40,8 @@ export default {
                 }
             }
         `,
-        { slug }
-      )
+        { slug },
+      ),
     )
 
     if (!data.page) {
@@ -57,7 +60,7 @@ export default {
       path: this.$route.path,
       title: this.page.title,
       description: this.page.content,
-      image: this.page.featuredMedia ? this.page.featuredMedia.src : undefined
+      image: this.page.featuredMedia ? this.page.featuredMedia.src : undefined,
     })
   },
 
@@ -67,17 +70,17 @@ export default {
         this.$analytics.logEvent('view_page', {
           title: this.page.title,
           slug: this.page.slug,
-          link: this.page.link
+          link: this.page.link,
         })
       } else {
         this.$analytics.logEvent('view_page', {
           title: 'Home',
           slug: 'home',
-          link: '/'
+          link: '/',
         })
       }
     }
-  }
+  },
 }
 </script>
 

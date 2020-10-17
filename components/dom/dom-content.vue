@@ -10,6 +10,6 @@ import Dom from './dom'
 export default {
   name: 'DomText',
 
-  extends: Dom
+  extends: Dom,
 }
 </script>

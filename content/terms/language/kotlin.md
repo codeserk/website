@@ -9,7 +9,7 @@ extra:
     scopes:
         - android
         - backend
-    shortDescription: Java but better. Used to deveolp some Android apps.
+    summary: Java but better. Used to deveolp some Android apps.
 ---
 
 I have used Java mostly while doing the degree.

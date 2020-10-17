@@ -1,5 +1,5 @@
 <template>
-  <component :is="component" class="px-mobile" v-text="text" />
+  <component :is="component" v-text="text" class="px-mobile" />
 </template>
 
 <script>
@@ -13,7 +13,7 @@ export default {
   computed: {
     component() {
       return this.tag
-    }
-  }
+    },
+  },
 }
 </script>

@@ -9,5 +9,5 @@ extra:
     scopes:
         - frontend
         - backend
-    shortDescription: My main lanaguage in web development. Useful in both Backend and Frontend
+    summary: My main lanaguage in web development. Useful in both Backend and Frontend
 ---

@@ -8,7 +8,7 @@ extra:
     icon: swift
     scopes:
         - ios
-    shortDescription: Interesting language, surprisingly similar to Kotlin, with nice advanced features. Used to develop iOS apps.
+    summary: Interesting language, surprisingly similar to Kotlin, with nice advanced features. Used to develop iOS apps.
 ---
 
 Swift! At least better than objective-c

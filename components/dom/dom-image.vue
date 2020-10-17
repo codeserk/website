@@ -1,5 +1,11 @@
 <template>
-  <image-responsive v-if="src" :alt="attributes.alt || 'Imagen de contenido'" :src="src" :placeholder="placeholder" :data-aos="aos" />
+  <image-responsive
+    v-if="src"
+    :alt="attributes.alt || 'Imagen de contenido'"
+    :src="src"
+    :placeholder="placeholder"
+    :data-aos="aos"
+  />
 </template>
 
 <script>
@@ -9,7 +15,7 @@ export default {
   name: 'DomImage',
 
   components: {
-    ImageResponsive: () => import('~/components/image')
+    ImageResponsive: () => import('~/components/image'),
   },
 
   extends: Dom,
@@ -21,7 +27,7 @@ export default {
 
     placeholder() {
       return this.attributes.srcPlaceholder ? this.attributes.srcPlaceholder.src : undefined
-    }
-  }
+    },
+  },
 }
 </script>

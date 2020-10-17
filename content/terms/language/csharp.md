@@ -8,7 +8,7 @@ extra:
     icon: csharp
     scopes:
         - game-dev
-    shortDescription: Some interesting features, but not my favourite 😵. Used in Unity to develop games.
+    summary: Some interesting features, but not my favourite 😵. Used in Unity to develop games.
 ---
 
 << no content >>

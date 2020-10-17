@@ -11,7 +11,7 @@ export default {
   name: 'DomDefault',
 
   components: {
-    Dom
+    Dom,
   },
 
   extends: Dom,
@@ -19,7 +19,7 @@ export default {
   computed: {
     component() {
       return this.tag
-    }
-  }
+    },
+  },
 }
 </script>

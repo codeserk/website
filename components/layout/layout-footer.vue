@@ -38,12 +38,13 @@
               to="/security-and-cookies"
               class="link"
               data-aos="appear"
-            >Security and Cookies</router-link>
+              >Security and Cookies</router-link
+            >
           </li>
         </ul>
 
         <div class="flex-1 social-icons">
-          <a v-for="(item, index) in social" :key="index" :href="item.link" class="social-icons__icon" target="__blank" >
+          <a v-for="(item, index) in social" :key="index" :href="item.link" class="social-icons__icon" target="__blank">
             <font-awesome-icon
               :icon="['fab', item.icon]"
               :data-aos-delay="index * 150"
@@ -67,13 +68,13 @@ export default {
     social: [
       { icon: 'youtube', link: socialNetworks.youtube.url },
       { icon: 'instagram', link: socialNetworks.instagram.url },
-      { icon: 'facebook', link: socialNetworks.facebook.url }
-    ]
+      { icon: 'facebook', link: socialNetworks.facebook.url },
+    ],
   }),
 
   computed: {
-    ...mapGetters(['logo', 'menuItems'])
-  }
+    ...mapGetters(['logo', 'menuItems']),
+  },
 }
 </script>
 
@@ -85,7 +86,6 @@ footer {
   display: flex;
   align-items: center;
   min-height: 100vh;
-  background: #08080EAA;
   color: white;
 
   .footer-container {
@@ -124,7 +124,7 @@ footer {
         margin-top: 5px;
         margin-bottom: 0;
         padding: 0;
-        color: #DEDEDE;
+        color: #dedede;
         font-size: 1rem;
       }
     }
@@ -146,5 +146,4 @@ footer {
     filter: drop-shadow(0 0 1px black) drop-shadow(0 0 1px black) drop-shadow(0 0 1px black);
   }
 }
-
 </style>

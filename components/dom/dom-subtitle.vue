@@ -10,7 +10,7 @@ export default {
   name: 'DomSubtitle',
 
   components: {
-    Subtitle: () => import('~/components/subtitle')
+    Subtitle: () => import('~/components/subtitle'),
   },
 
   extends: Dom,
@@ -18,7 +18,7 @@ export default {
   computed: {
     id() {
       return removeSpecialCharacters(this.text.toLowerCase().replace(/ /g, '-'))
-    }
-  }
+    },
+  },
 }
 </script>

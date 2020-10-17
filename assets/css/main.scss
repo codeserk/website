@@ -59,6 +59,10 @@
   &.color {
     background: #08080E99;
   }
+
+  &.limited {
+    max-width: 600px;
+  }
 }
 
 .skew, .skew-left {
@@ -203,6 +207,11 @@ h5 {
 
   >* {
     margin-bottom: 1em;
+  }
+
+  pre, code {
+    font-style: italic;
+    font-family: $font-body;
   }
 }
 
@@ -483,9 +492,13 @@ div.px-mobile {
 .block {
   position: relative;
   z-index: 2;
-  // transform: skewY(-2deg);
-  padding: 48px;
-  // max-width: 600px;
+
+  &.with-padding {
+    padding: 48px;
+  }
+  &.with-small-padding {
+    padding: 24px 32px 24px 24px;
+  }
 
   &::before {
     content: '';
@@ -500,6 +513,17 @@ div.px-mobile {
     background-color: #0F090C;
     -webkit-box-shadow: 1ch 1rem 0 white;
     box-shadow: 1ch 1rem 0 white;
+  }
+
+  .title {
+    display: block;
+    width: calc(100% - 22px);
+    margin: 6px 0 0 6px;
+    padding: 0.5em 1em;
+    background: white;
+    color: black;
+    font-size: 1.2em;
+    text-align: center;
   }
 
   &.small {

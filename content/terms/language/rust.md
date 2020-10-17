@@ -8,7 +8,7 @@ extra:
     icon: rust
     scopes:
         - backend
-    shortDescription: Interesting language I want to learn, good complement for NodeJS applications.
+    summary: Interesting language I want to learn, good complement for NodeJS applications.
 ---
 
 Rust is a nice language I want to learn. It works well in combination with Node projects: you can import `Rust` functions directly into your NodeJS application. This means you can have a NodeJS application, which offers short time-to-market and decent performance in certain scenarios, and inject `Rust` functions to make certain flows fast.

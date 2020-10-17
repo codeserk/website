@@ -1,12 +1,8 @@
 <template>
-  <div class="page-wrapper color full">
-    <div class="container mx-auto">
-      <h2 class="title">{{ language.name }}</h2>
+  <div class="page py-6 container mx-auto main overflow-hidden">
+    <h2 class="title">{{ page.title }}</h2>
 
-      <div class="block small skew">
-        <dom-content v-bind="language.dom" class="mx-auto" aos="fade-up" />
-      </div>
-    </div>
+    <dom-content v-bind="page.dom" class="mx-auto" aos="fade-up" />
   </div>
 </template>
 
@@ -15,19 +11,19 @@ import { generateSeoMeta } from '../../utils/seo'
 
 export default {
   components: {
-    DomContent: () => import('~/components/dom/dom-content')
+    DomContent: () => import('~/components/dom/dom-content'),
   },
 
   computed: {
     isHome() {
       return this.$route.path === '/' || this.$route.path === ''
-    }
+    },
   },
 
   async asyncData({ store, error, route, params, $source }) {
     if (route.path === '/' || route.path === '') {
       return {
-        page: {}
+        page: {},
       }
     }
 
@@ -35,17 +31,17 @@ export default {
     const data = await $source.resolve(route.path, ({ query }) =>
       query(
         `
-            query language($slug: String!) {
-                language: termBySlug(slug: $slug, taxonomy: "language") {
-                    id name description dom
+            query project($slug: String!) {
+                page: postBySlug(slug: $slug, type: "project") {
+                    id title content dom
                 }
             }
         `,
-        { slug }
-      )
+        { slug },
+      ),
     )
 
-    if (!data.language) {
+    if (!data.page) {
       return error({ statusCode: 404, message: 'Página no encontrada' })
     }
 
@@ -53,10 +49,15 @@ export default {
   },
 
   head() {
+    if (this.page.isHome) {
+      return generateSeoMeta({})
+    }
+
     return generateSeoMeta({
       path: this.$route.path,
-      title: this.language.name,
-      description: this.language.description
+      title: this.page.title,
+      description: this.page.content,
+      image: this.page.featuredMedia ? this.page.featuredMedia.src : undefined,
     })
   },
 
@@ -66,17 +67,17 @@ export default {
         this.$analytics.logEvent('view_page', {
           title: this.page.title,
           slug: this.page.slug,
-          link: this.page.link
+          link: this.page.link,
         })
       } else {
         this.$analytics.logEvent('view_page', {
           title: 'Home',
           slug: 'home',
-          link: '/'
+          link: '/',
         })
       }
     }
-  }
+  },
 }
 </script>
 
@@ -84,7 +85,6 @@ export default {
 .page {
   padding-top: 3em;
   padding-bottom: 4em;
-  color: white;
 }
 .title {
   margin-bottom: 0.5em;
