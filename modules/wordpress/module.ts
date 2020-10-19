@@ -32,9 +32,9 @@ export default async function wordpressModule(this: any) {
         xs: 200,
         sm: 320,
         md: 640,
-        lg: 1200
-      }
-    }
+        lg: 1200,
+      },
+    },
   })
 
   // Setup press
@@ -42,22 +42,22 @@ export default async function wordpressModule(this: any) {
     .withConfig({
       cache: {
         enabled: true,
-        ttl: this.isDev ? 60 * 60 : 60
-      }
+        ttl: this.isDev ? 60 * 60 : 60,
+      },
     })
     .withPermalinks({
       types: {
         posts: 'blog',
         pages: '',
-        attachment: 'media'
+        attachment: 'media',
       },
       taxonomies: {
         category: 'categoria',
         // eslint-disable-next-line @typescript-eslint/camelcase
         post_tag: 'etiqueta',
         // eslint-disable-next-line @typescript-eslint/camelcase
-        product_tag: 'etiqueta'
-      }
+        product_tag: 'etiqueta',
+      },
     })
     .withMediaRepository(filesystem.mediaRepository)
     .withPostRepository(filesystem.postRepository)
@@ -82,7 +82,8 @@ export default async function wordpressModule(this: any) {
   // Start
   let server: ApolloServer | undefined
   try {
-    const response = await graphql.withPort(port)
+    const response = await graphql
+      .withPort(port)
       .withSchema(schemas)
       .startServer()
 
@@ -107,13 +108,13 @@ export default async function wordpressModule(this: any) {
   this.addPlugin({
     src: path.resolve(__dirname, 'plugin.server.ts'),
     fileName: 'wordpress.plugin.server.ts',
-    mode: 'server'
+    mode: 'server',
   })
   // Register client plugin
   this.addPlugin({
     src: path.resolve(__dirname, 'plugin.client.ts'),
     fileName: 'wordpress.plugin.client.ts',
-    mode: 'client'
+    mode: 'client',
   })
 
   this.nuxt.hook('close', async () => {

@@ -2,36 +2,19 @@
   <vue100vh
     id="scene-background"
     :class="{ 'scene-background--animated': animated }"
-    :style="{ 'background-color': backgroundColor }"
+    :style="{ opacity: isLoading ? 0 : 1, 'background-color': backgroundColor }"
     :css="{ height: '100rvh' }"
   >
     <div
       id="background"
-      :style="{
-        'background-image': `url('/scene/background.png')`,
-        '-webkit-mask-image': `url('/scene/background.png')`,
-        'mask-image': `url('/scene/background.png')`,
-        'background-color': backgroundColor,
-      }"
+      :style="{ 'background-image': `url('/scene/background.png')` }"
       class="layer layer-bottom layer-fixed"
     />
-    <div
-      id="moon"
-      :style="{
-        'background-image': `url('/scene/moon.png')`,
-        '-webkit-mask-image': `url('/scene/moon.png')`,
-        'mask-image': `url('/scene/moon.png')`,
-        'background-color': moonColor,
-      }"
-      class="layer layer-top layer-fixed"
-    />
+    <div id="moon" :style="{ 'background-image': `url('/scene/moon.png')` }" class="layer layer-top layer-fixed" />
     <div
       id="clouds-far"
       :style="{
         'background-image': `url('/scene/clouds-far.png')`,
-        '-webkit-mask-image': `url('/scene/clouds-far.png')`,
-        'mask-image': `url('/scene/clouds-far.png')`,
-        'background-color': layerColor,
         transform: `translate3d(${positions.cloudsFar}px, 0px, 0px)`,
       }"
       class="layer layer-top layer-fixed"
@@ -39,22 +22,12 @@
 
     <div
       id="mountain-far-cover"
-      :style="{
-        'background-image': `url('/scene/mountain-far-cover.png')`,
-        '-webkit-mask-image': `url('/scene/mountain-far-cover.png')`,
-        'mask-image': `url('/scene/mountain-far-cover.png')`,
-        'background-color': layerColor,
-      }"
+      :style="{ 'background-image': `url('/scene/mountain-far-cover.png')` }"
       class="layer layer-bottom layer-fixed"
     />
     <div
       id="mountain-far"
-      :style="{
-        'background-image': `url('/scene/mountain-far.png')`,
-        '-webkit-mask-image': `url('/scene/mountain-far.png')`,
-        'mask-image': `url('/scene/mountain-far.png')`,
-        'background-color': layerColor,
-      }"
+      :style="{ 'background-image': `url('/scene/mountain-far.png')` }"
       class="layer layer-bottom layer-fixed"
     />
 
@@ -62,9 +35,6 @@
       id="clouds-near"
       :style="{
         'background-image': `url('/scene/clouds-near.png')`,
-        '-webkit-mask-image': `url('/scene/clouds-near.png')`,
-        'mask-image': `url('/scene/clouds-near.png')`,
-        'background-color': layerColor,
         transform: `translate3d(${positions.cloudsNear}px, 0px, 0px)`,
       }"
       class="layer layer-bottom layer-fixed"
@@ -72,20 +42,13 @@
 
     <div
       id="mountains-near"
-      :style="{
-        'background-image': `url('/scene/mountains-near.png')`,
-        '-webkit-mask-image': `url('/scene/mountains-near.png')`,
-        'mask-image': `url('/scene/mountains-near.png')`,
-        'background-color': layerColor,
-      }"
+      :style="{ 'background-image': `url('/scene/mountains-near.png')` }"
       class="layer layer-bottom layer-fixed"
     />
     <div
       id="trees-far"
       :style="{
-        'background-color': layerColor,
         'background-image': `url('/scene/trees-far.png')`,
-        '-webkit-mask-image': `url('/scene/trees-far.png')`,
         transform: `translate3d(${positions.treesFar}px, 0px, 0px)`,
       }"
       class="layer layer-bottom"
@@ -93,9 +56,7 @@
     <div
       id="trees-near"
       :style="{
-        'background-color': layerColor,
         'background-image': `url('/scene/trees-near.png')`,
-        '-webkit-mask-image': `url('/scene/trees-near.png')`,
         transform: `translate3d(${positions.treesNear}px, 0px, 0px)`,
       }"
       class="layer layer-bottom"
@@ -113,7 +74,7 @@ export default {
   props: {
     color: {
       type: String,
-      default: '#575fa2', // '#AA6B8C' //  '#575fa2'
+      default: '#AA6B8C', // '#AA6B8C' //  '#575fa2'
     },
 
     animated: {
@@ -211,7 +172,7 @@ export default {
   left: 0;
   z-index: -1;
   user-select: none;
-  transition: background 0.4s ease-in;
+  transition: opacity 0.4s ease-in;
 }
 
 .layer {
@@ -220,19 +181,14 @@ export default {
   left: 0;
   background-size: contain;
   background-repeat: repeat-x;
-  transition: background-color 0.4s ease-in;
   image-rendering: pixelated;
-  mask-repeat: repeat-x;
-  mask-size: contain;
   background-blend-mode: multiply;
 
   &.layer-top {
     background-position: top;
-    mask-position: top;
   }
   &.layer-bottom {
     background-position: bottom;
-    mask-position: bottom;
   }
 }
 
@@ -248,8 +204,6 @@ export default {
   height: 20vh;
   background-position: top right;
   background-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  mask-position: top right;
 }
 
 #clouds-far {
@@ -258,7 +212,6 @@ export default {
   width: 200vw;
   height: 20vh;
   background-size: contain;
-  mask-size: contain;
 }
 #clouds-near {
   bottom: 20vh;
@@ -266,7 +219,6 @@ export default {
   width: 200vw;
   height: 20vh;
   background-size: contain;
-  mask-size: contain;
 }
 
 #mountain-far {
@@ -276,8 +228,6 @@ export default {
   height: 60vh;
   background-position: bottom right;
   background-size: contain;
-  mask-position: bottom right;
-  mask-size: contain;
 }
 #mountain-far-cover {
   right: 0;
@@ -285,7 +235,6 @@ export default {
   left: 0;
   height: 15vh;
   background-repeat: repeat;
-  mask-repeat: repeat;
 }
 
 @media (max-width: theme('screens.sm')) {
@@ -311,8 +260,6 @@ export default {
   height: 40vh;
   background-position: bottom right;
   background-size: contain;
-  mask-position: bottom right;
-  mask-size: contain;
 }
 
 #trees-far {
@@ -322,8 +269,6 @@ export default {
   height: 30vh;
   background-position: bottom right;
   background-size: contain;
-  mask-position: bottom right;
-  mask-size: contain;
 }
 
 #trees-near {
@@ -333,7 +278,5 @@ export default {
   height: 30vh;
   background-position: bottom right;
   background-size: contain;
-  mask-position: bottom right;
-  mask-size: contain;
 }
 </style>

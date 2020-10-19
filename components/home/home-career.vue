@@ -10,7 +10,7 @@
         <span class="bar-below" />
       </div>
 
-      <div class="block left">
+      <div class="block left with-shadow-left">
         <router-link :to="`/career/${item.slug}`">
           <h3 v-text="item.title" class="title" />
         </router-link>
@@ -81,7 +81,7 @@
           </div>
         </section>
       </div>
-      <div class="block with-small-padding right">
+      <div class="block with-small-padding right with-shadow-left">
         <dom-content v-bind="item.dom" class="mx-auto" aos="fade-up" />
       </div>
 
@@ -346,6 +346,7 @@ export default {
       }
       .block.right {
         width: 90%;
+        margin-top: 2ch;
       }
 
       &::before {

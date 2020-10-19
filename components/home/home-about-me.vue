@@ -1,5 +1,5 @@
 <template>
-  <div class="block small with-padding container skew mx-auto content">
+  <div class="block small with-padding with-shadow-left container skew mx-auto content">
     <p class="text-appear">
       I am passionate about innovative technologies and computer programming. Although the main focus of my career is Web development, I have acquired skills in many other areas of computer programming, such as:
     </p>
@@ -27,19 +27,6 @@ img {
   image-rendering: pixelated;
 }
 
-.text-appear {
-  position: relative;
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    // animation: textAppear 1s linear infinite;
-  }
-}
-
 dt {
   float: left;
   clear: left;
@@ -52,7 +39,16 @@ dt::after {
   content: ":";
 }
 dd {
-  margin: 0 0 0 210px;
+  margin: 0 0 0.5em 210px;
   padding: 0 0 0.5em 0;
+}
+
+@media (max-width: theme('screens.md')) {
+  dt {
+    float: none;
+  }
+  dd {
+    margin: 0;
+  }
 }
 </style>

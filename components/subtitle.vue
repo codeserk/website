@@ -1,11 +1,7 @@
 <template>
   <div :class="{ 'subtitle-container--sticky': sticky }" class="subtitle-container" data-aos="fade">
-    <router-link
-      v-if="link"
-      :to="link"
-      class="subtitle flex my-6 align-center justify-around category-header"
-    >
-      <component :is="tag" v-text="title" class="p-6 bg-white text-lg uppercase" />
+    <router-link v-if="link" :to="link" class="subtitle">
+      <component :is="tag" v-text="title" class="" />
       <div v-if="image" class="px-4 bg-white">
         <image-responsive
           :source="image"
@@ -18,11 +14,8 @@
         />
       </div>
     </router-link>
-    <div
-      v-else
-      class="subtitle flex my-6 align-center justify-around category-header"
-    >
-      <component :is="tag" v-text="title" class="p-6 bg-white text-lg uppercase" />
+    <div v-else class="subtitle">
+      <component :is="tag" v-text="title" class="" />
       <div v-if="image" class="px-4 bg-white">
         <image-responsive
           :source="image"
@@ -43,35 +36,35 @@ export default {
   props: {
     sticky: {
       type: Boolean,
-      default: false
+      default: false,
     },
     link: {
       type: String,
       required: false,
-      default: ''
+      default: '',
     },
 
     title: {
       type: String,
-      default: ''
+      default: '',
     },
 
     tag: {
       type: String,
-      default: 'h2'
+      default: 'h2',
     },
 
     image: {
       type: String,
       required: false,
-      default: ''
-    }
-  }
+      default: '',
+    },
+  },
 }
 </script>
 
 <style lang="scss" scoped>
-@import "~/assets/css/colors";
+@import '~/assets/css/colors';
 
 .subtitle-container--sticky {
   position: -webkit-sticky;
@@ -86,7 +79,6 @@ export default {
   h2 {
     margin-bottom: 0;
     padding: 0.5em 1em;
-    color: $color-grey;
     font-size: 3rem;
     line-height: 40px;
   }
@@ -96,7 +88,6 @@ export default {
     margin-bottom: 0;
     margin-left: 1em;
     padding: 0.5em 1em;
-    color: $color-grey;
     font-size: 2rem;
     line-height: 40px;
   }

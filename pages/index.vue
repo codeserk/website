@@ -6,7 +6,7 @@
 
     <div class="sections">
       <section>
-        <h2>About me 🐱🎶</h2>
+        <h2>About me 🐱</h2>
         <about-me />
       </section>
 

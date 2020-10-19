@@ -79,7 +79,7 @@ body {
   color: $color-grey;
   font-size: 20px;
   font-family: $font-body;
-  word-break: break-word;
+  overflow-wrap: break-word;
   hyphens: auto;
 }
 
@@ -232,12 +232,6 @@ $pswp__assets-path: "~photoswipe/src/css/default-skin/";
   margin-bottom: 1rem;
   margin-left: 0.5rem;
 
-  @media (min-width: theme('screens.sm')) {
-    margin-right: 1rem;
-    margin-bottom: 2rem;
-    margin-left: 1rem;
-  }
-
   &.xs\:square-5 {
     @include mobileSquare(5);
   }
@@ -352,6 +346,12 @@ $pswp__assets-path: "~photoswipe/src/css/default-skin/";
 
   &.xl\:square-1 {
     @include square('xl', 1);
+  }
+
+  @media (min-width: theme('screens.sm')) {
+    margin-right: 1rem;
+    margin-bottom: 2rem;
+    margin-left: 1rem;
   }
 }
 
@@ -492,34 +492,58 @@ div.px-mobile {
 .block {
   position: relative;
   z-index: 2;
+  border: 0.5ch solid white;
+  border-radius: 0;
+  background: #07080D;
 
   &.with-padding {
-    padding: 48px;
+    padding: 32px;
   }
   &.with-small-padding {
-    padding: 24px 32px 24px 24px;
+    padding: 24px;
   }
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 1px;
-    right: 1px;
-    bottom: 1px;
-    left: 1px;
-    z-index: -1;
-    margin-right: 1ch;
-    border: 0.5ch solid white;
-    background-color: #0F090C;
-    -webkit-box-shadow: 1ch 1rem 0 white;
-    box-shadow: 1ch 1rem 0 white;
+  &.with-shadow-left {
+    &::before {
+      content: '';
+      position: absolute;
+      right: 4ch;
+      bottom: -1em;
+      left: -0.5ch;
+      z-index: -2;
+      border-bottom: 1em solid white;
+    }
+  }
+  &.with-shadow-right {
+    &::before {
+      content: '';
+      position: absolute;
+      top: 4ch;
+      right: -0.5ch;
+      bottom: -0.5ch;
+      left: 4ch;
+      z-index: -1;
+      box-shadow: 0 1em 0 white;
+    }
+  }
+  &.with-shadow-center {
+    &::before {
+      content: '';
+      position: absolute;
+      top: 4ch;
+      right: -0.5ch;
+      bottom: -0.5ch;
+      left: -0.5ch;
+      z-index: -1;
+      box-shadow: 0 1em 0 white;
+    }
   }
 
   .title {
     display: block;
-    width: calc(100% - 22px);
-    margin: 6px 0 0 6px;
-    padding: 0.5em 1em;
+    width: 100%;
+    margin: -1px 0;
+    padding: 1ch 1em;
     background: white;
     color: black;
     font-size: 1.2em;

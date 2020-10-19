@@ -1,6 +1,6 @@
 <template>
   <div class="web-development content">
-    <div class="frontend block skew">
+    <div class="frontend block skew with-shadow-left">
       <h3 class="title">Frontend</h3>
 
       <div class="wrapper">
@@ -27,7 +27,7 @@
         </section>
       </div>
     </div>
-    <div class="devops block">
+    <div class="devops block with-shadow-center">
       <h3 class="title">Dev Ops</h3>
 
       <div class="wrapper">
@@ -43,7 +43,7 @@
         </section>
       </div>
     </div>
-    <div class="backend block skew-right">
+    <div class="backend block skew-right with-shadow-right">
       <h3 class="title">Backend</h3>
 
       <div class="wrapper">
@@ -188,7 +188,6 @@ export default Vue.extend({
     max-width: 420px;
     margin: 8px 12px;
     margin-bottom: 2em;
-    border-radius: 12px;
 
     .wrapper {
       padding: 1em 1.5em 1em 1em;

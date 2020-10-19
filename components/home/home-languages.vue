@@ -1,6 +1,6 @@
 <template>
   <div class="home-languages">
-    <div class="block small with-padding container skew mx-auto">
+    <div class="block small with-shadow-left with-padding container skew mx-auto">
       <div v-for="language in sortedLanguages" :key="language.id" class="language">
         <div class="language-progress">
           <router-link :to="`/language/${language.slug}`" class="language-name">
@@ -12,7 +12,7 @@
           </div>
         </div>
 
-        <span v-if="language.summary" v-text="language.summary" class="short-description block" />
+        <span v-if="language.summary" v-text="language.summary" class="short-description block with-shadow-left" />
       </div>
     </div>
   </div>
@@ -45,7 +45,7 @@ h1 {
 .language {
   position: relative;
   z-index: 1;
-  margin: 5rem 0;
+  margin: 6rem 0;
 
   .language-progress {
     display: flex;
@@ -85,7 +85,7 @@ h1 {
   .short-description {
     position: absolute;
     top: -50%;
-    width: calc((100vw - 600px) / 2 - 10px);
+    width: calc((100vw - 600px) / 2 - 24px);
     max-width: 400px;
     padding: 1em;
 
@@ -98,24 +98,24 @@ h1 {
   }
 
   &:nth-child(odd) .short-description {
-    left: calc(100% + 60px);
+    left: calc(100% + 32px + 24px);
 
     &::after {
-      right: calc(100% - 2px);
-      left: -14px;
+      right: calc(100% + 0.5ch);
+      left: -24px;
     }
   }
   &:nth-child(even) .short-description {
-    right: calc(100% + 60px);
+    right: calc(100% + 32px + 24px);
 
     &::after {
-      right: -14px;
-      left: calc(100% - 2px);
+      right: -24px;
+      left: calc(100% + 0.5ch);
     }
   }
 
   @media (max-width: theme('screens.xl')) {
-    margin: 8rem 0;
+    margin: 10rem 0;
   }
 
   @media (max-width: theme('screens.lg')) {
@@ -129,6 +129,7 @@ h1 {
       width: auto !important;
       max-width: unset;
       padding: 0 !important;
+      border: none;
 
       &::before {
         display: none;
