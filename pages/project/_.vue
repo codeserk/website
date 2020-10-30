@@ -1,8 +1,12 @@
 <template>
-  <div class="page py-6 container mx-auto main overflow-hidden">
-    <h2 class="title">{{ page.title }}</h2>
+  <div class="page-wrapper color full">
+    <div class="container mx-auto">
+      <h1 v-text="page.title" class="title" />
 
-    <dom-content v-bind="page.dom" class="mx-auto" aos="fade-up" />
+      <div class="block small with-padding with-shadow-left skew content">
+        <dom-content v-bind="page.dom" class="mx-auto" aos="fade-up" />
+      </div>
+    </div>
   </div>
 </template>
 

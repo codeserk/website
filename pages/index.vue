@@ -16,7 +16,7 @@
       </section>
 
       <section>
-        <h2>Career 📱</h2>
+        <h2>Career📱</h2>
         <career :career="career" />
       </section>
 
@@ -29,6 +29,11 @@
           :message-brokers="messageBrokers"
         />
       </section>
+
+      <section>
+        <h2>Projects 🎵</h2>
+        <projects :projects="projects" />
+      </section>
     </div>
   </main>
 </template>
@@ -36,16 +41,18 @@
 <script>
 import { lightenDarkenColor } from '../utils/color'
 import AboutMe from '../components/home/home-about-me'
+import Languages from '../components/home/home-languages'
 import Career from '../components/home/home-career'
 import WebDevelopment from '../components/home/web-development'
-import Languages from '../components/home/home-languages'
+import Projects from '../components/home/projects'
 
 export default {
   components: {
     AboutMe,
-    Career,
     Languages,
+    Career,
     WebDevelopment,
+    Projects,
   },
 
   data: () => ({
@@ -123,6 +130,20 @@ export default {
               status: extra(path: "status")
               knowledge: extra(path: "knowledge")
               summary: extra(path: "summary")
+            }
+
+            projects: posts(type: "project") {
+              id slug title content dom
+              status: extra(path: "status")
+              startDate: extra(path: "startDate")
+              endDate: extra(path: "endDate")
+              position: extra(path: "position")
+              areas: terms(taxonomy: "development-area") { id slug name order: extra(path: "order") }
+              languages: terms(taxonomy: "language") { id slug name order: extra(path: "order") }
+              frameworks: terms(taxonomy: "framework") { id slug name order: extra(path: "order") }
+              databases: terms(taxonomy: "database") { id slug name order: extra(path: "order") }
+              brokers: terms(taxonomy: "message-broker") { id slug name order: extra(path: "order") }
+              technologies: terms(taxonomy: "technology") { id slug name order: extra(path: "order") }
             }
           }
         `,

@@ -55,3 +55,12 @@ title: TODO
 * [ ] Create content structure
 * [ ] Create section in the home
 * [ ] Allow child entities to describe progress
+
+## Contributions
+
+* [ ] New section in home showing the latest contributions. (1, 2, 3?)
+
+## Challenges (katas)
+
+* [ ] New section in home including the latest challenge
+* [ ] Section to show all the challenges
