@@ -43,7 +43,7 @@ import { lightenDarkenColor } from '../utils/color'
 import AboutMe from '../components/home/home-about-me'
 import Languages from '../components/home/home-languages'
 import Career from '../components/home/home-career'
-import WebDevelopment from '../components/home/web-development'
+// import WebDevelopment from '../components/home/web-development'
 import Projects from '../components/home/projects'
 
 export default {
@@ -51,7 +51,7 @@ export default {
     AboutMe,
     Languages,
     Career,
-    WebDevelopment,
+    // WebDevelopment,
     Projects,
   },
 
@@ -133,17 +133,17 @@ export default {
             }
 
             projects: posts(type: "project") {
-              id slug title content dom
+              id slug title excerpt link
               status: extra(path: "status")
+              progress: extra(path: "progress")
               startDate: extra(path: "startDate")
               endDate: extra(path: "endDate")
               position: extra(path: "position")
+              icon: featuredImage {
+                image(resolution: Small, format: png, transformations: { resize: { width: 290, height: 290 }}) { src }
+                placeholder: image(resolution: Placeholder, format: png, transformations: { resize: { width: 290, height: 290 }}, output: Inline) { src }
+              }
               areas: terms(taxonomy: "development-area") { id slug name order: extra(path: "order") }
-              languages: terms(taxonomy: "language") { id slug name order: extra(path: "order") }
-              frameworks: terms(taxonomy: "framework") { id slug name order: extra(path: "order") }
-              databases: terms(taxonomy: "database") { id slug name order: extra(path: "order") }
-              brokers: terms(taxonomy: "message-broker") { id slug name order: extra(path: "order") }
-              technologies: terms(taxonomy: "technology") { id slug name order: extra(path: "order") }
             }
           }
         `,
