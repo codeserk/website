@@ -1,6 +1,7 @@
 ---
 slug: wakatime-unity
 title: Wakatime for Unity
+featuredImageId: wakatime_screenshot
 termsMap:
   development-area:
     - game

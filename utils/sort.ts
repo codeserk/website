@@ -11,5 +11,12 @@ export function sortByDate(field: string): (a: object, b: object) => number {
  * Sorts by `order` field
  */
 export function sortByOrder(a: any, b: any): number {
+  if (!a?.order) {
+    return 1
+  }
+  if (!b?.order) {
+    return -1
+  }
+
   return a.order - b.order
 }

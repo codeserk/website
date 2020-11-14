@@ -1,6 +1,7 @@
 ---
 slug: clockwork-heores
 title: Clockwork Heroes
+featuredImageId: cwh_logo
 termsMap:
   development-area:
     - game

@@ -29,6 +29,7 @@ export default Vue.extend({
   height: 2rem;
   border: 4px solid white;
   border-radius: 4px;
+  background: black;
 
   .bar {
     position: absolute;

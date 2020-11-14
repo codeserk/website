@@ -23,7 +23,7 @@ export default {
 
   computed: {
     link() {
-      return `${this.type}/${this.slug}`
+      return `/${this.type}/${this.slug}`
     },
 
     classes() {

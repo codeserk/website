@@ -1,7 +1,7 @@
 <template>
   <div
     v-lazy-container="{ selector: 'img' }"
-    :class="{ 'image-placeholder--rounded': rounded, }"
+    :class="{ 'image-placeholder--rounded': rounded }"
     :style="{
       width: width ? `${width}px` : '',
       height: height ? `${height}px` : '',
@@ -29,52 +29,51 @@ export default {
   props: {
     src: {
       type: String,
-      default: ''
+      default: '',
     },
     placeholder: {
       type: String,
-      default: ''
+      default: '',
     },
     source: {
       type: String,
-      default: ''
+      default: '',
     },
     alt: {
       type: String,
-      default: ''
+      default: '',
     },
     width: {
       type: String,
-      default: ''
+      default: '',
     },
     height: {
       type: String,
-      default: ''
+      default: '',
     },
     classes: {
       type: String,
-      default: ''
+      default: '',
     },
     background: {
       type: String,
-      default: ''
+      default: '',
     },
     fit: {
       type: String,
       default: 'contain',
-      enum: () => ['cover', 'contain', 'fit']
+      enum: () => ['cover', 'contain', 'fit'],
     },
     rounded: {
       type: Boolean,
-      default: false
-    }
-  }
+      default: false,
+    },
+  },
 }
 </script>
 
 <style scoped lang="scss">
 .image-placeholder {
-  overflow: hidden;
   overflow: hidden;
   width: auto;
   line-height: 0;

@@ -1,6 +1,7 @@
 ---
 slug: meeting-point
 title: Meeting Point
+featuredImageId: meeting-point_screenshot
 termsMap:
   development-area:
     - web

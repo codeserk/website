@@ -6,7 +6,9 @@ termsMap:
   development-area:
     - game
 extra:
-  status: deprecated
+  progress: 100
+  status: completed
+  order: 2
 ---
 
-Mobile game with arena
+Teach your heroes how to fight and become a legendary Arena Master!

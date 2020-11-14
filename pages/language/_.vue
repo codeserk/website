@@ -3,7 +3,7 @@
     <div class="container mx-auto">
       <h2 class="title">{{ language.name }}</h2>
 
-      <div class="block small skew content">
+      <div class="block small with-padding skew with-shadow-left content">
         <p v-text="language.summary" />
         <hr />
         <dom-content v-bind="language.dom" class="mx-auto" aos="fade-up" />

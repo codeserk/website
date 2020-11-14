@@ -31,8 +31,8 @@
       </section>
 
       <section>
-        <h2>Projects 🎵</h2>
-        <projects :projects="projects" />
+        <router-link to="/project"><h2>Projects 🎵</h2></router-link>
+        <projects :projects="projects" :limit="9" />
       </section>
     </div>
   </main>
@@ -43,7 +43,7 @@ import { lightenDarkenColor } from '../utils/color'
 import AboutMe from '../components/home/home-about-me'
 import Languages from '../components/home/home-languages'
 import Career from '../components/home/home-career'
-// import WebDevelopment from '../components/home/web-development'
+import WebDevelopment from '../components/home/web-development'
 import Projects from '../components/home/projects'
 
 export default {
@@ -51,7 +51,7 @@ export default {
     AboutMe,
     Languages,
     Career,
-    // WebDevelopment,
+    WebDevelopment,
     Projects,
   },
 
@@ -138,10 +138,10 @@ export default {
               progress: extra(path: "progress")
               startDate: extra(path: "startDate")
               endDate: extra(path: "endDate")
-              position: extra(path: "position")
+              order: extra(path: "order")
               icon: featuredImage {
-                image(resolution: Small, format: png, transformations: { resize: { width: 290, height: 290 }}) { src }
-                placeholder: image(resolution: Placeholder, format: png, transformations: { resize: { width: 290, height: 290 }}, output: Inline) { src }
+                image(resolution: Small, format: png, transform: { resize: { width: 290, height: 290 }}) { src }
+                placeholder: image(resolution: Placeholder, format: png, transform: { resize: { width: 290, height: 290 }}, output: Inline) { src }
               }
               areas: terms(taxonomy: "development-area") { id slug name order: extra(path: "order") }
             }

@@ -8,6 +8,7 @@ termsMap:
 extra:
   progress: 80
   status: work-in-progress
+  order: 4
 ---
 
 Oh boy this is taking ages!
