@@ -1,23 +1,23 @@
 <template>
   <page-wrapper
-    :title="technology.name"
-    :breadcrumbs="[{ name: 'Technologies', link: '/technology' }]"
-    :image="technology.image"
+    :title="broker.name"
+    :breadcrumbs="[{ name: 'Message Brokers', link: '/message-broker' }]"
+    :image="broker.image"
     class="color full"
   >
     <div class="container mx-auto">
       <div class="block with-small-padding small skew with-shadow-left">
-        <p v-text="technology.summary" />
+        <p v-text="broker.summary" />
 
-        <template v-if="technology.description">
+        <template v-if="broker.description">
           <hr />
-          <dom-content v-bind="technology.dom" class="mx-auto" aos="fade-up" />
+          <dom-content v-bind="broker.dom" class="mx-auto" aos="fade-up" />
         </template>
       </div>
 
-      <template v-if="technology.projects.length > 0">
+      <template v-if="broker.projects.length > 0">
         <h2>Projects</h2>
-        <project-grid :projects="technology.projects" />
+        <project-grid :projects="broker.projects" />
       </template>
     </div>
   </page-wrapper>
@@ -38,8 +38,8 @@ export default {
     const data = await $source.resolve(route.path, ({ query }) =>
       query(
         `
-          query technology($slug: String!) {
-            technology: termBySlug(slug: $slug, taxonomy: "technology") {
+          query broker($slug: String!) {
+            broker: termBySlug(slug: $slug, taxonomy: "message-broker") {
               id name description dom
               summary: extra(path: "summary")
 
@@ -66,8 +66,8 @@ export default {
       ),
     )
 
-    if (!data.technology) {
-      return error({ statusCode: 404, message: 'Technology not found' })
+    if (!data.broker) {
+      return error({ statusCode: 404, message: 'Message Broker not found' })
     }
 
     return data
@@ -76,19 +76,19 @@ export default {
   head() {
     return generateSeoMeta({
       path: this.$route.path,
-      title: this.technology.name,
-      description: this.technology.description,
+      title: this.broker.name,
+      description: this.broker.description,
       image: this.image?.image.src,
     })
   },
 
   mounted() {
     if (this.$analytics) {
-      if (this.technology) {
+      if (this.broker) {
         this.$analytics.logEvent('view_page', {
-          title: this.technology.title,
-          slug: this.technology.slug,
-          link: this.technology.link,
+          title: this.broker.title,
+          slug: this.broker.slug,
+          link: this.broker.link,
         })
       }
     }

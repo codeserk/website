@@ -7,6 +7,7 @@ import { MediaServiceResolver } from '@codeserk/press-graphql-media'
 import { filesystem } from '@codeserk/press-source-filesystem'
 import { graphql, GraphQLSchemaBuilder } from '@codeserk/press-graphql'
 import { ApolloServer } from 'apollo-server'
+import { PostEntityExtension } from './extensions/post.extension'
 
 require('dotenv').config()
 
@@ -77,6 +78,7 @@ export default async function wordpressModule(this: any) {
     .withTermResolver()
     .withUserResolver()
     .withResolver(MediaServiceResolver)
+    .withResolver(PostEntityExtension)
     .build()
 
   // Start

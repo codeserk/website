@@ -9,7 +9,12 @@
 
       <div class="block small with-shadow-left">
         <h2 class="title">Game</h2>
-        <unity src="/__game-data/ivy/WebGL.json" unity-loader="/__game-data/ivy/UnityLoader.js" width="590" height="1066" />
+        <unity
+          src="/__game-data/ivy/WebGL.json"
+          unity-loader="/__game-data/ivy/UnityLoader.js"
+          width="590"
+          height="1066"
+        />
       </div>
     </div>
   </div>

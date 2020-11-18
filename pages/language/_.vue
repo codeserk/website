@@ -1,15 +1,26 @@
 <template>
-  <div class="page-wrapper color full">
+  <page-wrapper
+    :title="language.name"
+    :breadcrumbs="[{ name: 'Languages', link: '/language' }]"
+    :image="language.image"
+    class="color full"
+  >
     <div class="container mx-auto">
-      <h2 class="title">{{ language.name }}</h2>
-
-      <div class="block small with-padding skew with-shadow-left content">
+      <div class="block with-small-padding small skew with-shadow-left">
         <p v-text="language.summary" />
-        <hr />
-        <dom-content v-bind="language.dom" class="mx-auto" aos="fade-up" />
+
+        <template v-if="language.description">
+          <hr />
+          <dom-content v-bind="language.dom" class="mx-auto" aos="fade-up" />
+        </template>
       </div>
+
+      <template v-if="language.projects.length > 0">
+        <h2>Projects</h2>
+        <project-grid :projects="language.projects" />
+      </template>
     </div>
-  </div>
+  </page-wrapper>
 </template>
 
 <script>
@@ -17,39 +28,46 @@ import { generateSeoMeta } from '../../utils/seo'
 
 export default {
   components: {
+    PageWrapper: () => import('~/components/page/wrapper'),
     DomContent: () => import('~/components/dom/dom-content'),
+    ProjectGrid: () => import('~/components/project/project-grid'),
   },
 
-  computed: {
-    isHome() {
-      return this.$route.path === '/' || this.$route.path === ''
-    },
-  },
-
-  async asyncData({ store, error, route, params, $source }) {
-    if (route.path === '/' || route.path === '') {
-      return {
-        page: {},
-      }
-    }
-
+  async asyncData({ store, error, route, $source }) {
     const slug = route.path.split('/').pop()
     const data = await $source.resolve(route.path, ({ query }) =>
       query(
         `
-            query language($slug: String!) {
-                language: termBySlug(slug: $slug, taxonomy: "language") {
-                    id name description dom
-                    summary: extra(path: "summary")
+          query language($slug: String!) {
+            language: termBySlug(slug: $slug, taxonomy: "language") {
+              id name description dom
+              summary: extra(path: "summary")
+
+              image: featuredImage {
+                image(resolution: Small, format: png, transform: { resize: { width: 200, height: 200 }}) { src }
+                placeholder: image(resolution: Placeholder, format: png, transform: { resize: { width: 16, height: 16 }}, output: Inline) { src }
+              }
+
+              projects: relatedPosts(type: "project") {
+                id slug title excerpt link
+                status: extra(path: "status")
+                progress: extra(path: "progress")
+                order: extra(path: "order")
+                image: featuredImage {
+                  image(resolution: Small, format: png, transform: { resize: { width: 290, height: 290 }}) { src }
+                  placeholder: image(resolution: Placeholder, format: png, transform: { resize: { width: 16, height: 16 }}, output: Inline) { src }
                 }
+                areas: terms(taxonomy: "development-area") { id slug name order: extra(path: "order") }
+              }
             }
+          }
         `,
         { slug },
       ),
     )
 
     if (!data.language) {
-      return error({ statusCode: 404, message: 'Página no encontrada' })
+      return error({ statusCode: 404, message: 'Language not found' })
     }
 
     return data
@@ -60,38 +78,20 @@ export default {
       path: this.$route.path,
       title: this.language.name,
       description: this.language.description,
+      image: this.image?.image.src,
     })
   },
 
   mounted() {
     if (this.$analytics) {
-      if (this.page) {
+      if (this.language) {
         this.$analytics.logEvent('view_page', {
-          title: this.page.title,
-          slug: this.page.slug,
-          link: this.page.link,
-        })
-      } else {
-        this.$analytics.logEvent('view_page', {
-          title: 'Home',
-          slug: 'home',
-          link: '/',
+          title: this.language.title,
+          slug: this.language.slug,
+          link: this.language.link,
         })
       }
     }
   },
 }
 </script>
-
-<style lang="scss" scoped>
-.page {
-  padding-top: 3em;
-  padding-bottom: 4em;
-  color: white;
-}
-.title {
-  margin-bottom: 0.5em;
-  font-size: 4em;
-  text-align: center;
-}
-</style>

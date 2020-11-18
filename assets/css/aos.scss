@@ -1,0 +1,24 @@
+[data-aos='scale-x'] {
+  transform: scale3d(0, 1, 1);
+  transform-origin: 0;
+
+  &.aos-animate {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+[data-aos="appear"] {
+  opacity: 0.3;
+
+  &.aos-animate {
+    opacity: 1;
+  }
+}
+
+[data-aos="clip"] {
+  clip-path: inset(0 100% 0 0);
+
+  &.aos-animate {
+    clip-path: inset(0 0 0 0);
+  }
+}

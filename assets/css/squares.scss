@@ -1,0 +1,170 @@
+
+@mixin square($screen, $squares) {
+  @media (min-width: theme('screens.#{$screen}')) {
+
+    &,
+    .image-container,
+    .image-container img {
+      width: calc((theme('screens.#{$screen}') - 96px - #{(($squares - 1) * 2)}rem) / #{$squares}) !important;
+    }
+
+    .image-container,
+    .image-container img {
+      height: calc((theme('screens.#{$screen}') - #{(($squares - 1) * 2)}rem) / #{$squares});
+    }
+  }
+}
+
+@mixin mobileSquare($squares) {
+  @media (max-width: theme('screens.sm')) {
+
+    &,
+    .image-container,
+    .image-container img {
+      width: calc((100vw - #{(($squares))}rem) / #{$squares}) !important;
+    }
+
+    .image-container,
+    .image-container img {
+      height: calc((100vw - #{(($squares))}rem) / #{$squares});
+    }
+  }
+}
+
+.square-container {
+  margin-bottom: -1rem;
+
+  @media (min-width: theme('screens.sm')) {
+    margin-right: -1rem;
+    margin-bottom: -2rem;
+    margin-left: -1rem;
+  }
+}
+
+.square {
+  margin-right: 0.5rem;
+  margin-bottom: 1rem;
+  margin-left: 0.5rem;
+
+  &.xs\:square-5 {
+    @include mobileSquare(5);
+  }
+
+  &.xs\:square-4 {
+    @include mobileSquare(4);
+  }
+
+  &.xs\:square-3 {
+    @include mobileSquare(3);
+  }
+
+  &.xs\:square-2 {
+    @include mobileSquare(2);
+  }
+
+  &.xs\:square-1 {
+    @include mobileSquare(1);
+  }
+
+  &.sm\:square-4 {
+    @include square('sm', 4);
+  }
+
+  &.sm\:square-3 {
+    @include square('sm', 3);
+  }
+
+  &.sm\:square-2 {
+    @include square('sm', 2);
+  }
+
+  &.sm\:square-1 {
+    @include square('sm', 1);
+  }
+
+  &.sm\:square-5 {
+    @include square('sm', 5);
+  }
+
+  &.sm\:square-4 {
+    @include square('sm', 4);
+  }
+
+  &.sm\:square-3 {
+    @include square('sm', 3);
+  }
+
+  &.sm\:square-2 {
+    @include square('sm', 2);
+  }
+
+  &.sm\:square-1 {
+    @include square('sm', 1);
+  }
+
+  &.md\:square-5 {
+    @include square('md', 5);
+  }
+
+  &.md\:square-4 {
+    @include square('md', 4);
+  }
+
+  &.md\:square-3 {
+    @include square('md', 3);
+  }
+
+  &.md\:square-2 {
+    @include square('md', 2);
+  }
+
+  &.md\:square-1 {
+    @include square('md', 1);
+  }
+
+  &.lg\:square-5 {
+    @include square('lg', 5);
+  }
+
+  &.lg\:square-4 {
+    @include square('lg', 4);
+  }
+
+  &.lg\:square-3 {
+    @include square('lg', 3);
+  }
+
+  &.lg\:square-2 {
+    @include square('lg', 2);
+  }
+
+  &.lg\:square-1 {
+    @include square('lg', 1);
+  }
+
+  &.xl\:square-5 {
+    @include square('xl', 5);
+  }
+
+  &.xl\:square-4 {
+    @include square('xl', 4);
+  }
+
+  &.xl\:square-3 {
+    @include square('xl', 3);
+  }
+
+  &.xl\:square-2 {
+    @include square('xl', 2);
+  }
+
+  &.xl\:square-1 {
+    @include square('xl', 1);
+  }
+
+  @media (min-width: theme('screens.sm')) {
+    margin-right: 1rem;
+    margin-bottom: 2rem;
+    margin-left: 1rem;
+  }
+}

@@ -1,5 +1,5 @@
 <template>
-  <div class="home-web-development-item">
+  <div class="home-web-development-item" data-aos="appear">
     <router-link :to="link">
       <h5 v-text="name" class="name" />
     </router-link>

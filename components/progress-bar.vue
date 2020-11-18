@@ -1,6 +1,6 @@
 <template>
   <div class="ProgressBar">
-    <div :style="{ width: `${progress}%` }" class="bar" />
+    <div :style="{ width: `${progress}%` }" class="bar" data-aos="scale-x" />
     <span v-text="text" class="text" />
   </div>
 </template>
@@ -30,6 +30,7 @@ export default Vue.extend({
   border: 4px solid white;
   border-radius: 4px;
   background: black;
+  transition: transform 0.4s ease-in-out;
 
   .bar {
     position: absolute;

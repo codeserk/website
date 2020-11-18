@@ -5,6 +5,8 @@ featuredImageId: aj+b_header
 termsMap:
   development-area:
     - web
+  technology:
+    - wordpress
 extra:
   progress: 100
   status: completed

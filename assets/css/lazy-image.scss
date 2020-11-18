@@ -1,0 +1,10 @@
+img.lazy {
+  opacity: 1;
+  filter: blur(8px);
+  transition: filter ease-in-out 1s;
+  transition-delay: 0.1s;
+
+  &[lazy='loaded'] {
+    filter: blur(0);
+  }
+}

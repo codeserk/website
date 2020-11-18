@@ -1,13 +1,18 @@
 <template>
   <div class="home-languages">
     <div class="block small with-shadow-left with-padding container skew mx-auto">
-      <div v-for="language in sortedLanguages" :key="language.id" class="language">
+      <div
+        v-for="language in sortedLanguages"
+        :key="language.id"
+        :class="{ 'is-selected': selected && selected === language.id }"
+        class="language"
+      >
         <div class="language-progress">
           <router-link :to="`/language/${language.slug}`" class="language-name">
             <h3 v-text="language.name" />
           </router-link>
           <div class="language-bar">
-            <div :style="{ width: `${language.knowledge}%` }" class="language-bar-width" />
+            <div :style="{ width: `${language.knowledge}%` }" class="language-bar-width" data-aos="scale-x" />
             <span v-text="language.status" class="language-bar-status" />
           </div>
         </div>
@@ -19,17 +24,24 @@
 </template>
 
 <script>
+import { sortByOrder } from '../../utils/sort'
+
 export default {
   props: {
     languages: {
       type: Array,
       default: () => [],
     },
+
+    selected: {
+      type: String,
+      default: '',
+    },
   },
 
   computed: {
     sortedLanguages() {
-      return [...this.languages].sort((langA, langB) => langA.order - langB.order)
+      return [...this.languages].sort(sortByOrder)
     },
   },
 }
@@ -67,6 +79,7 @@ h1 {
       .language-bar-width {
         height: 100%;
         background: white;
+        transition: transform 1s ease-in-out;
       }
 
       .language-bar-status {
@@ -111,6 +124,12 @@ h1 {
     &::after {
       right: -24px;
       left: calc(100% + 0.5ch);
+    }
+  }
+
+  &.is-selected {
+    .language-name {
+      color: yellow;
     }
   }
 
