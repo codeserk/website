@@ -1,12 +1,29 @@
 <template>
-  <div v-show="!isHome" class="page py-6 container mx-auto main overflow-hidden">
-    <h2 class="title">{{ page.title }}</h2>
+  <page-wrapper
+    :image="image"
+    :title="job.title"
+    :breadcrumbs="[{ name: 'Career', link: '/career' }]"
+    class="color full"
+  >
+    <div class="container mx-auto">
+      <time-block v-bind="job" with-padding-right>
+        <template #left-block>
+          <section>
+            <div :class="{ 'no-position': !job.position }" class="item-header">
+              <span v-text="job.period" class="period-text" />
+              <span v-text="job.position" class="position" />
+            </div>
 
-    <div>{{ page.languages }}</div>
+            <terms-map :item="job" />
+          </section>
+        </template>
 
-    <dom-content v-bind="page.dom" class="mx-auto" aos="fade-up" />
-
-  </div>
+        <template #right-block>
+          <dom-content v-bind="job.dom" class="mx-auto" aos="appear" />
+        </template>
+      </time-block>
+    </div>
+  </page-wrapper>
 </template>
 
 <script>
@@ -14,19 +31,22 @@ import { generateSeoMeta } from '../../utils/seo'
 
 export default {
   components: {
-    DomContent: () => import('~/components/dom/dom-content')
+    PageWrapper: () => import('~/components/page/wrapper'),
+    TimeBlock: () => import('~/components/block/time-block'),
+    TermsMap: () => import('~/components/terms-map'),
+    DomContent: () => import('~/components/dom/dom-content'),
   },
 
   computed: {
     isHome() {
       return this.$route.path === '/' || this.$route.path === ''
-    }
+    },
   },
 
   async asyncData({ store, error, route, params, $source }) {
     if (route.path === '/' || route.path === '') {
       return {
-        page: {}
+        page: {},
       }
     }
 
@@ -35,55 +55,57 @@ export default {
       query(
         `
             query page($slug: String!) {
-                page: postBySlug(slug: $slug, type: "career") {
+                job: postBySlug(slug: $slug, type: "career") {
                     id title content dom
-                    languages: terms(taxonomy: "language") {
-                      name
-                    }
+                    startDate: extra(path: "startDate")
+                    endDate: extra(path: "endDate")
+                    position: extra(path: "position")
+                    areas: terms(taxonomy: "development-area") { id slug name order: extra(path: "order") }
+                    languages: terms(taxonomy: "language") { id slug name order: extra(path: "order") }
+                    frameworks: terms(taxonomy: "framework") { id slug name order: extra(path: "order") }
+                    databases: terms(taxonomy: "database") { id slug name order: extra(path: "order") }
+                    brokers: terms(taxonomy: "message-broker") { id slug name order: extra(path: "order") }
+                    technologies: terms(taxonomy: "technology") { id slug name order: extra(path: "order") }
                 }
             }
         `,
-        { slug }
-      )
+        { slug },
+      ),
     )
 
-    if (!data.page) {
-      return error({ statusCode: 404, message: 'Página no encontrada' })
+    if (!data.job) {
+      return error({ statusCode: 404, message: 'Job not found' })
     }
 
     return data
   },
 
   head() {
-    if (this.page.isHome) {
-      return generateSeoMeta({})
-    }
-
     return generateSeoMeta({
       path: this.$route.path,
-      title: this.page.title,
-      description: this.page.content,
-      image: this.page.featuredMedia ? this.page.featuredMedia.src : undefined
+      title: this.job.title,
+      description: this.job.content,
+      image: this.job.featuredMedia ? this.job.featuredMedia.src : undefined,
     })
   },
 
   mounted() {
     if (this.$analytics) {
-      if (this.page) {
+      if (this.job) {
         this.$analytics.logEvent('view_page', {
-          title: this.page.title,
-          slug: this.page.slug,
-          link: this.page.link
+          title: this.job.title,
+          slug: this.job.slug,
+          link: this.job.link,
         })
       } else {
         this.$analytics.logEvent('view_page', {
           title: 'Home',
           slug: 'home',
-          link: '/'
+          link: '/',
         })
       }
     }
-  }
+  },
 }
 </script>
 
@@ -91,10 +113,5 @@ export default {
 .page {
   padding-top: 3em;
   padding-bottom: 4em;
-}
-.title {
-  margin-bottom: 0.5em;
-  font-size: 4em;
-  text-align: center;
 }
 </style>

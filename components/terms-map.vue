@@ -1,50 +1,29 @@
 <template>
   <div class="terms-map">
-    <div class="areas chip-container">
-      <chip v-for="area in item.areas" :key="area.id" :slug="area.slug" :text="area.name" type="development-area" />
-    </div>
-
-    <div class="languages chip-container">
+    <div v-for="type in types" :key="type.id" :class="[type.id, 'chip-container']">
       <chip
-        v-for="language in item.languages"
-        :key="language.id"
-        :slug="language.slug"
-        :text="language.name"
-        type="language"
+        v-for="(chip, index) in item[type.field]"
+        :key="chip.id"
+        :slug="chip.slug"
+        :text="chip.name"
+        :type="type.id"
+        :data-aos-delay="100 * index"
+        data-aos="appear"
       />
-    </div>
-
-    <div class="frameworks chip-container">
-      <chip
-        v-for="framework in item.frameworks"
-        :key="framework.id"
-        :slug="framework.slug"
-        :text="framework.name"
-        type="framework"
-      />
-    </div>
-
-    <div class="databases chip-container">
-      <chip
-        v-for="database in item.databases"
-        :key="database.id"
-        :slug="database.slug"
-        :text="database.name"
-        type="database"
-      />
-    </div>
-
-    <div class="brokers chip-container">
-      <chip v-for="broker in item.brokers" :key="broker.id" :slug="broker.slug" :text="broker.name" type="broker" />
-    </div>
-
-    <div class="technologies chip-container">
-      <chip v-for="technology in item.technologies" :key="technology.id" :text="technology.name" type="technology" />
     </div>
   </div>
 </template>
 
 <script>
+const types = [
+  { id: 'development', field: 'areas' },
+  { id: 'language', field: 'languages' },
+  { id: 'framework', field: 'frameworks' },
+  { id: 'database', field: 'databases' },
+  { id: 'message-broker', field: 'brokers' },
+  { id: 'technology', field: 'technologies' },
+]
+
 export default {
   components: {
     chip: () => import('~/components/chip'),
@@ -56,6 +35,10 @@ export default {
       default: () => ({}),
     },
   },
+
+  data: () => ({
+    types,
+  }),
 }
 </script>
 

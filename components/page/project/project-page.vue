@@ -1,0 +1,74 @@
+<template>
+  <page-wrapper :title="project.title" :image="project.image" :breadcrumbs="breadcrumbs" class="color full">
+    <div class="container mx-auto clearfix">
+      <time-block v-bind="project" with-padding-left with-padding-right>
+        <template #left-block class="block-left">
+          <progress-bar :progress="project.progress" :text="project.status" class="progress" />
+          <hr />
+
+          <terms-map :item="project" />
+
+          <template v-if="project.website">
+            <hr />
+            <a :href="project.website" v-text="beautifiedWebsite" target="_blank" />
+          </template>
+        </template>
+
+        <template #right-block>
+          <dom-content v-bind="project.dom" class="mx-auto" aos="fade-up" />
+        </template>
+      </time-block>
+
+      <h2>Similar projects</h2>
+      <project-grid :projects="project.similar" />
+    </div>
+  </page-wrapper>
+</template>
+
+<script>
+import { beautifyLink } from '~/utils/link'
+
+export default {
+  components: {
+    PageWrapper: () => import('~/components/page/wrapper'),
+    ProgressBar: () => import('~/components/progress-bar'),
+    TimeBlock: () => import('~/components/block/time-block'),
+    TermsMap: () => import('~/components/terms-map'),
+    DomContent: () => import('~/components/dom/dom-content'),
+    ProjectGrid: () => import('~/components/project/project-grid'),
+  },
+
+  props: {
+    project: {
+      type: Object,
+      default: () => null,
+    },
+  },
+
+  computed: {
+    beautifiedWebsite() {
+      if (!this.project.website) {
+        return
+      }
+
+      return beautifyLink(this.project.website)
+    },
+
+    placeholder() {
+      return this.project.icon?.placeholder.src
+    },
+
+    breadcrumbs() {
+      const result = [this.project.type]
+      if (this.project.mainTerm) {
+        result.push({
+          name: this.project.mainTerm.name,
+          link: `${this.project.type.link}/${this.project.mainTerm.slug}`,
+        })
+      }
+
+      return result
+    },
+  },
+}
+</script>

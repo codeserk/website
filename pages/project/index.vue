@@ -28,9 +28,9 @@ export default {
               startDate: extra(path: "startDate")
               endDate: extra(path: "endDate")
               order: extra(path: "order")
-              icon: featuredImage {
+              image: featuredImage {
                 image(resolution: Small, format: png, transform: { resize: { width: 290, height: 290 }}) { src }
-                placeholder: image(resolution: Placeholder, format: png, transform: { resize: { width: 290, height: 290 }}, output: Inline) { src }
+                placeholder: image(resolution: Placeholder, format: png, transform: { resize: { width: 16, height: 16 }}, output: Inline) { src }
               }
               areas: terms(taxonomy: "development-area") { id slug name order: extra(path: "order") }
             }

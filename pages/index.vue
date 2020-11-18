@@ -40,19 +40,14 @@
 
 <script>
 import { lightenDarkenColor } from '../utils/color'
-import AboutMe from '../components/home/home-about-me'
-import Languages from '../components/home/home-languages'
-import Career from '../components/home/home-career'
-import WebDevelopment from '../components/home/web-development'
-import Projects from '../components/home/projects'
 
 export default {
   components: {
-    AboutMe,
-    Languages,
-    Career,
-    WebDevelopment,
-    Projects,
+    AboutMe: () => import('~/components/home/about-me'),
+    Languages: () => import('~/components/home/languages'),
+    Career: () => import('~/components/home/career'),
+    WebDevelopment: () => import('~/components/home/web-development'),
+    Projects: () => import('~/components/home/projects'),
   },
 
   data: () => ({
@@ -139,9 +134,9 @@ export default {
               startDate: extra(path: "startDate")
               endDate: extra(path: "endDate")
               order: extra(path: "order")
-              icon: featuredImage {
+              image: featuredImage {
                 image(resolution: Small, format: png, transform: { resize: { width: 290, height: 290 }}) { src }
-                placeholder: image(resolution: Placeholder, format: png, transform: { resize: { width: 290, height: 290 }}, output: Inline) { src }
+                placeholder: image(resolution: Placeholder, format: png, transform: { resize: { width: 16, height: 16 }}, output: Inline) { src }
               }
               areas: terms(taxonomy: "development-area") { id slug name order: extra(path: "order") }
             }

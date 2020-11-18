@@ -44,7 +44,7 @@ export default {
   color: white;
   text-transform: uppercase;
 
-  &.development-area {
+  &.development {
     background: #333;
   }
 
@@ -60,7 +60,7 @@ export default {
     background: #f35d00;
   }
 
-  &.broker {
+  &.message-broker {
     background: #0932a3;
   }
 

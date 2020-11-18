@@ -1,0 +1,78 @@
+.blur-enter-active,
+.blur-leave-active {
+  filter: blur(0);
+  transition: all 1s ease-in-out;
+  transform: scale(1);
+}
+
+.blur-enter,
+.blur-leave-to {
+  filter: blur(4px);
+  transform: scale(1.1);
+}
+
+.blur-fade-enter-active /deep/ img,
+.blur-fade-leave-active /deep/ img {
+  opacity: 1 !important;
+  transition: all 0.4s ease-in-out !important;
+  transform: scale(1) !important;
+}
+
+.blur-fade-enter /deep/ img,
+.blur-fade-leave-to /deep/ img {
+  opacity: 0 !important;
+  filter: blur(4px) !important;
+  transform: scale(1.1) !important;
+}
+
+.slide-fade-enter-active {
+  transition: all 0.2s 0.2s ease-in-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.2s ease-in-out;
+}
+
+.slide-fade-enter,
+.slide-fade-leave-to {
+  opacity: 0;
+  transform: translate3d(10px, 0, 0);
+}
+
+.slide-fade-right-enter-active {
+  transition: all 0.2s 0.2s ease-in-out;
+}
+
+.slide-fade-right-leave-active {
+  transition: all 0.2s ease-in-out;
+}
+
+.slide-fade-right-enter,
+.slide-fade-right-leave-to {
+  opacity: 0;
+  transform: translate3d(-10px, 0, 0);
+}
+
+.slide-fade-up-enter-active {
+  transition: all 0.2s 0.2s ease-in-out;
+}
+
+.slide-fade-up-leave-active {
+  transition: all 0.2s ease-in-out;
+}
+
+.slide-fade-up-enter,
+.slide-fade-up-leave-to {
+  opacity: 0;
+  transform: translate3d(0, 10px, 0);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .4s ease-in-out;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0 !important;
+}

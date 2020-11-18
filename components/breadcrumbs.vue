@@ -11,36 +11,29 @@ export default {
   props: {
     breadcrumbs: {
       type: Array,
-      default: () => []
-    }
-  }
+      default: () => [],
+    },
+  },
 }
 </script>
 
 <style lang="scss" scoped>
-  .breadcrumbs {
-    &__item {
-      margin-right: 0.5rem;
-      color: #4B5667;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      opacity: 0.6;
+.breadcrumbs {
+  &__item {
+    margin-right: 0.5rem;
+    color: white;
+    text-transform: uppercase;
 
-      &::after {
-        content: '/';
-        padding-left: 0.5rem;
-      }
-      &:last-child {
-        opacity: 1;
+    &::after {
+      content: '/';
+      padding-left: 0.5rem;
+    }
 
-        &::after {
-          content: '';
-        }
-      }
-
-      &:hover, &:focus, &:active {
-        opacity: 1;
-      }
+    &:hover,
+    &:focus,
+    &:active {
+      opacity: 1;
     }
   }
+}
 </style>

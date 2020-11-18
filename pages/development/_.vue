@@ -1,24 +1,22 @@
 <template>
   <page-wrapper
-    :title="technology.name"
-    :breadcrumbs="[{ name: 'Technologies', link: '/technology' }]"
-    :image="technology.image"
+    :title="area.name"
+    :breadcrumbs="[{ name: 'Development', link: '/development' }]"
+    :image="area.image"
     class="color full"
   >
     <div class="container mx-auto">
-      <div class="block with-small-padding small skew with-shadow-left">
-        <p v-text="technology.summary" />
+      <div class="block with-small-padding small with-shadow-left skew">
+        <p v-text="area.summary" />
 
-        <template v-if="technology.description">
+        <template v-if="area.description">
           <hr />
-          <dom-content v-bind="technology.dom" class="mx-auto" aos="fade-up" />
+          <dom-content v-bind="area.dom" aos="fade-up" />
         </template>
       </div>
 
-      <template v-if="technology.projects.length > 0">
-        <h2>Projects</h2>
-        <project-grid :projects="technology.projects" />
-      </template>
+      <h2>Projects</h2>
+      <project-grid :projects="area.projects" />
     </div>
   </page-wrapper>
 </template>
@@ -29,18 +27,18 @@ import { generateSeoMeta } from '../../utils/seo'
 export default {
   components: {
     PageWrapper: () => import('~/components/page/wrapper'),
-    DomContent: () => import('~/components/dom/dom-content'),
     ProjectGrid: () => import('~/components/project/project-grid'),
+    DomContent: () => import('~/components/dom/dom-content'),
   },
 
-  async asyncData({ store, error, route, $source }) {
+  async asyncData({ store, error, route, params, $source }) {
     const slug = route.path.split('/').pop()
     const data = await $source.resolve(route.path, ({ query }) =>
       query(
         `
-          query technology($slug: String!) {
-            technology: termBySlug(slug: $slug, taxonomy: "technology") {
-              id name description dom
+          query development($slug: String!) {
+            area: termBySlug(slug: $slug, taxonomy: "development-area") {
+              id name description dom link
               summary: extra(path: "summary")
 
               image: featuredImage {
@@ -50,8 +48,11 @@ export default {
 
               projects: relatedPosts(type: "project") {
                 id slug title excerpt link
+                mainTerm { id }
                 status: extra(path: "status")
                 progress: extra(path: "progress")
+                startDate: extra(path: "startDate")
+                endDate: extra(path: "endDate")
                 order: extra(path: "order")
                 image: featuredImage {
                   image(resolution: Small, format: png, transform: { resize: { width: 290, height: 290 }}) { src }
@@ -66,8 +67,8 @@ export default {
       ),
     )
 
-    if (!data.technology) {
-      return error({ statusCode: 404, message: 'Technology not found' })
+    if (!data.area) {
+      return error({ statusCode: 404, message: 'Development area not found' })
     }
 
     return data
@@ -76,21 +77,18 @@ export default {
   head() {
     return generateSeoMeta({
       path: this.$route.path,
-      title: this.technology.name,
-      description: this.technology.description,
-      image: this.image?.image.src,
+      title: this.area.name,
+      description: this.area.description,
     })
   },
 
   mounted() {
-    if (this.$analytics) {
-      if (this.technology) {
-        this.$analytics.logEvent('view_page', {
-          title: this.technology.title,
-          slug: this.technology.slug,
-          link: this.technology.link,
-        })
-      }
+    if (this.$analytics && this.area) {
+      this.$analytics.logEvent('view_page', {
+        title: this.area.name,
+        slug: this.area.slug,
+        link: this.area.link,
+      })
     }
   },
 }
