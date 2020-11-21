@@ -1,6 +1,7 @@
 ---
 slug: sailsjs
 name: Sails.js
+featuredImageId: framework_sailsjs-logo
 extra:
   order: 3
   status: deprecated

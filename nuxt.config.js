@@ -14,6 +14,11 @@ export default {
     '@nuxtjs/sitemap',
   ],
 
+  loading: {
+    color: 'white',
+    height: '10px',
+  },
+
   fontawesome: {
     icons: {
       solid: true,

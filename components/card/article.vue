@@ -2,20 +2,15 @@
   <div
     :data-aos-delay="100 * (index % 3)"
     :class="{ 'has-image': !!lazyImage }"
-    @click="$router.push(link)"
-    class="card block borderless with-shadow-left"
+    class="card article with-shadow-left"
     data-aos="appear"
   >
-    <nuxt-link :to="link"><component :is="heading" v-text="title" class="title"/></nuxt-link>
-    <div class="card-content">
-      <img v-lazy="lazyImage" class="image lazy" />
+    <!-- <nuxt-link :to="link"><component :is="heading" v-text="title" class="title"/></nuxt-link> -->
+    <nuxt-link :to="link" class="image"><img v-lazy="lazyImage" class="lazy"/></nuxt-link>
+    <div class="card-content lazy-background">
       <div class="description">
-        <progress-bar v-if="status" :progress="progress" :text="status" class="progress" />
-        <div class="extra-content">
-          <slot />
-        </div>
-
         <div class="fill" />
+        <component :is="heading" v-text="title" class="title" />
         <p v-if="summary" v-text="summary" class="summary" />
       </div>
     </div>
@@ -24,10 +19,6 @@
 
 <script>
 export default {
-  components: {
-    ProgressBar: () => import('~/components/progress-bar'),
-  },
-
   props: {
     index: {
       type: Number,
@@ -87,43 +78,40 @@ export default {
 <style lang="scss" scoped>
 .card {
   display: block;
-  width: 300px;
-  background: transparent;
-  margin: 2em 1em;
-  cursor: pointer;
+  width: 450px;
+  margin: 1em 2em;
+  text-align: center;
 
   .title {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  }
+
+  .image {
+    text-align: center;
+    margin: auto;
+    display: inline-block;
+
+    img {
+      border-radius: 12px;
+      width: 290px;
+      height: 290px;
+    }
   }
 
   .card-content {
     position: relative;
-    // background: white;
-    position: relative;
     overflow: hidden;
-    height: 290px;
-    background-size: cover;
-    background-repeat: no-repeat;
 
     .description {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
       display: flex;
       flex-direction: column;
       padding: 1em;
-      background: #1113;
-      transition: all 0.4s ease-in-out;
+      text-align: left;
 
-      .progress {
-        margin-bottom: 0.5em;
-        width: 120px;
-        transition: transform 0.4s ease-in-out;
+      .title {
+        text-align: center;
+        font-size: 1.5em;
       }
+
       .extra-content {
         transition: transform 0.4s ease-in-out;
       }
@@ -142,31 +130,12 @@ export default {
 
     .image {
       position: absolute;
-      right: 1em;
-      top: 1em;
-      border-radius: 12px;
-      width: 100px;
-      height: 100px;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
     }
   }
-
-  transition: transform 0.4s ease-in-out;
-  transform-origin: center;
-  &:hover {
-    transform: scale3d(1.1, 1.1, 1.1);
-  }
-
-  // &.has-image .description:hover {
-  //   background: transparent;
-
-  //   .progress,
-  //   .extra-content {
-  //     transform: translate3d(0, -200px, 0);
-  //   }
-  //   .summary {
-  //     transform: translate3d(0, 200px, 0);
-  //   }
-  // }
 }
 
 @media (max-width: theme('screens.lg')) {

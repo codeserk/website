@@ -1,6 +1,6 @@
 <template>
-  <div :data-aos="aos" class="content">
-    <dom :is="component" v-bind="$props" :style="attributes.style" />
+  <div class="dom-content content">
+    <dom :is="component" v-bind="{ ...$props, ...attributes }" />
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 import Dom from './dom'
 
 export default {
-  name: 'DomText',
+  name: 'DomContent',
 
   extends: Dom,
 }

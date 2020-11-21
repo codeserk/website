@@ -1,10 +1,12 @@
 ---
 slug: television
 title: Television (Spain)
-featuredImageId: television_screenshot_1
+featuredImageId: television_logo
 termsMap:
   development-area:
     - ios
+  language:
+    - swift
 extra:
   progress: 100
   status: deprecated

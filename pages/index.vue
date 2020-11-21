@@ -31,6 +31,11 @@
       </section>
 
       <section>
+        <h2>Blog 📺</h2>
+        <blog :articles="articles" />
+      </section>
+
+      <section>
         <router-link to="/project"><h2>Projects 🎵</h2></router-link>
         <projects :projects="projects" :limit="9" />
       </section>
@@ -47,6 +52,7 @@ export default {
     Languages: () => import('~/components/home/languages'),
     Career: () => import('~/components/home/career'),
     WebDevelopment: () => import('~/components/home/web-development'),
+    Blog: () => import('~/components/home/blog'),
     Projects: () => import('~/components/home/projects'),
   },
 
@@ -127,7 +133,21 @@ export default {
               summary: extra(path: "summary")
             }
 
-            projects: posts(type: "project") {
+            articles: posts(type: "blog") {
+              id slug title excerpt link
+              status: extra(path: "status")
+              progress: extra(path: "progress")
+              startDate: extra(path: "startDate")
+              endDate: extra(path: "endDate")
+              order: extra(path: "order")
+              image: featuredImage {
+                image(resolution: Small, format: png, transform: { resize: { width: 290, height: 290 }}) { src }
+                placeholder: image(resolution: Placeholder, format: png, transform: { resize: { width: 16, height: 16 }}, output: Inline) { src }
+              }
+              areas: terms(taxonomy: "development-area") { id slug name order: extra(path: "order") }
+            }
+
+            projects: posts(type: "project", pagination: { limit: 5 }) {
               id slug title excerpt link
               status: extra(path: "status")
               progress: extra(path: "progress")
@@ -158,7 +178,7 @@ export default {
   justify-content: center;
   min-height: 100vh;
   color: white;
-  font-size: 10vw;
+  font-size: 8vw;
   line-height: 1em;
   letter-spacing: 0.2em;
   text-align: center;
@@ -202,6 +222,12 @@ export default {
       font-size: 4em;
       text-align: center;
     }
+  }
+}
+
+@media (min-width: 1500px) {
+  .header {
+    font-size: 8em;
   }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <subtitle :id="id" :title="text" :tag="tag" />
+  <subtitle :id="id" :title="text" :tag="tag" v-bind="attributes" class="dom-subtitle" />
 </template>
 
 <script>

@@ -7,11 +7,11 @@
   >
     <div class="container mx-auto">
       <div class="block with-small-padding small skew with-shadow-left">
-        <p v-text="framework.summary" />
+        <p v-text="framework.summary" data-aos="appear" />
 
         <template v-if="framework.description">
           <hr />
-          <dom-content v-bind="framework.dom" class="mx-auto" aos="fade-up" />
+          <dom-content v-bind="framework.dom" class="mx-auto" data-aos="appear" />
         </template>
       </div>
 

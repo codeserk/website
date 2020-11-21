@@ -74,7 +74,7 @@ export default {
   props: {
     color: {
       type: String,
-      default: '#AA6B8C', // '#AA6B8C' //  '#575fa2'
+      default: '#575fa2', // '#AA6B8C' //  '#575fa2'
     },
 
     animated: {

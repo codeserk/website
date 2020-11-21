@@ -1,5 +1,5 @@
 <template>
-  <component :is="component" v-bind="$props" :style="attributes.style" />
+  <component :is="component" v-bind="{ ...$props, ...attributes }" :style="attributes.style" class="dom" />
 </template>
 
 <script>
@@ -15,6 +15,7 @@ export default {
 
     // Special components
     Chip: () => import('~/components/chip'),
+    Card: () => import('~/components/card'),
   },
 
   props: {
@@ -40,7 +41,7 @@ export default {
 
     aos: {
       type: String,
-      default: '',
+      default: 'appear',
     },
   },
 
@@ -65,6 +66,10 @@ export default {
 
       return 'dom-default'
     },
+  },
+
+  mounted() {
+    console.log(this.component, this.attributes)
   },
 }
 </script>

@@ -5,6 +5,8 @@ featuredImageId: walkaholic_logo
 termsMap:
   development-area:
     - ios
+  language:
+    - swift
 extra:
   progress: 50
   status: abandoned

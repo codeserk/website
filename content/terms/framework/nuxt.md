@@ -1,6 +1,7 @@
 ---
 slug: nuxt
 name: Nuxt.js
+featuredImageId: framework_nuxtjs-logo
 extra:
   order: 3
   status: adopted

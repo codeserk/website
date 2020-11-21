@@ -1,6 +1,7 @@
 <template>
-  <page-wrapper title="Projects" header-class="centered" class="color full">
-    <projects-grid :projects="projects" />
+  <page-wrapper title="Blog 📺" class="color full">
+    <div class="container mx-auto">
+      <article-grid :articles="articles" />
     </div>
   </page-wrapper>
 </template>
@@ -9,15 +10,15 @@
 export default {
   components: {
     PageWrapper: () => import('~/components/page/wrapper'),
-    ProjectsGrid: () => import('~/components/project/project-grid'),
+    ArticleGrid: () => import('~/components/card/article-grid'),
   },
 
   async asyncData({ $source }) {
     return $source.resolve('/project', ({ query }) =>
       query(
         `
-          query projects {
-            projects: posts(type: "project") {
+          query articles {
+            articles: posts(type: "blog") {
               id slug title excerpt link
               status: extra(path: "status")
               progress: extra(path: "progress")

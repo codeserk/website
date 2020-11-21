@@ -59,7 +59,8 @@ async function createTheme(name: string, color: string): Promise<void> {
 
 async function exec() {
   // Create only night color for now.
-  await Promise.all([createTheme('.', '#AA6B8C')])
+  // await Promise.all([createTheme('.', '#AA6B8C')])
+  await Promise.all([createTheme('.', '#575FA2')])
 }
 
 exec()

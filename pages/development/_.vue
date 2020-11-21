@@ -15,8 +15,15 @@
         </template>
       </div>
 
-      <h2>Projects</h2>
-      <project-grid :projects="area.projects" />
+      <template v-if="area.articles.length > 0">
+        <h2>Posts</h2>
+        <article-grid :articles="area.articles" />
+      </template>
+
+      <template v-if="area.projects.length > 0">
+        <h2>Projects</h2>
+        <project-grid :projects="area.projects" />
+      </template>
     </div>
   </page-wrapper>
 </template>
@@ -28,6 +35,7 @@ export default {
   components: {
     PageWrapper: () => import('~/components/page/wrapper'),
     ProjectGrid: () => import('~/components/project/project-grid'),
+    ArticleGrid: () => import('~/components/card/article-grid'),
     DomContent: () => import('~/components/dom/dom-content'),
   },
 
@@ -44,6 +52,18 @@ export default {
               image: featuredImage {
                 image(resolution: Small, format: png, transform: { resize: { width: 200, height: 200 }}) { src }
                 placeholder: image(resolution: Placeholder, format: png, transform: { resize: { width: 16, height: 16 }}, output: Inline) { src }
+              }
+
+              articles: relatedPosts(type: "blog") {
+                id slug title excerpt link
+                status: extra(path: "status")
+                progress: extra(path: "progress")
+                order: extra(path: "order")
+                image: featuredImage {
+                  image(resolution: Small, format: png, transform: { resize: { width: 290, height: 290 }}) { src }
+                  placeholder: image(resolution: Placeholder, format: png, transform: { resize: { width: 16, height: 16 }}, output: Inline) { src }
+                }
+                areas: terms(taxonomy: "development-area") { id slug name order: extra(path: "order") }
               }
 
               projects: relatedPosts(type: "project") {

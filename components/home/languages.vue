@@ -7,7 +7,7 @@
         :class="{ 'is-selected': selected && selected === language.id }"
         class="language"
       >
-        <div class="language-progress">
+        <div class="language-progress" data-aos="appear">
           <router-link :to="`/language/${language.slug}`" class="language-name">
             <h3 v-text="language.name" />
           </router-link>
@@ -17,7 +17,12 @@
           </div>
         </div>
 
-        <span v-if="language.summary" v-text="language.summary" class="short-description block with-shadow-left" />
+        <span
+          v-if="language.summary"
+          v-text="language.summary"
+          class="short-description block with-shadow-left"
+          data-aos="appear"
+        />
       </div>
     </div>
   </div>

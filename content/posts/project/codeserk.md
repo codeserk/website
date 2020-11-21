@@ -7,7 +7,7 @@ termsMap:
     - web
 extra:
   progress: 80
-  status: work-in-progress
+  status: wip
   order: 4
 ---
 

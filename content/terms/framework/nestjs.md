@@ -1,6 +1,7 @@
 ---
 slug: nestjs
 name: NestJS
+featuredImageId: framework_nestjs-logo
 extra:
   status: adopted
   knowledge: 75

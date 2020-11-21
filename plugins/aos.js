@@ -8,7 +8,7 @@ export default ({ app }) => {
     app.AOS = new AOS.init({
       once: true,
       offset: 5,
-      anchorPlacement: 'top-center'
+      anchorPlacement: 'top-center',
     })
-  }, 250)
+  }, 1000)
 }

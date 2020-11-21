@@ -1,6 +1,6 @@
 <template>
   <div class="terms-map">
-    <div v-for="type in types" :key="type.id" :class="[type.id, 'chip-container']">
+    <div v-for="type in typesWithItems" :key="type.id" :class="[type.id, 'chip-container']">
       <chip
         v-for="(chip, index) in item[type.field]"
         :key="chip.id"
@@ -39,6 +39,12 @@ export default {
   data: () => ({
     types,
   }),
+
+  computed: {
+    typesWithItems() {
+      return this.types.filter(type => !!this.item[type.field] && this.item[type.field].length > 0)
+    },
+  },
 }
 </script>
 

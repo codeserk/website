@@ -12,4 +12,8 @@ extra:
   order: 3
 ---
 
+<div class="without-margin">
+  <img src="ivy_featured" />
+</div>
+
 Mobile game to dodge asteroids!

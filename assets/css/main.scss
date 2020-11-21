@@ -25,7 +25,7 @@
     min-height: 100vh;
   }
   &.color {
-    background: #08080E99;
+    background: #08080EAA;
   }
 
   &.limited {
@@ -38,10 +38,12 @@ hr {
 }
 
 .skew, .skew-left {
-  transform: skewY(-2deg) translate3d(0, 1rem, 0);
+  transform: skewY(-2deg);
+  transform-origin: top right;
 }
 .skew-right {
-  transform: skewY(2deg) translate3d(0, 1rem, 0);
+  transform: skewY(2deg);
+  transform-origin: top left;
 }
 
 body {
@@ -115,7 +117,7 @@ h5 {
     content: '';
     position: absolute;
     bottom: -2px;
-    left: 0;
+    left: 0px;
     width: 100%;
     height: 1px;
     background-color: white;
@@ -135,7 +137,8 @@ h5 {
 $pswp__assets-path: "~photoswipe/src/css/default-skin/";
 
 img {
-  user-select: none;
+  user-select: none !important;
+  pointer-events: none;
 }
 
 nav.px-mobile,

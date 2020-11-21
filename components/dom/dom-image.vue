@@ -5,6 +5,8 @@
     :src="src"
     :placeholder="placeholder"
     :data-aos="aos"
+    v-bind="attributes"
+    class="dom-image"
   />
 </template>
 

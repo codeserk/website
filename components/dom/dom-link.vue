@@ -1,5 +1,5 @@
 <template>
-  <a :href="link" :target="target" v-text="text" class="px-mobile underline" />
+  <a :href="link" :target="target" v-text="text" v-bind="attributes" class="dom-link underline" />
 </template>
 
 <script>

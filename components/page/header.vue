@@ -102,7 +102,12 @@ export default {
     }
 
     &.without-image {
+      justify-content: center;
       flex-direction: row;
+
+      .header-title {
+        max-width: 550px;
+      }
     }
 
     @media (min-width: 1800px) {

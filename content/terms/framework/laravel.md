@@ -1,6 +1,7 @@
 ---
 slug: laravel
 name: Laravel
+featuredImageId: framework_laravel-logo
 extra:
   status: deprecated
   knowledge: 70

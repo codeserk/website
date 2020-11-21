@@ -7,6 +7,14 @@
   background: #07080D;
   margin-bottom: 4em;
 
+  &.borderless {
+    border: 0px;
+
+    &.with-shadow-left::before {
+      left: 0;
+    }
+  }
+
   &.with-padding {
     padding: 32px;
   }

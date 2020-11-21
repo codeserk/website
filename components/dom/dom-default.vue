@@ -1,6 +1,6 @@
 <template>
-  <component :is="component" v-bind="attributes" :data-aos="aos" class="px-mobile content">
-    <dom v-for="(childNode, index) in children" :key="index" v-bind="{ ...childNode, aos }" />
+  <component :is="component" v-bind="attributes" :data-aos="aos" class="dom-default">
+    <dom v-for="(childNode, index) in children" :key="index" v-bind="{ ...childNode }" />
   </component>
 </template>
 
@@ -20,6 +20,10 @@ export default {
     component() {
       return this.tag
     },
+  },
+
+  mounted() {
+    console.log(this.component, this.attributes)
   },
 }
 </script>

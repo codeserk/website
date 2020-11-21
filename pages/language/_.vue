@@ -15,6 +15,11 @@
         </template>
       </div>
 
+      <template v-if="language.posts.length > 0">
+        <h2>Posts</h2>
+        <article-grid :articles="language.posts" />
+      </template>
+
       <template v-if="language.projects.length > 0">
         <h2>Projects</h2>
         <project-grid :projects="language.projects" />
@@ -31,6 +36,7 @@ export default {
     PageWrapper: () => import('~/components/page/wrapper'),
     DomContent: () => import('~/components/dom/dom-content'),
     ProjectGrid: () => import('~/components/project/project-grid'),
+    ArticleGrid: () => import('~/components/card/article-grid'),
   },
 
   async asyncData({ store, error, route, $source }) {
@@ -49,6 +55,18 @@ export default {
               }
 
               projects: relatedPosts(type: "project") {
+                id slug title excerpt link
+                status: extra(path: "status")
+                progress: extra(path: "progress")
+                order: extra(path: "order")
+                image: featuredImage {
+                  image(resolution: Small, format: png, transform: { resize: { width: 290, height: 290 }}) { src }
+                  placeholder: image(resolution: Placeholder, format: png, transform: { resize: { width: 16, height: 16 }}, output: Inline) { src }
+                }
+                areas: terms(taxonomy: "development-area") { id slug name order: extra(path: "order") }
+              }
+
+              posts: relatedPosts(type: "blog") {
                 id slug title excerpt link
                 status: extra(path: "status")
                 progress: extra(path: "progress")
