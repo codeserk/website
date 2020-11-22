@@ -43,13 +43,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-h2 {
-  margin: 0.5em 0;
-  font-size: 3rem;
+.heading {
+  display: block;
+  margin-bottom: 0.5em;
+  font-size: 4rem;
   text-align: center;
 }
 
 hr {
   margin: 1em 0;
+}
+
+section {
+  margin: 6em 0;
 }
 </style>

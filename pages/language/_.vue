@@ -1,31 +1,5 @@
 <template>
-  <page-wrapper
-    :title="language.name"
-    :breadcrumbs="[{ name: 'Languages', link: '/language' }]"
-    :image="language.image"
-    class="color full"
-  >
-    <div class="container mx-auto">
-      <div class="block with-small-padding small skew with-shadow-left">
-        <p v-text="language.summary" />
-
-        <template v-if="language.description">
-          <hr />
-          <dom-content v-bind="language.dom" class="mx-auto" aos="fade-up" />
-        </template>
-      </div>
-
-      <template v-if="language.posts.length > 0">
-        <h2>Posts</h2>
-        <article-grid :articles="language.posts" />
-      </template>
-
-      <template v-if="language.projects.length > 0">
-        <h2>Projects</h2>
-        <project-grid :projects="language.projects" />
-      </template>
-    </div>
-  </page-wrapper>
+  <term-page :breadcrumbs="[{ name: 'Languages', link: '/language' }]" :term="language" />
 </template>
 
 <script>
@@ -33,10 +7,7 @@ import { generateSeoMeta } from '../../utils/seo'
 
 export default {
   components: {
-    PageWrapper: () => import('~/components/page/wrapper'),
-    DomContent: () => import('~/components/dom/dom-content'),
-    ProjectGrid: () => import('~/components/project/project-grid'),
-    ArticleGrid: () => import('~/components/card/article-grid'),
+    TermPage: () => import('~/components/page/term/term-page'),
   },
 
   async asyncData({ store, error, route, $source }) {
@@ -54,7 +25,7 @@ export default {
                 placeholder: image(resolution: Placeholder, format: png, transform: { resize: { width: 16, height: 16 }}, output: Inline) { src }
               }
 
-              projects: relatedPosts(type: "project") {
+              articles: relatedPosts(type: "blog") {
                 id slug title excerpt link
                 status: extra(path: "status")
                 progress: extra(path: "progress")
@@ -66,7 +37,27 @@ export default {
                 areas: terms(taxonomy: "development-area") { id slug name order: extra(path: "order") }
               }
 
-              posts: relatedPosts(type: "blog") {
+              career: relatedPosts(type: "career") {
+                id slug title excerpt content dom link
+                mainTerm { id }
+                status: extra(path: "status")
+                progress: extra(path: "progress")
+                startDate: extra(path: "startDate")
+                endDate: extra(path: "endDate")
+                order: extra(path: "order")
+                image: featuredImage {
+                  image(resolution: Small, format: png, transform: { resize: { width: 290, height: 290 }}) { src }
+                  placeholder: image(resolution: Placeholder, format: png, transform: { resize: { width: 16, height: 16 }}, output: Inline) { src }
+                }
+                areas: terms(taxonomy: "development-area") { id slug name order: extra(path: "order") }
+                languages: terms(taxonomy: "language") { id slug name order: extra(path: "order") }
+                frameworks: terms(taxonomy: "framework") { id slug name order: extra(path: "order") }
+                databases: terms(taxonomy: "database") { id slug name order: extra(path: "order") }
+                brokers: terms(taxonomy: "message-broker") { id slug name order: extra(path: "order") }
+                technologies: terms(taxonomy: "technology") { id slug name order: extra(path: "order") }
+              }
+
+              projects: relatedPosts(type: "project") {
                 id slug title excerpt link
                 status: extra(path: "status")
                 progress: extra(path: "progress")

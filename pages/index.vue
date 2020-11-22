@@ -133,7 +133,7 @@ export default {
               summary: extra(path: "summary")
             }
 
-            articles: posts(type: "blog") {
+            articles: posts(type: "blog", sort: { field: "createdAt", direction: Descending }, pagination: { limit: 3 }) {
               id slug title excerpt link
               status: extra(path: "status")
               progress: extra(path: "progress")
@@ -147,7 +147,7 @@ export default {
               areas: terms(taxonomy: "development-area") { id slug name order: extra(path: "order") }
             }
 
-            projects: posts(type: "project", pagination: { limit: 5 }) {
+            projects: posts(type: "project", pagination: { limit: 9 }) {
               id slug title excerpt link
               status: extra(path: "status")
               progress: extra(path: "progress")

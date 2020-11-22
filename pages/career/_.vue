@@ -1,6 +1,6 @@
 <template>
   <page-wrapper
-    :image="image"
+    :image="job.image"
     :title="job.title"
     :breadcrumbs="[{ name: 'Career', link: '/career' }]"
     class="color full"
@@ -54,20 +54,24 @@ export default {
     const data = await $source.resolve(route.path, ({ query }) =>
       query(
         `
-            query page($slug: String!) {
-                job: postBySlug(slug: $slug, type: "career") {
-                    id title content dom
-                    startDate: extra(path: "startDate")
-                    endDate: extra(path: "endDate")
-                    position: extra(path: "position")
-                    areas: terms(taxonomy: "development-area") { id slug name order: extra(path: "order") }
-                    languages: terms(taxonomy: "language") { id slug name order: extra(path: "order") }
-                    frameworks: terms(taxonomy: "framework") { id slug name order: extra(path: "order") }
-                    databases: terms(taxonomy: "database") { id slug name order: extra(path: "order") }
-                    brokers: terms(taxonomy: "message-broker") { id slug name order: extra(path: "order") }
-                    technologies: terms(taxonomy: "technology") { id slug name order: extra(path: "order") }
-                }
+          query page($slug: String!) {
+            job: postBySlug(slug: $slug, type: "career") {
+              id title content dom
+              startDate: extra(path: "startDate")
+              endDate: extra(path: "endDate")
+              position: extra(path: "position")
+              areas: terms(taxonomy: "development-area") { id slug name order: extra(path: "order") }
+              languages: terms(taxonomy: "language") { id slug name order: extra(path: "order") }
+              frameworks: terms(taxonomy: "framework") { id slug name order: extra(path: "order") }
+              databases: terms(taxonomy: "database") { id slug name order: extra(path: "order") }
+              brokers: terms(taxonomy: "message-broker") { id slug name order: extra(path: "order") }
+              technologies: terms(taxonomy: "technology") { id slug name order: extra(path: "order") }
+              image: featuredImage {
+                image(resolution: Small, format: png, transform: { resize: { width: 290, height: 290 }}) { src }
+                placeholder: image(resolution: Placeholder, format: png, transform: { resize: { width: 16, height: 16 }}, output: Inline) { src }
+              }
             }
+          }
         `,
         { slug },
       ),

@@ -121,7 +121,7 @@ export default {
       transition: all 0.4s ease-in-out;
 
       .progress {
-        width: 120px;
+        width: 140px;
         margin-bottom: 0.5em;
         transition: transform 0.4s ease-in-out;
       }
