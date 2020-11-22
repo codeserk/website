@@ -8,9 +8,13 @@
 
           <terms-map :item="project" />
 
-          <template v-if="project.website">
+          <template v-if="project.website || project.github">
             <hr />
-            <a :href="project.website" v-text="beautifiedWebsite" target="_blank" />
+
+            <a v-if="project.website" :href="project.website" v-text="beautifiedWebsite" target="_blank" />
+            <a v-if="project.github" :href="project.github" target="_blank">
+              <font-awesome-icon :icon="['fab', 'github']" size="lg" />
+            </a>
           </template>
         </template>
 
@@ -19,8 +23,15 @@
         </template>
       </time-block>
 
-      <h2>Similar projects</h2>
-      <project-grid :projects="project.similar" />
+      <template v-if="gallery.length > 0">
+        <h2>Gallery</h2>
+        <gallery :images="gallery" with-secondary />
+      </template>
+
+      <template v-if="project.similar.length > 0">
+        <h2>Similar projects</h2>
+        <project-grid :projects="project.similar" />
+      </template>
     </div>
   </page-wrapper>
 </template>
@@ -36,6 +47,7 @@ export default {
     TermsMap: () => import('~/components/terms-map'),
     DomContent: () => import('~/components/dom/dom-content'),
     ProjectGrid: () => import('~/components/project/project-grid'),
+    Gallery: () => import('~/components/gallery'),
   },
 
   props: {
@@ -68,6 +80,21 @@ export default {
       }
 
       return result
+    },
+
+    gallery() {
+      return (
+        this.project.gallery?.map(image => ({
+          id: image.id,
+          src: image.image?.src,
+          placeholder: image.placeholder?.src,
+          thumbnail: image.thumbnail?.src,
+          thumbnailPlaceholder: image.thumbnailPlaceholder?.src,
+          large: image.large?.src,
+          width: image.large?.width,
+          height: image.large?.height,
+        })) ?? []
+      )
     },
   },
 }

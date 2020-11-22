@@ -69,6 +69,14 @@ export default {
               technologies: terms(taxonomy: "technology") { id slug name order: extra(path: "order") }
 
               website: extra(path: "website")
+              github: extra(path: "github")
+              gallery: galleryImages {
+                image(resolution: Medium, format: png) { src }
+                placeholder: image(resolution: Placeholder, format: png, output: Inline) { src }
+                large: image(resolution: Large, format: png) { src width height }
+                thumbnail: image(resolution: Placeholder, format: png, transform: { resize: { width: 200, height: 200 }}, output: Inline) { src }
+                thumbnailPlaceholder: image(resolution: Placeholder, format: png, transform: { resize: { width: 16, height: 16 }}, output: Inline) { src }
+              }
 
               similar {
                 id slug title excerpt link

@@ -2,9 +2,9 @@
   <div class="time-block-container">
     <div class="time-block">
       <span v-if="endDate" v-text="endDateText" class="end-date" />
-      <span v-else v-text="'Now'" class="end-date" />
+      <span v-else-if="startDate" v-text="'Now'" class="end-date" />
 
-      <div class="period">
+      <div v-if="period" class="period">
         <span class="bar-above" />
         <span v-text="period" class="period-text" />
         <span class="bar-below" />
@@ -74,13 +74,17 @@ export default {
       const endDate = this.endDate ? moment(this.endDate) : undefined
       const years = endDate ? endDate.diff(startDate, 'years') : moment().diff(startDate, 'years')
       const months = endDate ? endDate.diff(startDate, 'months') % 12 : moment().diff(startDate, 'months') % 12
+      const days = endDate ? endDate.diff(startDate, 'days') % 365 : moment().diff(startDate, 'days') % 365
 
       const timeParts = []
       if (years > 0) {
-        timeParts.push(`${years} years`)
+        timeParts.push(years > 1 ? `${years} years` : `${years} year`)
       }
       if (months > 0) {
-        timeParts.push(`${months} months`)
+        timeParts.push(months > 1 ? `${months} months` : `${months} month`)
+      }
+      if (years === 0 && months === 0) {
+        timeParts.push(days > 1 ? `${days} days` : `${days} day`)
       }
 
       return timeParts.join(', ')

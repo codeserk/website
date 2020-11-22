@@ -67,9 +67,5 @@ export default {
       return 'dom-default'
     },
   },
-
-  mounted() {
-    console.log(this.component, this.attributes)
-  },
 }
 </script>

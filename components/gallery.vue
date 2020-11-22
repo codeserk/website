@@ -7,48 +7,43 @@
       @mouseup="stopScrolling('primary')"
       @mousemove="event => scrollSlider('primary', event)"
       @scroll="onPrimaryScrolled"
-      class="slider relative"
+      class="slider"
     >
-      <div
-        v-for="(item, index) in images"
-        :key="index"
-        :style="{ 'background-image': `url(${item.src})` }"
-        :class="{ 'slider-item--ready': imageReady[item.id] }"
-        @click="zoomImage(index)"
-        class="slider-item"
-      >
-        <div class="slider-item-overlay"></div>
+      <div v-for="(item, index) in images" :key="index" @click="zoomImage(index)" class="slider-item">
+        <img v-lazy="{ src: item.src, loading: item.placeholder }" class="lazy" />
       </div>
     </div>
 
-    <div
-      ref="secondary"
-      v-if="withSecondary && images.length > 1"
-      @mousedown="startScrolling('secondary')"
-      @mouseleave="stopScrolling('secondary')"
-      @mouseup="stopScrolling('secondary')"
-      @mousemove="event => scrollSlider('secondary', event)"
-      class="secondary hidden sm:flex w:1/2 md:1/3"
-    >
+    <div v-if="withSecondary && imagesLeft.length > 0" class="menu menu-left">
       <div
-        v-for="(item, index) in slicedGallery"
+        v-for="(item, index) in imagesLeft"
         :key="index"
-        :style="{ 'background-image': `url(${item.thumbnail})` }"
-        :class="{ 'figure--ready': imageReady[item.id] }"
-        @click="scrollPrimaryTo((index + 1) % images.length)"
-        class="figure"
+        @click="scrollPrimaryTo(index * 2)"
+        :class="{ 'is-active': current === index * 2 }"
+        class="menu-item"
       >
-        <div class="figure-overlay"></div>
+        <img v-lazy="{ src: item.thumbnail, loading: item.thumbnailPlaceholder }" class="lazy" />
+      </div>
+    </div>
+    <div v-if="withSecondary && imagesRight.length > 0" class="menu menu-right">
+      <div
+        v-for="(item, index) in imagesRight"
+        :key="index"
+        @click="scrollPrimaryTo(1 + index * 2)"
+        :class="{ 'is-active': current === 1 + index * 2 }"
+        class="menu-item"
+      >
+        <img v-lazy="{ src: item.thumbnail, loading: item.thumbnailPlaceholder }" class="lazy" />
       </div>
     </div>
 
-    <div class="primary-dots absolute left-0 bottom-0 p-5 flex flex-horizontal sm:hidden">
+    <div v-if="images.length > 0" class="dots">
       <div
         v-for="(item, index) in images"
         :key="item.id"
-        :class="{ 'bg-white': current === index }"
+        :class="{ 'is-active': current === index }"
         @click="scrollPrimaryTo(index)"
-        class="dot mx-2 p-1 border rounded cursor-pointer"
+        class="dot"
       />
     </div>
 
@@ -100,13 +95,13 @@ export default {
   props: {
     images: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
 
     withSecondary: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
 
   data: () => ({
@@ -119,28 +114,21 @@ export default {
         el: 'slider',
         scrolled: 0,
         x: null,
-        left: null
+        left: null,
       },
       secondary: {
         scrolling: false,
         scrolled: 0,
         el: 'secondary',
         x: null,
-        left: null
-      }
+        left: null,
+      },
     },
 
-    photoSwipe: null
+    photoSwipe: null,
   }),
 
   computed: {
-    slicedGallery() {
-      const result = [...this.images].slice(1)
-      result.push(this.images[0])
-
-      return result
-    },
-
     primaryImageWidth() {
       if (!this.$refs.slider || this.$refs.slider.children.length === 0) {
         return 0
@@ -149,13 +137,21 @@ export default {
       return this.$refs.slider.children[0].clientWidth
     },
 
+    imagesLeft() {
+      return this.images.filter((image, index) => index % 2 === 0)
+    },
+
+    imagesRight() {
+      return this.images.filter((image, index) => index % 2 !== 0)
+    },
+
     secondaryImageWidth() {
       if (!this.$refs.secondary || this.$refs.secondary.children.length === 0) {
         return 0
       }
 
       return this.$refs.secondary.children[0].clientWidth
-    }
+    },
   },
 
   mounted() {
@@ -164,7 +160,7 @@ export default {
       'resize',
       debounce(() => {
         self.scrollPrimaryTo(self.current)
-      }, 200)
+      }, 200),
     )
 
     this.initImages()
@@ -175,7 +171,7 @@ export default {
       'resize',
       debounce(() => {
         self.scrollPrimaryTo(self.current)
-      }, 200)
+      }, 200),
     )
   },
 
@@ -214,9 +210,9 @@ export default {
         this.images.map(image => ({
           src: image.large,
           msrc: image.src,
-          w: 1200,
-          h: 1200,
-          title: image.title
+          w: image.width,
+          h: image.height,
+          title: image.title,
         })),
         {
           index,
@@ -224,17 +220,17 @@ export default {
           closeOnScroll: false,
           bgOpacity: 0.9,
           getThumbBoundsFn() {
-            const image = self.$refs.slider.childNodes[self.photoSwipe.getCurrentIndex()]
+            const image = self.$refs.slider.childNodes[self.photoSwipe.getCurrentIndex()].firstChild
             const pageYScroll = window.pageYOffset || document.documentElement.scrollTop
             const imageRect = image.getBoundingClientRect()
 
             return {
               x: imageRect.left,
               y: imageRect.top + pageYScroll,
-              w: imageRect.width
+              w: imageRect.width,
             }
-          }
-        }
+          },
+        },
       )
       this.photoSwipe.init()
       this.photoSwipe.listen('beforeChange', () => {
@@ -251,7 +247,9 @@ export default {
     },
 
     scrollSecondaryTo(index) {
-      this.$refs.secondary.scrollTo(index * this.secondaryImageWidth, 0)
+      if (this.$refs.secondary) {
+        this.$refs.secondary.scrollTo(index * this.secondaryImageWidth, 0)
+      }
     },
 
     startScrolling(key) {
@@ -277,8 +275,8 @@ export default {
       this.scroll[key].scrolled += walk
 
       this.$refs[this.scroll[key].el].scrollLeft = this.scroll[key].left - walk
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -286,27 +284,46 @@ export default {
 @import '~/assets/css/variables';
 @import '~/assets/css/colors';
 
+.gallery {
+  display: flex;
+  width: 600px;
+  height: 600px;
+  margin: auto;
+  margin-bottom: 100px;
+}
+
 .slider {
   display: flex;
+  flex: 1;
   align-items: center;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  background: $color-background;
+  border: 0.5ch solid white;
+  background: #08080e;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
 
   .slider-item {
     position: relative;
+    display: flex;
     flex: 1;
     flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
     min-width: 100%;
     height: 100%;
-    padding-bottom: 100%;
-    background: $color-background;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+    text-align: center;
+    cursor: pointer;
     scroll-snap-align: start;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+
+    img {
+      max-width: 100%;
+      height: auto;
+      max-height: 100%;
+    }
 
     .slider-item-overlay {
       position: absolute;
@@ -318,11 +335,70 @@ export default {
       opacity: 1;
       transition: opacity 0.4s ease-in-out;
     }
+  }
+}
 
-    &--ready {
-      .slider-item-overlay {
-        opacity: 0;
+.menu {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 200px;
+  height: 600px;
+
+  &.menu-left {
+    left: -250px;
+
+    .menu-item {
+      &::before {
+        content: '';
+        position: absolute;
+        top: calc(50% - 0.25ch);
+        right: calc(-50px - 0.5ch);
+        left: 100%;
+        border-bottom: 0.5ch solid white;
+        transform: scale3d(0, 1, 0);
+        transform-origin: center left;
       }
+    }
+  }
+  &.menu-right {
+    right: -250px;
+
+    .menu-item {
+      &::before {
+        content: '';
+        position: absolute;
+        top: calc(50% - 0.25ch);
+        right: 100%;
+        left: calc(-50px - 0.5ch);
+        border-bottom: 0.5ch solid white;
+        transform: scale3d(0, 1, 0);
+        transform-origin: center right;
+      }
+    }
+  }
+
+  .menu-item {
+    position: relative;
+    margin: 0.5em 0;
+    cursor: pointer;
+
+    img {
+      width: 200px;
+      height: 200px;
+      border-radius: 12px;
+    }
+
+    &.is-active {
+      &::before {
+        transform: scale3d(1, 1, 1);
+      }
+    }
+
+    &::before {
+      transition: transform 0.4s ease-in-out;
     }
   }
 }
@@ -332,59 +408,97 @@ export default {
   display: none;
 }
 
-.secondary {
-  align-items: center;
-  justify-content: space-between;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
+.dots {
+  position: absolute;
+  bottom: -40px;
+  left: 0;
+  display: flex;
+  padding: 12px 0;
+  padding-right: 50px;
+  background: white;
 
-  .figure {
-    position: relative;
-    flex: 1;
-    flex-shrink: 0;
-    min-width: calc(50% - 1px);
-    height: 100%;
-    margin: 4px 2px;
-    padding-bottom: calc(50% - 1px);
-    background: $color-background;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    scroll-snap-align: start;
+  .dot {
+    margin: 0 12px;
+    padding: 8px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.4s ease-in-out;
 
-    @media (min-width: 1024px) {
-      min-width: calc(33.33333% - 1px);
-      padding-bottom: calc(33.33333% - 1px);
+    &.is-active {
+      background: #333;
     }
+  }
+}
 
-    &:first-child {
-      margin-left: 0;
-    }
-    &:last-child {
-      margin-right: 0;
-    }
-    .figure-overlay {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      background: $color-background;
-      opacity: 0.8;
-      transition: opacity 0.4s ease-in-out;
-    }
+@media (max-width: theme('screens.xl')) {
+  .gallery {
+    width: 500px;
+    height: 500px;
 
-    &--ready {
-      .figure-overlay {
-        opacity: 0;
+    .menu {
+      width: 150px;
+      height: 500px;
+
+      &.menu-left {
+        left: -200px;
+      }
+      &.menu-right {
+        right: -200px;
+      }
+
+      img {
+        width: 150px;
+        height: 150px;
       }
     }
   }
 }
 
-.primary-dots .dot {
-  transition: background 0.4s ease-in-out;
+@media (max-width: theme('screens.xl')) {
+  .gallery {
+    width: 450px;
+    height: 450px;
+
+    .menu {
+      width: 130px;
+      height: 450px;
+
+      &.menu-left {
+        left: -150px;
+
+        .menu-item::before {
+          right: calc(-20px - 0.5ch);
+        }
+      }
+      &.menu-right {
+        right: -150px;
+
+        .menu-item::before {
+          left: calc(-20px - 0.5ch);
+        }
+      }
+
+      img {
+        width: 130px;
+        height: 130px;
+      }
+    }
+  }
+}
+
+@media (max-width: theme('screens.md')) {
+  .gallery {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+
+    .slider {
+    }
+
+    .menu {
+      display: none;
+    }
+  }
 }
 </style>

@@ -2,7 +2,7 @@
   <header
     :class="{
       'header--minimized': isMinimized,
-      'header--home': !isMinimized
+      'header--home': !isMinimized,
     }"
     class="header"
   >
@@ -14,8 +14,8 @@
 
     <div :style="{ 'background-image': background ? `url(${background.image.src})` : '' }" class="background" />
     <div class="social-icons">
-      <a v-for="(item, index) in social" :key="index" :href="item.link" class="social-icons__icon" target="__blank" >
-        <font-awesome-icon :icon="['fab', item.icon]" size="lg"/>
+      <a v-for="(item, index) in social" :key="index" :href="item.link" class="social-icons__icon" target="__blank">
+        <font-awesome-icon :icon="['fab', item.icon]" size="lg" />
       </a>
     </div>
     <div class="title">
@@ -34,18 +34,14 @@
       >
         <ul class="popper">
           <li v-for="subMenu of item.children" :key="subMenu.id">
-            <router-link
-              :to="subMenu.link"
-              v-text="subMenu.title"
-              class="link"
-            />
+            <router-link :to="subMenu.link" v-text="subMenu.title" class="link" />
           </li>
         </ul>
 
         <button slot="reference">
           <router-link
             :to="item.link"
-            :class="{ 'active': isMenuActive(item.link) }"
+            :class="{ active: isMenuActive(item.link) }"
             v-text="item.title"
             class="menu-item link"
           />
@@ -65,8 +61,14 @@
           </li>
         </ul>
         <div class="mobile-body__social">
-          <a v-for="(item, index) in social" :key="index" :href="item.link" class="mobile-body__social__icon" target="__blank" >
-            <font-awesome-icon :icon="['fab', item.icon]" size="lg"/>
+          <a
+            v-for="(item, index) in social"
+            :key="index"
+            :href="item.link"
+            class="mobile-body__social__icon"
+            target="__blank"
+          >
+            <font-awesome-icon :icon="['fab', item.icon]" size="lg" />
           </a>
         </div>
       </div>
@@ -85,15 +87,15 @@ export default {
   name: 'LayoutHeader',
 
   components: {
-    'popper': Popper
+    popper: Popper,
   },
 
   data: () => ({
     social: [
       { icon: 'youtube', link: socialNetworks.youtube.url },
       { icon: 'instagram', link: socialNetworks.instagram.url },
-      { icon: 'facebook', link: socialNetworks.facebook.url }
-    ]
+      { icon: 'facebook', link: socialNetworks.facebook.url },
+    ],
   }),
 
   computed: {
@@ -101,7 +103,7 @@ export default {
 
     isMinimized() {
       return this.$route.fullPath !== '/' && this.$route.fullPath !== ''
-    }
+    },
   },
 
   methods: {
@@ -112,17 +114,17 @@ export default {
       this.$router.push(link)
     },
 
-    isMenuActive (link) {
+    isMenuActive(link) {
       return this.$route.path.includes(link)
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style scoped lang="scss">
 /* purgecss start ignore */
-@import "~/assets/css/colors";
-@import "~/assets/css/variables";
+@import '~/assets/css/colors';
+@import '~/assets/css/variables';
 
 header {
   position: relative;
@@ -130,96 +132,6 @@ header {
   height: 100vh;
   transition: all 0.4s ease-in-out;
   transition-delay: 0.1s;
-
-  @media (max-width: theme('screens.sm')) {
-    .mobile-menu {
-      position: absolute;
-      top: $header-height-xs / 2;
-      left: 20px;
-      display: block;
-      filter: drop-shadow(0 0 1px black) drop-shadow(0 0 1px black) drop-shadow(0 0 1px black);
-      transform: translate3d(0, -50%, 0);
-      .nav-icon {
-        width: 26px;
-
-        &::after,
-        &::before,
-        div {
-          content: '';
-          display: block;
-          height: 4px;
-          margin: 8px 0;
-          border-radius: 3px;
-          background-color:white;
-          transition: all .4s ease-in-out;
-        }
-
-        &--active::before {
-          transform: translateY(12px) rotate(135deg);
-        }
-
-        &--active::after {
-          transform: translateY(-12px) rotate(-135deg);
-        }
-
-        &--active div {
-          transform: scale(0);
-        }
-      }
-    }
-
-    .social-icons {
-      padding: 11px 20px;
-      font-size: 26px;
-      &__icon {
-        margin-left: 25px;
-      }
-    }
-
-    &.header--home {
-      .title {
-        align-items: center;
-        h1 {
-          font-size: 7em;
-
-          @media (max-width: 520px) {
-            font-size: 5em;
-          }
-          @media (max-width: 400px) {
-            font-size: 4em;
-          }
-        }
-      }
-    }
-
-    &.header--minimized {
-      height: $header-height-xs;
-
-      .social-icons {
-        top: -100%;
-      }
-
-      .title {
-        overflow: hidden;
-        height: $header-height-xs;
-        margin-left: 40px;
-        line-height: $header-height-xs;
-        text-overflow: ellipsis;
-        h1 {
-          font-size: 3em;
-          @media (max-width: 500px) {
-            font-size: 3em;
-          }
-          @media (max-width: 450px) {
-            font-size: 2em;
-          }
-          @media (max-width: 320px) {
-            font-size: 1.5em;
-          }
-        }
-      }
-    }
-  }
 
   .background {
     position: absolute;
@@ -260,10 +172,6 @@ header {
     filter: drop-shadow(0 0 1px black) drop-shadow(0 0 1px black) drop-shadow(0 0 1px black) drop-shadow(0 0 1px black);
     transition: all 0.4s ease-in-out;
 
-    @media (min-width: theme('screens.md')) {
-      height: calc(100% - 100px);
-    }
-
     h1 {
       color: white;
       font-size: 3em;
@@ -287,6 +195,10 @@ header {
         font-size: 8em;
       }
     }
+
+    @media (min-width: theme('screens.md')) {
+      height: calc(100% - 100px);
+    }
   }
 
   .menu {
@@ -304,10 +216,6 @@ header {
     font-size: 2em;
     font-family: $font-header;
     transition: all 0.4s ease-in-out;
-
-    @media (min-width: theme('screens.sm')) {
-      display: flex;
-    }
 
     .menu-item {
       position: relative;
@@ -328,6 +236,10 @@ header {
         background-color: black;
       }
     }
+
+    @media (min-width: theme('screens.sm')) {
+      display: flex;
+    }
   }
 
   &.header--minimized {
@@ -335,14 +247,13 @@ header {
     background-position: center bottom -20px;
 
     .title {
-      @media (min-width: theme('screens.md')) {
-        height: calc(100% - 40px);
-      }
-
       h1 {
         @media (max-width: theme('screens.sm')) {
           font-size: 3em;
         }
+      }
+      @media (min-width: theme('screens.md')) {
+        height: calc(100% - 40px);
       }
     }
 
@@ -411,12 +322,103 @@ header {
       }
     }
   }
+
+  @media (max-width: theme('screens.sm')) {
+    .mobile-menu {
+      position: absolute;
+      top: $header-height-xs / 2;
+      left: 20px;
+      display: block;
+      filter: drop-shadow(0 0 1px black) drop-shadow(0 0 1px black) drop-shadow(0 0 1px black);
+      transform: translate3d(0, -50%, 0);
+      .nav-icon {
+        width: 26px;
+
+        &::after,
+        &::before,
+        div {
+          content: '';
+          display: block;
+          height: 4px;
+          margin: 8px 0;
+          border-radius: 3px;
+          background-color: white;
+          transition: all 0.4s ease-in-out;
+        }
+
+        &--active::before {
+          transform: translateY(12px) rotate(135deg);
+        }
+
+        &--active::after {
+          transform: translateY(-12px) rotate(-135deg);
+        }
+
+        &--active div {
+          transform: scale(0);
+        }
+      }
+    }
+
+    .social-icons {
+      padding: 11px 20px;
+      font-size: 26px;
+      &__icon {
+        margin-left: 25px;
+      }
+    }
+
+    &.header--home {
+      .title {
+        align-items: center;
+        h1 {
+          font-size: 7em;
+
+          @media (max-width: 520px) {
+            font-size: 5em;
+          }
+          @media (max-width: 400px) {
+            font-size: 4em;
+          }
+        }
+      }
+    }
+
+    &.header--minimized {
+      height: $header-height-xs;
+
+      .social-icons {
+        top: -100%;
+      }
+
+      .title {
+        overflow: hidden;
+        height: $header-height-xs;
+        margin-left: 40px;
+        line-height: $header-height-xs;
+        text-overflow: ellipsis;
+        h1 {
+          font-size: 3em;
+          @media (max-width: 500px) {
+            font-size: 3em;
+          }
+          @media (max-width: 450px) {
+            font-size: 2em;
+          }
+          @media (max-width: 320px) {
+            font-size: 1.5em;
+          }
+        }
+      }
+    }
+  }
 }
 
-.mobile-body-enter-active, .mobile-body-leave-active {
-  transition: all .4s ease-in-out;
+.mobile-body-enter-active,
+.mobile-body-leave-active {
+  transition: all 0.4s ease-in-out;
   .mobile-body__social__icon {
-    transition: all .4s ease-in-out;
+    transition: all 0.4s ease-in-out;
   }
   .mobile-body__social__icon:nth-child(2) {
     transition-delay: 0.05s;
@@ -427,7 +429,8 @@ header {
     transition-duration: 0.3s;
   }
 }
-.mobile-body-enter, .mobile-body-leave-to {
+.mobile-body-enter,
+.mobile-body-leave-to {
   opacity: 0;
 
   .mobile-body__social__icon {

@@ -21,9 +21,5 @@ export default {
       return this.tag
     },
   },
-
-  mounted() {
-    console.log(this.component, this.attributes)
-  },
 }
 </script>

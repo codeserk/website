@@ -88,9 +88,11 @@ export default {
 .card {
   display: block;
   width: 300px;
-  background: transparent;
   margin: 2em 1em;
+  background: transparent;
   cursor: pointer;
+  transition: transform 0.4s ease-in-out;
+  transform-origin: center;
 
   .title {
     overflow: hidden;
@@ -101,7 +103,6 @@ export default {
   .card-content {
     position: relative;
     // background: white;
-    position: relative;
     overflow: hidden;
     height: 290px;
     background-size: cover;
@@ -120,8 +121,8 @@ export default {
       transition: all 0.4s ease-in-out;
 
       .progress {
-        margin-bottom: 0.5em;
         width: 120px;
+        margin-bottom: 0.5em;
         transition: transform 0.4s ease-in-out;
       }
       .extra-content {
@@ -142,16 +143,13 @@ export default {
 
     .image {
       position: absolute;
-      right: 1em;
       top: 1em;
-      border-radius: 12px;
+      right: 1em;
       width: 100px;
       height: 100px;
+      border-radius: 12px;
     }
   }
-
-  transition: transform 0.4s ease-in-out;
-  transform-origin: center;
   &:hover {
     transform: scale3d(1.1, 1.1, 1.1);
   }

@@ -9,6 +9,8 @@ termsMap:
 extra:
   progress: 50
   status: deprecated
+  startDate: 2015-01-01
+  endDate: 2015-06-01
   repository: https://bitbucket.org/josec89/meetingpoint-node/src/master/
 ---
 

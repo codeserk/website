@@ -10,6 +10,8 @@ termsMap:
 extra:
   progress: 50
   status: abandoned
+  startDate: 2018-05-27
+  endDate: 2018-06-14
 ---
 
 iOS app to plan hiking routes.
