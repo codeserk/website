@@ -1,6 +1,7 @@
 ---
 slug: redis
 name: Redis
+featuredImageId: database/redis
 extra:
   order: 3
   status: adopted

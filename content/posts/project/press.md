@@ -4,6 +4,14 @@ title: Press
 termsMap:
   development-area:
     - web
+  database:
+    - mysql
+    - redis
+  language:
+    - typescript
+  technology:
+    - wordpress
+    - graphql
 extra:
   progress: 50
   status: wip

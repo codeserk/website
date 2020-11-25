@@ -43,7 +43,7 @@ export default async function wordpressModule(this: any) {
     .withConfig({
       cache: {
         enabled: true,
-        ttl: this.isDev ? 60 * 60 : 60,
+        ttl: this.isDev ? 0 : 60,
       },
     })
     .withPermalinks({

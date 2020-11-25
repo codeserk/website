@@ -1,6 +1,7 @@
 ---
 slug: jaeger
 name: Jaeger
+featuredImageId: technology/jaeger
 extra:
   order: 3
   status: adopted

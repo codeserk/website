@@ -1,7 +1,7 @@
 ---
 slug: walkaholic
 title: Walkaholic
-featuredImageId: walkaholic_logo
+featuredImageId: project/walkaholic/logo
 termsMap:
   development-area:
     - ios

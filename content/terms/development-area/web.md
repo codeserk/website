@@ -1,7 +1,7 @@
 ---
 slug: web
 name: Web
-featuredImageId: development_web
+featuredImageId: development/web
 extra:
   order: 1
   knowledge: 90

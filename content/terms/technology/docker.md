@@ -1,6 +1,7 @@
 ---
 slug: docker
 name: Docker
+featuredImageId: technology/docker
 extra:
   order: 1
   status: adopted

@@ -287,7 +287,7 @@ export default {
 .gallery {
   display: flex;
   width: 600px;
-  height: 600px;
+  max-height: 600px;
   margin: auto;
   margin-bottom: 100px;
 }
@@ -345,7 +345,7 @@ export default {
   align-items: center;
   justify-content: space-evenly;
   width: 200px;
-  height: 600px;
+  max-height: 600px;
 
   &.menu-left {
     left: -250px;
@@ -434,7 +434,7 @@ export default {
 @media (max-width: theme('screens.xl')) {
   .gallery {
     width: 500px;
-    height: 500px;
+    max-height: 500px;
 
     .menu {
       width: 150px;
@@ -458,7 +458,7 @@ export default {
 @media (max-width: theme('screens.xl')) {
   .gallery {
     width: 450px;
-    height: 450px;
+    max-height: 450px;
 
     .menu {
       width: 130px;

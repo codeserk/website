@@ -1,7 +1,7 @@
 ---
 slug: angular-1
 name: Angular v1.0
-featuredImageId: framework_angular-logo
+featuredImageId: framework/angular
 extra:
   knowledge: 10
   status: deprecated

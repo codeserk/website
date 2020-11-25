@@ -1,6 +1,7 @@
 ---
 slug: scss
 name: SCSS
+featuredImageId: technology/scss
 extra:
   order: 1
   status: adopted

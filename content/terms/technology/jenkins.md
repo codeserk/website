@@ -1,6 +1,7 @@
 ---
 slug: jenkins
 name: Jenkins
+featuredImageId: technology/jenkins
 extra:
   order: 4
   status: trial

@@ -1,6 +1,7 @@
 ---
 slug: java
 name: Java
+featuredImageId: language/java
 extra:
     order: 4
     status: deprecated

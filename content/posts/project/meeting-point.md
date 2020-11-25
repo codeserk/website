@@ -1,11 +1,22 @@
 ---
 slug: meeting-point
 title: Meeting Point
-featuredImageId: meeting-point_screenshot
+featuredImageId: project/meeting-point/screenshot
 termsMap:
   development-area:
     - web
     - android
+  database:
+    - mongodb
+  framework:
+    - angular-1
+  language:
+    - java
+    - javascript
+  technology:
+    - websockets
+    - scss
+    - phonegap
 extra:
   progress: 50
   status: deprecated

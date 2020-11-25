@@ -1,6 +1,7 @@
 ---
 slug: honeycomb
 name: Honeycomb
+featuredImageId: technology/honeycomb
 extra:
   order: 4
   status: want-to-learn

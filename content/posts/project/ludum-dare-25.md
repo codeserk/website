@@ -1,10 +1,12 @@
 ---
 slug: ludum-dare-25
 title: Ludum Dare 25
-featuredImageId: project_ludum-dare-25-header
+featuredImageId: project/ludum-dare-25/header
 termsMap:
   development-area:
     - game
+  language:
+    - java
 extra:
   progress: 100
   status: completed

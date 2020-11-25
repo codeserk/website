@@ -1,6 +1,7 @@
 ---
 slug: firebase
 name: Firebase
+featuredImageId: technology/firebase
 extra:
   order: 10
   status: adopted

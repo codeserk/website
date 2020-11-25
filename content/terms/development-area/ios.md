@@ -1,7 +1,7 @@
 ---
 slug: ios
 name: iOS
-featuredImageId: development_ios
+featuredImageId: development/ios
 extra:
   order: 4
   knowledge: 40

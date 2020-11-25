@@ -1,6 +1,7 @@
 ---
 slug: elastic
 name: Elasticsearch
+featuredImageId: database/elasticsearch
 extra:
   order: 4
   status: trial

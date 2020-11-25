@@ -1,6 +1,7 @@
 ---
 slug: rabbitmq
 name: RabbitMQ
+featuredImageId: message-broker/rabbitmq
 extra:
   order: 1
   status: adopted

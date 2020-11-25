@@ -1,6 +1,7 @@
 ---
 slug: mysql
 name: MySQL
+featuredImageId: database/mysql
 extra:
   order: 1
   status: adopted

@@ -1,6 +1,7 @@
 ---
 slug: c
 name: C
+featuredImageId: language/c
 extra:
     order: 9
     status: unused

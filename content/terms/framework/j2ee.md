@@ -1,7 +1,7 @@
 ---
 slug: j2ee
 name: J2EE
-featuredImageId: framework_j2ee-logo
+featuredImageId: framework/j2ee
 extra:
   order: 10
   status: deprecated

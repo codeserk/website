@@ -1,7 +1,7 @@
 ---
 slug: vue
 name: Vue
-featuredImageId: framework_vue-logo
+featuredImageId: framework/vue
 extra:
   order: 2
   status: adopted

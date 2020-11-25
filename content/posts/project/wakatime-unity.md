@@ -1,10 +1,14 @@
 ---
 slug: wakatime-unity
 title: Wakatime for Unity
-featuredImageId: wakatime_screenshot
+featuredImageId: project/wakatime-unity/screenshot
 termsMap:
   development-area:
     - game
+  framework:
+    - unity
+  language:
+    - csharp
 extra:
   progress: 100
   status: completed

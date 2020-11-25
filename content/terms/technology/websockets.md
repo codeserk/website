@@ -1,6 +1,7 @@
 ---
 slug: websockets
 name: WebSockets
+featuredImageId: technology/socketio
 extra:
   order: 2
   status: adopted

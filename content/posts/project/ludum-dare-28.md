@@ -1,9 +1,17 @@
 ---
 slug: ludum-dare-28
 title: Ludum Dare 28
+featuredImageId: project/ludum-dare-28/icon
+galleryImageIds:
+  - project/ludum-dare-28/screenshot-1
+  - project/ludum-dare-28/screenshot-2
 termsMap:
   development-area:
     - game
+  framework:
+    - unity
+  language:
+    - csharp
 extra:
   progress: 100
   status: completed

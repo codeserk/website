@@ -6,7 +6,7 @@
 
         <template v-if="term.description">
           <hr />
-          <dom-content v-bind="term.dom" aos="fade-up" />
+          <dom-content v-bind="term.dom" aos="appear" />
         </template>
       </div>
 

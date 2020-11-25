@@ -1,6 +1,7 @@
 ---
 slug: c-sharp
 name: C#
+featuredImageId: language/csharp
 extra:
     order: 7
     status: adopted

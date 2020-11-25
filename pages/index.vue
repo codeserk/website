@@ -1,7 +1,7 @@
 <template>
   <main>
     <header class="header">
-      <h1>José Cámara <span class="subtitle">@codeserk</span></h1>
+      <h1>Jos<span class="color">é</span> C<span class="color">á</span>mara <span class="subtitle">@codeserk</span></h1>
     </header>
 
     <div class="sections">
@@ -187,16 +187,17 @@ export default {
     position: relative;
     overflow: hidden;
     font-size: 1.2em;
+    color: white;
 
-    &::after {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      z-index: 1;
-      animation: textAppear 0.5s ease-in-out;
+    .color {
+      animation-name: header-color;
+      animation-fill-mode: forwards;
+      animation-duration: 1s;
+      animation-delay: 4s;
+      animation-timing-function: ease-in;
+      opacity: 1;
     }
+
     .subtitle {
       display: block;
       font-size: 0.75em;
@@ -228,6 +229,15 @@ export default {
 @media (min-width: 1500px) {
   .header {
     font-size: 8em;
+  }
+}
+
+@keyframes header-color {
+  0% {
+    color: white;
+  }
+  100% {
+    color: red;
   }
 }
 </style>

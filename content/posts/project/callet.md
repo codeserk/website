@@ -1,18 +1,28 @@
 ---
 slug: callet
 title: Arena Heroes
-featuredImageId: callet_icon
+featuredImageId: project/callet/icon
+galleryImageIds:
+  - project/callet/screenshot-1
+  - project/callet/screenshot-2
+  - project/callet/screenshot-3
+  - project/callet/screenshot-4
+  - project/callet/screenshot-5
+  - project/callet/screenshot-6
+  - project/callet/screenshot-7
+  - project/callet/screenshot-8
 termsMap:
   development-area:
     - game
+  framework:
+    - unity
   language:
     - csharp
     - javascript
   technology:
     - firebase
-  framework:
-    - unity
 extra:
+  careerId: 2015-freelance
   progress: 100
   status: completed
   order: 2

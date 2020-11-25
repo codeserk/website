@@ -1,6 +1,7 @@
 ---
 slug: javascript
 name: JavaScript
+featuredImageId: language/javascript
 extra:
     order: 2
     status: deprecated

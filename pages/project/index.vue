@@ -1,6 +1,7 @@
 <template>
   <page-wrapper title="Projects" header-class="centered" class="color full">
-    <projects-grid :projects="projects" />
+    <div class="container mx-auto">
+      <projects-grid :projects="projects" />
     </div>
   </page-wrapper>
 </template>

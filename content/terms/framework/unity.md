@@ -1,7 +1,7 @@
 ---
 slug: unity
 name: Unity
-featuredImageId: framework_unity-logo
+featuredImageId: framework/unity
 extra:
   order: 5
   status: adopted

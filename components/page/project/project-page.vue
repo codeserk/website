@@ -23,15 +23,15 @@
         </template>
       </time-block>
 
-      <template v-if="gallery.length > 0">
-        <h2>Gallery</h2>
-        <gallery :images="gallery" with-secondary />
-      </template>
+      <section v-if="gallery.length > 0">
+        <h2 class="heading">Gallery</h2>
+        <gallery :images="gallery" />
+      </section>
 
-      <template v-if="project.similar.length > 0">
-        <h2>Similar projects</h2>
+      <section v-if="project.similar.length > 0">
+        <h2 class="heading">Similar projects</h2>
         <project-grid :projects="project.similar" />
-      </template>
+      </section>
     </div>
   </page-wrapper>
 </template>

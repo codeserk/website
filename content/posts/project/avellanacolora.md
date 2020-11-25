@@ -1,19 +1,31 @@
 ---
 slug: avellana-colora
 title: Avellana Colorá
-featuredImageId: avellanacolora_logo
+featuredImageId: project/avellanacolora/logo
+galleryImageIds:
+  - project/avellanacolora/screenshot-1
+  - project/avellanacolora/screenshot-2
+  - project/avellanacolora/screenshot-3
+  - project/avellanacolora/screenshot-4
 termsMap:
   development-area:
     - web
+  database:
+    - mysql
+    - redis
+  framework:
+    - vue
+    - nuxt
   language:
     - javascript
     - typescript
     - php
   technology:
+    - graphql
+    - docker
+    - firebase
     - wordpress
-  framework:
-    - vue
-    - nuxt
+    - scss
 
 extra:
   progress: 100

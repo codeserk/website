@@ -1,6 +1,7 @@
 ---
 slug: c++
 name: C++
+featuredImageId: language/cpp
 extra:
     order: 8
     status: unused

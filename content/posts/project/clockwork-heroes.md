@@ -1,11 +1,17 @@
 ---
 slug: clockwork-heores
 title: Clockwork Heroes
-featuredImageId: cwh_logo
+featuredImageId: project/clockwork-heroes/logo
+galleryImageIds:
+  - project/clockwork-heroes/screenshot
 termsMap:
   development-area:
     - game
     - web
+  language:
+    - javascript
+  technology:
+    - websockets
 extra:
   progress: 10
   status: abandoned

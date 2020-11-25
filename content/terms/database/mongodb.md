@@ -1,6 +1,7 @@
 ---
 slug: mongodb
 name: MongoDB
+featuredImageId: database/mongodb
 extra:
   order: 2
   status: adopted

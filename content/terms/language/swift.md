@@ -1,6 +1,7 @@
 ---
 slug: swift
 name: Swift
+featuredImageId: language/swift
 extra:
     order: 6
     status: adopted

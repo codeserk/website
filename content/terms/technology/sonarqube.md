@@ -1,6 +1,7 @@
 ---
 slug: sonarqube
 name: SonarQube
+featuredImageId: technology/sonarqube
 extra:
   order: 5
   status: adopted

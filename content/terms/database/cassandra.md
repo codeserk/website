@@ -1,6 +1,7 @@
 ---
 slug: cassandra
 name: Cassandra
+featuredImageId: database/cassandra
 extra:
   order: 5
   status: deprecated

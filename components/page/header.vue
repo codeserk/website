@@ -82,6 +82,7 @@ export default {
       display: block;
       margin: 0 1em;
       margin-left: 1em;
+      border: none;
 
       .image-header {
         min-width: 200px;

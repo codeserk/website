@@ -1,6 +1,7 @@
 ---
 slug: php
 name: PHP
+featuredImageId: language/php
 extra:
     order: 10
     status: deprecated

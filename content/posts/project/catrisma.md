@@ -1,12 +1,30 @@
 ---
 slug: catrisma
 title: Catrisma
-featuredImageId: catrisma_logo
+featuredImageId: project/catrisma/logo
 termsMap:
   development-area:
     - web
     - android
     - ios
+  database:
+    - mongodb
+    - redis
+  framework:
+    - nestjs
+    - nuxt
+    - vue
+  language:
+    - kotlin
+    - typescript
+    - javascript
+    - swift
+  technology:
+    - docker
+    - firebase
+    - honeycomb
+    - scss
+    - websockets
 extra:
   progress: 10
   status: pending

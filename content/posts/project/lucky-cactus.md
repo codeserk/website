@@ -6,6 +6,19 @@ termsMap:
     - web
     - android
     - ios
+  framework:
+    - nestjs
+    - nuxt
+    - vue
+  language:
+    - typescript
+    - javascript
+    - kotlin
+    - swift
+  technology:
+    - firebase
+    - honeycomb
+    - scss
 extra:
   progress: 10
   status: designing

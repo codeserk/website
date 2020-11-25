@@ -1,6 +1,7 @@
 ---
 slug: typescript
 name: TypeScript
+featuredImageId: language/typescript
 extra:
     order: 1
     status: adopted

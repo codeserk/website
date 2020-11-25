@@ -1,7 +1,7 @@
 ---
 slug: android
 name: Android
-featuredImageId: development_android
+featuredImageId: development/android
 extra:
   order: 3
   knowledge: 60

@@ -1,6 +1,7 @@
 ---
 slug: kafka
 name: Kafka
+featuredImageId: message-broker/kafka
 extra:
   order: 2
   status: trial

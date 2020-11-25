@@ -1,6 +1,7 @@
 ---
 slug: wordpress
 name: WordPress
+featuredImageId: technology/wordpress
 extra:
   order: 10
   status: adopted

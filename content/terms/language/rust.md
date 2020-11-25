@@ -1,6 +1,7 @@
 ---
 slug: rust
 name: Rust
+featuredImageId: language/rust
 extra:
     order: 3
     status: want-to-learn

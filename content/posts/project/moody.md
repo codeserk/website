@@ -1,7 +1,7 @@
 ---
 slug: moody
 title: Moody
-featuredImageId: moody_header
+featuredImageId: project/moody/header
 termsMap:
   development-area:
     - web

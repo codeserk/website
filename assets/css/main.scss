@@ -160,19 +160,29 @@ div.px-mobile {
   background-color: white;
 }
 
-.pswp__top-bar {
-  display: none;
-}
+// .pswp__top-bar {
+//   display: none;
+// }
 
-.pswp__caption {
-  display: none;
-}
+// .pswp__caption {
+//   display: none;
+// }
 
 @media (min-width: theme('screens.sm')) {
   .container {
     padding-right: 48px;
     padding-left: 48px;
   }
+}
+
+.green {
+  color: green;
+}
+.red {
+  color: red;
+}
+.yellow {
+  color: yellow;
 }
 
 @import "./aos.scss";

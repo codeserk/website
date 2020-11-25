@@ -1,6 +1,7 @@
 ---
 slug: kotlin
 name: Kotlin
+featuredImageId: language/kotlin
 extra:
     order: 5
     status: adopted

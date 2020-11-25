@@ -1,7 +1,7 @@
 ---
 slug: business-intelligence
 name: Business Intelligence
-featuredImageId: development_business-intelligence
+featuredImageId: development/business-intelligence
 extra:
   order: 5
   knowledge: 20

@@ -1,7 +1,7 @@
 ---
 slug: game
 name: Game
-featuredImageId: development_game
+featuredImageId: development/game
 extra:
   order: 2
   knowledge: 60
