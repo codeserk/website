@@ -71,8 +71,9 @@
     font-family: $font-body;
   }
 
-  .link {
+  a, .link {
     text-decoration: dotted;
+    color: lime;
   }
 
   .without-margin {

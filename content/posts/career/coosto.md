@@ -1,9 +1,11 @@
 ---
 slug: coosto
 title: Coosto
+featuredImageId: career/coosto
 extra:
     startDate: 2017-05-01
     position: Senior Full-Stack Engineer
+    website: https://www.coosto.com/
 termsMap:
     development-area:
         - web

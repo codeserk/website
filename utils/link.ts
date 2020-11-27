@@ -7,5 +7,8 @@ export function beautifyLink(url: string): string {
     return url
   }
 
-  return url.replace('http://', '').replace('https://', '')
+  return url
+    .replace('http://', '')
+    .replace('https://', '')
+    .replace(/\/$/, '')
 }

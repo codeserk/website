@@ -1,7 +1,7 @@
 ---
 slug: cshap-in-unity-is-great
 title: C# in Unity is great (finally!)
-featuredImageId: framework_unity-logo
+featuredImageId: framework/unity
 termsMap:
   development-area:
     - game
@@ -14,10 +14,10 @@ termsMap:
 
 <div class="flex">
   <div class="flex-1">
-    <RouterLink class="text-center" to="/project/game/callet"><img src="callet_icon" /></RouterLink>
+    <RouterLink class="text-center" to="/project/game/callet"><img src="project/callet/icon" /></RouterLink>
   </div>
   <div class="flex-1">
-    <RouterLink class="text-center" to="/project/game/ivy"><img src="ivy_icon" /></RouterLink>
+    <RouterLink class="text-center" to="/project/game/ivy"><img src="project/ivy/icon" /></RouterLink>
   </div>
 </div>
 

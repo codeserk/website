@@ -14,7 +14,7 @@ export default {
   },
 
   async asyncData({ $source }) {
-    return $source.resolve('/language', ({ query }) =>
+    return $source.resolve('/career', ({ query }) =>
       query(
         `
           query career {
@@ -23,12 +23,17 @@ export default {
               startDate: extra(path: "startDate")
               endDate: extra(path: "endDate")
               position: extra(path: "position")
+              website: extra(path: "website")
               areas: terms(taxonomy: "development-area") { id slug name order: extra(path: "order") }
               languages: terms(taxonomy: "language") { id slug name order: extra(path: "order") }
               frameworks: terms(taxonomy: "framework") { id slug name order: extra(path: "order") }
               databases: terms(taxonomy: "database") { id slug name order: extra(path: "order") }
               brokers: terms(taxonomy: "message-broker") { id slug name order: extra(path: "order") }
               technologies: terms(taxonomy: "technology") { id slug name order: extra(path: "order") }
+              featuredImage {
+                image(resolution: Small, format: png, transform: { resize: { width: 290, height: 290 }}) { src }
+                placeholder: image(resolution: Placeholder, format: png, transform: { resize: { width: 16, height: 16 }}, output: Inline) { src }
+              }
             }
           }
         `,

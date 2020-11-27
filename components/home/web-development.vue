@@ -1,5 +1,5 @@
 <template>
-  <div class="web-development content">
+  <div class="web-development">
     <div class="frontend block skew with-shadow-left">
       <h3 class="title">Frontend</h3>
 

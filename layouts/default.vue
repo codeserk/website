@@ -1,12 +1,10 @@
 <template>
   <div>
-    <div
-      class="wrapper"
-    >
+    <div class="wrapper">
       <client-only>
         <background />
       </client-only>
-      <Nuxt  />
+      <Nuxt />
     </div>
 
     <layout-footer />
@@ -30,7 +28,7 @@ export default {
     Background,
     // LayoutHeader,
     LayoutFooter,
-    CookiesPopup: () => import('~/components/layout/cookies-popup')
+    CookiesPopup: () => import('~/components/layout/cookies-popup'),
   },
 
   computed: {
@@ -38,7 +36,7 @@ export default {
 
     isHome() {
       return this.$router.path !== '/' && this.$router.path !== ''
-    }
+    },
   },
 
   watch: {
@@ -49,31 +47,39 @@ export default {
       } else {
         document.body.style.overflow = 'inherit'
       }
-    }
+    },
   },
 
   mounted() {
-    window.addEventListener('resize', debounce(() => {
-      if (window.innerWidth >= 640) {
-        this.hideMobileOverlay()
-      }
-    }, 50))
+    window.addEventListener(
+      'resize',
+      debounce(() => {
+        if (window.innerWidth >= 640) {
+          this.hideMobileOverlay()
+        }
+      }, 50),
+    )
   },
 
   methods: {
-    ...mapActions(['hideMobileOverlay', 'setSearchResults'])
-  }
+    ...mapActions(['hideMobileOverlay', 'setSearchResults']),
+  },
 }
 </script>
 
 <style lang="scss" scoped>
-@import "~/assets/css/variables";
+@import '~/assets/css/variables';
+
+.wrapper {
+  position: relative;
+}
 
 .list-item {
   display: inline-block;
   margin-right: 10px;
 }
-.list-enter-active, .list-leave-active {
+.list-enter-active,
+.list-leave-active {
   transition: all 1s;
 }
 .list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
@@ -102,5 +108,4 @@ export default {
   opacity: 0;
   transform: translate(-2em, 0);
 }
-
 </style>

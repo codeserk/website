@@ -1,6 +1,7 @@
 ---
 slug: freelance-2015
 title: Freelance App developer
+featuredImageId: project/callet/icon
 termsMap:
   development-area:
     - web

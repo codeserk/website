@@ -13,10 +13,17 @@
           </div>
 
           <terms-map :item="item" />
+
+          <template v-if="item.website">
+            <hr />
+
+            <a :href="item.website" v-text="item.beautifiedWebsite" target="_blank" />
+          </template>
         </section>
       </template>
 
       <template #right-block>
+        <img v-if="item.featuredImage" v-lazy="item.image" class="image lazy" />
         <dom-content v-bind="item.dom" class="mx-auto" aos="appear" />
       </template>
     </time-block>
@@ -24,6 +31,7 @@
 </template>
 
 <script>
+import { beautifyLink } from '../../utils/link'
 import { sortByDate, sortByOrder } from '../../utils/sort'
 
 export default {
@@ -46,6 +54,11 @@ export default {
       return [...this.career].sort(sortByDate('startDate')).map(item => {
         return {
           ...item,
+          image: {
+            src: item.featuredImage?.image.src,
+            loading: item.featuredImage?.placeholder.src,
+          },
+          beautifiedWebsite: item.website ? beautifyLink(item.website) : undefined,
           areas: item.areas.sort(sortByOrder),
           languages: item.languages.sort(sortByOrder),
           frameworks: item.frameworks.sort(sortByOrder),
@@ -62,6 +75,17 @@ export default {
 <style lang="scss" scoped>
 .no-position {
   display: none;
+}
+
+.item {
+  img.image {
+    display: inline;
+    width: 150px;
+    height: 150px;
+    margin-left: 1em;
+    margin-bottom: 1em;
+    float: right;
+  }
 }
 
 .position {

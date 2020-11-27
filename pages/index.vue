@@ -7,7 +7,7 @@
     <div class="sections">
       <section>
         <h2>About me 🐱</h2>
-        <about-me />
+        <about-me :images="{ avatar, mia, ryuk }" />
       </section>
 
       <section>
@@ -72,17 +72,35 @@ export default {
       query(
         `
           query index {
+            avatar: mediaById(id: "avatar") {
+              image(resolution: Small, format: png, transform: { resize: { width: 290, height: 290 }}) { src }
+              placeholder: image(resolution: Placeholder, format: png, transform: { resize: { width: 16, height: 16 }}, output: Inline) { src }
+            }
+            mia: mediaById(id: "mia") {
+              image(resolution: Small, format: png, transform: { resize: { width: 290, height: 290 }}) { src }
+              placeholder: image(resolution: Placeholder, format: png, transform: { resize: { width: 16, height: 16 }}, output: Inline) { src }
+            }
+            ryuk: mediaById(id: "ryuk") {
+              image(resolution: Small, format: png, transform: { resize: { width: 290, height: 290 }}) { src }
+              placeholder: image(resolution: Placeholder, format: png, transform: { resize: { width: 16, height: 16 }}, output: Inline) { src }
+            }
+
             career: posts(type: "career") {
               id slug title content dom
               startDate: extra(path: "startDate")
               endDate: extra(path: "endDate")
               position: extra(path: "position")
+              website: extra(path: "website")
               areas: terms(taxonomy: "development-area") { id slug name order: extra(path: "order") }
               languages: terms(taxonomy: "language") { id slug name order: extra(path: "order") }
               frameworks: terms(taxonomy: "framework") { id slug name order: extra(path: "order") }
               databases: terms(taxonomy: "database") { id slug name order: extra(path: "order") }
               brokers: terms(taxonomy: "message-broker") { id slug name order: extra(path: "order") }
               technologies: terms(taxonomy: "technology") { id slug name order: extra(path: "order") }
+              featuredImage {
+                image(resolution: Small, format: png, transform: { resize: { width: 290, height: 290 }}) { src }
+                placeholder: image(resolution: Placeholder, format: png, transform: { resize: { width: 16, height: 16 }}, output: Inline) { src }
+              }
             }
 
             areas: terms(taxonomy: "development-area") {
@@ -186,16 +204,16 @@ export default {
   h1 {
     position: relative;
     overflow: hidden;
-    font-size: 1.2em;
     color: white;
+    font-size: 1.2em;
 
     .color {
-      animation-name: header-color;
-      animation-fill-mode: forwards;
-      animation-duration: 1s;
-      animation-delay: 4s;
-      animation-timing-function: ease-in;
       opacity: 1;
+      animation-name: header-color;
+      animation-duration: 1s;
+      animation-timing-function: ease-in;
+      animation-delay: 4s;
+      animation-fill-mode: forwards;
     }
 
     .subtitle {

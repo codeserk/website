@@ -15,6 +15,12 @@
             </div>
 
             <terms-map :item="job" />
+
+            <template v-if="job.website">
+              <hr />
+
+              <a :href="job.website" v-text="beautifiedWebsite" target="_blank" />
+            </template>
           </section>
         </template>
 
@@ -27,6 +33,7 @@
 </template>
 
 <script>
+import { beautifyLink } from '../../utils/link'
 import { generateSeoMeta } from '../../utils/seo'
 
 export default {
@@ -38,8 +45,12 @@ export default {
   },
 
   computed: {
-    isHome() {
-      return this.$route.path === '/' || this.$route.path === ''
+    beautifiedWebsite() {
+      if (!this.job.website) {
+        return
+      }
+
+      return beautifyLink(this.job.website)
     },
   },
 
@@ -60,6 +71,7 @@ export default {
               startDate: extra(path: "startDate")
               endDate: extra(path: "endDate")
               position: extra(path: "position")
+              website: extra(path: "website")
               areas: terms(taxonomy: "development-area") { id slug name order: extra(path: "order") }
               languages: terms(taxonomy: "language") { id slug name order: extra(path: "order") }
               frameworks: terms(taxonomy: "framework") { id slug name order: extra(path: "order") }
@@ -89,25 +101,17 @@ export default {
       path: this.$route.path,
       title: this.job.title,
       description: this.job.content,
-      image: this.job.featuredMedia ? this.job.featuredMedia.src : undefined,
+      image: this.image?.image.src,
     })
   },
 
   mounted() {
-    if (this.$analytics) {
-      if (this.job) {
-        this.$analytics.logEvent('view_page', {
-          title: this.job.title,
-          slug: this.job.slug,
-          link: this.job.link,
-        })
-      } else {
-        this.$analytics.logEvent('view_page', {
-          title: 'Home',
-          slug: 'home',
-          link: '/',
-        })
-      }
+    if (this.$analytics && this.job) {
+      this.$analytics.logEvent('view_page', {
+        title: this.job.title,
+        slug: this.job.slug,
+        link: this.job.link,
+      })
     }
   },
 }

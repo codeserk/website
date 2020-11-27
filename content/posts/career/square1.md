@@ -1,6 +1,7 @@
 ---
 slug: square-1
 title: Square 1
+featuredImageId: career/square1
 termsMap:
     development-area:
         - web
@@ -21,6 +22,7 @@ extra:
     startDate: 2015-09-01
     endDate: 2017-05-01
     position: Full-Stack Web developer
+    website: https://www.square1.io
 ---
 
 * Laravel as main PHP framework

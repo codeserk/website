@@ -1,5 +1,20 @@
 <template>
-  <footer class="page-wrapper full"></footer>
+  <footer class="page-wrapper">
+    <div
+      id="trees-far"
+      :style="{
+        'background-image': `url('/scene/trees-far.png')`,
+      }"
+      class="layer layer-bottom"
+    />
+    <!-- <div
+      id="trees-near"
+      :style="{
+        'background-image': `url('/scene/trees-near.png')`,
+      }"
+      class="layer layer-bottom"
+    /> -->
+  </footer>
 </template>
 
 <script>
@@ -27,9 +42,10 @@ export default {
 @import '~/assets/css/variables';
 
 footer {
+  position: relative;
   display: flex;
   align-items: center;
-  min-height: 100vh;
+  min-height: 125vh;
   color: white;
 
   .footer-container {
@@ -38,6 +54,42 @@ footer {
       display: block;
     }
   }
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: calc(50vh + 200px);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #08080e;
+  }
+}
+
+.layer {
+  position: absolute;
+  right: 0;
+  left: 0;
+  background-size: contain;
+  background-repeat: repeat-x;
+  image-rendering: pixelated;
+  background-blend-mode: multiply;
+
+  &.layer-top {
+    background-position: top;
+  }
+  &.layer-bottom {
+    background-position: bottom;
+  }
+}
+
+#trees-far {
+  top: 50vh;
+  left: 0;
+  width: calc(100vw + 20px);
+  height: 30vh;
+  background-position: bottom right;
+  background-size: contain;
 }
 
 .footer-logo {
