@@ -12,26 +12,26 @@ const exists = promisify(fs.exists)
 const makeDir = promisify(fs.mkdir)
 
 export class Client {
-    protected readonly apollo: ApolloClient<any>
+  protected readonly apollo: ApolloClient<any>
 
-    /**
-     * Constructor.
-     *
-     * @param uri
-     */
-    constructor(uri: string = 'http://localhost:4010') {
-      const cache = new InMemoryCache()
-      const link = new HttpLink({ uri, fetch: fetch as any })
-      this.apollo = new ApolloClient({ cache, link })
+  /**
+   * Constructor.
+   *
+   * @param uri
+   */
+  constructor(uri: string = 'http://localhost:4010') {
+    const cache = new InMemoryCache()
+    const link = new HttpLink({ uri, fetch: fetch as any })
+    this.apollo = new ApolloClient({ cache, link })
+  }
+
+  query(query: DocumentNode | string, variables?: any): Promise<any> {
+    if (typeof query === 'string') {
+      query = gql(query) as DocumentNode
     }
 
-    query(query: DocumentNode | string, variables?: any): Promise<any> {
-      if (typeof query === 'string') {
-        query = gql(query) as DocumentNode
-      }
-
-      return this.apollo.query({ query, variables }).then(res => res.data)
-    }
+    return this.apollo.query({ query, variables }).then(res => res.data)
+  }
 }
 
 function writeData(path, data) {
@@ -47,14 +47,12 @@ function writeData(path, data) {
 }
 
 export default function wordpressPlugin(context, inject) {
-  const uri = process.env.IS_GENERATING
-    ? 'http://localhost:4021'
-    : 'http://localhost:4020'
+  const uri = process.env.IS_GENERATING ? 'http://localhost:4021' : 'http://localhost:4020'
   const client = new Client(uri)
   const source = {
     async resolve(path: string, fn) {
       const data = await fn({
-        query: client.query.bind(client)
+        query: client.query.bind(client),
       })
 
       if (!path.endsWith('/')) {
@@ -67,7 +65,7 @@ export default function wordpressPlugin(context, inject) {
       }
 
       return data
-    }
+    },
   }
 
   context.$source = source

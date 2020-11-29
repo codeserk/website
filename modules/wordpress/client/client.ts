@@ -8,19 +8,19 @@ import gql from 'graphql-tag'
 
 @Service()
 export class Client {
-    protected readonly apollo: ApolloClient<any>
+  protected readonly apollo: ApolloClient<any>
 
-    constructor() {
-      const cache = new InMemoryCache()
-      const link = new HttpLink({ uri: 'http://localhost:4020/', fetch: fetch as any })
-      this.apollo = new ApolloClient({ cache, link })
+  constructor() {
+    const cache = new InMemoryCache()
+    const link = new HttpLink({ uri: 'http://localhost:4020/', fetch: fetch as any })
+    this.apollo = new ApolloClient({ cache, link })
+  }
+
+  query(query: DocumentNode | string, variables?: any): Promise<any> {
+    if (typeof query === 'string') {
+      query = gql(query) as DocumentNode
     }
 
-    query(query: DocumentNode | string, variables?: any): Promise<any> {
-      if (typeof query === 'string') {
-        query = gql(query) as DocumentNode
-      }
-
-      return this.apollo.query({ query, variables }).then(res => res.data)
-    }
+    return this.apollo.query({ query, variables }).then(res => res.data)
+  }
 }

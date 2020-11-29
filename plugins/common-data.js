@@ -1,0 +1,85 @@
+import Vue from 'vue'
+import { sortByOrder } from '../utils/sort'
+
+export default async function(context) {
+  const data = await context.$source.resolve('/common-data', async ({ query }) => {
+    const result = await query(
+      `
+        query commonData {
+          avatar: mediaById(id: "avatar") {
+            image(resolution: Small, format: png, transform: { resize: { width: 290, height: 290 }}) { src }
+            placeholder: image(resolution: Placeholder, format: png, transform: { resize: { width: 16, height: 16 }}, output: Inline) { src }
+          }
+
+          areas: terms(taxonomy: "development-area") {
+            id slug name
+            order: extra(path: "order")
+          }
+
+          languages: terms(taxonomy: "language") {
+            id slug name
+            order: extra(path: "order")
+            status: extra(path: "status")
+            knowledge: extra(path: "knowledge")
+            scopes: extra(path: "scopes")
+            summary: extra(path: "summary")
+          }
+
+          frameworks: terms(taxonomy: "framework") {
+            id link slug name
+            order: extra(path: "order")
+            status: extra(path: "status")
+            knowledge: extra(path: "knowledge")
+            kind: extra(path: "kind")
+            summary: extra(path: "summary")
+          }
+
+          databases: terms(taxonomy: "database") {
+            id slug name
+            order: extra(path: "order")
+            status: extra(path: "status")
+            knowledge: extra(path: "knowledge")
+            summary: extra(path: "summary")
+          }
+
+          technologies: terms(taxonomy: "technology") {
+            id slug name
+            order: extra(path: "order")
+            status: extra(path: "status")
+            knowledge: extra(path: "knowledge")
+            scopes: extra(path: "scopes")
+            summary: extra(path: "summary")
+          }
+
+          messageBrokers: terms(taxonomy: "message-broker") {
+            id slug name
+            order: extra(path: "order")
+            status: extra(path: "status")
+            knowledge: extra(path: "knowledge")
+            summary: extra(path: "summary")
+          }
+        }`,
+    )
+
+    return {
+      ...result,
+      areas: result.areas.sort(sortByOrder),
+      languages: result.languages.sort(sortByOrder),
+      frameworks: result.frameworks.sort(sortByOrder),
+      databases: result.databases.sort(sortByOrder),
+      messageBrokers: result.messageBrokers.sort(sortByOrder),
+      technologies: result.technologies.sort(sortByOrder),
+    }
+  })
+
+  if (!Vue.__common_data__) {
+    Vue.__common_data__ = true
+    Vue.mixin({
+      computed: {
+        $common() {
+          return data
+        },
+      },
+    }) // Set up your mixin then
+  }
+}

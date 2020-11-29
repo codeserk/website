@@ -52,7 +52,7 @@ body {
   background-color: #08080E;
   color: $color-grey;
   font-size: 20px;
-  font-family: $font-body;
+  font-family: $font-body !important;
   overflow-wrap: break-word;
   hyphens: none;
 }
@@ -117,7 +117,7 @@ h5 {
     content: '';
     position: absolute;
     bottom: -2px;
-    left: 0px;
+    left: 0;
     width: 100%;
     height: 1px;
     background-color: white;
@@ -137,8 +137,8 @@ h5 {
 $pswp__assets-path: "~photoswipe/src/css/default-skin/";
 
 img {
-  user-select: none !important;
   pointer-events: none;
+  user-select: none !important;
 }
 
 nav.px-mobile,

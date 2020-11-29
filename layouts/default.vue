@@ -1,5 +1,7 @@
 <template>
   <div>
+    <!-- <current-size /> -->
+
     <div class="wrapper">
       <client-only>
         <background />
@@ -25,6 +27,7 @@ import LayoutFooter from '~/components/layout/layout-footer'
 
 export default {
   components: {
+    // CurrentSize: () => import('~/components/current-size'),
     Background,
     // LayoutHeader,
     LayoutFooter,

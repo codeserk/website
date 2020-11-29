@@ -7,26 +7,26 @@
     <div class="sections">
       <section>
         <h2>About me 🐱</h2>
-        <about-me :images="{ avatar, mia, ryuk }" />
+        <about-me :images="{ avatar: $common.avatar, mia, ryuk }" />
       </section>
 
       <section>
         <h2>Languages 👓</h2>
-        <languages :languages="languages" />
+        <languages :languages="$common.languages" />
       </section>
 
       <section>
         <h2>Career📱</h2>
-        <career :career="career" />
+        <career :career="$common.career" />
       </section>
 
       <section>
         <h2>Web Development @</h2>
         <web-development
-          :frameworks="frameworks"
-          :databases="databases"
-          :technologies="technologies"
-          :message-brokers="messageBrokers"
+          :frameworks="$common.frameworks"
+          :databases="$common.databases"
+          :technologies="$common.technologies"
+          :message-brokers="$common.messageBrokers"
         />
       </section>
 
@@ -101,54 +101,6 @@ export default {
                 image(resolution: Small, format: png, transform: { resize: { width: 290, height: 290 }}) { src }
                 placeholder: image(resolution: Placeholder, format: png, transform: { resize: { width: 16, height: 16 }}, output: Inline) { src }
               }
-            }
-
-            areas: terms(taxonomy: "development-area") {
-              id slug name
-              order: extra(path: "order")
-            }
-
-            languages: terms(taxonomy: "language") {
-              id slug name
-              order: extra(path: "order")
-              status: extra(path: "status")
-              knowledge: extra(path: "knowledge")
-              scopes: extra(path: "scopes")
-              summary: extra(path: "summary")
-            }
-
-            frameworks: terms(taxonomy: "framework") {
-              id link slug name
-              order: extra(path: "order")
-              status: extra(path: "status")
-              knowledge: extra(path: "knowledge")
-              kind: extra(path: "kind")
-              summary: extra(path: "summary")
-            }
-
-            databases: terms(taxonomy: "database") {
-              id slug name
-              order: extra(path: "order")
-              status: extra(path: "status")
-              knowledge: extra(path: "knowledge")
-              summary: extra(path: "summary")
-            }
-
-            technologies: terms(taxonomy: "technology") {
-              id slug name
-              order: extra(path: "order")
-              status: extra(path: "status")
-              knowledge: extra(path: "knowledge")
-              scopes: extra(path: "scopes")
-              summary: extra(path: "summary")
-            }
-
-            messageBrokers: terms(taxonomy: "message-broker") {
-              id slug name
-              order: extra(path: "order")
-              status: extra(path: "status")
-              knowledge: extra(path: "knowledge")
-              summary: extra(path: "summary")
             }
 
             articles: posts(type: "blog", sort: { field: "createdAt", direction: Descending }, pagination: { limit: 3 }) {

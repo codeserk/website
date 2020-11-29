@@ -49,7 +49,6 @@
       id="trees-far"
       :style="{
         'background-image': `url('/scene/trees-far.png')`,
-        transform: `translate3d(${positions.treesFar}px, 0px, 0px)`,
       }"
       class="layer layer-bottom"
     />
@@ -182,7 +181,6 @@ export default {
   background-size: contain;
   background-repeat: repeat-x;
   image-rendering: pixelated;
-  background-blend-mode: multiply;
 
   &.layer-top {
     background-position: top;

@@ -26,9 +26,7 @@ const cache = {}
 export default async function wordpressPlugin(context, inject) {
   const source = {
     resolve(path, fn) {
-      const uri = context.isDev
-        ? 'http://localhost:4020'
-        : 'http://localhost:4020'
+      const uri = context.isDev ? 'http://localhost:4020' : 'http://localhost:4020'
       const client = new Client(uri)
       if (!path.endsWith('/')) {
         path += '/'
@@ -36,7 +34,7 @@ export default async function wordpressPlugin(context, inject) {
 
       if (context.isDev || !context.isStatic) {
         return fn({
-          query: client.query.bind(client)
+          query: client.query.bind(client),
         })
       }
 
@@ -44,12 +42,12 @@ export default async function wordpressPlugin(context, inject) {
         return cache[path]
       }
 
-      return fetch(`${path}index.json`).then((response) => {
+      return fetch(`${path}index.json`).then(response => {
         cache[path] = response.json()
 
         return cache[path]
       })
-    }
+    },
   }
 
   context.$source = source

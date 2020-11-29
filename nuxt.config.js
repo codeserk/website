@@ -44,6 +44,7 @@ export default {
     { src: '@/plugins/aos', mode: 'client' },
     { src: '@/plugins/touch', mode: 'client' },
     { src: '@/plugins/vertical-height', mode: 'client' },
+    '~/plugins/common-data',
   ],
 
   webfontloader: {
