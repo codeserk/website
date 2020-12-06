@@ -12,12 +12,12 @@ export default async function(context) {
           }
 
           areas: terms(taxonomy: "development-area") {
-            id slug name
+            id slug name taxonomy { id }
             order: extra(path: "order")
           }
 
           languages: terms(taxonomy: "language") {
-            id slug name
+            id slug name taxonomy { id }
             order: extra(path: "order")
             status: extra(path: "status")
             knowledge: extra(path: "knowledge")
@@ -26,7 +26,7 @@ export default async function(context) {
           }
 
           frameworks: terms(taxonomy: "framework") {
-            id link slug name
+            id link slug name taxonomy { id }
             order: extra(path: "order")
             status: extra(path: "status")
             knowledge: extra(path: "knowledge")
@@ -35,7 +35,7 @@ export default async function(context) {
           }
 
           databases: terms(taxonomy: "database") {
-            id slug name
+            id slug name taxonomy { id }
             order: extra(path: "order")
             status: extra(path: "status")
             knowledge: extra(path: "knowledge")
@@ -43,7 +43,7 @@ export default async function(context) {
           }
 
           technologies: terms(taxonomy: "technology") {
-            id slug name
+            id slug name taxonomy { id }
             order: extra(path: "order")
             status: extra(path: "status")
             knowledge: extra(path: "knowledge")
@@ -52,7 +52,7 @@ export default async function(context) {
           }
 
           messageBrokers: terms(taxonomy: "message-broker") {
-            id slug name
+            id slug name taxonomy { id }
             order: extra(path: "order")
             status: extra(path: "status")
             knowledge: extra(path: "knowledge")
@@ -80,6 +80,31 @@ export default async function(context) {
           return data
         },
       },
-    }) // Set up your mixin then
+
+      methods: {
+        hasTerm(id) {
+          return !!this.getTerm(id)
+        },
+
+        getTerm(id) {
+          if (!id) {
+            return
+          }
+          id = id.toLowerCase().trim()
+
+          for (const key in data) {
+            if (data[key] && Array.isArray(data[key])) {
+              const term = data[key].find(term => term.id === id)
+              if (term) {
+                return {
+                  ...term,
+                  type: term.taxonomy.id,
+                }
+              }
+            }
+          }
+        },
+      },
+    })
   }
 }

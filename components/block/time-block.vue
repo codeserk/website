@@ -11,7 +11,7 @@
       </div>
 
       <div :class="{ 'with-small-padding': withPaddingLeft }" class="block skew left with-shadow-left">
-        <slot name="left-block" />
+        <slot :period="period" name="left-block" />
       </div>
 
       <div class="right">

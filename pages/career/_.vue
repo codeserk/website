@@ -6,7 +6,7 @@
     class="color full"
   >
     <div class="container mx-auto">
-      <time-block v-bind="job" with-padding-right>
+      <time-block :start-date="job.startDate" :end-date="job.endDate" with-padding-right>
         <template #left-block>
           <section>
             <div :class="{ 'no-position': !job.position }" class="item-header">

@@ -11,27 +11,35 @@
     margin-bottom: 1em;
   }
 
-  h1, h2 {
-    display: block;
-    border-bottom: 4px solid white;
-    text-align: center;
-  }
-
   ul,
   ol {
     margin-left: 1em;
   }
 
   h1 {
+    margin-bottom: 0;
     font-size: 2.6rem;
   }
 
   h2 {
+    margin-bottom: 0;
+    padding: 0.5em 0;
     font-size: 2.2rem;
+    line-height: 40px;
+
+    &::before {
+      content: '► '
+    }
   }
 
   h3 {
+    margin-top: 1em;
+    margin-bottom: 0;
     font-size: 1.8rem;
+
+    &::before {
+      content: '►► '
+    }
   }
 
   h4 {
@@ -39,14 +47,14 @@
   }
 
   ul {
-    list-style-position: inside;
+    list-style-position: outside;
     list-style-type: disc;
   }
 
   em {
     color: yellow;
-    text-transform: none;
     font-style: normal;
+    text-transform: none;
   }
 
   strong {
@@ -72,13 +80,17 @@
   }
 
   a, .link {
-    text-decoration: dotted;
     color: lime;
+    text-decoration: dotted;
+  }
+
+  /deep/ .chip {
+    margin-right: 0 !important;
   }
 
   .without-margin {
     margin-top: -24px;
-    margin-left: -24px;
     margin-right: -24px;
+    margin-left: -24px;
   }
 }

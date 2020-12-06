@@ -1,6 +1,6 @@
 <template>
   <component :is="component" v-bind="attributes" :data-aos="aos" class="dom-default">
-    <dom v-for="(childNode, index) in children" :key="index" v-bind="{ ...childNode }" />
+    <dom v-for="(childNode, index) in filteredChildren" :key="index" v-bind="{ ...childNode }" />
   </component>
 </template>
 
@@ -19,6 +19,14 @@ export default {
   computed: {
     component() {
       return this.tag
+    },
+
+    filteredChildren() {
+      if (!this.maxParagraphs) {
+        return this.children
+      }
+
+      return this.children.slice(0, this.maxParagraphs)
     },
   },
 }

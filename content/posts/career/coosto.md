@@ -37,4 +37,6 @@ termsMap:
         - sonarqube
 ---
 
-I am currently working in Coosto as Full-stack Developer, using many different technologies that coexist in a micro-services' environment. I am usually the Joker card in my team, since I am able to complete any kind task (Frontend, Backend or DevOps).
+I'm currently working for Coosto as Full-stack Developer, using many different technologies that coexist in a _micro-services' environment_. I'm usually the _Joker card_ in my team, since I'm able to complete any kind task (Frontend, Backend or DevOps, even [iOS](ios) sometimes).
+
+The tech stack is quite diverse, but I'm mostly working with NodeJS in the Backend (using [NestJS](nestjs) as main framework) and [VueJS](vue) in the Frontend.

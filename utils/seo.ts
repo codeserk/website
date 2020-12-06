@@ -1,30 +1,27 @@
-export const siteName = 'Codeserk'
+export const siteName = 'Jose Camara • @codeserk'
 
 export const socialNetworks = {
-  youtube: {
-    name: '',
-    url: 'https://www.youtube.com/channel/'
+  twitter: {
+    url: 'https://twitter.com/codeserk',
   },
 
-  facebook: {
-    id: 0,
-    title: '',
-    url: 'https://www.facebook.com//'
+  linkedin: {
+    url: 'https://www.linkedin.com/in/jos%C3%A9-manuel-c%C3%A1mara-iglesias-60b617127/',
   },
 
-  instagram: {
-    title: '@',
-    url: 'https://www.instagram.com//'
-  }
+  github: {
+    url: 'https://github.com/codeserk',
+  },
 }
 
 export const defaultSeo = {
-  title: 'Codeserk',
+  title: 'Jose Camara • @codeserk',
   canonical: 'https://www.codeserk.es',
-  description: 'Codeserk',
+  description:
+    "Jose Camara's personal potfolio, meant to showcase all the projects I work on, and the new technologies or languages that I discover.",
   author: 'Jose Camara',
-  keywords: [ 'codeserk', 'web', 'ts', 'js', 'css', 'html', 'dev' ],
-  image: '/logo.png'
+  keywords: ['codeserk', 'web', 'ts', 'js', 'css', 'html', 'dev'],
+  image: '/logo.png',
 }
 
 export interface SeoInformation {
@@ -45,22 +42,18 @@ export function generateSeoMeta(info: SeoInformation): any {
     link: [
       {
         rel: 'canonical',
-        href: url
-      }
-    ]
+        href: url,
+      },
+    ],
   }
   const metas: any[] = []
   metas.push({ property: 'og:url', hid: 'og:url', content: url })
-  const title = info.title
-    ? `${info.title} • ${siteName}`
-    : defaultSeo.title
+  const title = info.title ? `${info.title} ♦ ${siteName}` : defaultSeo.title
   head.title = title
   metas.push({ property: 'og:title', hid: 'og:title', content: title })
   metas.push({ property: 'twitter:title', hid: 'twitter:title', content: title })
 
-  const description = info.description
-    ? getShortDescription(info.description)
-    : defaultSeo.description
+  const description = info.description ? getShortDescription(info.description) : defaultSeo.description
   metas.push({ name: 'description', hid: 'description', content: description })
   metas.push({ property: 'og:description', hid: 'og:description', content: description })
   metas.push({ property: 'twitter:description', hid: 'twitter:description', content: description })
@@ -79,7 +72,5 @@ export function generateSeoMeta(info: SeoInformation): any {
 }
 
 export function getShortDescription(description: string): string {
-  return description
-    .replace(/<\/?[^>]+(>|$)/g, '')
-    .slice(0, 160)
+  return description.replace(/<\/?[^>]+(>|$)/g, '').slice(0, 160)
 }

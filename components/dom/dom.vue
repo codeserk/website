@@ -12,6 +12,7 @@ export default {
     DomImage: () => import('./dom-image'),
     DomText: () => import('./dom-text'),
     DomLink: () => import('./dom-link'),
+    DomTerm: () => import('./dom-term'),
 
     // Special components
     Chip: () => import('~/components/chip'),
@@ -39,6 +40,11 @@ export default {
       default: () => ({}),
     },
 
+    maxParagraphs: {
+      type: Number,
+      default: null,
+    },
+
     aos: {
       type: String,
       default: 'appear',
@@ -58,6 +64,10 @@ export default {
         return 'dom-image'
       }
       if (this.tag === 'a') {
+        if (this.hasTerm(this.attributes.href)) {
+          return 'dom-term'
+        }
+
         return 'dom-link'
       }
       if (this.text) {

@@ -23,6 +23,10 @@ export default {
 
   computed: {
     link() {
+      if (this.type === 'development-area') {
+        return `/development/${this.slug}`
+      }
+
       return `/${this.type}/${this.slug}`
     },
 
@@ -40,11 +44,11 @@ export default {
   padding: 0 8px;
   border: 1px solid white;
   border-radius: 4px;
-  background: white;
   color: white;
   text-transform: uppercase;
 
-  &.development {
+  &.development,
+  &.development-area {
     background: #333;
   }
 

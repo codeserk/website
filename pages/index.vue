@@ -1,7 +1,27 @@
 <template>
   <main>
     <header class="header">
+      <div class="social-icons">
+        <a v-for="(item, index) in social" :key="index" :href="item.link" target="_blank">
+          <font-awesome-icon :icon="['fab', item.icon]" size="lg" />
+        </a>
+      </div>
+
       <h1>Jos<span class="color">é</span> C<span class="color">á</span>mara <span class="subtitle">@codeserk</span></h1>
+
+      <client-only>
+        <vue-typed-js
+          :strings="titles"
+          :start-delay="1000"
+          :type-speed="100"
+          :back-speed="20"
+          class="content titles"
+          content-type="html"
+          loop
+        >
+          <span class="typing" />
+        </vue-typed-js>
+      </client-only>
     </header>
 
     <div class="sections">
@@ -17,7 +37,7 @@
 
       <section>
         <h2>Career📱</h2>
-        <career :career="$common.career" />
+        <career :career="career" />
       </section>
 
       <section>
@@ -45,6 +65,7 @@
 
 <script>
 import { lightenDarkenColor } from '../utils/color'
+import { socialNetworks } from '../utils/seo'
 
 export default {
   components: {
@@ -59,6 +80,24 @@ export default {
   data: () => ({
     lighten: 0,
     mainColor: '#175fa2',
+
+    titles: [
+      'Software Engineer',
+      '<strong>Backend</strong> developer',
+      '<a href="https://nestjs.com/" target="_blank">NestJS</a> big Fan',
+      '<strong>Frontend</strong> developer',
+      '<a href="https://vuejs.org/" target="_blank">VueJS</a> lover!',
+      '<strong>DevOps</strong> initiated',
+      '<strong>Game</strong> developer (as <em>hobby</em>)',
+      '<strong>iOS</strong> and <strong>Android</strong> learner ',
+      '<em>Cat</em> enthusiast! :3',
+    ],
+
+    social: [
+      { icon: 'github', link: socialNetworks.github.url },
+      { icon: 'linkedin', link: socialNetworks.linkedin.url },
+      { icon: 'twitter', link: socialNetworks.twitter.url },
+    ],
   }),
 
   computed: {
@@ -142,6 +181,7 @@ export default {
 
 <style lang="scss" scoped>
 .header {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -150,21 +190,34 @@ export default {
   color: white;
   font-size: 8vw;
   line-height: 1em;
-  letter-spacing: 0.2em;
   text-align: center;
+
+  .social-icons {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    font-size: 2rem;
+    line-height: 2rem;
+
+    a {
+      margin-right: 2rem;
+    }
+  }
 
   h1 {
     position: relative;
     overflow: hidden;
     color: white;
     font-size: 1.2em;
+    letter-spacing: 0.2em;
 
     .color {
       opacity: 1;
       animation-name: header-color;
       animation-duration: 1s;
       animation-timing-function: ease-in;
-      animation-delay: 4s;
+      animation-delay: 1s;
       animation-fill-mode: forwards;
     }
 
@@ -173,6 +226,18 @@ export default {
       font-size: 0.75em;
     }
   }
+
+  .titles {
+    position: absolute;
+    bottom: 0;
+    font-size: 4vw;
+
+    .typing,
+    /deep/ .typed-cursor {
+      margin-bottom: 0 !important;
+    }
+  }
+
   p {
     margin-top: 10vh;
     font-size: 0.6em;
@@ -199,6 +264,10 @@ export default {
 @media (min-width: 1500px) {
   .header {
     font-size: 8em;
+
+    .titles {
+      font-size: 5rem;
+    }
   }
 }
 

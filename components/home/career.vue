@@ -1,14 +1,21 @@
 <template>
   <div class="container mx-auto">
-    <time-block v-for="item in items" :key="item.id" v-bind="item" class="item" with-padding-right>
-      <template #left-block>
+    <time-block
+      v-for="item in items"
+      :key="item.id"
+      :start-date="item.startDate"
+      :end-date="item.endDate"
+      class="item"
+      with-padding-right
+    >
+      <template v-slot:left-block="{ period }">
         <router-link :to="`/career/${item.slug}`">
           <h3 v-text="item.title" class="title" />
         </router-link>
 
         <section>
           <div :class="{ 'no-position': !item.position }" class="item-header">
-            <span v-text="item.period" class="period-text" />
+            <span v-text="period" class="period-text" />
             <span v-text="item.position" class="position" />
           </div>
 
@@ -24,7 +31,12 @@
 
       <template #right-block>
         <img v-if="item.featuredImage" v-lazy="item.image" class="image lazy" />
-        <dom-content v-bind="item.dom" class="mx-auto" aos="appear" />
+        <dom-content v-bind="item.dom" :max-paragraphs="1" class="mx-auto" aos="appear" />
+
+        <hr />
+        <p class="text-center" data-aos="appear">
+          <router-link :to="`/career/${item.slug}`">Read more...</router-link>
+        </p>
       </template>
     </time-block>
   </div>

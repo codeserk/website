@@ -3,13 +3,20 @@
     <div class="container mx-auto">
       <h2 class="sr-only">Footer</h2>
 
-      <img
-        v-lazy="{ src: $common.avatar.image.src, loading: $common.avatar.placeholder.src }"
-        data-aos="appear"
-        class="image lazy"
-      />
+      <div class="avatar" data-aos="appear">
+        <div class="speech-bubble">Thanks for visiting my portfolio <span class="yellow">✌︎</span></div>
+        <img
+          v-lazy="{ src: $common.avatar.image.src, loading: $common.avatar.placeholder.src }"
+          data-aos="appear"
+          class="image lazy"
+        />
+      </div>
 
-      <hr />
+      <div class="social-icons">
+        <a v-for="(item, index) in social" :key="index" :href="item.link" target="_blank">
+          <font-awesome-icon :icon="['fab', item.icon]" size="lg" />
+        </a>
+      </div>
 
       <div class="links-container">
         <div class="links">
@@ -116,9 +123,9 @@ import { socialNetworks } from '~/utils/seo'
 export default {
   data: () => ({
     social: [
-      { icon: 'youtube', link: socialNetworks.youtube.url },
-      { icon: 'instagram', link: socialNetworks.instagram.url },
-      { icon: 'facebook', link: socialNetworks.facebook.url },
+      { icon: 'github', link: socialNetworks.github.url },
+      { icon: 'linkedin', link: socialNetworks.linkedin.url },
+      { icon: 'twitter', link: socialNetworks.twitter.url },
     ],
   }),
 
@@ -147,6 +154,34 @@ footer {
     background: #08080e;
   }
 
+  .avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2em;
+
+    .speech-bubble {
+      position: relative;
+      display: inline-block;
+      max-width: 200px;
+      padding: 1em;
+      border-right: 8px solid white;
+      border-bottom: 4px solid white;
+
+      &::after {
+        content: '►';
+        position: absolute;
+        top: -0.5rem;
+        right: -0.5em;
+        font-size: 3rem;
+      }
+    }
+
+    img {
+      width: 290px;
+    }
+  }
+
   .container {
     position: relative;
     margin-top: 80vh;
@@ -161,14 +196,17 @@ footer {
   .links-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: center;
     margin: 0 -2em;
 
     .links {
+      flex-basis: 150px;
       margin: 2em;
 
       h3 {
+        margin-bottom: 0.5em;
         font-size: 1.4em;
+        line-height: 1em;
       }
 
       nav {
@@ -176,8 +214,13 @@ footer {
         flex-direction: column;
 
         a {
+          position: relative;
+          padding-left: 1.5em;
+
           &::before {
             content: '├─ ';
+            position: absolute;
+            left: 0;
           }
           &:last-child {
             &::before {

@@ -1,13 +1,11 @@
 <template>
-  <div class="page-wrapper color full">
+  <page-wrapper :title="page.title" :image="page.image" class="color full">
     <div class="container mx-auto">
-      <h1 v-text="page.title" class="title" />
-
       <div class="block small with-padding with-shadow-left skew content">
-        <dom-content v-bind="page.dom" class="mx-auto" aos="fade-up" />
+        <dom-content v-bind="page.dom" class="mx-auto" aos="appear" />
       </div>
     </div>
-  </div>
+  </page-wrapper>
 </template>
 
 <script>
@@ -15,53 +13,43 @@ import { generateSeoMeta } from '../utils/seo'
 
 export default {
   components: {
+    PageWrapper: () => import('~/components/page/wrapper'),
     DomContent: () => import('~/components/dom/dom-content'),
   },
 
-  computed: {
-    isHome() {
-      return this.$route.path === '/' || this.$route.path === ''
-    },
-  },
-
   async asyncData({ store, error, route, params, $source }) {
-    if (route.path === '/' || route.path === '') {
-      return {
-        page: {},
-      }
-    }
-
     const slug = route.path.split('/').pop()
     const data = await $source.resolve(route.path, ({ query }) =>
       query(
         `
-            query page($slug: String!) {
-                page: postBySlug(slug: $slug, type: "page") {
-                    id title content dom
-                }
+          query page($slug: String!) {
+            page: postBySlug(slug: $slug, type: "page") {
+              id title content dom
+
+              image: featuredImage {
+                image(resolution: Small, format: png, transform: { resize: { width: 200, height: 200 }}) { src }
+                placeholder: image(resolution: Placeholder, format: png, transform: { resize: { width: 16, height: 16 }}, output: Inline) { src }
+              }
             }
+        }
         `,
         { slug },
       ),
     )
 
     if (!data.page) {
-      return error({ statusCode: 404, message: 'Página no encontrada' })
+      return error({ statusCode: 404, message: 'Page not found' })
     }
 
     return data
   },
 
   head() {
-    if (this.page.isHome) {
-      return generateSeoMeta({})
-    }
-
     return generateSeoMeta({
       path: this.$route.path,
-      title: this.page.title,
-      description: this.page.content,
-      image: this.page.featuredMedia ? this.page.featuredMedia.src : undefined,
+      title: this.page.name,
+      description: this.page.description,
+      image: this.image?.image.src,
     })
   },
 
@@ -72,12 +60,6 @@ export default {
           title: this.page.title,
           slug: this.page.slug,
           link: this.page.link,
-        })
-      } else {
-        this.$analytics.logEvent('view_page', {
-          title: 'Home',
-          slug: 'home',
-          link: '/',
         })
       }
     }

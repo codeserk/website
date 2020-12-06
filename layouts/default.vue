@@ -75,6 +75,7 @@ export default {
 
 .wrapper {
   position: relative;
+  min-height: 100vh;
 }
 
 .list-item {

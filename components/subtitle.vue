@@ -72,24 +72,24 @@ export default {
   top: 0;
   z-index: 1;
 }
-.subtitle {
-  position: relative;
-  margin-bottom: 0;
+// .subtitle {
+//   position: relative;
+//   margin-bottom: 0;
 
-  h2 {
-    margin-bottom: 0;
-    padding: 0.5em 1em;
-    font-size: 3rem;
-    line-height: 40px;
-  }
+//   h2 {
+//     margin-bottom: 0;
+//     padding: 0.5em 0em;
+//     font-size: 3rem;
+//     line-height: 40px;
+//   }
 
-  h3 {
-    margin-right: 1em;
-    margin-bottom: 0;
-    margin-left: 1em;
-    padding: 0.5em 1em;
-    font-size: 2rem;
-    line-height: 40px;
-  }
-}
+//   h3 {
+//     margin-right: 1em;
+//     margin-bottom: 0;
+//     margin-left: 1em;
+//     padding: 0.5em 1em;
+//     font-size: 2rem;
+//     line-height: 40px;
+//   }
+// }
 </style>

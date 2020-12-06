@@ -1,5 +1,8 @@
 <template>
-  <a :href="link" :target="target" v-text="text" v-bind="attributes" class="dom-link underline" />
+  <span>
+    <router-link v-if="isInternal" :to="link" v-text="text" v-bind="attributes" class="dom-link underline" />
+    <a v-else :href="link" v-text="text" v-bind="attributes" target="__blank" class="dom-link underline" />
+  </span>
 </template>
 
 <script>
@@ -12,20 +15,12 @@ export default {
   extends: Dom,
 
   computed: {
-    component() {
-      return this.tag
+    isInternal() {
+      return !this.link?.startsWith('http')
     },
 
     link() {
       return parseLink(this.attributes.href)
-    },
-
-    target() {
-      if (this.attributes && this.attributes.href && this.attributes.href.startsWith('#')) {
-        return undefined
-      }
-
-      return '__blank'
     },
   },
 }
