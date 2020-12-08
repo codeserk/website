@@ -155,9 +155,11 @@ export default {
       img.src = this.images[key].src
     }
 
-    setInterval(() => {
-      this.tick++
-    }, 1000 / FPS)
+    setTimeout(() => {
+      setInterval(() => {
+        this.tick++
+      }, 1000 / FPS)
+    }, 2000)
   },
 }
 </script>
