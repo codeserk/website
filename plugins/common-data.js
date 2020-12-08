@@ -118,8 +118,6 @@ export default async function(context) {
             }
           }
 
-          console.log(keywords)
-
           return keywords
         },
       },
