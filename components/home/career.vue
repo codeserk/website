@@ -30,7 +30,7 @@
       </template>
 
       <template #right-block>
-        <img v-if="item.featuredImage" v-lazy="item.image" class="image lazy" />
+        <img v-if="item.featuredImage" v-lazy="item.image" class="image lazy bordered" />
         <dom-content v-bind="item.dom" :max-paragraphs="1" class="mx-auto" aos="appear" />
 
         <hr />
@@ -92,11 +92,11 @@ export default {
 .item {
   img.image {
     display: inline;
+    float: right;
     width: 150px;
     height: 150px;
-    margin-left: 1em;
     margin-bottom: 1em;
-    float: right;
+    margin-left: 1em;
   }
 }
 

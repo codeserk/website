@@ -1,9 +1,9 @@
 <template>
-  <div class="block small with-padding with-shadow-left container skew mx-auto content">
+  <div class="block small with-padding with-shadow-left skew container mx-auto content">
     <img
       v-lazy="{ src: images.avatar.image.src, loading: images.avatar.placeholder.src }"
       data-aos="appear"
-      class="image float-right lazy"
+      class="image me lazy"
     />
 
     <p data-aos="appear">
@@ -13,7 +13,7 @@
       Welcome to my personal <em>portfolio</em>!. This website is meant to showcase all the
       <router-link to="/project">projects</router-link> I work on, and the new
       <router-link to="/technology">technologies</router-link> or
-      <router-link to="/language">languages</router-link> that I discover.
+      <router-link to="/language">languages</router-link> that I use.
     </p>
     <p data-aos="appear">
       I'm <strong>José Cámara</strong> and I'm passionate about innovative technologies and computer programming.
@@ -31,12 +31,12 @@
       <img
         v-lazy="{ src: images.ryuk.image.src, loading: images.ryuk.placeholder.src }"
         data-aos="appear"
-        class="image lazy"
+        class="image lazy bordered"
       />
       <img
         v-lazy="{ src: images.mia.image.src, loading: images.mia.placeholder.src }"
         data-aos="appear"
-        class="image lazy"
+        class="image lazy bordered"
       />
     </a>
 
@@ -64,16 +64,33 @@ h1 {
 
 img {
   width: 200px;
-  display: inline;
+  margin: 0 1em;
+}
+
+img.me {
+  float: right;
 }
 
 .cat-images {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
+}
 
-  img {
-    border-radius: 50%;
+@media (max-width: theme('screens.sm')) {
+  img.me {
+    float: none;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 2em;
+  }
+
+  .cat-images {
+    flex-wrap: wrap;
+
+    img {
+      width: auto;
+    }
   }
 }
 </style>

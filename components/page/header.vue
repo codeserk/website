@@ -1,11 +1,11 @@
 <template>
   <div class="header-container">
-    <img v-if="image" v-lazy="lazyImage" class="image-moon lazy" />
+    <img v-if="image" v-lazy="lazyImage" class="image-moon lazy circled" />
 
     <div class="container mx-auto clearfix">
       <div :class="{ 'without-image': !image }" class="header">
         <div v-if="image" class="header-image">
-          <img v-lazy="lazyImage" class="image-header lazy" />
+          <img v-lazy="lazyImage" class="image-header lazy bordered" />
         </div>
 
         <div class="header-title">
@@ -63,7 +63,6 @@ export default {
     right: 5vw;
     display: none;
     height: 20vh;
-    border-radius: 50%;
 
     @media (min-width: 1800px) {
       display: block;
@@ -88,7 +87,6 @@ export default {
         min-width: 200px;
         height: 200px;
         margin: auto;
-        border-radius: 12px;
       }
     }
 
@@ -103,8 +101,8 @@ export default {
     }
 
     &.without-image {
-      justify-content: center;
       flex-direction: row;
+      justify-content: center;
 
       .header-title {
         max-width: 550px;

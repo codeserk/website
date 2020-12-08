@@ -7,7 +7,7 @@
       height: height ? `${height}px` : '',
       background,
     }"
-    class="image-placeholder image-container obect-center"
+    class="image-placeholder image-container object-center"
   >
     <img
       :data-src="src"
@@ -19,7 +19,7 @@
       :title="alt"
       :style="{ 'object-fit': fit }"
       draggable="false"
-      class="object-center"
+      class="object-center bordered"
     />
   </div>
 </template>

@@ -6,7 +6,7 @@ export default async function(context) {
     const result = await query(
       `
         query commonData {
-          avatar: mediaById(id: "avatar") {
+          avatar: mediaById(id: "avatar-pixelated-v2") {
             image(resolution: Small, format: png, transform: { resize: { width: 290, height: 290 }}) { src }
             placeholder: image(resolution: Placeholder, format: png, transform: { resize: { width: 16, height: 16 }}, output: Inline) { src }
           }

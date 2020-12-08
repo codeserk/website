@@ -22,7 +22,7 @@
         :class="{ 'is-active': current === index * 2 }"
         class="menu-item"
       >
-        <img v-lazy="{ src: item.thumbnail, loading: item.thumbnailPlaceholder }" class="lazy" />
+        <img v-lazy="{ src: item.thumbnail, loading: item.thumbnailPlaceholder }" class="lazy bordered" />
       </div>
     </div>
     <div v-if="withSecondary && imagesRight.length > 0" class="menu menu-right">
@@ -33,7 +33,7 @@
         :class="{ 'is-active': current === 1 + index * 2 }"
         class="menu-item"
       >
-        <img v-lazy="{ src: item.thumbnail, loading: item.thumbnailPlaceholder }" class="lazy" />
+        <img v-lazy="{ src: item.thumbnail, loading: item.thumbnailPlaceholder }" class="lazy bordered" />
       </div>
     </div>
 
@@ -388,7 +388,6 @@ export default {
     img {
       width: 200px;
       height: 200px;
-      border-radius: 12px;
     }
 
     &.is-active {

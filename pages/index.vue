@@ -1,27 +1,34 @@
 <template>
   <main>
     <header class="header">
-      <div class="social-icons">
-        <a v-for="(item, index) in social" :key="index" :href="item.link" target="_blank">
-          <font-awesome-icon :icon="['fab', item.icon]" size="lg" />
-        </a>
+      <div class="heading-container">
+        <div class="social-icons">
+          <a v-for="(item, index) in social" :key="index" :href="item.link" target="_blank">
+            <font-awesome-icon :icon="['fab', item.icon]" size="lg" />
+          </a>
+        </div>
+
+        <h1>
+          Jos<span class="color">é</span> C<span class="color">á</span>mara
+          <span class="subtitle yellow">@codeserk</span>
+        </h1>
+
+        <div class="titles-container">
+          <client-only>
+            <vue-typed-js
+              :strings="titles"
+              :start-delay="1000"
+              :type-speed="100"
+              :back-speed="20"
+              class="content titles"
+              content-type="html"
+              loop
+            >
+              <span class="typing" />
+            </vue-typed-js>
+          </client-only>
+        </div>
       </div>
-
-      <h1>Jos<span class="color">é</span> C<span class="color">á</span>mara <span class="subtitle">@codeserk</span></h1>
-
-      <client-only>
-        <vue-typed-js
-          :strings="titles"
-          :start-delay="1000"
-          :type-speed="100"
-          :back-speed="20"
-          class="content titles"
-          content-type="html"
-          loop
-        >
-          <span class="typing" />
-        </vue-typed-js>
-      </client-only>
     </header>
 
     <div class="sections">
@@ -89,7 +96,7 @@ export default {
       '<a href="https://vuejs.org/" target="_blank">VueJS</a> lover!',
       '<strong>DevOps</strong> initiated',
       '<strong>Game</strong> developer (as <em>hobby</em>)',
-      '<strong>iOS</strong> and <strong>Android</strong> learner ',
+      '<strong>iOS</strong> and <strong>Android</strong> learner',
       '<em>Cat</em> enthusiast! :3',
     ],
 
@@ -184,57 +191,72 @@ export default {
   position: relative;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
   color: white;
-  font-size: 8vw;
-  line-height: 1em;
+  font-size: 9vw;
+  line-height: 1.5em;
   text-align: center;
+
+  .heading-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+
+    h1 {
+      color: white;
+      font-size: 1.5em;
+      line-height: 1;
+      letter-spacing: 0.2em;
+      filter: drop-shadow(0 0 1px black) drop-shadow(0 0 1px black);
+
+      .color {
+        opacity: 1;
+        animation-name: header-color;
+        animation-duration: 1s;
+        animation-timing-function: ease-in;
+        animation-delay: 1s;
+        animation-fill-mode: forwards;
+      }
+
+      .subtitle {
+        display: block;
+        font-size: 0.75em;
+      }
+    }
+  }
 
   .social-icons {
     position: absolute;
-    top: 0;
+    top: -3em;
     right: 0;
     left: 0;
-    font-size: 2rem;
-    line-height: 2rem;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 0.5em;
 
     a {
-      margin-right: 2rem;
-    }
-  }
-
-  h1 {
-    position: relative;
-    overflow: hidden;
-    color: white;
-    font-size: 1.2em;
-    letter-spacing: 0.2em;
-
-    .color {
-      opacity: 1;
-      animation-name: header-color;
-      animation-duration: 1s;
-      animation-timing-function: ease-in;
-      animation-delay: 1s;
-      animation-fill-mode: forwards;
-    }
-
-    .subtitle {
       display: block;
-      font-size: 0.75em;
+      filter: drop-shadow(0 0 1px black) drop-shadow(0 0 1px black);
     }
   }
 
-  .titles {
+  .titles-container {
     position: absolute;
-    bottom: 0;
-    font-size: 4vw;
+    right: 0;
+    bottom: -3em;
+    left: 0;
+    height: 2em;
+    font-size: 0.9em;
+    line-height: 1;
+    text-align: center;
 
-    .typing,
-    /deep/ .typed-cursor {
-      margin-bottom: 0 !important;
+    .titles {
+      display: inline;
+      filter: drop-shadow(0 0 1px black) drop-shadow(0 0 1px black);
     }
   }
 
@@ -255,19 +277,19 @@ export default {
 
     h2 {
       margin-bottom: 0.5em;
-      font-size: 4em;
+      font-size: 2.5em;
       text-align: center;
+
+      @media (min-width: theme('screens.sm')) {
+        font-size: 4em;
+      }
     }
   }
 }
 
 @media (min-width: 1500px) {
   .header {
-    font-size: 8em;
-
-    .titles {
-      font-size: 5rem;
-    }
+    font-size: 7em;
   }
 }
 

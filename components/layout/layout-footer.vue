@@ -164,6 +164,7 @@ footer {
       position: relative;
       display: inline-block;
       max-width: 200px;
+      margin: 0 24px;
       padding: 1em;
       border-right: 8px solid white;
       border-bottom: 4px solid white;

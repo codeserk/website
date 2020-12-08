@@ -6,7 +6,7 @@
     data-aos="appear"
   >
     <!-- <nuxt-link :to="link"><component :is="heading" v-text="title" class="title"/></nuxt-link> -->
-    <nuxt-link :to="link" class="image"><img v-lazy="lazyImage" class="lazy"/></nuxt-link>
+    <nuxt-link :to="link" class="image"><img v-lazy="lazyImage" class="lazy bordered"/></nuxt-link>
     <div class="card-content lazy-background">
       <div class="description">
         <div class="fill" />
@@ -86,12 +86,11 @@ export default {
   }
 
   .image {
-    text-align: center;
-    margin: auto;
     display: inline-block;
+    margin: auto;
+    text-align: center;
 
     img {
-      border-radius: 12px;
       width: 290px;
       height: 290px;
     }
@@ -108,8 +107,8 @@ export default {
       text-align: left;
 
       .title {
-        text-align: center;
         font-size: 1.5em;
+        text-align: center;
       }
 
       .extra-content {
