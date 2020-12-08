@@ -40,6 +40,6 @@ This project was a **big failure** for many reasons, but I'm happy of all the th
 ## Game development
 I also experienced with [](game) development during this time. I worked on two projects using [](unity):
 * [Asteroids!](/project/game/ivy): A simple arcade game
-* [Arena Heroes](/project/game/callet): A reaction game, with RPG touch. I continued working on this project even after I joined [Square 1](/career/square=1).
+* [Arena Heroes](/project/game/callet): A reaction game, with RPG touch. I continued working on this project even after I joined [Square 1](/career/square-1).
 
 
