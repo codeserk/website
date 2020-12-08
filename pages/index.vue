@@ -295,7 +295,7 @@ export default {
 
 @media (min-width: theme('screens.sm')) {
   .header {
-    font-size: 8vw;
+    font-size: 7vw;
   }
 }
 
