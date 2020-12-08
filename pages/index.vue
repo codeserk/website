@@ -202,7 +202,7 @@ export default {
   justify-content: center;
   min-height: 100vh;
   color: white;
-  font-size: 9vw;
+  font-size: 10vw;
   line-height: 1.5em;
   text-align: center;
 
@@ -290,6 +290,12 @@ export default {
         font-size: 4em;
       }
     }
+  }
+}
+
+@media (min-width: theme('screens.sm')) {
+  .header {
+    font-size: 8vw;
   }
 }
 
