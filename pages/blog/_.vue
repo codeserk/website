@@ -37,10 +37,11 @@ export default {
         `
           query post($slug: String!) {
             post: postBySlug(slug: $slug, type: "blog") {
-              id title content dom
+              id title excerpt content dom link
 
               image: featuredImage {
                 image(resolution: Small, format: png, transform: { resize: { width: 200, height: 200 }}) { src }
+                header: image(resolution: Medium, format: png, transform: { resize: { width: 600, height: 600 }}) { src }
                 placeholder: image(resolution: Placeholder, format: png, transform: { resize: { width: 16, height: 16 }}, output: Inline) { src }
               }
 
@@ -58,7 +59,7 @@ export default {
     )
 
     if (!data.post) {
-      return error({ statusCode: 404, message: 'post not found' })
+      return error({ statusCode: 404, message: 'Article not found' })
     }
 
     return data
@@ -67,21 +68,20 @@ export default {
   head() {
     return generateSeoMeta({
       path: this.$route.path,
-      title: this.post.name,
-      description: this.post.description,
-      image: this.image?.image.src,
+      title: `${this.post.title} · Blog`,
+      description: this.post.excerpt,
+      keywords: this.getKeywords(this.post),
+      image: this.post.image?.header.src,
     })
   },
 
   mounted() {
-    if (this.$analytics) {
-      if (this.post) {
-        this.$analytics.logEvent('view_page', {
-          title: this.post.title,
-          slug: this.post.slug,
-          link: this.post.link,
-        })
-      }
+    if (this.$analytics && this.post) {
+      this.$analytics.logEvent('view_page', {
+        title: this.post.title,
+        slug: this.post.slug,
+        link: this.post.link,
+      })
     }
   },
 }

@@ -22,6 +22,7 @@ export default {
 
               image: featuredImage {
                 image(resolution: Small, format: png, transform: { resize: { width: 200, height: 200 }}) { src }
+                header: image(resolution: Medium, format: png, transform: { resize: { width: 600, height: 600 }}) { src }
                 placeholder: image(resolution: Placeholder, format: png, transform: { resize: { width: 16, height: 16 }}, output: Inline) { src }
               }
 
@@ -85,21 +86,19 @@ export default {
   head() {
     return generateSeoMeta({
       path: this.$route.path,
-      title: this.framework.name,
-      description: this.framework.description,
-      image: this.image?.image.src,
+      title: `${this.framework.name} · Framework`,
+      description: this.framework.summary,
+      image: this.framework.image?.header.src,
     })
   },
 
   mounted() {
-    if (this.$analytics) {
-      if (this.framework) {
-        this.$analytics.logEvent('view_page', {
-          title: this.framework.title,
-          slug: this.framework.slug,
-          link: this.framework.link,
-        })
-      }
+    if (this.$analytics && this.framework) {
+      this.$analytics.logEvent('view_page', {
+        title: this.framework.title,
+        slug: this.framework.slug,
+        link: this.framework.link,
+      })
     }
   },
 }

@@ -17,11 +17,12 @@ export default {
         `
           query technology($slug: String!) {
             technology: termBySlug(slug: $slug, taxonomy: "technology") {
-              id name description dom
+              id name description dom link
               summary: extra(path: "summary")
 
               image: featuredImage {
                 image(resolution: Small, format: png, transform: { resize: { width: 200, height: 200 }}) { src }
+                header: image(resolution: Medium, format: png, transform: { resize: { width: 600, height: 600 }}) { src }
                 placeholder: image(resolution: Placeholder, format: png, transform: { resize: { width: 16, height: 16 }}, output: Inline) { src }
               }
 
@@ -85,21 +86,19 @@ export default {
   head() {
     return generateSeoMeta({
       path: this.$route.path,
-      title: this.technology.name,
-      description: this.technology.description,
-      image: this.image?.image.src,
+      title: `${this.technology.name} · Technology`,
+      description: this.technology.summary,
+      image: this.technology.image?.header.src,
     })
   },
 
   mounted() {
-    if (this.$analytics) {
-      if (this.technology) {
-        this.$analytics.logEvent('view_page', {
-          title: this.technology.title,
-          slug: this.technology.slug,
-          link: this.technology.link,
-        })
-      }
+    if (this.$analytics && this.technology) {
+      this.$analytics.logEvent('view_page', {
+        title: this.technology.title,
+        slug: this.technology.slug,
+        link: this.technology.link,
+      })
     }
   },
 }

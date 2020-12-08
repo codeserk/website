@@ -72,6 +72,7 @@ export default async function(context) {
     }
   })
 
+  const keywordsFields = ['areas', 'languages', 'frameworks', 'databases', 'brokers', 'technologies']
   if (!Vue.__common_data__) {
     Vue.__common_data__ = true
     Vue.mixin({
@@ -103,6 +104,23 @@ export default async function(context) {
               }
             }
           }
+        },
+
+        getKeywords(item) {
+          if (!item) {
+            return []
+          }
+
+          const keywords = []
+          for (const key of keywordsFields) {
+            if (Array.isArray(item[key])) {
+              keywords.push(...item[key].sort(sortByOrder).map(term => term.name))
+            }
+          }
+
+          console.log(keywords)
+
+          return keywords
         },
       },
     })

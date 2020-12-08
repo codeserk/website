@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import { generateSeoMeta } from '../../utils/seo'
 import { sortByOrder } from '../../utils/sort'
 export default {
   components: {
@@ -53,6 +54,24 @@ export default {
 
       return result
     })
+  },
+
+  head() {
+    return generateSeoMeta({
+      path: this.$route.path,
+      title: 'Development',
+      description: 'Section with all the development areas.',
+    })
+  },
+
+  mounted() {
+    if (this.$analytics) {
+      this.$analytics.logEvent('view_page', {
+        title: 'Development',
+        slug: '/development',
+        link: '/development',
+      })
+    }
   },
 }
 </script>

@@ -71,8 +71,7 @@
 </template>
 
 <script>
-import { lightenDarkenColor } from '../utils/color'
-import { socialNetworks } from '../utils/seo'
+import { generateSeoMeta, socialNetworks } from '../utils/seo'
 
 export default {
   components: {
@@ -85,9 +84,6 @@ export default {
   },
 
   data: () => ({
-    lighten: 0,
-    mainColor: '#175fa2',
-
     titles: [
       'Software Engineer',
       '<strong>Backend</strong> developer',
@@ -107,10 +103,10 @@ export default {
     ],
   }),
 
-  computed: {
-    color() {
-      return lightenDarkenColor(this.mainColor, 0)
-    },
+  head() {
+    return generateSeoMeta({
+      path: this.$route.path,
+    })
   },
 
   async asyncData({ store, error, route, params, $source }) {
@@ -182,6 +178,16 @@ export default {
     )
 
     return data
+  },
+
+  mounted() {
+    if (this.$analytics) {
+      this.$analytics.logEvent('view_page', {
+        title: 'Home',
+        slug: '/',
+        link: '/',
+      })
+    }
   },
 }
 </script>
@@ -298,7 +304,7 @@ export default {
     color: white;
   }
   100% {
-    color: red;
+    color: #ff004d;
   }
 }
 </style>

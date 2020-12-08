@@ -24,10 +24,11 @@ export default {
         `
           query page($slug: String!) {
             page: postBySlug(slug: $slug, type: "page") {
-              id title content dom
+              id title excerpt content dom link
 
               image: featuredImage {
                 image(resolution: Small, format: png, transform: { resize: { width: 200, height: 200 }}) { src }
+                header: image(resolution: Medium, format: png, transform: { resize: { width: 600, height: 600 }}) { src }
                 placeholder: image(resolution: Placeholder, format: png, transform: { resize: { width: 16, height: 16 }}, output: Inline) { src }
               }
             }
@@ -47,21 +48,20 @@ export default {
   head() {
     return generateSeoMeta({
       path: this.$route.path,
-      title: this.page.name,
-      description: this.page.description,
-      image: this.image?.image.src,
+      title: this.page.title,
+      description: this.page.excerpt,
+      keywords: this.getKeywords(this.page),
+      image: this.page.image?.header.src,
     })
   },
 
   mounted() {
-    if (this.$analytics) {
-      if (this.page) {
-        this.$analytics.logEvent('view_page', {
-          title: this.page.title,
-          slug: this.page.slug,
-          link: this.page.link,
-        })
-      }
+    if (this.$analytics && this.page) {
+      this.$analytics.logEvent('view_page', {
+        title: this.page.title,
+        slug: this.page.slug,
+        link: this.page.link,
+      })
     }
   },
 }

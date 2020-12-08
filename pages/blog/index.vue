@@ -7,14 +7,15 @@
 </template>
 
 <script>
+import { generateSeoMeta } from '../../utils/seo'
 export default {
   components: {
     PageWrapper: () => import('~/components/page/wrapper'),
     ArticleGrid: () => import('~/components/card/article-grid'),
   },
 
-  async asyncData({ $source }) {
-    return $source.resolve('/project', ({ query }) =>
+  async asyncData({ route, $source }) {
+    return $source.resolve(route.path, ({ query }) =>
       query(
         `
           query articles {
@@ -35,6 +36,24 @@ export default {
         `,
       ),
     )
+  },
+
+  head() {
+    return generateSeoMeta({
+      path: this.$route.path,
+      title: 'Blog',
+      description: 'Section with all the blog articles.',
+    })
+  },
+
+  mounted() {
+    if (this.$analytics) {
+      this.$analytics.logEvent('view_page', {
+        title: 'Blog',
+        slug: '/blog',
+        link: '/blog',
+      })
+    }
   },
 }
 </script>

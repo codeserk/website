@@ -7,14 +7,15 @@
 </template>
 
 <script>
+import { generateSeoMeta } from '../../utils/seo'
 export default {
   components: {
     PageWrapper: () => import('~/components/page/wrapper'),
     ProjectsGrid: () => import('~/components/project/project-grid'),
   },
 
-  async asyncData({ $source }) {
-    return $source.resolve('/project', ({ query }) =>
+  async asyncData({ route, $source }) {
+    return $source.resolve(route.path, ({ query }) =>
       query(
         `
           query projects {
@@ -35,6 +36,24 @@ export default {
         `,
       ),
     )
+  },
+
+  head() {
+    return generateSeoMeta({
+      path: this.$route.path,
+      title: 'Projects',
+      description: 'Section with all the projects.',
+    })
+  },
+
+  mounted() {
+    if (this.$analytics) {
+      this.$analytics.logEvent('view_page', {
+        title: 'Projects',
+        slug: '/project',
+        link: '/project',
+      })
+    }
   },
 }
 </script>

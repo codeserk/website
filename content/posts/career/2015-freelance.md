@@ -35,11 +35,11 @@ During the first months, I started developing [Meeting Point](/project/web/meeti
 
 Having that in mind, I decided to start implementing a native [](android) app, which was fun to learn, but also a big stone in the path.
 
-This project was a **big failure** for many reasons, but I'm happy of all the things I could learn during this time :) Besides, I was able to present all the work I had done in this project during my interview for a position at [Square 1](/career/square1) (which showed that I had some experience in [](web)), so it was helpful after all!
+This project was a **big failure** for many reasons, but I'm happy of all the things I could learn during this time :) Besides, I was able to present all the work I had done in this project during my interview for a position at [Square 1](/career/square-1) (which showed that I had some experience in [](web)), so it was helpful after all!
 
 ## Game development
 I also experienced with [](game) development during this time. I worked on two projects using [](unity):
 * [Asteroids!](/project/game/ivy): A simple arcade game
-* [Arena Heroes](/project/game/callet): A reaction game, with RPG touch. I continued working on this project even after I joined [Square 1](/career/square1).
+* [Arena Heroes](/project/game/callet): A reaction game, with RPG touch. I continued working on this project even after I joined [Square 1](/career/square=1).
 
 

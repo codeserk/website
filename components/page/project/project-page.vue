@@ -19,7 +19,7 @@
         </template>
 
         <template #right-block>
-          <dom-content v-bind="project.dom" class="mx-auto" aos="fade-up" />
+          <dom-content v-bind="project.dom" class="mx-auto" aos="appear" />
         </template>
       </time-block>
 

@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import { generateSeoMeta } from '../../utils/seo'
 import { sortByOrder } from '../../utils/sort'
 export default {
   components: {
@@ -51,6 +52,24 @@ export default {
 
       return result
     })
+  },
+
+  head() {
+    return generateSeoMeta({
+      path: this.$route.path,
+      title: 'Message Brokers',
+      description: 'Section with all the message brokers.',
+    })
+  },
+
+  mounted() {
+    if (this.$analytics) {
+      this.$analytics.logEvent('view_page', {
+        title: 'Message Brokers',
+        slug: '/message-broker',
+        link: '/message-broker',
+      })
+    }
   },
 }
 </script>

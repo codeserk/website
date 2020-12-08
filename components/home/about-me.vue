@@ -1,13 +1,12 @@
 <template>
   <div class="block small with-padding with-shadow-left skew container mx-auto content">
-    <img
-      v-lazy="{ src: images.avatar.image.src, loading: images.avatar.placeholder.src }"
-      data-aos="appear"
-      class="image me lazy"
-    />
-
     <p data-aos="appear">
       Hello!
+      <img
+        v-lazy="{ src: images.avatar.image.src, loading: images.avatar.placeholder.src }"
+        data-aos="appear"
+        class="image me lazy"
+      />
     </p>
     <p data-aos="appear">
       Welcome to my personal <em>portfolio</em>!. This website is meant to showcase all the
@@ -68,6 +67,7 @@ img {
 }
 
 img.me {
+  display: inline;
   float: right;
 }
 

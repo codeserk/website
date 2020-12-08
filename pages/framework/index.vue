@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import { generateSeoMeta } from '../../utils/seo'
 import { sortByOrder } from '../../utils/sort'
 export default {
   components: {
@@ -51,6 +52,24 @@ export default {
 
       return result
     })
+  },
+
+  head() {
+    return generateSeoMeta({
+      path: this.$route.path,
+      title: 'Frameworks',
+      description: 'Section with all the frameworks.',
+    })
+  },
+
+  mounted() {
+    if (this.$analytics) {
+      this.$analytics.logEvent('view_page', {
+        title: 'Frameworks',
+        slug: '/framework',
+        link: '/framework',
+      })
+    }
   },
 }
 </script>

@@ -17,11 +17,12 @@ export default {
         `
           query language($slug: String!) {
             language: termBySlug(slug: $slug, taxonomy: "language") {
-              id name description dom
+              id name description dom link
               summary: extra(path: "summary")
 
               image: featuredImage {
                 image(resolution: Small, format: png, transform: { resize: { width: 200, height: 200 }}) { src }
+                header: image(resolution: Medium, format: png, transform: { resize: { width: 600, height: 600 }}) { src }
                 placeholder: image(resolution: Placeholder, format: png, transform: { resize: { width: 16, height: 16 }}, output: Inline) { src }
               }
 
@@ -85,21 +86,19 @@ export default {
   head() {
     return generateSeoMeta({
       path: this.$route.path,
-      title: this.language.name,
-      description: this.language.description,
-      image: this.image?.image.src,
+      title: `${this.language.name} · Language`,
+      description: this.language.summary,
+      image: this.language.image?.header.src,
     })
   },
 
   mounted() {
-    if (this.$analytics) {
-      if (this.language) {
-        this.$analytics.logEvent('view_page', {
-          title: this.language.title,
-          slug: this.language.slug,
-          link: this.language.link,
-        })
-      }
+    if (this.$analytics && this.language) {
+      this.$analytics.logEvent('view_page', {
+        title: this.language.name,
+        slug: this.language.slug,
+        link: this.language.link,
+      })
     }
   },
 }

@@ -7,14 +7,15 @@
 </template>
 
 <script>
+import { generateSeoMeta } from '../../utils/seo'
 export default {
   components: {
     PageWrapper: () => import('~/components/page/wrapper'),
     Languages: () => import('~/components/home/languages'),
   },
 
-  async asyncData({ $source }) {
-    return $source.resolve('/language', ({ query }) =>
+  async asyncData({ route, $source }) {
+    return $source.resolve(route.path, ({ query }) =>
       query(
         `
           query languages {
@@ -30,6 +31,24 @@ export default {
         `,
       ),
     )
+  },
+
+  head() {
+    return generateSeoMeta({
+      path: this.$route.path,
+      title: 'Languages',
+      description: 'Section with all the languages.',
+    })
+  },
+
+  mounted() {
+    if (this.$analytics) {
+      this.$analytics.logEvent('view_page', {
+        title: 'Languages',
+        slug: '/language',
+        link: '/language',
+      })
+    }
   },
 }
 </script>

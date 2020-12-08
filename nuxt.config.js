@@ -45,6 +45,7 @@ export default {
     { src: '@/plugins/touch', mode: 'client' },
     { src: '@/plugins/vertical-height', mode: 'client' },
     '~/plugins/common-data',
+    { src: '@/plugins/firebase', mode: 'client' },
   ],
 
   webfontloader: {
@@ -132,11 +133,30 @@ export default {
       lang: 'en',
     },
     title: siteName,
+    link: [
+      // Favicon
+      { rel: 'apple-touch-icon', sizes: '57x57', href: '/favicon/apple-icon-57x57.png' },
+      { rel: 'apple-touch-icon', sizes: '60x60', href: '/favicon/apple-icon-60x60.png' },
+      { rel: 'apple-touch-icon', sizes: '72x72', href: '/favicon/apple-icon-72x72.png' },
+      { rel: 'apple-touch-icon', sizes: '76x76', href: '/favicon/apple-icon-76x76.png' },
+      { rel: 'apple-touch-icon', sizes: '114x114', href: '/favicon/apple-icon-114x114.png' },
+      { rel: 'apple-touch-icon', sizes: '120x120', href: '/favicon/apple-icon-120x120.png' },
+      { rel: 'apple-touch-icon', sizes: '144x144', href: '/favicon/apple-icon-144x144.png' },
+      { rel: 'apple-touch-icon', sizes: '152x152', href: '/favicon/apple-icon-152x152.png' },
+      { rel: 'apple-touch-icon', sizes: '180x180', href: '/favicon/apple-icon-180x180.png' },
+      { rel: 'icon', type: 'image/png', sizes: '192x192', href: '/favicon/android-icon-192x192.png' },
+      { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon/favicon-32x32.png' },
+      { rel: 'icon', type: 'image/png', sizes: '96x96', href: '/favicon/favicon-96x96.png' },
+      { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon/favicon-16x16.png' },
+    ],
     meta: [
+      // Favicon
+      { name: 'msapplication-TileColor', content: '#575fa2' },
+      { name: 'msapplication-TileImage', content: '/favicon/msicon-144x144.png' },
+      { name: 'theme-color', content: '#575fa2' },
+
       { 'http-equiv': 'X-UA-Compatible', content: 'IE=edge' },
       { charset: 'utf-8' },
-      { name: 'msapplication-TileColor', content: '#0924D1' },
-      { name: 'theme-color', content: '#0924D1' },
       { name: 'robots', content: 'noindex, nofollow' },
       { name: 'author', content: defaultSeo.author },
 
@@ -165,15 +185,15 @@ export default {
 
   pwa: {
     icon: {
-      iconFileName: 'logo.png',
+      iconFileName: 'favicon.png',
     },
     name: siteName,
     author: defaultSeo.author,
     description: defaultSeo.description,
-    lang: 'es',
+    lang: 'en',
     manifest: {
       theme_color: '#0924D1',
-      background_color: '#000000',
+      background_color: '#575fa2',
     },
   },
 

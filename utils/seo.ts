@@ -1,4 +1,4 @@
-export const siteName = 'Jose Camara • @codeserk'
+export const siteName = 'Jose Camara [@codeserk]'
 
 export const socialNetworks = {
   twitter: {
@@ -15,13 +15,24 @@ export const socialNetworks = {
 }
 
 export const defaultSeo = {
-  title: 'Jose Camara • @codeserk',
+  title: 'Jose Camara [@codeserk]',
   canonical: 'https://www.codeserk.es',
   description:
-    "Jose Camara's personal potfolio, meant to showcase all the projects I work on, and the new technologies or languages that I discover.",
+    "Jose Camara's personal portfolio, meant to showcase all the projects I work on, and the new technologies or languages that I use.",
   author: 'Jose Camara',
-  keywords: ['codeserk', 'web', 'ts', 'js', 'css', 'html', 'dev'],
-  image: '/logo.png',
+  keywords: [
+    'portfolio',
+    'developer',
+    'web development',
+    'typescript',
+    'javascript',
+    'nestjs',
+    'vue',
+    'game development',
+    'codeserk',
+    'html',
+  ],
+  image: '/header.png',
 }
 
 export interface SeoInformation {
@@ -48,7 +59,7 @@ export function generateSeoMeta(info: SeoInformation): any {
   }
   const metas: any[] = []
   metas.push({ property: 'og:url', hid: 'og:url', content: url })
-  const title = info.title ? `${info.title} ♦ ${siteName}` : defaultSeo.title
+  const title = info.title ? `${info.title} · ${siteName}` : defaultSeo.title
   head.title = title
   metas.push({ property: 'og:title', hid: 'og:title', content: title })
   metas.push({ property: 'twitter:title', hid: 'twitter:title', content: title })
@@ -61,9 +72,10 @@ export function generateSeoMeta(info: SeoInformation): any {
   const keywords = info.keywords || defaultSeo.keywords
   metas.push({ name: 'keywords', hid: 'keywords', content: keywords.join(',') })
 
-  const image = defaultSeo.canonical + (info.image || defaultSeo.image)
+  // const image = defaultSeo.canonical + (info.image || defaultSeo.image)
+  const image = info.image || defaultSeo.image
   metas.push({ property: 'og:image', hid: 'og:image', content: image })
-  metas.push({ property: 'og:image:type', hid: 'og:image:type', content: 'image/jpeg' })
+  metas.push({ property: 'og:image:type', hid: 'og:image:type', content: 'image/png' })
   metas.push({ property: 'og:image:width', hid: 'og:image:width', content: 600 })
   metas.push({ property: 'og:image:width', hid: 'og:image:height', content: 600 })
   metas.push({ property: 'twitter:image', hid: 'twitter:image', content: image })

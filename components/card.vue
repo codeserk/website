@@ -145,6 +145,7 @@ export default {
       position: absolute;
       top: 1em;
       right: 1em;
+      z-index: -1;
       width: 100px;
       height: 100px;
     }
@@ -152,18 +153,6 @@ export default {
   &:hover {
     transform: scale3d(1.1, 1.1, 1.1);
   }
-
-  // &.has-image .description:hover {
-  //   background: transparent;
-
-  //   .progress,
-  //   .extra-content {
-  //     transform: translate3d(0, -200px, 0);
-  //   }
-  //   .summary {
-  //     transform: translate3d(0, 200px, 0);
-  //   }
-  // }
 }
 
 @media (max-width: theme('screens.lg')) {

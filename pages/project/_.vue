@@ -24,9 +24,10 @@ export default {
         `
           query project($slug: String!) {
             area: termBySlug(slug: $slug, taxonomy: "development-area") {
-              id name
+              id slug name link
               image: featuredImage {
                 image(resolution: Small, format: png, transform: { resize: { width: 200, height: 200 }}) { src }
+                header: image(resolution: Medium, format: png, transform: { resize: { width: 600, height: 600 }}) { src }
                 placeholder: image(resolution: Placeholder, format: png, transform: { resize: { width: 16, height: 16 }}, output: Inline) { src }
               }
 
@@ -47,9 +48,10 @@ export default {
             }
 
             project: postBySlug(slug: $slug, type: "project") {
-              id title content dom
+              id title excerpt content dom
               image: featuredImage {
                 image(resolution: Small, format: png, transform: { resize: { width: 200, height: 200 }}) { src }
+                header: image(resolution: Medium, format: png, transform: { resize: { width: 600, height: 600 }}) { src }
                 placeholder: image(resolution: Placeholder, format: png, transform: { resize: { width: 16, height: 16 }}, output: Inline) { src }
               }
 
@@ -106,21 +108,39 @@ export default {
   },
 
   head() {
+    if (this.area) {
+      return generateSeoMeta({
+        path: this.$route.path,
+        title: `${this.area.name} · Project`,
+        description: this.area.summary,
+        image: this.area.image?.header.src,
+      })
+    }
+
     return generateSeoMeta({
-      // path: this.$route.path,
-      // title: this.project.title,
-      // description: this.project.content,
-      // image: this.project.icon ? this.project.icon.src : undefined,
+      path: this.$route.path,
+      title: `${this.project.title} · ${this.project.mainTerm.name} · Project`,
+      description: this.project.summary || this.project.excerpt,
+      keywords: this.getKeywords(this.project),
+      image: this.project.image?.header.src,
     })
   },
 
   mounted() {
     if (this.$analytics) {
+      if (this.area) {
+        this.$analytics.logEvent('view_page', {
+          title: this.area.name,
+          slug: this.area.slug,
+          link: this.area.link,
+        })
+      }
+
       if (this.project) {
         this.$analytics.logEvent('view_page', {
-          // title: this.project.title,
-          // slug: this.project.slug,
-          // link: this.project.link,
+          title: this.project.title,
+          slug: this.project.slug,
+          link: this.project.link,
         })
       }
     }

@@ -88,21 +88,5 @@ img {
   width: 100%;
   height: 100%;
   border-radius: inherit !important;
-  opacity: 0;
-  filter: blur(8px);
-  transition: filter ease-in-out 1s, opacity ease-in-out 0.4s;
-
-  &[lazy='loading'] {
-    opacity: 0.9;
-    filter: blur(8px);
-  }
-  &[lazy='loaded'] {
-    opacity: 1;
-    filter: blur(0);
-  }
-
-  &:hover {
-    filter: blur(0) brightness(1.05);
-  }
 }
 </style>

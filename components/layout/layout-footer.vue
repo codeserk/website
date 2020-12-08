@@ -102,6 +102,20 @@
             />
           </nav>
         </div>
+
+        <div class="links">
+          <h3>Pages</h3>
+          <nav>
+            <router-link
+              v-for="(page, index) in pages"
+              :key="page.link"
+              :to="page.link"
+              v-text="page.title"
+              :data-aos-delay="index * 100"
+              data-aos="appear"
+            />
+          </nav>
+        </div>
       </div>
     </div>
 
@@ -127,6 +141,8 @@ export default {
       { icon: 'linkedin', link: socialNetworks.linkedin.url },
       { icon: 'twitter', link: socialNetworks.twitter.url },
     ],
+
+    pages: [{ title: 'Security and cookies', link: '/security-and-cookies' }],
   }),
 
   computed: {
@@ -172,9 +188,10 @@ footer {
       &::after {
         content: '►';
         position: absolute;
-        top: -0.5rem;
+        top: 2em;
         right: -0.5em;
         font-size: 3rem;
+        line-height: 10px;
       }
     }
 
@@ -229,6 +246,40 @@ footer {
             }
           }
         }
+      }
+    }
+  }
+
+  @media (max-width: theme('screens.sm')) {
+    .avatar {
+      flex-direction: column-reverse;
+
+      .speech-bubble {
+        margin: 24px 0;
+        border-top: 8px solid white;
+        border-right: none;
+        border-bottom: none;
+        border-left: 4px solid white;
+
+        &::after {
+          content: '▲';
+          top: -1rem;
+          right: auto;
+          left: 0.5em;
+        }
+      }
+    }
+
+    .links-container {
+      margin: 0;
+
+      .links {
+        flex: 1;
+        margin: 2em 1em;
+      }
+      a {
+        padding: 0.5em;
+        font-size: 1.25em;
       }
     }
   }

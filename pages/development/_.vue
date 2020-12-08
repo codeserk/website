@@ -22,6 +22,7 @@ export default {
 
               image: featuredImage {
                 image(resolution: Small, format: png, transform: { resize: { width: 200, height: 200 }}) { src }
+                header: image(resolution: Medium, format: png, transform: { resize: { width: 600, height: 600 }}) { src }
                 placeholder: image(resolution: Placeholder, format: png, transform: { resize: { width: 16, height: 16 }}, output: Inline) { src }
               }
 
@@ -88,8 +89,9 @@ export default {
   head() {
     return generateSeoMeta({
       path: this.$route.path,
-      title: this.area.name,
-      description: this.area.description,
+      title: `${this.area.name} · Development`,
+      description: this.area.summary,
+      image: this.area.image?.header.src,
     })
   },
 
