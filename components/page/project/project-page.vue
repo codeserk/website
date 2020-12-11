@@ -1,7 +1,7 @@
 <template>
   <page-wrapper :title="project.title" :image="project.image" :breadcrumbs="breadcrumbs" class="color full">
     <div class="container mx-auto clearfix">
-      <time-block v-bind="project" with-padding-left with-padding-right>
+      <time-block :start-date="project.startDate" :end-date="project.endDate" with-padding-left with-padding-right>
         <template #left-block class="block-left">
           <progress-bar :progress="project.progress" :text="project.status" class="progress" />
           <hr />

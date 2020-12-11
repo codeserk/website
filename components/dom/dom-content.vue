@@ -1,7 +1,5 @@
 <template>
-  <div class="dom-content content">
-    <dom :is="component" v-bind="{ ...$props, ...attributes }" />
-  </div>
+  <dom :class="`dome-level-${level}`" :is="component" v-bind="$props" :level="level" class="dom-content content" />
 </template>
 
 <script>

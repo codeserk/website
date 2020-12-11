@@ -1,5 +1,12 @@
 <template>
-  <component :is="component" v-bind="{ ...$props, ...attributes }" :style="attributes.style" class="dom" />
+  <component
+    :is="component"
+    v-bind="{ ...$props, ...attributes }"
+    :style="attributes.style"
+    :level="level"
+    :class="`dom-level-${level}`"
+    class="dom "
+  />
 </template>
 
 <script>
@@ -43,6 +50,11 @@ export default {
     maxParagraphs: {
       type: Number,
       default: null,
+    },
+
+    level: {
+      type: Number,
+      default: 0,
     },
 
     aos: {

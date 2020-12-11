@@ -1,6 +1,7 @@
 ---
 slug: avellana-colora
 title: Avellana Colorá
+excerpt: Colorful brand portfolio for Avellana Colorá.
 featuredImageId: project/avellanacolora/logo
 galleryImageIds:
   - project/avellanacolora/screenshot-1
@@ -36,4 +37,6 @@ extra:
   endDate: 2020-07-01
 ---
 
-Colorful brand portoflio for Avellana Colorá.
+Colorful brand portfolio for Avellana Colorá. The implementation of this website was an evolution of the implementation of [AJ+B website](/project/web/angelaberenguer).
+
+This public website uses [Press](/project/web/press) library that I built in [](typescript). The library reads all the content from a [](wordpress) instance and provides all scaffolding to build a public website. This application is built using [](nuxt), which makes `SSG` easy as hell.

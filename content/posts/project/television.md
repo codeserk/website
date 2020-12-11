@@ -1,6 +1,7 @@
 ---
 slug: television
 title: Television (Spain)
+excerpt: Mobile app to watch Spanish TV
 featuredImageId: project/television/logo
 galleryImageIds:
   - project/television/screenshot-1

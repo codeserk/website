@@ -19,7 +19,7 @@
       :title="alt"
       :style="{ 'object-fit': fit }"
       draggable="false"
-      class="object-center bordered"
+      class="object-center"
     />
   </div>
 </template>

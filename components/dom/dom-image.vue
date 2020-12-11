@@ -1,11 +1,9 @@
 <template>
   <image-responsive
     v-if="src"
-    :alt="attributes.alt || 'Imagen de contenido'"
+    :alt="attributes.alt || 'Content image'"
     :src="src"
     :placeholder="placeholder"
-    :data-aos="aos"
-    v-bind="attributes"
     class="dom-image"
   />
 </template>

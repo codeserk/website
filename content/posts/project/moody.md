@@ -1,6 +1,7 @@
 ---
 slug: moody
 title: Moody
+excerpt: A card game to improve team collaboration.
 featuredImageId: project/moody/header
 termsMap:
   development-area:
@@ -13,4 +14,6 @@ extra:
   endDate: 2018-07-01
 ---
 
-A card game to improve team collaboration.
+This was an idea from some of my colleges at [Coosto](/career/coosto). The original idea was from our scrum master and one of our designers: they wanted to create a _social game_ to improve the atmosphere within a team.
+
+I'm afraid we couldn't finish the game, and now **I even forgot the rules D:**. But I want to come back to this project soon!

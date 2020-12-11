@@ -145,7 +145,12 @@ export default {
               }
             }
 
-            articles: posts(type: "blog", sort: { field: "createdAt", direction: Descending }, pagination: { limit: 3 }) {
+            articles: posts(
+              type: "blog",
+              filters: { status: { eq: "published" } }
+              sort: { field: "createdAt", direction: Descending },
+              pagination: { limit: 3 }
+            ) {
               id slug title excerpt link
               status: extra(path: "status")
               progress: extra(path: "progress")

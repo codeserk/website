@@ -1,6 +1,6 @@
 <template>
-  <component :is="component" v-bind="attributes" :data-aos="aos" class="dom-default">
-    <dom v-for="(childNode, index) in filteredChildren" :key="index" v-bind="{ ...childNode }" />
+  <component :is="component" v-bind="attributes" :data-aos="level === 1 ? aos : undefined" class="dom-default">
+    <dom v-for="(childNode, index) in filteredChildren" :key="index" v-bind="{ ...childNode }" :level="level + 1" />
   </component>
 </template>
 

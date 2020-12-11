@@ -1,6 +1,7 @@
 ---
 slug: catrisma
 title: Catrisma
+excerpt: Website for cats, on hold :(
 featuredImageId: project/catrisma/logo
 termsMap:
   development-area:
@@ -33,4 +34,4 @@ extra:
   endDate: 2017-06-01
 ---
 
-Website for cats, on hold :(
+This is an idea that started some years ago: I wanted to help cat shelters to improve the visibility of the cats they have in adoption. I would also improve the communication among shelters and people that want to collaborate or pay a visit.

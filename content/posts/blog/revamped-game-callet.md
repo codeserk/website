@@ -1,6 +1,7 @@
 ---
 slug: revamped-game-arena-heroes
 title: "Revamped game: Arena Heroes"
+status: draft
 featuredImageId: project/callet/icon
 termsMap:
   development-area:

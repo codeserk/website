@@ -1,6 +1,8 @@
 ---
 slug: cshap-in-unity-is-great
 title: C# in Unity is great (finally!)
+status: published
+excerpt: I'm revamping some of the games I made using Unity in the past, and I'm delighted with all the improvements they have introduced.
 featuredImageId: framework/unity
 termsMap:
   development-area:
