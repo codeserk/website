@@ -24,6 +24,6 @@ extra:
   startDate: 2020-05-01
 ---
 
-The implementation of this website is an evolution of the implementation of [Avellana Colorá](/project/web/avellanacolora). This public website uses [Press](/project/web/press) library that I built in [](typescript).
+The implementation of this website is an evolution of the implementation of [Avellana Colorá](/project/web/avellana-colora). This public website uses [Press](/project/web/press) library that I built in [](typescript).
 
 The library reads all the content from the local filesystem (mostly from `markdown` files) and provides all scaffolding to build a public website. This application is built using [](nuxt), which makes `SSG` easy as hell.

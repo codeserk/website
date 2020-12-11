@@ -1,7 +1,5 @@
 
 .content {
-  white-space: break-spaces;
-
   h1,
   h2,
   h3,
@@ -99,5 +97,9 @@
   blockquote {
     padding-left: 1em;
     border-left: 2px solid white;
+  }
+
+  &.break {
+    white-space: break-spaces;
   }
 }

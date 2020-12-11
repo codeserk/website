@@ -26,7 +26,7 @@ extra:
   repository: https://bitbucket.org/josec89/meetingpoint-node/src/master/
 ---
 
-This was an app I _tried_ to develop during my 6 months as [freelance](/career/2015-freelance).
+This was an app I _tried_ to develop during my 6 months as [freelance](/career/freelance-2015).
 
 In this app you would be able to share your thoughts with the people nearby. I used [](sailsjs) as main Framework for the Backend, using [](mongodb) for persistence and [](redis) for cache. The first approach was to develop a single web Frontend using [](angular-1), and make that work in mobile devices using [](phonegap). But oh boy, if that was buggy:
 
