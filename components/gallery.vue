@@ -412,6 +412,7 @@ export default {
   bottom: -40px;
   left: 0;
   display: flex;
+  max-width: 100%;
   padding: 12px 0;
   padding-right: 50px;
   background: white;

@@ -84,6 +84,13 @@ export default {
       .item-header {
         display: block !important;
       }
+
+      .block.left {
+        width: 100%;
+      }
+      .right {
+        width: 100%;
+      }
     }
   }
 

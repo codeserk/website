@@ -1,11 +1,5 @@
 <template>
-  <image-responsive
-    v-if="src"
-    :alt="attributes.alt || 'Content image'"
-    :src="src"
-    :placeholder="placeholder"
-    class="dom-image"
-  />
+  <img v-lazy="{ src: src, loading: placeholder }" data-aos="appear" class="image lazy" />
 </template>
 
 <script>
@@ -13,10 +7,6 @@ import Dom from './dom'
 
 export default {
   name: 'DomImage',
-
-  components: {
-    ImageResponsive: () => import('~/components/image'),
-  },
 
   extends: Dom,
 
@@ -31,3 +21,9 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+.image {
+  width: 100%;
+}
+</style>

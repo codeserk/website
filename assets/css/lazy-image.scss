@@ -1,13 +1,8 @@
 img.lazy {
   opacity: 1;
-  filter: blur(0);
   transition: filter ease-in-out 1s;
   transition-delay: 0.1s;
   image-rendering: pixelated;
-
-  &[lazy='loaded'] {
-    filter: blur(0);
-  }
 }
 
 img.circled {

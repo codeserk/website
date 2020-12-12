@@ -262,26 +262,6 @@ export default {
     }
   }
 
-  @media (max-width: theme('screens.sm')) {
-    .period {
-      display: none;
-    }
-
-    .time-block {
-      .item-header {
-        display: block !important;
-      }
-      .period-text {
-        display: block;
-      }
-
-      .start-date,
-      .end-date {
-        font-size: 1.25rem;
-      }
-    }
-  }
-
   @media (max-width: theme('screens.lg')) {
     &::before {
       margin-left: calc(50% - 32px);
@@ -306,6 +286,33 @@ export default {
       }
       .end-date {
         left: calc(50% - 30px);
+      }
+    }
+  }
+
+  @media (max-width: theme('screens.sm')) {
+    .period {
+      display: none;
+    }
+
+    .time-block {
+      .item-header {
+        display: block !important;
+      }
+      .period-text {
+        display: block;
+      }
+
+      .start-date,
+      .end-date {
+        font-size: 1.25rem;
+      }
+
+      .block.left {
+        width: 100%;
+      }
+      .right {
+        width: 100%;
       }
     }
   }
