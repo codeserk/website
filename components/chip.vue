@@ -71,5 +71,9 @@ export default {
   &.technology {
     background: #ac0034;
   }
+
+  .content & {
+    margin-right: 0 !important;
+  }
 }
 </style>

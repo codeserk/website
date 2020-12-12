@@ -24,13 +24,20 @@
           <template v-if="item.website">
             <hr />
 
-            <a :href="item.website" v-text="item.beautifiedWebsite" target="_blank" />
+            <a :href="item.website" v-text="item.beautifiedWebsite" rel="noreferrer noopener" target="__blank" />
           </template>
         </section>
       </template>
 
       <template #right-block>
-        <img v-if="item.featuredImage" v-lazy="item.image" class="image lazy bordered" />
+        <img
+          v-if="item.featuredImage"
+          v-lazy="item.image"
+          :alt="`${career.title} logo`"
+          class="image lazy bordered"
+          width="150"
+          height="150"
+        />
         <dom-content v-bind="item.dom" :max-paragraphs="1" class="mx-auto" aos="appear" />
 
         <hr />

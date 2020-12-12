@@ -10,7 +10,7 @@
       class="slider"
     >
       <div v-for="(item, index) in images" :key="index" @click="zoomImage(index)" class="slider-item">
-        <img v-lazy="{ src: item.src, loading: item.placeholder }" class="lazy" />
+        <img v-lazy="{ src: item.src, loading: item.placeholder }" :alt="`Image at position ${index}`" class="lazy" />
       </div>
     </div>
 
@@ -22,7 +22,11 @@
         :class="{ 'is-active': current === index * 2 }"
         class="menu-item"
       >
-        <img v-lazy="{ src: item.thumbnail, loading: item.thumbnailPlaceholder }" class="lazy bordered" />
+        <img
+          v-lazy="{ src: item.thumbnail, loading: item.thumbnailPlaceholder }"
+          :alt="`Image at position ${index * 2}`"
+          class="lazy bordered"
+        />
       </div>
     </div>
     <div v-if="withSecondary && imagesRight.length > 0" class="menu menu-right">
@@ -33,7 +37,11 @@
         :class="{ 'is-active': current === 1 + index * 2 }"
         class="menu-item"
       >
-        <img v-lazy="{ src: item.thumbnail, loading: item.thumbnailPlaceholder }" class="lazy bordered" />
+        <img
+          v-lazy="{ src: item.thumbnail, loading: item.thumbnailPlaceholder }"
+          :alt="`Image at position ${1 + index * 2}`"
+          class="lazy bordered"
+        />
       </div>
     </div>
 

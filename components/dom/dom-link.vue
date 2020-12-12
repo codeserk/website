@@ -1,7 +1,15 @@
 <template>
   <span>
     <router-link v-if="isInternal" :to="link" v-text="text" v-bind="attributes" class="dom-link underline" />
-    <a v-else :href="link" v-text="text" v-bind="attributes" target="__blank" class="dom-link underline" />
+    <a
+      v-else
+      :href="link"
+      v-text="text"
+      v-bind="attributes"
+      target="__blank"
+      rel="noreferrer noopener"
+      class="dom-link underline"
+    />
   </span>
 </template>
 

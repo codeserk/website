@@ -43,7 +43,7 @@ This site uses third-party cookies analytical purposes. **This site does not use
 
 **Cookies for analysis purposes**. We use third-party cookies to analyze the traffic we receive.
 
-* Cookies from **<a rel="noreferrer noopener" href="https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage?hl=es" target="_blank">Google Analytics</a>**
+* Cookies from **<a rel="noreferrer noopener" href="https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage?hl=es" target="__blank">Google Analytics</a>**
 
 ## 4. How to uninstall cookies
 
@@ -51,8 +51,8 @@ To block cookies from this site you can **_Do not use cookies_**. in the pop-up 
 
 You can also manage the general cookies of your navigation, through your browser, here are instructions for different browsers: Be careful !! If you use the cookie manager of your browser you can block cookies that matter to you and are useful in your navigation.
 
-* <a rel="noreferrer noopener" href="https://support.microsoft.com/es-es/help/17442/windows-internet-explorer-delete-manage-cookies" target="_blank">Internet Explorer</a>
-* <a rel="noreferrer noopener" href="https://support.google.com/chrome/answer/95647" target="_blank">Google Chrome</a>
-* <a rel="noreferrer noopener" href="https://support.mozilla.org/es/kb/Borrar%20cookies" target="_blank">Firefox</a></li><li><a rel="noreferrer noopener" href="https://support.apple.com/kb/ph21411?locale=es_ES" target="_blank">Safari</a>
+* <a rel="noreferrer noopener" href="https://support.microsoft.com/es-es/help/17442/windows-internet-explorer-delete-manage-cookies" target="__blank">Internet Explorer</a>
+* <a rel="noreferrer noopener" href="https://support.google.com/chrome/answer/95647" target="__blank">Google Chrome</a>
+* <a rel="noreferrer noopener" href="https://support.mozilla.org/es/kb/Borrar%20cookies" target="__blank">Firefox</a></li><li><a rel="noreferrer noopener" href="https://support.apple.com/kb/ph21411?locale=es_ES" target="__blank">Safari</a>
 
-You can get more information about cookies on websites such as <a rel="noreferrer noopener" aria-label="this (opens in a new tab)" href="https://www.cookiesandyou.com/" target="_blank">this</a>.
+You can get more information about cookies on websites such as <a rel="noreferrer noopener" aria-label="this (opens in a new tab)" href="https://www.cookiesandyou.com/" target="__blank">this</a>.

@@ -3,7 +3,8 @@
     <header class="header">
       <div class="heading-container">
         <div class="social-icons">
-          <a v-for="(item, index) in social" :key="index" :href="item.link" target="_blank">
+          <a v-for="(item, index) in social" :key="index" :href="item.link" target="__blank" rel="noreferrer noopener">
+            <span v-text="item.title" class="sr-only" />
             <font-awesome-icon :icon="['fab', item.icon]" size="lg" />
           </a>
         </div>
@@ -87,9 +88,9 @@ export default {
     titles: [
       'Software Engineer',
       '<strong>Backend</strong> developer',
-      '<a href="https://nestjs.com/" target="_blank">NestJS</a> big Fan',
+      '<a href="https://nestjs.com/" target="__blank" rel="noreferrer noopener">NestJS</a> big Fan',
       '<strong>Frontend</strong> developer',
-      '<a href="https://vuejs.org/" target="_blank">VueJS</a> lover!',
+      '<a href="https://vuejs.org/" target="__blank" rel="noreferrer noopener">VueJS</a> lover!',
       '<strong>DevOps</strong> initiated',
       '<strong>Game</strong> developer (as <em>hobby</em>)',
       '<strong>iOS</strong> and <strong>Android</strong> learner',
@@ -97,9 +98,9 @@ export default {
     ],
 
     social: [
-      { icon: 'github', link: socialNetworks.github.url },
-      { icon: 'linkedin', link: socialNetworks.linkedin.url },
-      { icon: 'twitter', link: socialNetworks.twitter.url },
+      { icon: 'github', link: socialNetworks.github.url, title: 'GitHub account' },
+      { icon: 'linkedin', link: socialNetworks.linkedin.url, title: 'LinkedIn profile' },
+      { icon: 'twitter', link: socialNetworks.twitter.url, title: 'Twitter account' },
     ],
   }),
 

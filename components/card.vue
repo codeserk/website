@@ -8,7 +8,7 @@
   >
     <nuxt-link :to="link"><component :is="heading" v-text="title" class="title"/></nuxt-link>
     <div class="card-content">
-      <img v-lazy="lazyImage" class="image lazy bordered" />
+      <img v-lazy="lazyImage" :alt="`${title} logo`" class="image lazy bordered" />
       <div class="description">
         <progress-bar v-if="status" :progress="progress" :text="status" class="progress" />
         <div class="extra-content">

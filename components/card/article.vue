@@ -5,8 +5,9 @@
     class="card article with-shadow-left"
     data-aos="appear"
   >
-    <!-- <nuxt-link :to="link"><component :is="heading" v-text="title" class="title"/></nuxt-link> -->
-    <nuxt-link :to="link" class="image"><img v-lazy="lazyImage" class="lazy bordered"/></nuxt-link>
+    <nuxt-link :to="link" class="image">
+      <img v-lazy="lazyImage" :alt="`${title} logo`" />
+    </nuxt-link>
     <div class="card-content lazy-background">
       <div class="description">
         <div class="fill" />

@@ -11,20 +11,6 @@
   transform: scale(1.1);
 }
 
-.blur-fade-enter-active /deep/ img,
-.blur-fade-leave-active /deep/ img {
-  opacity: 1 !important;
-  transition: all 0.4s ease-in-out !important;
-  transform: scale(1) !important;
-}
-
-.blur-fade-enter /deep/ img,
-.blur-fade-leave-to /deep/ img {
-  opacity: 0 !important;
-  filter: blur(4px) !important;
-  transform: scale(1.1) !important;
-}
-
 .slide-fade-enter-active {
   transition: all 0.2s 0.2s ease-in-out;
 }

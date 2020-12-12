@@ -5,15 +5,22 @@
 
       <div class="avatar" data-aos="appear">
         <div class="speech-bubble">Thanks for visiting my portfolio <span class="yellow">✌︎</span></div>
-        <img
-          v-lazy="{ src: $common.avatar.image.src, loading: $common.avatar.placeholder.src }"
-          data-aos="appear"
-          class="image lazy"
-        />
+        <router-link to="/">
+          <span class="sr-only">Home</span>
+          <img
+            v-lazy="{ src: $common.avatar.image.src, loading: $common.avatar.placeholder.src }"
+            data-aos="appear"
+            width="200"
+            height="200"
+            alt="Jose Camara"
+            class="image lazy"
+          />
+        </router-link>
       </div>
 
       <div class="social-icons">
-        <a v-for="(item, index) in social" :key="index" :href="item.link" target="_blank">
+        <a v-for="(item, index) in social" :key="index" :href="item.link" target="__blank" rel="noreferrer noopener">
+          <span v-text="item.title" class="sr-only" />
           <font-awesome-icon :icon="['fab', item.icon]" size="lg" />
         </a>
       </div>
@@ -137,9 +144,9 @@ import { socialNetworks } from '~/utils/seo'
 export default {
   data: () => ({
     social: [
-      { icon: 'github', link: socialNetworks.github.url },
-      { icon: 'linkedin', link: socialNetworks.linkedin.url },
-      { icon: 'twitter', link: socialNetworks.twitter.url },
+      { icon: 'github', link: socialNetworks.github.url, title: 'GitHub account' },
+      { icon: 'linkedin', link: socialNetworks.linkedin.url, title: 'LinkedIn profile' },
+      { icon: 'twitter', link: socialNetworks.twitter.url, title: 'Twitter account' },
     ],
 
     pages: [{ title: 'Security and cookies', link: '/security-and-cookies' }],

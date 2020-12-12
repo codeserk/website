@@ -43,16 +43,6 @@ export default {
     { src: '@/plugins/firebase', mode: 'client' },
   ],
 
-  webfontloader: {
-    google: {
-      families: ['Montaga', 'Amatic SC'],
-      urls: [
-        'https://fonts.googleapis.com/css2?family=Amatic+SC&family=Montaga&display=swap',
-        'https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap',
-      ],
-    },
-  },
-
   render: {
     bundleRenderer: {
       shouldPreload: (file, type) => {
@@ -69,6 +59,14 @@ export default {
     postcss: {
       plugins: {
         tailwindcss: 'tailwind.config.js',
+      },
+    },
+
+    terser: {
+      terserOptions: {
+        compress: {
+          drop_console: true,
+        },
       },
     },
 

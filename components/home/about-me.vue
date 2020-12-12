@@ -5,6 +5,9 @@
       <img
         v-lazy="{ src: images.avatar.image.src, loading: images.avatar.placeholder.src }"
         data-aos="appear"
+        width="200"
+        height="200"
+        alt="Jose Camara"
         class="image me lazy"
       />
     </p>
@@ -26,15 +29,28 @@
     <p data-aos="appear">I love animals, and especially cats since we share many <em>personality perks</em> (:</p>
     <p data-aos="appear">These are my cats <strong>Ryuk</strong> and <strong>Mia</strong>:</p>
 
-    <a class="cat-images" href="https://www.instagram.com/ticytaccats/" target="__blank">
+    <a
+      class="cat-images"
+      href="https://www.instagram.com/ticytaccats/"
+      target="__blank"
+      rel="noreferrer noopener"
+      aria-label="These are my cats Ryuk and Mia"
+    >
+      <span class="sr-only">These are my cats Ryuk and Mia</span>
       <img
         v-lazy="{ src: images.ryuk.image.src, loading: images.ryuk.placeholder.src }"
         data-aos="appear"
+        width="200"
+        height="200"
+        alt="Ryuk"
         class="image lazy bordered"
       />
       <img
         v-lazy="{ src: images.mia.image.src, loading: images.mia.placeholder.src }"
         data-aos="appear"
+        width="200"
+        height="200"
+        alt="Mia"
         class="image lazy bordered"
       />
     </a>

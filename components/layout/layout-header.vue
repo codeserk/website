@@ -14,7 +14,14 @@
 
     <div :style="{ 'background-image': background ? `url(${background.image.src})` : '' }" class="background" />
     <div class="social-icons">
-      <a v-for="(item, index) in social" :key="index" :href="item.link" class="social-icons__icon" target="__blank">
+      <a
+        v-for="(item, index) in social"
+        :key="index"
+        :href="item.link"
+        class="social-icons__icon"
+        target="__blank"
+        rel="noreferrer noopener"
+      >
         <font-awesome-icon :icon="['fab', item.icon]" size="lg" />
       </a>
     </div>
@@ -67,6 +74,7 @@
             :href="item.link"
             class="mobile-body__social__icon"
             target="__blank"
+            rel="noreferrer noopener"
           >
             <font-awesome-icon :icon="['fab', item.icon]" size="lg" />
           </a>

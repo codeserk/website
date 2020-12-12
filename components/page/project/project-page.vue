@@ -11,8 +11,15 @@
           <template v-if="project.website || project.github">
             <hr />
 
-            <a v-if="project.website" :href="project.website" v-text="beautifiedWebsite" target="_blank" />
-            <a v-if="project.github" :href="project.github" target="_blank">
+            <a
+              v-if="project.website"
+              :href="project.website"
+              v-text="beautifiedWebsite"
+              rel="noreferrer noopener"
+              target="__blank"
+            />
+            <a v-if="project.github" :href="project.github" target="__blank" rel="noreferrer noopener">
+              <span class="sr-only">GitHub account</span>
               <font-awesome-icon :icon="['fab', 'github']" size="lg" />
             </a>
           </template>

@@ -1,5 +1,5 @@
 <template>
-  <img v-lazy="{ src: src, loading: placeholder }" data-aos="appear" class="image lazy" />
+  <img v-lazy="{ src: src, loading: placeholder }" data-aos="appear" class="image lazy" alt="Content image" />
 </template>
 
 <script>

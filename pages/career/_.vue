@@ -19,7 +19,7 @@
             <template v-if="job.website">
               <hr />
 
-              <a :href="job.website" v-text="beautifiedWebsite" target="_blank" />
+              <a :href="job.website" v-text="beautifiedWebsite" target="__blank" rel="noreferrer noopener" />
             </template>
           </section>
         </template>
