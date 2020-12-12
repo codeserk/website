@@ -108,15 +108,38 @@ export default {
     async routes() {
       const uri = process.env.IS_GENERATING ? 'http://localhost:4021' : 'http://localhost:4020'
       const client = new Client(uri)
-      const { pages } = await client.query(`
-                query {
-                    pages { link }
-                }
-            `)
+      const {
+        pages,
+        posts,
+        areas,
+        languages,
+        frameworks,
+        databases,
+        technologies,
+        messageBrokers,
+      } = await client.query(`
+        query {
+          pages { link }
+          posts { type { id } link }
 
+          areas: terms(taxonomy: "development-area") { slug }
+          languages: terms(taxonomy: "language") { slug }
+          frameworks: terms(taxonomy: "framework") { slug }
+          databases: terms(taxonomy: "database") { slug }
+          technologies: terms(taxonomy: "technology") { slug }
+          messageBrokers: terms(taxonomy: "message-broker") { slug }
+        }
+      `)
       return [
         '/',
-        // ...pages.map(page => page.link)
+        ...pages.map(page => page.link),
+        ...posts.filter(post => post.type.id !== 'page').map(page => page.link),
+        ...areas.map(term => `/development/${term.slug}`),
+        ...languages.map(term => `/language/${term.slug}`),
+        ...frameworks.map(term => `/framework/${term.slug}`),
+        ...databases.map(term => `/database/${term.slug}`),
+        ...technologies.map(term => `/technology/${term.slug}`),
+        ...messageBrokers.map(term => `/message-broker/${term.slug}`),
       ]
     },
   },
@@ -156,23 +179,7 @@ export default {
       // OpenGraph
       { property: 'og:type', content: 'article' },
       { property: 'og:updated_time', content: builtAt },
-      // { property: 'og:title', content: defaultSeo.title },
       { property: 'og:site_name', content: siteName },
-      // { property: 'og:url', content: defaultSeo.canonical },
-      // { property: 'og:description', content: defaultSeo.description },
-      // { property: 'og:image', content: '/logo.jpg' },
-      // { property: 'og:image:type', content: 'image/jpeg' },
-      // { property: 'og:image:width', content: 600 },
-
-      // Twitter
-      // { property: 'twitter:card', content: 'summary_large_image' },
-      // { name: 'twitter:title', content: siteName },
-      // { name: 'twitter:description', content: defaultSeo.description },
-      // { property: 'twitter:site', content: socialNetworks.twitter.site }
-      // { name: 'twitter:image', content: '/logo.jpg' }
-
-      // Facebook
-      // { property: 'fb:app_id', content: socialNetworks.facebook.id }
     ],
   },
 
@@ -195,20 +202,46 @@ export default {
     gzip: true,
     exclude: ['/home'],
     routes: async () => {
-      // const uri = process.env.IS_GENERATING
-      //   ? 'http://localhost:4001'
-      //   : 'http://localhost:4000'
-      // const client = new Client(uri)
-      // const { pages } = await client.query(`
-      //           query {
-      //               pages { slug link updatedAt }
-      //           }
-      //       `)
+      const uri = process.env.IS_GENERATING ? 'http://localhost:4021' : 'http://localhost:4020'
+      const client = new Client(uri)
+      const {
+        pages,
+        posts,
+        areas,
+        languages,
+        frameworks,
+        databases,
+        technologies,
+        messageBrokers,
+      } = await client.query(`
+        query {
+          pages { link updatedAt }
+          posts { type { id } link updatedAt }
+
+          areas: terms(taxonomy: "development-area") { slug }
+          languages: terms(taxonomy: "language") { slug }
+          frameworks: terms(taxonomy: "framework") { slug }
+          databases: terms(taxonomy: "database") { slug }
+          technologies: terms(taxonomy: "technology") { slug }
+          messageBrokers: terms(taxonomy: "message-broker") { slug }
+        }
+      `)
       return [
-        // ...pages.map((page) => {
-        //   const url = page.slug === 'home' ? '/' : page.link
-        //   return { url, lastmod: page.updatedAt }
-        // })
+        { url: '/', lastmod: builtAt },
+        ...pages.map(page => {
+          return { url: page.link, lastmod: page.updatedAt }
+        }),
+        ...posts
+          .filter(post => post.type.id !== 'page')
+          .map(page => {
+            return { url: page.link, lastmod: page.updatedAt }
+          }),
+        ...areas.map(term => ({ url: `/development/${term.slug}` })),
+        ...languages.map(term => ({ url: `/language/${term.slug}` })),
+        ...frameworks.map(term => ({ url: `/framework/${term.slug}` })),
+        ...databases.map(term => ({ url: `/database/${term.slug}` })),
+        ...technologies.map(term => ({ url: `/technology/${term.slug}` })),
+        ...messageBrokers.map(term => ({ url: `/message-broker/${term.slug}` })),
       ]
     },
   },

@@ -5,7 +5,7 @@ title: Security and cookies
 
 ## 1. What are cookies?
 
-Cookies are files or devices that are downloaded to your terminal in the process of browsing the different web pages. These devices store information necessary to allow web browsing. Additionally, some cookies can store information that &amp; nbsp; allows the provision of interactive services and advertising.
+Cookies are files or devices that are downloaded to your terminal in the process of browsing the different web pages. These devices store information necessary to allow web browsing. Additionally, some cookies can store information that allows the provision of interactive services and advertising.
 
 Below we make a brief explanatory classification of cookies for their essential characteristics, although some cookies for the information they store may be contained in one or more categories.
 
@@ -53,6 +53,7 @@ You can also manage the general cookies of your navigation, through your browser
 
 * <a rel="noreferrer noopener" href="https://support.microsoft.com/es-es/help/17442/windows-internet-explorer-delete-manage-cookies" target="__blank">Internet Explorer</a>
 * <a rel="noreferrer noopener" href="https://support.google.com/chrome/answer/95647" target="__blank">Google Chrome</a>
-* <a rel="noreferrer noopener" href="https://support.mozilla.org/es/kb/Borrar%20cookies" target="__blank">Firefox</a></li><li><a rel="noreferrer noopener" href="https://support.apple.com/kb/ph21411?locale=es_ES" target="__blank">Safari</a>
+* <a rel="noreferrer noopener" href="https://support.mozilla.org/es/kb/Borrar%20cookies" target="__blank">Firefox</a>
+* <a rel="noreferrer noopener" href="https://support.apple.com/kb/ph21411?locale=es_ES" target="__blank">Safari</a>
 
 You can get more information about cookies on websites such as <a rel="noreferrer noopener" aria-label="this (opens in a new tab)" href="https://www.cookiesandyou.com/" target="__blank">this</a>.

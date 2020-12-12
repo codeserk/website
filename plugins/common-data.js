@@ -76,6 +76,10 @@ export default async function(context) {
   if (!Vue.__common_data__) {
     Vue.__common_data__ = true
     Vue.mixin({
+      components: {
+        PageWrapper: () => import('~/components/page/wrapper'),
+      },
+
       computed: {
         $common() {
           return data
