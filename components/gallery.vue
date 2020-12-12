@@ -1,14 +1,6 @@
 <template>
   <div class="gallery relative">
-    <div
-      ref="slider"
-      @mousedown="startScrolling('primary')"
-      @mouseleave="stopScrolling('primary')"
-      @mouseup="stopScrolling('primary')"
-      @mousemove="event => scrollSlider('primary', event)"
-      @scroll="onPrimaryScrolled"
-      class="slider"
-    >
+    <div ref="slider" @scroll="onPrimaryScrolled" class="slider">
       <div v-for="(item, index) in images" :key="index" @click="zoomImage(index)" class="slider-item">
         <img v-lazy="{ src: item.src, loading: item.placeholder }" :alt="`Image at position ${index}`" class="lazy" />
       </div>
@@ -137,6 +129,10 @@ export default {
   }),
 
   computed: {
+    isTouchDevice() {
+      return document && 'ontouchstart' in document.documentElement
+    },
+
     primaryImageWidth() {
       if (!this.$refs.slider || this.$refs.slider.children.length === 0) {
         return 0
@@ -261,6 +257,10 @@ export default {
     },
 
     startScrolling(key) {
+      if (this.isTouchDevice) {
+        return
+      }
+
       this.scroll[key].scrolled = 0
       this.scroll[key].scrolling = true
 
@@ -273,7 +273,7 @@ export default {
     },
 
     scrollSlider(key, event) {
-      if (!this.scroll[key].scrolling) {
+      if (this.isTouchDevice || !this.scroll[key].scrolling) {
         return
       }
 
