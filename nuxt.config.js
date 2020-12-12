@@ -1,5 +1,5 @@
 import { Client } from './modules/wordpress/plugin.server'
-import { socialNetworks, siteName, defaultSeo } from './utils/seo'
+import { siteName, defaultSeo } from './utils/seo'
 
 const builtAt = new Date().toISOString()
 
@@ -21,8 +21,7 @@ export default {
 
   fontawesome: {
     icons: {
-      solid: true,
-      brands: true,
+      brands: ['faGithub', 'faTwitter', 'faLinkedin'],
     },
   },
 
@@ -30,10 +29,6 @@ export default {
     host: '0.0.0.0',
     port: 3020,
   },
-
-  watch: [
-    // '~/content/**/*'
-  ],
 
   serverMiddleware: ['~server/redirects.ts'],
   plugins: [
