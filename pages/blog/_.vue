@@ -24,7 +24,6 @@ import { generateSeoMeta } from '../../utils/seo'
 
 export default {
   components: {
-    PageWrapper: () => import('~/components/page/wrapper'),
     DualBlocks: () => import('~/components/block/dual-blocks'),
     TermsMap: () => import('~/components/terms-map'),
     DomContent: () => import('~/components/dom/dom-content'),

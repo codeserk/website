@@ -41,7 +41,6 @@ import { beautifyLink } from '~/utils/link'
 
 export default {
   components: {
-    PageWrapper: () => import('~/components/page/wrapper'),
     ProgressBar: () => import('~/components/progress-bar'),
     TimeBlock: () => import('~/components/block/time-block'),
     TermsMap: () => import('~/components/terms-map'),

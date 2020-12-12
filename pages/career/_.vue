@@ -38,7 +38,6 @@ import { generateSeoMeta } from '../../utils/seo'
 
 export default {
   components: {
-    PageWrapper: () => import('~/components/page/wrapper'),
     TimeBlock: () => import('~/components/block/time-block'),
     TermsMap: () => import('~/components/terms-map'),
     DomContent: () => import('~/components/dom/dom-content'),

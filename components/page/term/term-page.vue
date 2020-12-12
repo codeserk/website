@@ -33,7 +33,6 @@
 <script>
 export default {
   components: {
-    PageWrapper: () => import('~/components/page/wrapper'),
     Career: () => import('~/components/home/career'),
     ProjectGrid: () => import('~/components/project/project-grid'),
     ArticleGrid: () => import('~/components/card/article-grid'),

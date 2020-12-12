@@ -21,7 +21,6 @@ import { generateSeoMeta } from '../../utils/seo'
 import { sortByOrder } from '../../utils/sort'
 export default {
   components: {
-    PageWrapper: () => import('~/components/page/wrapper'),
     Card: () => import('~/components/card'),
   },
 

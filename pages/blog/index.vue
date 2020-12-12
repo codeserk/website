@@ -10,7 +10,6 @@
 import { generateSeoMeta } from '../../utils/seo'
 export default {
   components: {
-    PageWrapper: () => import('~/components/page/wrapper'),
     ArticleGrid: () => import('~/components/card/article-grid'),
   },
 

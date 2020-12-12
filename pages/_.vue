@@ -13,7 +13,6 @@ import { generateSeoMeta } from '../utils/seo'
 
 export default {
   components: {
-    PageWrapper: () => import('~/components/page/wrapper'),
     DomContent: () => import('~/components/dom/dom-content'),
   },
 
