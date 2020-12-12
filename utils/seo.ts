@@ -36,11 +36,11 @@ export const defaultSeo = {
 }
 
 export interface SeoInformation {
-  title?: string;
-  description?: string;
-  keywords?: string[];
-  image?: string;
-  path?: string;
+  title?: string
+  description?: string
+  keywords?: string[]
+  image?: string
+  path?: string
 }
 
 export function generateSeoMeta(info: SeoInformation): any {
@@ -72,8 +72,8 @@ export function generateSeoMeta(info: SeoInformation): any {
   const keywords = info.keywords || defaultSeo.keywords
   metas.push({ name: 'keywords', hid: 'keywords', content: keywords.join(',') })
 
-  // const image = defaultSeo.canonical + (info.image || defaultSeo.image)
-  const image = info.image || defaultSeo.image
+  const image = defaultSeo.canonical + (info.image || defaultSeo.image)
+  // const image = info.image || defaultSeo.image
   metas.push({ property: 'og:image', hid: 'og:image', content: image })
   metas.push({ property: 'og:image:type', hid: 'og:image:type', content: 'image/png' })
   metas.push({ property: 'og:image:width', hid: 'og:image:width', content: 600 })

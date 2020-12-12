@@ -37,7 +37,7 @@ title: TODO
 ### Languages
 
 * [ ] Include a text for all the languages.
-* [ ] Ensure the summary + text appear in the langauges' page
+* [ ] Ensure the summary + text appear in the languages' page
 
 ### Career
 

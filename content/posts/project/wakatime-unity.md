@@ -1,6 +1,7 @@
 ---
 slug: wakatime-unity
 title: Wakatime for Unity
+excerpt: Wakatime plugin for Unity project.
 featuredImageId: project/wakatime-unity/screenshot
 termsMap:
   development-area:
@@ -17,4 +18,4 @@ extra:
   endDate: 2015-07-05
 ---
 
-Wakatime plugin for Unity project.
+I created a plugin for [WakaTime](https://wakatime.com/) to record time spend developing in [](unity). I created this plugin when I started to develop [Arena Heroes](/project/game/callet), since I was a bit obsessed with the time I spent developing.

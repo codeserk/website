@@ -10,5 +10,5 @@ extra:
     scopes:
         - frontend
         - backend
-    summary: My main lanaguage in web development. Useful in both Backend and Frontend
+    summary: My main language in web development. Useful in both Backend and Frontend
 ---

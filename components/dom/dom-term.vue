@@ -1,5 +1,5 @@
 <template>
-  <term-chip :id="attributes.href" />
+  <term-chip :id="attributes.href" :text="text" />
 </template>
 
 <script>

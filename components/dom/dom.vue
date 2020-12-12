@@ -70,7 +70,7 @@ export default {
 
     component() {
       if (['h1', 'h2', 'h3', 'h4'].includes(this.tag)) {
-        return 'dom-subtitle'
+        return 'dom-default'
       }
       if (this.tag === 'img') {
         return 'dom-image'

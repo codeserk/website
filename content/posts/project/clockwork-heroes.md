@@ -1,5 +1,5 @@
 ---
-slug: clockwork-heores
+slug: clockwork-heroes
 title: Clockwork Heroes
 excerpt: A game for programmers!
 featuredImageId: project/clockwork-heroes/logo

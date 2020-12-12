@@ -8,8 +8,7 @@ extra:
   knowledge: 60
   scopes:
     - devops
-  summary: Awesome technology to orchestrate your services in production / CD environments (if you can affort it).
+  summary: Awesome technology to orchestrate your services in production / CD environments (if you can afford it).
 ---
 
-# orchegh
 

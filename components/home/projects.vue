@@ -1,6 +1,6 @@
 <template>
   <div class="home-projects container mx-auto">
-    <projects-grid :projects="projects" :limit="9" />
+    <projects-grid :projects="projects" :limit="90" />
 
     <div class="more-container" data-aos="fade-up">
       <nuxt-link to="/project">More projects...</nuxt-link>

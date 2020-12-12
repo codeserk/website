@@ -33,8 +33,6 @@ Below we make a brief explanatory classification of cookies for their essential 
 
 **Cookies for personalization purposes:** They make it possible for each user to configure aspects such as the language in which they want to see the web page, display formats, etc.
 
-**Cookies con fines de análisis o rendimiento:** They allow to measure the number of visits and navigation criteria of different areas of the web.
-
 **Cookies for analysis or performance purposes:** They allow advertising to be displayed in the advertising spaces enabled for it, without obtaining user information.
 
 **Cookies for segmented advertising purposes:** These types of cookies allow you to expand the advertising information displayed to each user. They store information on user behavior on a continuous basis, facilitating browsing patterns and / or user behavior, creating a profile of advertising interest. The purpose of these Cookies is to offer advertising related to the interests of the user based on their preferences and browsing habits.
@@ -57,4 +55,4 @@ You can also manage the general cookies of your navigation, through your browser
 * <a rel="noreferrer noopener" href="https://support.google.com/chrome/answer/95647" target="_blank">Google Chrome</a>
 * <a rel="noreferrer noopener" href="https://support.mozilla.org/es/kb/Borrar%20cookies" target="_blank">Firefox</a></li><li><a rel="noreferrer noopener" href="https://support.apple.com/kb/ph21411?locale=es_ES" target="_blank">Safari</a>
 
-You can get more information about cookies on websites such as <a rel="noreferrer noopener" aria-label="esta (opens in a new tab)" href="https://www.cookiesandyou.com/" target="_blank">this</a>.
+You can get more information about cookies on websites such as <a rel="noreferrer noopener" aria-label="this (opens in a new tab)" href="https://www.cookiesandyou.com/" target="_blank">this</a>.

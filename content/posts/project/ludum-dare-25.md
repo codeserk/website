@@ -20,7 +20,7 @@ This was the first [Ludum Dare](http://ludumdare.com/compo/ludum-dare-25/) where
 
 There is more information about this game in [my brother's website](http://www.acamara.es/gamedev/ld25/)
 
-> This game was designed and implemented during the 72 hours of the jam of the 25th edition of Ludum Dare. It is an Action RPG in which you figth the evil witch that attacks your town. It has been made in collaboration with Jose and David Cámara Iglesias.
+> This game was designed and implemented during the 72 hours of the jam of the 25th edition of Ludum Dare. It is an Action RPG in which you fight the evil witch that attacks your town. It has been made in collaboration with Jose and David Cámara Iglesias.
 
 There's one thing I will never forget after building this game: **BE AWARE OF GARBAGE COLLECTORS AND MEMORY MANAGEMENT IN GENERAL**. I was _young and unexperienced_:
 
