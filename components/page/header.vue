@@ -1,11 +1,17 @@
 <template>
   <div class="header-container">
-    <img v-if="image" v-lazy="lazyImage" class="image-moon lazy circled" />
+    <img v-if="image" v-lazy="lazyImage" :alt="`${title} - header image`" class="image-moon lazy circled" />
 
     <div class="container mx-auto clearfix">
       <div :class="{ 'without-image': !image }" class="header">
         <div v-if="image" class="header-image">
-          <img v-lazy="lazyImage" class="image-header lazy bordered" />
+          <img
+            v-lazy="lazyImage"
+            :alt="`${title} - header image`"
+            class="image-header lazy bordered"
+            width="200"
+            height="200"
+          />
         </div>
 
         <div class="header-title">

@@ -5,11 +5,39 @@
       "firebase.json",
       "**/.*"
     ],
-    "rewrites": [
+    "headers": [
       {
-        "source": "/404.error",
-        "destination": "/error.html"
+        "source": "**/*.@(eot|otf|ttf|ttc|woff|font.css)",
+        "headers": [ {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        } ]
+      },
+      {
+        "source": "**/*.@(jpg|jpeg|gif|png)",
+        "headers": [ {
+          "key": "Cache-Control",
+          "value": "max-age=7200"
+        } ]
+      },
+      {
+        "source": "**/*.@(css|html|js|json)",
+        "headers": [ {
+          "key": "Cache-Control",
+          "value": "max-age=3600"
+        } ]
+      },
+      {
+        "source": "404.html",
+        "headers": [ {
+          "key": "Cache-Control",
+          "value": "max-age=300"
+        } ]
       }
-    ]
+    ],
+
+    "cleanUrls": true,
+
+    "trailingSlash": false
   }
 }

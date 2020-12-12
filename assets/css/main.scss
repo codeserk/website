@@ -6,11 +6,13 @@
   font-weight: normal;
   font-style: normal;
   font-family: 'Web_DOS-V_TWN16';
-  src: url("/fonts/Web_DOS-V_TWN16.woff") format("woff")
+  src: url("/fonts/Web_DOS-V_TWN16.woff") format("woff");
+  font-display: swap;
 }
 @font-face {
   font-family: og-emoji;
   src: url("/fonts/og-dcm-emoji.ttf");
+  font-display: swap;
 }
 
 .page-wrapper {
