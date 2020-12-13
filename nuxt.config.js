@@ -1,5 +1,5 @@
 import { Client } from './modules/wordpress/plugin.server'
-import { siteName, defaultSeo } from './utils/seo'
+import { siteName, defaultSeo, getShortDescription } from './utils/seo'
 
 const builtAt = new Date().toISOString()
 
@@ -12,6 +12,7 @@ export default {
     '~/modules/wordpress/module.ts',
     '@nuxtjs/pwa',
     '@nuxtjs/sitemap',
+    '@nuxtjs/feed',
   ],
 
   loading: {
@@ -196,6 +197,59 @@ export default {
       background_color: '#575fa2',
     },
   },
+
+  feed: [
+    {
+      path: '/feed.xml',
+      async create(feed) {
+        feed.options = {
+          title: defaultSeo.title,
+          link: 'https://www.codeserk.es/feed.xml',
+          description: defaultSeo.description,
+          image: 'https://www.codeserk.es/header.png',
+          author: {
+            name: defaultSeo.author,
+            email: 'info@codeserk.es',
+            link: 'https://www.codeserk.es',
+          },
+        }
+
+        const uri = process.env.IS_GENERATING ? 'http://localhost:4021' : 'http://localhost:4020'
+        const client = new Client(uri)
+        const { posts } = await client.query(`
+          query {
+            posts(filters: { typeId: { ne: "paged" } }) {
+              slug link title content excerpt updatedAt mainTerm { slug }
+              featuredImage { image(resolution: Small, format: png, transform: { resize: { width: 600, height: 600 }}) { src } }
+            }
+          }
+        `)
+
+        posts.forEach(post => {
+          const image = post.featuredImage && post.featuredImage.image ? post.featuredImage.image.src : 'header.png'
+
+          feed.addItem({
+            title: post.title,
+            id: post.link,
+            link: post.link,
+            description: getShortDescription(post.excerpt),
+            content: post.content,
+            author: [
+              {
+                name: defaultSeo.author,
+                email: 'info@codeserk.es',
+                link: 'https://www.codeserk.es',
+              },
+            ],
+            date: new Date(post.updatedAt),
+            image: `https://www.codeserk.es/${image}`,
+          })
+        })
+      },
+      cacheTime: 1000 * 60 * 15,
+      type: 'rss2',
+    },
+  ],
 
   sitemap: {
     hostname: 'https://www.codeserk.es',
