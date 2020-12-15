@@ -174,7 +174,7 @@ export default {
 
       { 'http-equiv': 'X-UA-Compatible', content: 'IE=edge' },
       { charset: 'utf-8' },
-      { name: 'robots', content: 'noindex, nofollow' },
+      // { name: 'robots', content: 'noindex, nofollow' },
       { name: 'author', content: defaultSeo.author },
 
       // OpenGraph
