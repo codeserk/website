@@ -11,7 +11,7 @@ import { PostEntityExtension } from './extensions/post.extension'
 
 require('dotenv').config()
 
-export default async function wordpressModule(this: any) {
+export default async function pressModule(this: any) {
   // Setup filesystem module
   filesystem
     .withConfig({ basePath: path.resolve(__dirname, '../../content') })
@@ -109,13 +109,13 @@ export default async function wordpressModule(this: any) {
   // Register server plugin
   this.addPlugin({
     src: path.resolve(__dirname, 'plugin.server.ts'),
-    fileName: 'wordpress.plugin.server.ts',
+    fileName: 'press.plugin.server.ts',
     mode: 'server',
   })
   // Register client plugin
   this.addPlugin({
     src: path.resolve(__dirname, 'plugin.client.ts'),
-    fileName: 'wordpress.plugin.client.ts',
+    fileName: 'press.plugin.client.ts',
     mode: 'client',
   })
 

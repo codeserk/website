@@ -23,7 +23,7 @@ export class Client {
 }
 
 const cache = {}
-export default async function wordpressPlugin(context, inject) {
+export default async function pressPlugin(context, inject) {
   const source = {
     resolve(path, fn) {
       const uri = context.isDev ? 'http://localhost:4020' : 'http://localhost:4020'

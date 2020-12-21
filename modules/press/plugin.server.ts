@@ -46,7 +46,7 @@ function writeData(path, data) {
   })
 }
 
-export default function wordpressPlugin(context, inject) {
+export default function pressPlugin(context, inject) {
   const uri = process.env.IS_GENERATING ? 'http://localhost:4021' : 'http://localhost:4020'
   const client = new Client(uri)
   const source = {

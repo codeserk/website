@@ -1,4 +1,4 @@
-import { Client } from './modules/wordpress/plugin.server'
+import { Client } from './modules/press/plugin.server'
 import { siteName, defaultSeo, getShortDescription } from './utils/seo'
 
 const builtAt = new Date().toISOString()
@@ -9,7 +9,7 @@ export default {
   modules: [
     'nuxt-webfontloader',
     '@nuxt/typescript-build',
-    '~/modules/wordpress/module.ts',
+    '~/modules/press/module.ts',
     '@nuxtjs/pwa',
     '@nuxtjs/sitemap',
     '@nuxtjs/feed',
