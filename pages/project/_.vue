@@ -1,5 +1,5 @@
 <template>
-  <component :is="component" :project="project" :area="area" />
+  <component :is="component" :project="post" :area="area" :post="post" />
 </template>
 
 <script>
@@ -7,13 +7,28 @@ import { generateSeoMeta } from '../../utils/seo'
 
 export default {
   components: {
-    ProjectPage: () => import('~/components/page/project/project-page'),
     ProjectsPage: () => import('~/components/page/project/projects-page'),
+    ProjectPage: () => import('~/components/page/project/project-page'),
+    ProjectSubpage: () => import('~/components/page/project/project-subpage'),
   },
 
   computed: {
     component() {
-      return this.area ? 'projects-page' : 'project-page'
+      if (this.area) {
+        return 'projects-page'
+      }
+
+      if (this.post) {
+        if (this.post.type?.id === 'project') {
+          return 'project-page'
+        }
+
+        if (this.post.parent && this.post.type?.id === 'page') {
+          return 'project-subpage'
+        }
+      }
+
+      return ''
     },
   },
 
@@ -22,7 +37,7 @@ export default {
     const data = await $source.resolve(route.path, ({ query }) =>
       query(
         `
-          query project($slug: String!) {
+          query project($slug: String!, $link: String!) {
             area: termBySlug(slug: $slug, taxonomy: "development-area") {
               id slug name link
               image: featuredImage {
@@ -47,15 +62,16 @@ export default {
               }
             }
 
-            project: postBySlug(slug: $slug, type: "project") {
-              id title excerpt content dom
+            post: postByLink(link: $link) {
+              id title excerpt content dom link
               image: featuredImage {
                 image(resolution: Small, format: png, transform: { resize: { width: 200, height: 200 }}) { src }
                 header: image(resolution: Medium, format: png, transform: { resize: { width: 600, height: 600 }}) { src }
                 placeholder: image(resolution: Placeholder, format: png, transform: { resize: { width: 16, height: 16 }}, output: Inline) { src }
               }
 
-              type { name link }
+              type { id name link }
+              parent { id breadcrumbs { name link } title mainTerm { name } }
               mainTerm { name slug }
               status: extra(path: "status")
               progress: extra(path: "progress")
@@ -96,11 +112,11 @@ export default {
             }
           }
         `,
-        { slug },
+        { slug, link: route.path },
       ),
     )
 
-    if (!data.area && !data.project) {
+    if (!data.area && !data.post) {
       return error({ statusCode: 404, message: 'Project not found' })
     }
 
@@ -117,13 +133,25 @@ export default {
       })
     }
 
-    return generateSeoMeta({
-      path: this.$route.path,
-      title: `${this.project.title} · ${this.project.mainTerm.name} · Project`,
-      description: this.project.summary || this.project.excerpt,
-      keywords: this.getKeywords(this.project),
-      image: this.project.image?.header.src,
-    })
+    if (this.post) {
+      if (this.post.parent) {
+        return generateSeoMeta({
+          path: this.$route.path,
+          title: `${this.post.title} · ${this.post.parent.title} · ${this.post.parent.mainTerm?.name} · Project`,
+          description: this.post.summary || this.post.excerpt,
+          keywords: this.getKeywords(this.post),
+          image: this.post.image?.header.src,
+        })
+      }
+
+      return generateSeoMeta({
+        path: this.$route.path,
+        title: `${this.post.title} · ${this.post.mainTerm?.name} · Project`,
+        description: this.post.summary || this.post.excerpt,
+        keywords: this.getKeywords(this.post),
+        image: this.post.image?.header.src,
+      })
+    }
   },
 
   mounted() {
@@ -136,11 +164,11 @@ export default {
         })
       }
 
-      if (this.project) {
+      if (this.post) {
         this.$analytics.logEvent('view_page', {
-          title: this.project.title,
-          slug: this.project.slug,
-          link: this.project.link,
+          title: this.post.title,
+          slug: this.post.slug,
+          link: this.post.link,
         })
       }
     }
