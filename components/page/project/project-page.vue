@@ -30,6 +30,23 @@
         </template>
       </time-block>
 
+      <section v-if="logs.length > 0">
+        <h2 class="heading">
+          <router-link :to="`${project.link}/log`">Development Log</router-link>
+        </h2>
+
+        <single-time-block v-for="log in logs" :key="log.id" :date="log.createdAt">
+          <h3 class="title">
+            <router-link :to="log.link" v-text="log.title" />
+          </h3>
+          <p v-text="log.excerpt" class="p-6" />
+        </single-time-block>
+
+        <div v-if="hasMoreLogs" class="more-container" data-aos="appear">
+          <nuxt-link :to="`${project.link}/log`">More logs...</nuxt-link>
+        </div>
+      </section>
+
       <section v-if="gallery.length > 0">
         <h2 class="heading">Gallery</h2>
         <gallery :images="gallery" />
@@ -50,6 +67,7 @@ export default {
   components: {
     ProgressBar: () => import('~/components/progress-bar'),
     TimeBlock: () => import('~/components/block/time-block'),
+    SingleTimeBlock: () => import('~/components/block/single-time-block'),
     TermsMap: () => import('~/components/terms-map'),
     DomContent: () => import('~/components/dom/dom-content'),
     ProjectGrid: () => import('~/components/project/project-grid'),
@@ -102,6 +120,21 @@ export default {
         })) ?? []
       )
     },
+
+    hasMoreLogs() {
+      return this.project?.logs?.length > 5
+    },
+
+    logs() {
+      return this.project.logs?.slice(0, 5)
+    },
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.more-container {
+  margin-top: 3em;
+  text-align: center;
+}
+</style>

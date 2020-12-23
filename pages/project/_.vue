@@ -10,6 +10,8 @@ export default {
     ProjectsPage: () => import('~/components/page/project/projects-page'),
     ProjectPage: () => import('~/components/page/project/project-page'),
     ProjectSubpage: () => import('~/components/page/project/project-subpage'),
+    ProjectDevLog: () => import('~/components/page/project/project-dev-log'),
+    ProjectDevLogItem: () => import('~/components/page/project/project-dev-log-item'),
   },
 
   computed: {
@@ -19,12 +21,22 @@ export default {
       }
 
       if (this.post) {
+        if (this.isDevLog) {
+          return 'project-dev-log'
+        }
+
         if (this.post.type?.id === 'project') {
           return 'project-page'
         }
 
-        if (this.post.parent && this.post.type?.id === 'page') {
-          return 'project-subpage'
+        if (this.post.parent) {
+          if (this.post?.type?.id === 'blog' && this.post?.mainTerm?.id === 'dev-log') {
+            return 'project-dev-log-item'
+          }
+
+          if (this.post.type?.id === 'page') {
+            return 'project-subpage'
+          }
         }
       }
 
@@ -34,6 +46,12 @@ export default {
 
   async asyncData({ error, route, $source }) {
     const slug = route.path.split('/').pop()
+    let link = route.path
+    let isDevLog = false
+    if (slug === 'log') {
+      isDevLog = true
+      link = link.replace('/log', '/')
+    }
     const data = await $source.resolve(route.path, ({ query }) =>
       query(
         `
@@ -63,7 +81,9 @@ export default {
             }
 
             post: postByLink(link: $link) {
-              id title excerpt content dom link
+              id title excerpt content dom link createdAt date: extra(path: "date")
+              breadcrumbs { name link }
+
               image: featuredImage {
                 image(resolution: Small, format: png, transform: { resize: { width: 200, height: 200 }}) { src }
                 header: image(resolution: Medium, format: png, transform: { resize: { width: 600, height: 600 }}) { src }
@@ -71,8 +91,16 @@ export default {
               }
 
               type { id name link }
-              parent { id breadcrumbs { name link } title mainTerm { name } }
-              mainTerm { name slug }
+              parent {
+                id link title
+                breadcrumbs { name link }
+                mainTerm { name }
+
+                logs: children(type: "blog", sort: { path: "createdAt", direction: Descending }) {
+                  id title link excerpt createdAt date: extra(path: "date")
+                }
+              }
+              mainTerm { id name slug }
               status: extra(path: "status")
               progress: extra(path: "progress")
 
@@ -109,10 +137,14 @@ export default {
                 }
                 areas: terms(taxonomy: "development-area") { id slug name order: extra(path: "order") }
               }
+
+              logs: children(type: "blog", sort: { path: "createdAt", direction: Descending }) {
+                id title link excerpt createdAt date: extra(path: "date")
+              }
             }
           }
         `,
-        { slug, link: route.path },
+        { slug, link },
       ),
     )
 
@@ -120,7 +152,7 @@ export default {
       return error({ statusCode: 404, message: 'Project not found' })
     }
 
-    return data
+    return { ...data, isDevLog }
   },
 
   head() {

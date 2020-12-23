@@ -120,7 +120,7 @@ export default {
         messageBrokers,
       } = await client.query(`
         query {
-          pages { link }
+          pages: posts(type: "page") { link }
           posts { type { id } link }
 
           areas: terms(taxonomy: "development-area") { slug }

@@ -18,7 +18,7 @@ export default {
       query(
         `
           query articles {
-            articles: posts(type: "blog") {
+            articles: posts(type: "blog", filters: { status: { eq: "published" } }) {
               id slug title excerpt link
               status: extra(path: "status")
               progress: extra(path: "progress")
