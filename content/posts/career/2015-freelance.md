@@ -28,7 +28,7 @@ extra:
 I quit my previous job because I needed some time to discover new technologies and try to develop some ideas. I saved money so I could be a few months only working on these projects. **None of them was a big success though**, but I learnt a lot in the process. I was so focused that I used to work for around _12 hours_ a day, _6-7 days a week_ (I was often top 5 in [WakaTime](https://wakatime.com/)). After all, I was working for myself, and _a third party_... and I was young, I guess.
 
 ## Meeting Point
-During the first months, I started developing [Meeting Point](/project/web/meeting-point), an app where you would be able to share your thoughts with the people nearby. I used [](sailsjs) as main Framework for the Backend, using [](mongodb) for persistence and [](redis) for cache. The first approach was to develop a single web Frontend using [](angular-1), and make that work in mobile devices using [](phonegap). But oh boy, if that was buggy:
+During the first months, I started developing [Meeting Point](/project/android/meeting-point), an app where you would be able to share your thoughts with the people nearby. I used [](sailsjs) as main Framework for the Backend, using [](mongodb) for persistence and [](redis) for cache. The first approach was to develop a single web Frontend using [](angular-1), and make that work in mobile devices using [](phonegap). But oh boy, if that was buggy:
 
 * The application was highly dependant on [](websockets), and that didn't work very well with embedded web apps.
 * I put a lot of efforts to make the website `responsive`, but the UX was not great, you could easily tell that it was just a website pretending to be an app.
