@@ -2,13 +2,13 @@
 .block {
   position: relative;
   z-index: 2;
+  margin-bottom: 4em;
   border: 0.5ch solid white;
   border-radius: 0;
   background: #07080D;
-  margin-bottom: 4em;
 
   &.borderless {
-    border: 0px;
+    border: 0;
 
     &.with-shadow-left::before {
       left: 0;
@@ -71,7 +71,7 @@
 
   &.small {
     max-width: 600px;
-    margin-left: auto;
     margin-right: auto;
+    margin-left: auto;
   }
 }

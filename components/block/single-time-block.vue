@@ -109,7 +109,9 @@ export default {
     .single-time-block {
       .block.left {
         float: none;
-        width: 90%;
+        width: 100%;
+        margin-left: 0;
+        transform: skewY(-1deg);
       }
 
       .date {

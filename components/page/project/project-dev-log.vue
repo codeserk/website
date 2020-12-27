@@ -1,5 +1,5 @@
 <template>
-  <page-wrapper :breadcrumbs="breadcrumbs" :image="post.image" title="Development Log" class="color full">
+  <page-wrapper :breadcrumbs="breadcrumbs" :image="post.image" title="Dev Log" class="color full">
     <div class="container mx-auto">
       <single-time-block v-for="log in post.logs" :key="log.id" :date="log.createdAt">
         <h3 class="title">

@@ -1,4 +1,4 @@
 ---
 slug: log
-name: Development Log
+name: Dev Log
 ---

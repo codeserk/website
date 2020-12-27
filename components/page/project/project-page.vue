@@ -32,7 +32,7 @@
 
       <section v-if="logs.length > 0">
         <h2 class="heading">
-          <router-link :to="`${project.link}/log`">Development Log</router-link>
+          <router-link :to="`${project.link}/log`">Dev Log</router-link>
         </h2>
 
         <single-time-block v-for="log in logs" :key="log.id" :date="log.createdAt">

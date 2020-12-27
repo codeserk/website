@@ -28,9 +28,10 @@ termsMap:
     - firebase
 extra:
   order: 1
-  progress: 90
-  status: wip
+  progress: 100
+  status: completed
   startDate: 2020-12-14
+  endDate: 2020-12-23
   website: https://i-ching.codeserk.es
   github: https://github.com/codeserk/iching
 ---
