@@ -12,6 +12,10 @@ export const socialNetworks = {
   github: {
     url: 'https://github.com/codeserk',
   },
+
+  buymeacoffee: {
+    url: 'https://www.buymeacoffee.com/codeserk',
+  },
 }
 
 export const defaultSeo = {

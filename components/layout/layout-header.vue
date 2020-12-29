@@ -100,9 +100,10 @@ export default {
 
   data: () => ({
     social: [
-      { icon: 'youtube', link: socialNetworks.youtube.url },
-      { icon: 'instagram', link: socialNetworks.instagram.url },
-      { icon: 'facebook', link: socialNetworks.facebook.url },
+      { iconType: 'fab', icon: 'github', link: socialNetworks.github.url, title: 'GitHub account' },
+      { iconType: 'fab', icon: 'linkedin', link: socialNetworks.linkedin.url, title: 'LinkedIn profile' },
+      { iconType: 'fab', icon: 'twitter', link: socialNetworks.twitter.url, title: 'Twitter account' },
+      { iconType: 'fa', icon: 'coffee', link: socialNetworks.buymeacoffee.url, title: 'Buy me a coffee' },
     ],
   }),
 

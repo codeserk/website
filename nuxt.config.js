@@ -22,6 +22,7 @@ export default {
 
   fontawesome: {
     icons: {
+      solid: ['faCoffee'],
       brands: ['faGithub', 'faTwitter', 'faLinkedin'],
     },
   },

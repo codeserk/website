@@ -5,7 +5,7 @@
         <div class="social-icons">
           <a v-for="(item, index) in social" :key="index" :href="item.link" target="__blank" rel="noreferrer noopener">
             <span v-text="item.title" class="sr-only" />
-            <font-awesome-icon :icon="['fab', item.icon]" size="lg" />
+            <font-awesome-icon :icon="[item.iconType, item.icon]" size="lg" />
           </a>
         </div>
 
@@ -98,9 +98,10 @@ export default {
     ],
 
     social: [
-      { icon: 'github', link: socialNetworks.github.url, title: 'GitHub account' },
-      { icon: 'linkedin', link: socialNetworks.linkedin.url, title: 'LinkedIn profile' },
-      { icon: 'twitter', link: socialNetworks.twitter.url, title: 'Twitter account' },
+      { iconType: 'fab', icon: 'github', link: socialNetworks.github.url, title: 'GitHub account' },
+      { iconType: 'fab', icon: 'linkedin', link: socialNetworks.linkedin.url, title: 'LinkedIn profile' },
+      { iconType: 'fab', icon: 'twitter', link: socialNetworks.twitter.url, title: 'Twitter account' },
+      { iconType: 'fa', icon: 'coffee', link: socialNetworks.buymeacoffee.url, title: 'Buy me a coffee' },
     ],
   }),
 
