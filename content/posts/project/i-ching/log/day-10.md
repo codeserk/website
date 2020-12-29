@@ -3,6 +3,7 @@ slug: day-10
 title: "#10 Lazy-load is not great"
 typeId: blog
 parentId: i-ching
+createdAt: 2020-12-23
 excerpt: I've just discovered that lazy loading components is not that great for this kind of apps.
 termsMap:
   category:
@@ -13,7 +14,7 @@ termsMap:
 
 I've just discovered that lazy loading components is not that great for this kind of apps. The app has _tabs_ as main router, and when you click on another tab, it **lazy loads** that page.
 
-That behaviour is completely weird (you don't expect that in mobile apps!), not sure why that's the recommended way of doing /shrug (TODO: Add a plugin that replaces _/shrug_ with a real one :>)
+That behavior is completely weird (you don't expect that in mobile apps!), not sure why that's the recommended way of doing /shrug (TODO: Add a plugin that replaces _/shrug_ with a real one :>)
 
 ## Final tweaks
 

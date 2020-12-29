@@ -3,6 +3,7 @@ slug: day-1
 title: "#1 Designing the app, scope, architecture"
 typeId: blog
 parentId: happy-food
+createdAt: 2020-12-24
 excerpt: This is just the first day, not very amusing (designing, scoping etc.)
 termsMap:
   category:

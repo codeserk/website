@@ -2,6 +2,7 @@
 slug: happy-food
 title: Happy food
 excerpt: Web application to ask for feedback
+featuredImageId: project/happy-food/logo
 termsMap:
   development-area:
     - android
