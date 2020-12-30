@@ -147,7 +147,7 @@ export default {
       { iconType: 'fab', icon: 'github', link: socialNetworks.github.url, title: 'GitHub account' },
       { iconType: 'fab', icon: 'linkedin', link: socialNetworks.linkedin.url, title: 'LinkedIn profile' },
       { iconType: 'fab', icon: 'twitter', link: socialNetworks.twitter.url, title: 'Twitter account' },
-      { iconType: 'fa', icon: 'coffee', link: socialNetworks.buymeacoffee.url, title: 'Buy me a coffee' },
+      { iconType: 'fa', icon: 'envelope', link: socialNetworks.email.url, title: 'Email' },
     ],
 
     pages: [{ title: 'Security and cookies', link: '/security-and-cookies' }],

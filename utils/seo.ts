@@ -13,6 +13,10 @@ export const socialNetworks = {
     url: 'https://github.com/codeserk',
   },
 
+  email: {
+    url: 'mailto:info@codeserk.es',
+  },
+
   buymeacoffee: {
     url: 'https://www.buymeacoffee.com/codeserk',
   },
@@ -40,11 +44,11 @@ export const defaultSeo = {
 }
 
 export interface SeoInformation {
-  title?: string
-  description?: string
-  keywords?: string[]
-  image?: string
-  path?: string
+  title?: string;
+  description?: string;
+  keywords?: string[];
+  image?: string;
+  path?: string;
 }
 
 export function generateSeoMeta(info: SeoInformation): any {
