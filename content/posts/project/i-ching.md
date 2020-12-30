@@ -34,6 +34,7 @@ extra:
   endDate: 2020-12-23
   website: https://i-ching.codeserk.es
   github: https://github.com/codeserk/iching
+  android: https://play.google.com/store/apps/details?id=es.codeserk.iching
 ---
 
 This is a simple project: Create an app that allows users to consult the [I Ching](https://en.wikipedia.org/wiki/I_Ching) oracle.

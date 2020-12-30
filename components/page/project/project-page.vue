@@ -8,20 +8,26 @@
 
           <terms-map :item="project" />
 
-          <template v-if="project.website || project.github">
+          <template v-if="project.website || project.github || project.android">
             <hr />
 
-            <a
-              v-if="project.website"
-              :href="project.website"
-              v-text="beautifiedWebsite"
-              rel="noreferrer noopener"
-              target="__blank"
-            />
-            <a v-if="project.github" :href="project.github" target="__blank" rel="noreferrer noopener">
-              <span class="sr-only">GitHub account</span>
-              <font-awesome-icon :icon="['fab', 'github']" size="lg" />
-            </a>
+            <ul class="links">
+              <li v-if="project.website">
+                <a :href="project.website" v-text="beautifiedWebsite" rel="noreferrer noopener" target="__blank" />
+              </li>
+              <li v-if="project.github">
+                <a :href="project.github" target="__blank" rel="noreferrer noopener">
+                  <span class="sr-only">GitHub account</span>
+                  <font-awesome-icon :icon="['fab', 'github']" size="lg" />
+                </a>
+              </li>
+              <li v-if="project.android">
+                <a :href="project.android" target="__blank" rel="noreferrer noopener">
+                  <span class="sr-only">Android Application</span>
+                  <font-awesome-icon :icon="['fab', 'android']" size="lg" />
+                </a>
+              </li>
+            </ul>
           </template>
         </template>
 
@@ -136,5 +142,11 @@ export default {
 .more-container {
   margin-top: 3em;
   text-align: center;
+}
+
+.links {
+  li {
+    margin-bottom: 1em;
+  }
 }
 </style>

@@ -116,6 +116,7 @@ export default {
 
               website: extra(path: "website")
               github: extra(path: "github")
+              android: extra(path: "android")
               gallery: galleryImages {
                 image(resolution: Medium, format: png) { src }
                 placeholder: image(resolution: Placeholder, format: png, output: Inline) { src }

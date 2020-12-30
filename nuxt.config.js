@@ -4,6 +4,8 @@ import { siteName, defaultSeo, getShortDescription } from './utils/seo'
 const builtAt = new Date().toISOString()
 
 export default {
+  target: 'static',
+
   buildModules: ['@nuxtjs/tailwindcss', '@nuxtjs/fontawesome'],
   css: ['@/assets/css/main.scss', 'photoswipe/src/css/main.scss', 'photoswipe/src/css/default-skin/default-skin.scss'],
   modules: [
@@ -23,7 +25,7 @@ export default {
   fontawesome: {
     icons: {
       solid: ['faEnvelope'],
-      brands: ['faGithub', 'faTwitter', 'faLinkedin'],
+      brands: ['faGithub', 'faTwitter', 'faLinkedin', 'faAndroid'],
     },
   },
 
