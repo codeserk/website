@@ -19,6 +19,7 @@ export default {
     DomImage: () => import('./dom-image'),
     DomText: () => import('./dom-text'),
     DomLink: () => import('./dom-link'),
+    DomCode: () => import('./dom-code'),
     DomTerm: () => import('./dom-term'),
 
     // Special components
@@ -78,6 +79,9 @@ export default {
         }
 
         return 'dom-link'
+      }
+      if (this.tag === 'pre' && this.text.startsWith('<code')) {
+        return 'dom-code'
       }
       if (this.text) {
         return 'dom-text'

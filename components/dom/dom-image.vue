@@ -1,5 +1,7 @@
 <template>
-  <img v-lazy="{ src: src, loading: placeholder }" data-aos="appear" class="image lazy" alt="Content image" />
+  <div class="dom-img no-skew">
+    <img v-lazy="{ src: src, loading: placeholder }" data-aos="appear" class="image lazy" alt="Content image" />
+  </div>
 </template>
 
 <script>
@@ -23,7 +25,9 @@ export default {
 </script>
 
 <style lang="scss">
-.image {
-  width: 100%;
+.dom-img {
+  .image {
+    width: 100%;
+  }
 }
 </style>

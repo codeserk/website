@@ -45,6 +45,7 @@ export default {
     { src: '@/plugins/vertical-height', mode: 'client' },
     '~/plugins/common-data',
     { src: '@/plugins/firebase', mode: 'client' },
+    '~/plugins/prism',
   ],
 
   render: {
@@ -102,6 +103,7 @@ export default {
       /.*wfa.*$/,
       /.*aos.*$/,
       /^page.*$/,
+      /token$/,
     ],
   },
 

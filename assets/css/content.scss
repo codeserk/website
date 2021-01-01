@@ -98,4 +98,29 @@
   &.break {
     white-space: break-spaces;
   }
+
+  .no-skew {
+    padding: 0 32px;
+
+    .block.with-padding & {
+      margin: 3em -32px 2em -32px;
+    }
+
+    .block.skew & {
+      transform: skewY(2deg);
+      transform-origin: top right;
+    }
+
+    .no-skew {
+      padding: 0;
+
+      .block.with-padding & {
+        margin: 0;
+      }
+
+      .block.skew & {
+        transform: none;
+      }
+    }
+  }
 }
