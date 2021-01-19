@@ -1,7 +1,7 @@
 import 'reflect-metadata'
 import * as path from 'path'
 
-import { press } from '@codeserk/press-core'
+import { LogLevel, press } from '@codeserk/press-core'
 import { media } from '@codeserk/press-media'
 import { MediaServiceResolver } from '@codeserk/press-graphql-media'
 import { filesystem } from '@codeserk/press-source-filesystem'
@@ -45,6 +45,7 @@ export default async function pressModule(this: any) {
         enabled: true,
         ttl: this.isDev ? 0 : 60,
       },
+      logger: { level: LogLevel.Debug },
     })
     .withPermalinks({
       types: {

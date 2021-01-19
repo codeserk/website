@@ -57,9 +57,9 @@ export default {
   },
 
   build: {
-    parallel: process.env.NODE_ENV !== 'production',
-    cache: process.env.NODE_ENV !== 'production',
-    hardSource: process.env.NODE_ENV !== 'production',
+    parallel: true,
+    cache: true,
+    hardSource: true,
     extractCSS: process.env.NODE_ENV === 'production',
     postcss: {
       plugins: {
