@@ -57,9 +57,9 @@ export default {
   },
 
   build: {
-    parallel: true,
-    cache: true,
-    hardSource: true,
+    parallel: process.env.NODE_ENV !== 'production',
+    cache: process.env.NODE_ENV !== 'production',
+    hardSource: process.env.NODE_ENV !== 'production',
     extractCSS: process.env.NODE_ENV === 'production',
     postcss: {
       plugins: {
@@ -103,8 +103,10 @@ export default {
       /.*wfa.*$/,
       /.*aos.*$/,
       /^page.*$/,
-      /token$/,
+      /token.*$/,
+      /class.*$/,
     ],
+    whitelistPatternsChildren: [/^token/, /^pre/, /^code/],
   },
 
   generate: {

@@ -16,7 +16,7 @@ termsMap:
     - ionic
 extra:
   order: 1
-  progress: 0
+  progress: 50
   status: wip
   startDate: 2020-12-24
 ---
