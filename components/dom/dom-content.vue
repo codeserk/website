@@ -4,7 +4,7 @@
     :is="component"
     v-bind="$props"
     :level="level"
-    class="dom-content content content-break"
+    class="dom-content content break content-break"
   />
 </template>
 

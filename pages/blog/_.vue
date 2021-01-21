@@ -29,7 +29,7 @@ export default {
     DomContent: () => import('~/components/dom/dom-content'),
   },
 
-  async asyncData({ store, error, route, $source }) {
+  async asyncData({ error, route, $source }) {
     const slug = route.path.split('/').pop()
     const data = await $source.resolve(route.path, ({ query }) =>
       query(

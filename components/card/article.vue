@@ -94,6 +94,7 @@ export default {
     img {
       width: 290px;
       height: 290px;
+      image-rendering: pixelated;
     }
   }
 

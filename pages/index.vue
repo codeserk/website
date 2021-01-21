@@ -44,6 +44,15 @@
       </section>
 
       <section>
+        <h2>Last Challenge &lt;&gt;</h2>
+        <challenge-grid :challenges="challenges" />
+
+        <div class="more-container" data-aos="fade-up">
+          <nuxt-link to="/challenge">More challenges...</nuxt-link>
+        </div>
+      </section>
+
+      <section>
         <h2>Career📱</h2>
         <career :career="career" />
       </section>
@@ -82,6 +91,7 @@ export default {
     WebDevelopment: () => import('~/components/home/web-development'),
     Blog: () => import('~/components/home/blog'),
     Projects: () => import('~/components/home/projects'),
+    ChallengeGrid: () => import('~/components/card/challenge-grid'),
   },
 
   data: () => ({
@@ -153,6 +163,20 @@ export default {
               sort: { path: "createdAt", direction: Descending },
               pagination: { limit: 3 }
             ) {
+              id slug title excerpt link
+              status: extra(path: "status")
+              progress: extra(path: "progress")
+              startDate: extra(path: "startDate")
+              endDate: extra(path: "endDate")
+              order: extra(path: "order")
+              image: featuredImage {
+                image(resolution: Small, format: png, transform: { resize: { width: 290, height: 290 }}) { src }
+                placeholder: image(resolution: Placeholder, format: png, transform: { resize: { width: 16, height: 16 }}, output: Inline) { src }
+              }
+              areas: terms(taxonomy: "development-area") { id slug name order: extra(path: "order") }
+            }
+
+            challenges: posts(type: "challenge", filters: { status: { eq: "published" } }, pagination: { limit: 1 }, sort: { path: "createdAt", direction: Descending }) {
               id slug title excerpt link
               status: extra(path: "status")
               progress: extra(path: "progress")
@@ -298,6 +322,11 @@ export default {
       }
     }
   }
+}
+
+.more-container {
+  margin-top: 3em;
+  text-align: center;
 }
 
 @media (min-width: theme('screens.sm')) {

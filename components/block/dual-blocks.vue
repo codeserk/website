@@ -1,8 +1,12 @@
 <template>
   <div class="dual-blocks-container">
     <div class="dual-blocks">
-      <div :class="{ 'with-small-padding': withPaddingLeft }" class="block skew left with-shadow-left">
-        <slot name="left-block" />
+      <div class="left">
+        <div :class="{ 'with-small-padding': withPaddingLeft }" class="block skew with-shadow-left">
+          <slot name="left-block" />
+        </div>
+
+        <slot name="left" />
       </div>
 
       <div class="right">
@@ -11,6 +15,10 @@
         </div>
 
         <slot name="right" />
+      </div>
+
+      <div class="left-bottom">
+        <slot name="left-bottom" />
       </div>
     </div>
   </div>
@@ -39,15 +47,6 @@ export default {
   align-items: left;
   justify-content: center;
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 100px;
-    right: 100px;
-    left: 100px;
-    border-bottom: 8px solid white;
-  }
-
   .dual-blocks {
     position: relative;
     display: block;
@@ -61,12 +60,24 @@ export default {
       border-bottom: 1px solid white;
     }
 
-    .left {
+    .left,
+    .left-bottom {
       float: left;
       width: 30%;
 
       section {
         padding: 1em 1.5em 1em 1em;
+      }
+
+      .block {
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 20px;
+          right: -20%;
+          left: 100%;
+          border-bottom: 8px solid white;
+        }
       }
     }
     .right {
@@ -85,7 +96,8 @@ export default {
         display: block !important;
       }
 
-      .block.left {
+      .left,
+      .left-botom {
         width: 100%;
       }
       .right {
@@ -96,13 +108,22 @@ export default {
 
   @media (max-width: theme('screens.lg')) {
     .dual-blocks {
-      .block.left {
+      .left {
         float: none;
-        width: 90%;
+        width: 100%;
+      }
+      .left-bottom {
+        width: 100%;
       }
       .right {
-        width: 90%;
+        width: 100%;
         margin-top: 2ch;
+      }
+
+      .block {
+        &::after {
+          display: none;
+        }
       }
 
       &::before {

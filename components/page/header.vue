@@ -97,6 +97,12 @@ export default {
 
       .title {
         font-size: 4rem;
+        line-height: 1.2em;
+
+        @media (max-width: theme('screens.sm')) {
+          font-size: 3rem;
+          line-height: 1em;
+        }
       }
     }
 

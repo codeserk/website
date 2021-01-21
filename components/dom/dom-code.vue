@@ -67,6 +67,9 @@ export default {
   .block.with-padding & {
     margin: 3em -32px 2em -32px;
   }
+  .block.with-small-padding & {
+    margin: 3em -24px 2em -24px;
+  }
 
   .block.skew & {
     transform: skewY(2deg);
