@@ -39,17 +39,13 @@ Below we make a brief explanatory classification of cookies for their essential 
 
 ## 3. Which cookies do we use?
 
-This site uses third-party cookies analytical purposes. **This site does not use cookies for personalization or advertising purposes.**
+**NONE** :)
 
-**Cookies for analysis purposes**. We use third-party cookies to analyze the traffic we receive.
-
-* Cookies from **<a rel="noreferrer noopener" href="https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage?hl=es" target="__blank">Google Analytics</a>**
+I used some cookies in the past for Google Analytics, but I moved to a different tool that is not using cookies, and claims to be healthier for your privacy. So win win! => [Plausible.io](https://plausible.io/)
 
 ## 4. How to uninstall cookies
 
-To block cookies from this site you can **_Do not use cookies_**. in the pop-up asking if you want to accept the cookies we use. Please note that some of the features of this site will no longer be available (share and comment on social networks).
-
-You can also manage the general cookies of your navigation, through your browser, here are instructions for different browsers: Be careful !! If you use the cookie manager of your browser you can block cookies that matter to you and are useful in your navigation.
+You can manage the general cookies of your navigation, through your browser, here are instructions for different browsers: Be careful !! If you use the cookie manager of your browser you can block cookies that matter to you and are useful in your navigation.
 
 * <a rel="noreferrer noopener" href="https://support.microsoft.com/es-es/help/17442/windows-internet-explorer-delete-manage-cookies" target="__blank">Internet Explorer</a>
 * <a rel="noreferrer noopener" href="https://support.google.com/chrome/answer/95647" target="__blank">Google Chrome</a>

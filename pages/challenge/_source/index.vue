@@ -55,15 +55,5 @@ export default {
       description: this.source.description,
     })
   },
-
-  mounted() {
-    if (this.$analytics) {
-      this.$analytics.logEvent('view_page', {
-        title: this.source.name,
-        slug: this.source.slug,
-        link: `/challenge/${this.source.slug}`,
-      })
-    }
-  },
 }
 </script>

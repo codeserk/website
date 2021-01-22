@@ -60,16 +60,6 @@ export default {
       description: 'Section with all the frameworks.',
     })
   },
-
-  mounted() {
-    if (this.$analytics) {
-      this.$analytics.logEvent('view_page', {
-        title: 'Frameworks',
-        slug: '/framework',
-        link: '/framework',
-      })
-    }
-  },
 }
 </script>
 

@@ -15,6 +15,7 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/sitemap',
     '@nuxtjs/feed',
+    'vue-plausible',
   ],
 
   loading: {
@@ -34,6 +35,11 @@ export default {
     port: 3020,
   },
 
+  plausible: {
+    domain: 'codeserk.es',
+    apiHost: 'http://analytics.codeserk.es',
+  },
+
   serverMiddleware: ['~server/redirects.ts'],
   plugins: [
     '~/plugins/composition-api.js',
@@ -44,7 +50,6 @@ export default {
     { src: '@/plugins/touch', mode: 'client' },
     { src: '@/plugins/vertical-height', mode: 'client' },
     '~/plugins/common-data',
-    { src: '@/plugins/firebase', mode: 'client' },
     '~/plugins/prism',
   ],
 

@@ -91,15 +91,5 @@ export default {
       image: this.technology.image?.header.src,
     })
   },
-
-  mounted() {
-    if (this.$analytics && this.technology) {
-      this.$analytics.logEvent('view_page', {
-        title: this.technology.title,
-        slug: this.technology.slug,
-        link: this.technology.link,
-      })
-    }
-  },
 }
 </script>

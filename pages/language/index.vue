@@ -39,16 +39,6 @@ export default {
       description: 'Section with all the languages.',
     })
   },
-
-  mounted() {
-    if (this.$analytics) {
-      this.$analytics.logEvent('view_page', {
-        title: 'Languages',
-        slug: '/language',
-        link: '/language',
-      })
-    }
-  },
 }
 </script>
 

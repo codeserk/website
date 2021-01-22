@@ -39,6 +39,11 @@
       </section>
 
       <section>
+        <h2>Blog 📺</h2>
+        <blog :articles="articles" />
+      </section>
+
+      <section>
         <h2>Languages 👓</h2>
         <languages :languages="$common.languages" />
       </section>
@@ -65,11 +70,6 @@
           :technologies="$common.technologies"
           :message-brokers="$common.messageBrokers"
         />
-      </section>
-
-      <section>
-        <h2>Blog 📺</h2>
-        <blog :articles="articles" />
       </section>
 
       <section>
@@ -209,16 +209,6 @@ export default {
     )
 
     return data
-  },
-
-  mounted() {
-    if (this.$analytics) {
-      this.$analytics.logEvent('view_page', {
-        title: 'Home',
-        slug: '/',
-        link: '/',
-      })
-    }
   },
 }
 </script>

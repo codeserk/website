@@ -91,15 +91,5 @@ export default {
       image: this.framework.image?.header.src,
     })
   },
-
-  mounted() {
-    if (this.$analytics && this.framework) {
-      this.$analytics.logEvent('view_page', {
-        title: this.framework.title,
-        slug: this.framework.slug,
-        link: this.framework.link,
-      })
-    }
-  },
 }
 </script>

@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { sortByOrder } from '../../utils/sort'
+import { sortByDate, sortByOrder } from '../../utils/sort'
 
 export default {
   components: {
@@ -33,7 +33,7 @@ export default {
 
   computed: {
     sortedArticles() {
-      const result = [...this.articles].sort(sortByOrder)
+      const result = [...this.articles].sort(sortByDate('createdAt'))
 
       if (this.limit > 0) {
         return result.slice(0, this.limit)

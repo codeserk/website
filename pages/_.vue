@@ -53,16 +53,6 @@ export default {
       image: this.page.image?.header.src,
     })
   },
-
-  mounted() {
-    if (this.$analytics && this.page) {
-      this.$analytics.logEvent('view_page', {
-        title: this.page.title,
-        slug: this.page.slug,
-        link: this.page.link,
-      })
-    }
-  },
 }
 </script>
 

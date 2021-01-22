@@ -60,16 +60,6 @@ export default {
       description: 'Section with all the message brokers.',
     })
   },
-
-  mounted() {
-    if (this.$analytics) {
-      this.$analytics.logEvent('view_page', {
-        title: 'Message Brokers',
-        slug: '/message-broker',
-        link: '/message-broker',
-      })
-    }
-  },
 }
 </script>
 

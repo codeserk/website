@@ -60,16 +60,6 @@ export default {
       description: 'Section with all the technologies.',
     })
   },
-
-  mounted() {
-    if (this.$analytics) {
-      this.$analytics.logEvent('view_page', {
-        title: 'Technologies',
-        slug: '/technology',
-        link: '/technology',
-      })
-    }
-  },
 }
 </script>
 

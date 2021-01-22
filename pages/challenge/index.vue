@@ -44,15 +44,5 @@ export default {
       description: 'Section with all the code challenges.',
     })
   },
-
-  mounted() {
-    if (this.$analytics) {
-      this.$analytics.logEvent('view_page', {
-        title: 'Code Challenges',
-        slug: '/challenge',
-        link: '/challenge',
-      })
-    }
-  },
 }
 </script>

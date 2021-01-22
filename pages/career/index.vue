@@ -48,16 +48,6 @@ export default {
       description: 'Section with all the projects.',
     })
   },
-
-  mounted() {
-    if (this.$analytics) {
-      this.$analytics.logEvent('view_page', {
-        title: 'Projects',
-        slug: '/project',
-        link: '/project',
-      })
-    }
-  },
 }
 </script>
 

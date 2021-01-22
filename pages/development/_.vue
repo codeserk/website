@@ -94,15 +94,5 @@ export default {
       image: this.area.image?.header.src,
     })
   },
-
-  mounted() {
-    if (this.$analytics && this.area) {
-      this.$analytics.logEvent('view_page', {
-        title: this.area.name,
-        slug: this.area.slug,
-        link: this.area.link,
-      })
-    }
-  },
 }
 </script>

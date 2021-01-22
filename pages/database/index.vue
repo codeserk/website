@@ -60,16 +60,6 @@ export default {
       description: 'Section with all the databases.',
     })
   },
-
-  mounted() {
-    if (this.$analytics) {
-      this.$analytics.logEvent('view_page', {
-        title: 'Databases',
-        slug: '/database',
-        link: '/database',
-      })
-    }
-  },
 }
 </script>
 

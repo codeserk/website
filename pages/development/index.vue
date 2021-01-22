@@ -62,16 +62,6 @@ export default {
       description: 'Section with all the development areas.',
     })
   },
-
-  mounted() {
-    if (this.$analytics) {
-      this.$analytics.logEvent('view_page', {
-        title: 'Development',
-        slug: '/development',
-        link: '/development',
-      })
-    }
-  },
 }
 </script>
 

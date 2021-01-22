@@ -186,25 +186,5 @@ export default {
       })
     }
   },
-
-  mounted() {
-    if (this.$analytics) {
-      if (this.area) {
-        this.$analytics.logEvent('view_page', {
-          title: this.area.name,
-          slug: this.area.slug,
-          link: this.area.link,
-        })
-      }
-
-      if (this.post) {
-        this.$analytics.logEvent('view_page', {
-          title: this.post.title,
-          slug: this.post.slug,
-          link: this.post.link,
-        })
-      }
-    }
-  },
 }
 </script>

@@ -91,15 +91,5 @@ export default {
       image: this.broker.image?.header.src,
     })
   },
-
-  mounted() {
-    if (this.$analytics && this.broker) {
-      this.$analytics.logEvent('view_page', {
-        title: this.broker.title,
-        slug: this.broker.slug,
-        link: this.broker.link,
-      })
-    }
-  },
 }
 </script>

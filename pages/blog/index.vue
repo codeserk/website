@@ -20,6 +20,7 @@ export default {
           query articles {
             articles: posts(type: "blog", filters: { status: { eq: "published" } }) {
               id slug title excerpt link
+              createdAt
               status: extra(path: "status")
               progress: extra(path: "progress")
               startDate: extra(path: "startDate")
@@ -43,16 +44,6 @@ export default {
       title: 'Blog',
       description: 'Section with all the blog articles.',
     })
-  },
-
-  mounted() {
-    if (this.$analytics) {
-      this.$analytics.logEvent('view_page', {
-        title: 'Blog',
-        slug: '/blog',
-        link: '/blog',
-      })
-    }
   },
 }
 </script>

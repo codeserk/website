@@ -91,15 +91,5 @@ export default {
       image: this.database.image?.header.src,
     })
   },
-
-  mounted() {
-    if (this.$analytics & this.database) {
-      this.$analytics.logEvent('view_page', {
-        title: this.database.title,
-        slug: this.database.slug,
-        link: this.database.link,
-      })
-    }
-  },
 }
 </script>

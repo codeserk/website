@@ -103,16 +103,6 @@ export default {
       image: this.image?.image.src,
     })
   },
-
-  mounted() {
-    if (this.$analytics && this.job) {
-      this.$analytics.logEvent('view_page', {
-        title: this.job.title,
-        slug: this.job.slug,
-        link: this.job.link,
-      })
-    }
-  },
 }
 </script>
 

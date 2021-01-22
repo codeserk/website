@@ -10,10 +10,6 @@
     </div>
 
     <layout-footer />
-
-    <client-only>
-      <cookies-popup />
-    </client-only>
   </div>
 </template>
 
@@ -31,7 +27,6 @@ export default {
     Background,
     // LayoutHeader,
     LayoutFooter,
-    CookiesPopup: () => import('~/components/layout/cookies-popup'),
   },
 
   computed: {

@@ -9,6 +9,7 @@
       <dual-blocks class="item" with-padding-left with-padding-right>
         <template #left-block>
           <terms-map :item="post" />
+          <div v-text="date" class="date" />
         </template>
 
         <template #right-block>
@@ -20,6 +21,7 @@
 </template>
 
 <script>
+import moment from 'moment'
 import { generateSeoMeta } from '../../utils/seo'
 
 export default {
@@ -27,6 +29,12 @@ export default {
     DualBlocks: () => import('~/components/block/dual-blocks'),
     TermsMap: () => import('~/components/terms-map'),
     DomContent: () => import('~/components/dom/dom-content'),
+  },
+
+  computed: {
+    date() {
+      return moment(this.post.createdAt).format('Do [of] MMMM [of] YYYY')
+    },
   },
 
   async asyncData({ error, route, $source }) {
@@ -37,6 +45,7 @@ export default {
           query post($slug: String!) {
             post: postBySlug(slug: $slug, type: "blog") {
               id title excerpt content dom link
+              createdAt
 
               image: featuredImage {
                 image(resolution: Small, format: png, transform: { resize: { width: 200, height: 200 }}) { src }
@@ -73,15 +82,11 @@ export default {
       image: this.post.image?.header.src,
     })
   },
-
-  mounted() {
-    if (this.$analytics && this.post) {
-      this.$analytics.logEvent('view_page', {
-        title: this.post.title,
-        slug: this.post.slug,
-        link: this.post.link,
-      })
-    }
-  },
 }
 </script>
+
+<style lang="scss" scoped>
+.date {
+  margin-top: 0.5em;
+}
+</style>

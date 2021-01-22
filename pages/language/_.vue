@@ -91,15 +91,5 @@ export default {
       image: this.language.image?.header.src,
     })
   },
-
-  mounted() {
-    if (this.$analytics && this.language) {
-      this.$analytics.logEvent('view_page', {
-        title: this.language.name,
-        slug: this.language.slug,
-        link: this.language.link,
-      })
-    }
-  },
 }
 </script>
