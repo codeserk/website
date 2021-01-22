@@ -76,6 +76,16 @@ export default async function(context) {
   if (!Vue.__common_data__) {
     Vue.__common_data__ = true
     Vue.mixin({
+      transition: {
+        beforeLeave() {
+          document.body.classList.add('transition')
+        },
+
+        afterEnter() {
+          document.body.classList.remove('transition')
+        },
+      },
+
       components: {
         PageWrapper: () => import('~/components/page/wrapper'),
       },

@@ -167,6 +167,8 @@ footer {
   position: relative;
   overflow-x: hidden;
   min-height: 125vh;
+  opacity: 1;
+  transition: opacity 0.4s ease-in-out;
 
   &::before {
     content: '';
