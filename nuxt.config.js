@@ -37,7 +37,7 @@ export default {
 
   plausible: {
     domain: 'codeserk.es',
-    apiHost: 'http://analytics.codeserk.es',
+    apiHost: 'https://analytics.codeserk.es',
   },
 
   serverMiddleware: ['~server/redirects.ts'],
