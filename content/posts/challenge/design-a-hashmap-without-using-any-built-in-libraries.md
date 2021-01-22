@@ -3,7 +3,7 @@ slug: design-a-hashmap-without-using-any-built-in-libraries
 title: Design a hashmap without using any built-in libraries
 authorId: codeserk
 status: published
-featuredImageId: challenge/design-a-hashmap-without-using-any-built-in-libraries/card
+featuredImageId: challenge/design-a-hashmap-without-using-any-built-in-libraries/card-challenge
 termsMap:
   challenge-source:
     - cassidoo

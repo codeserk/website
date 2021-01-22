@@ -78,7 +78,7 @@ export default {
         `
           query post($link: String!) {
             post: postByLink(link: $link) {
-              id title dom createdAt
+              id title excerpt dom createdAt
               breadcrumbs { name link }
 
               image: featuredImage {
@@ -142,14 +142,14 @@ export default {
 
   .test-result {
     position: absolute;
-    bottom: 0px;
     right: 0;
-    padding: 5px 5px 0px 5px;
+    bottom: 0;
+    vertical-align: middle;
+    padding: 5px 5px 0 5px;
+    border-top: 4px solid white;
+    border-left: 4px solid white;
     font-size: 20px;
     text-align: center;
-    vertical-align: middle;
-    border-left: 4px solid white;
-    border-top: 4px solid white;
 
     &.test-passed {
       background: green;
