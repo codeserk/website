@@ -1,0 +1,33 @@
+{
+  "testEnvironment": "node",
+  "transform": {
+    "^.+\\.js$": "ts-jest",
+    "^.+\\.ts$": "ts-jest"
+  },
+  "moduleFileExtensions": [
+    "ts",
+    "tsx",
+    "js",
+    "jsx",
+    "json",
+    "node"
+  ],
+  "setupFiles": [
+    "reflect-metadata"
+  ],
+  "moduleDirectories": [
+    "node_modules"
+  ],
+  "cacheDirectory": "./node_modules/.cache/jest",
+  "testMatch": [
+    "<rootDir>/**/*.spec.ts"
+  ],
+  "testPathIgnorePatterns": [
+    "<rootDir>/node_modules"
+  ],
+  "globals": {
+    "ts-jest": {
+      "babelConfig": true
+    }
+  }
+}

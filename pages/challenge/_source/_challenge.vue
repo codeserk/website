@@ -1,6 +1,7 @@
 <template>
   <page-wrapper :title="post.title" :breadcrumbs="breadcrumbs" class="color full">
     <div class="container mx-auto">
+      <img v-if="post.image && post.image.header" :src="post.image.header.src" class="image" />
       <dual-blocks class="item" with-padding-left with-padding-right>
         <template #left-block>
           <terms-map :item="post" />
@@ -121,6 +122,10 @@ export default {
 
 <style lang="scss" scoped>
 @import '~/assets/css/colors.scss';
+
+.image {
+  display: none;
+}
 
 .test-block {
   padding: 10px;
