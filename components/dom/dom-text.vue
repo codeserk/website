@@ -1,5 +1,5 @@
 <template>
-  <component v-if="transformedText" :is="component" v-text="transformedText" v-bind="attributes" class="dom-text" />
+  <component v-if="text" :is="component" v-text="transformedText" v-bind="attributes" class="dom-text" />
 </template>
 
 <script>
@@ -22,8 +22,12 @@ export default {
 
     transformedText() {
       let text = this.text
+      if (!this.text || typeof this.text !== 'string') {
+        return this.text
+      }
+
       for (const transformation of TRANSFORMATIONS) {
-        text = text.replaceAll(transformation.regex, transformation.value)
+        text = text.replace(transformation.regex, transformation.value)
       }
 
       return text

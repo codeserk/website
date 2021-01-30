@@ -61,7 +61,7 @@ For the example given, we just need to rotate the external ring, and the `5` in 
 
 ![](challenge/given-an-n-x-n-array-rotate-it-90-degrees-without-making-a-new-array/notes-2)
 
-It gets more interesting when we have more higher `n`:
+It gets more interesting when we have a higher `n`:
 
 ![](challenge/given-an-n-x-n-array-rotate-it-90-degrees-without-making-a-new-array/notes-3)
 
