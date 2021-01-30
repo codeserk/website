@@ -12,6 +12,7 @@ termsMap:
 extra:
   sourceTwitter: https://twitter.com/cassidoo/status/1353529637318569985
   gist: https://gist.github.com/codeserk/c6efdf67b42ae3ff5c574202cf252917
+  testsLink: https://github.com/codeserk/website/blob/master/tests/challenge/given-an-n-x-n-array-rotate-it-90-degrees-without-making-a-new-array.spec.ts
   tests:
     - description: should not do anything when n=0
       valid: true

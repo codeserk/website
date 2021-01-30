@@ -14,6 +14,12 @@
                 <span>Source</span>
               </a>
             </li>
+            <li v-if="post.testsLink" class="links-source">
+              <a :href="post.testsLink" target="__blank" rel="noreferrer noopener">
+                <font-awesome-icon :icon="['fab', 'github']" size="lg" />
+                <span>Tests</span>
+              </a>
+            </li>
             <li v-if="post.gist" class="links-gist">
               <a :href="post.gist" target="__blank" rel="noreferrer noopener">
                 <font-awesome-icon :icon="['fab', 'github']" size="lg" />
@@ -93,6 +99,7 @@ export default {
 
               sourceTwitter: extra(path: "sourceTwitter")
               gist: extra(path: "gist")
+              testsLink: extra(path: "testsLink")
               tests: extra(path: "tests")
             }
           }
