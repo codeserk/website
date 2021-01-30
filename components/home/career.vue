@@ -33,7 +33,7 @@
         <img
           v-if="item.featuredImage"
           v-lazy="item.image"
-          :alt="`${career.title} logo`"
+          :alt="`${item.title} logo`"
           class="image lazy bordered"
           width="150"
           height="150"

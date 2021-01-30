@@ -38,7 +38,6 @@ export default async function pressModule(this: any) {
     },
   })
 
-  console.log('is dev?', this.isDev)
   // Setup press
   press
     .withConfig({
