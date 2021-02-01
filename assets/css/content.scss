@@ -100,7 +100,9 @@
   }
 
   .no-skew {
-    padding: 0 32px;
+    &.no-skew-padding {
+      padding: 0 32px;
+    }
 
     .block.with-padding & {
       margin: 3em -32px 2em -32px;
@@ -109,6 +111,7 @@
     .block.skew & {
       transform: skewY(2deg);
       transform-origin: top right;
+      margin: 3em 0px 2em 0px;
     }
 
     .no-skew {

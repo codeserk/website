@@ -1,6 +1,6 @@
 ---
 slug: given-an-n-x-n-array-rotate-it-90-degrees-without-making-a-new-array
-title: Given An n x n Array Rotate It 90 Degrees Without Making A New Array
+title: Given an NxN array, rotate it 90 degrees without making a new array
 authorId: codeserk
 status: published
 featuredImageId: challenge/given-an-n-x-n-array-rotate-it-90-degrees-without-making-a-new-array/header
@@ -81,7 +81,7 @@ This is the operation for `Top` --> `Right`
 
 We need to write similar operations for the other movements.
 
-### Result
+### Solution
 
 ```ts
 /**

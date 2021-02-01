@@ -12,7 +12,7 @@ termsMap:
 
 I've improved the statistics shown for the surveys. I think the whole flow now is complete, just a few adjustments are left for the _phase 1_ :)
 
-<div class="flex no-skew">
+<div class="flex no-skew no-skew-padding">
   <div class="flex-1">
     <img src="project/happy-food/screenshot-overview" />
   </div>

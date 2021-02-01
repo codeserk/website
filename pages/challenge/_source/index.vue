@@ -31,7 +31,7 @@ export default {
             source: termBySlug(taxonomy: "challenge-source", slug: $slug) {
               slug name description dom
 
-              challenges: posts {
+              challenges: posts(sort: { path: "createdAt", direction: Descending }) {
                 id slug title link
                 order: extra(path: "order")
               }
