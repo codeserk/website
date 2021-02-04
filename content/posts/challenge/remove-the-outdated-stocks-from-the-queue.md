@@ -3,7 +3,7 @@ slug: remove-the-outdated-stocks-from-the-queue
 title: Remove the outdated stocks from the queue
 authorId: codeserk
 status: published
-featuredImageId: challenge/remove-the-outdated-stocks-from-the-queue/header
+featuredImageId: challenge/remove-the-outdated-stocks-from-the-queue/header-v2
 termsMap:
   challenge-source:
     - cassidoo
