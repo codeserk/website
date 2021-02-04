@@ -2,8 +2,8 @@
   <div
     :data-aos-delay="100 * (index % 3)"
     :class="{ 'has-image': !!lazyImage }"
+    :data-aos="aos ? 'appear' : null"
     class="challenge with-shadow-left"
-    data-aos="appear"
   >
     <div class="buttons">
       <svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14">
@@ -64,6 +64,11 @@ export default {
     summary: {
       type: String,
       default: '',
+    },
+
+    aos: {
+      type: Boolean,
+      default: false,
     },
   },
 

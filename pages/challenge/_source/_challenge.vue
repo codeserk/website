@@ -1,6 +1,7 @@
 <template>
   <page-wrapper :title="post.title" :breadcrumbs="breadcrumbs" class="color full">
     <div class="container mx-auto">
+      <img v-if="post.image && post.image.header" :src="post.image.header.src" class="sr-only" />
       <dual-blocks class="item" with-padding-left with-padding-right>
         <template #left-block>
           <terms-map :item="post" />
@@ -11,6 +12,12 @@
               <a :href="post.sourceTwitter" target="__blank" rel="noreferrer noopener">
                 <font-awesome-icon :icon="['fab', 'twitter']" size="lg" />
                 <span>Source</span>
+              </a>
+            </li>
+            <li v-if="post.testsLink" class="links-source">
+              <a :href="post.testsLink" target="__blank" rel="noreferrer noopener">
+                <font-awesome-icon :icon="['fab', 'github']" size="lg" />
+                <span>Tests</span>
               </a>
             </li>
             <li v-if="post.gist" class="links-gist">
@@ -92,6 +99,7 @@ export default {
 
               sourceTwitter: extra(path: "sourceTwitter")
               gist: extra(path: "gist")
+              testsLink: extra(path: "testsLink")
               tests: extra(path: "tests")
             }
           }
@@ -121,6 +129,10 @@ export default {
 
 <style lang="scss" scoped>
 @import '~/assets/css/colors.scss';
+
+.image {
+  display: none;
+}
 
 .test-block {
   padding: 10px;

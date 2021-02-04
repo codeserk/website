@@ -42,8 +42,8 @@ export default async function pressModule(this: any) {
   press
     .withConfig({
       cache: {
-        enabled: true,
-        ttl: this.isDev ? 0 : 60,
+        enabled: !this.isDev,
+        ttl: 60,
       },
       logger: { level: LogLevel.Debug },
     })

@@ -44,11 +44,11 @@ export const defaultSeo = {
 }
 
 export interface SeoInformation {
-  title?: string;
-  description?: string;
-  keywords?: string[];
-  image?: string;
-  path?: string;
+  title?: string
+  description?: string
+  keywords?: string[]
+  image?: string
+  path?: string
 }
 
 export function generateSeoMeta(info: SeoInformation): any {
@@ -87,6 +87,11 @@ export function generateSeoMeta(info: SeoInformation): any {
   metas.push({ property: 'og:image:width', hid: 'og:image:width', content: 600 })
   metas.push({ property: 'og:image:width', hid: 'og:image:height', content: 600 })
   metas.push({ property: 'twitter:image', hid: 'twitter:image', content: image })
+
+  // Twitter card
+  metas.push({ property: 'twitter:card', content: 'summary_large_image' })
+  metas.push({ property: 'twitter:site', content: 'codeserk.es' })
+  metas.push({ property: 'twitter:creator', content: '@codeserk' })
 
   return { ...head, meta: metas }
 }
