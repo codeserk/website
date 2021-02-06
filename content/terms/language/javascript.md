@@ -1,11 +1,12 @@
 ---
 slug: javascript
-name: JavaScript
+name: JS
 featuredImageId: language/javascript
 extra:
     order: 2
     status: deprecated
     knowledge: 100
+    knowledgeYears: 10+ years
     icon: js
     scopes:
         - frontend

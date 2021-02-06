@@ -56,4 +56,8 @@ export default {
     margin-bottom: 0;
   }
 }
+
+.terms-map.inline .chip-container {
+  display: inline;
+}
 </style>

@@ -1,6 +1,7 @@
 ---
 slug: square-1
 title: Square 1
+excerpt: I worked for Square1 as Full-stack Developer for one year and eight months. The job was always challenging, since we had many projects of different kinds, and deadlines were often haunting us!
 featuredImageId: career/square1
 termsMap:
     development-area:
@@ -23,6 +24,15 @@ extra:
     endDate: 2017-05-01
     position: Full-Stack Web developer
     website: https://www.square1.io
+    topTerms:
+        - web
+        - php
+        - javascript
+        - laravel
+        - mysql
+        - elasticsearch
+        - mongodb
+        - docker
 ---
 
 I worked for `Square1` as Full-stack Developer for one year and eight months. The job was always *challenging*, since we had many projects of different kinds, and **deadlines were often haunting us** D:

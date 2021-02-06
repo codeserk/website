@@ -1,6 +1,7 @@
 ---
 slug: freelance-2015
 title: Freelance App developer
+excerpt: I quit my previous job because I needed some time to discover new technologies and try to develop some ideas. I saved money so I could be a few months only working on these projects.
 featuredImageId: project/callet/icon
 termsMap:
   development-area:
@@ -23,6 +24,17 @@ termsMap:
 extra:
   startDate: 2015-01-01
   endDate: 2016-01-01
+  topTerms:
+    - web
+    - android
+    - ios
+    - game
+    - javascript
+    - java
+    - csharp
+    - swift
+    - mongodb
+    - unity
 ---
 
 I quit my previous job because I needed some time to discover new technologies and try to develop some ideas. I saved money so I could be a few months only working on these projects. **None of them was a big success though**, but I learnt a lot in the process. I was so focused that I used to work for around _12 hours_ a day, _6-7 days a week_ (I was often top 5 in [WakaTime](https://wakatime.com/)). After all, I was working for myself, and _a third party_... and I was young, I guess.

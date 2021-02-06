@@ -6,6 +6,11 @@ export default async function(context) {
     const result = await query(
       `
         query commonData {
+          me: mediaById(id: "me") {
+            image(resolution: Small, format: png, transform: { resize: { width: 290, height: 290 }}) { src }
+            placeholder: image(resolution: Placeholder, format: png, transform: { resize: { width: 16, height: 16 }}, output: Inline) { src }
+          }
+
           avatar: mediaById(id: "avatar-pixelated-v2") {
             image(resolution: Small, format: png, transform: { resize: { width: 290, height: 290 }}) { src }
             placeholder: image(resolution: Placeholder, format: png, transform: { resize: { width: 16, height: 16 }}, output: Inline) { src }
@@ -21,6 +26,7 @@ export default async function(context) {
             order: extra(path: "order")
             status: extra(path: "status")
             knowledge: extra(path: "knowledge")
+            knowledgeYears: extra(path: "knowledgeYears")
             scopes: extra(path: "scopes")
             summary: extra(path: "summary")
           }
@@ -30,6 +36,7 @@ export default async function(context) {
             order: extra(path: "order")
             status: extra(path: "status")
             knowledge: extra(path: "knowledge")
+            knowledgeYears: extra(path: "knowledgeYears")
             kind: extra(path: "kind")
             summary: extra(path: "summary")
           }
@@ -39,6 +46,7 @@ export default async function(context) {
             order: extra(path: "order")
             status: extra(path: "status")
             knowledge: extra(path: "knowledge")
+            knowledgeYears: extra(path: "knowledgeYears")
             summary: extra(path: "summary")
           }
 
@@ -47,6 +55,7 @@ export default async function(context) {
             order: extra(path: "order")
             status: extra(path: "status")
             knowledge: extra(path: "knowledge")
+            knowledgeYears: extra(path: "knowledgeYears")
             scopes: extra(path: "scopes")
             summary: extra(path: "summary")
           }
@@ -56,6 +65,7 @@ export default async function(context) {
             order: extra(path: "order")
             status: extra(path: "status")
             knowledge: extra(path: "knowledge")
+            knowledgeYears: extra(path: "knowledgeYears")
             summary: extra(path: "summary")
           }
         }`,

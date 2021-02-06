@@ -1,6 +1,6 @@
 <template>
   <div class="ProgressBar">
-    <div :style="{ width: `${progress}%` }" class="bar" data-aos="scale-x" />
+    <div :style="{ width: `${progress}%` }" :data-aos="aos" class="bar" />
     <span v-text="text" class="text" />
   </div>
 </template>
@@ -10,6 +10,11 @@ import Vue from 'vue'
 
 export default Vue.extend({
   props: {
+    aos: {
+      type: String,
+      default: 'scale-x',
+    },
+
     progress: {
       type: Number,
       default: 0,
@@ -48,6 +53,15 @@ export default Vue.extend({
     text-align: center;
     text-transform: uppercase;
     mix-blend-mode: difference;
+  }
+
+  &.small {
+    height: 1.5rem;
+
+    .text {
+      top: -0.19rem;
+      line-height: 1.5rem;
+    }
   }
 }
 </style>

@@ -1,11 +1,12 @@
 ---
 slug: typescript
-name: TypeScript
+name: TS
 featuredImageId: language/typescript
 extra:
     order: 1
     status: adopted
     knowledge: 90
+    knowledgeYears: 2+ years
     icon: ts
     scopes:
         - frontend

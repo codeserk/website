@@ -1,4 +1,4 @@
-export const siteName = 'Jose Camara [@codeserk]'
+export const siteName = 'José Cámara [@codeserk]'
 
 export const socialNetworks = {
   twitter: {
@@ -23,11 +23,11 @@ export const socialNetworks = {
 }
 
 export const defaultSeo = {
-  title: 'Jose Camara [@codeserk]',
+  title: 'José Cámara [@codeserk]',
   canonical: 'https://www.codeserk.es',
   description:
-    "Jose Camara's personal portfolio, meant to showcase all the projects I work on, and the new technologies or languages that I use.",
-  author: 'Jose Camara',
+    "José Cámara's personal portfolio, meant to showcase all the projects I work on, and the new technologies or languages that I use.",
+  author: 'José Cámara',
   keywords: [
     'portfolio',
     'developer',

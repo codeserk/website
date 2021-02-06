@@ -25,7 +25,7 @@ export default {
 
   fontawesome: {
     icons: {
-      solid: ['faEnvelope'],
+      solid: ['faEnvelope', 'faGlobe'],
       brands: ['faGithub', 'faTwitter', 'faLinkedin', 'faAndroid'],
     },
   },
