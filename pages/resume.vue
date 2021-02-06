@@ -168,7 +168,7 @@ export default {
       { iconType: 'fa', icon: 'globe', link: 'https://www.codeserk.es/', title: 'www.codeserk.es' },
       { iconType: 'fab', icon: 'github', link: socialNetworks.github.url, title: '@codeserk' },
       { iconType: 'fab', icon: 'linkedin', link: socialNetworks.linkedin.url, title: 'Jose Camara' },
-      { iconType: 'fa', icon: 'envelope', link: socialNetworks.email.url, title: 'info@codeserk.es' },
+      { iconType: 'fa', icon: 'envelope', link: 'mailto:josec89+resume@gmail.com', title: 'josec89@gmail.com' },
     ],
 
     tongues: [
