@@ -9,7 +9,7 @@
       <Nuxt />
     </div>
 
-    <layout-footer />
+    <layout-footer class="web-only" />
   </div>
 </template>
 

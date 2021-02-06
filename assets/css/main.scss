@@ -21,6 +21,12 @@ body.transition {
   }
 }
 
+@media only print {
+  .web-only {
+    display: none;
+  }
+}
+
 img[alt]::after {
   content: attr(alt);
   position: absolute;

@@ -39,8 +39,8 @@ export default Vue.extend({
 
   .bar {
     position: absolute;
-    top: -1px;
-    bottom: -1px;
+    top: -2px;
+    bottom: -2px;
     background: white;
   }
 

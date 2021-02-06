@@ -1,9 +1,6 @@
 <template>
   <div class="resume page-wrapper color">
     <div class="web-only">
-      <client-only>
-        <background class="background" />
-      </client-only>
       <page-header :breadcrumbs="[{ name: 'Codeserk', link: '/' }]" title="Resume" />
     </div>
 
@@ -159,11 +156,8 @@ const brokers = ['rabbitmq', 'kafka']
 const technologies = ['docker', 'kubernetes']
 
 export default {
-  layout: 'resume',
-
   components: {
     PageHeader: () => import('~/components/page/header'),
-    Background: () => import('~/components/layout/scene/background'),
     ProgressBar: () => import('~/components/progress-bar.vue'),
     TermsMap: () => import('~/components/terms-map'),
     TermChip: () => import('~/components/term-chip'),
@@ -598,6 +592,11 @@ export default {
     margin: 0;
     padding: 0;
     border-radius: 0;
+
+    .me img {
+      border-radius: 50%;
+      mask: none;
+    }
   }
 }
 

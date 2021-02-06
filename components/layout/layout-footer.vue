@@ -150,7 +150,10 @@ export default {
       { iconType: 'fa', icon: 'envelope', link: socialNetworks.email.url, title: 'Email' },
     ],
 
-    pages: [{ title: 'Security and cookies', link: '/security-and-cookies' }],
+    pages: [
+      { title: 'Security and cookies', link: '/security-and-cookies' },
+      { title: 'Resume', link: '/resume' },
+    ],
   }),
 
   computed: {
