@@ -3,7 +3,7 @@ slug: vue
 name: Vue
 featuredImageId: framework/vue
 extra:
-  order: 2
+  order: 3
   status: adopted
   knowledge: 100
   knowledgeYears: 5 years

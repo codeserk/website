@@ -3,7 +3,7 @@ slug: nuxt
 name: Nuxt.js
 featuredImageId: framework/nuxtjs
 extra:
-  order: 3
+  order: 6
   status: adopted
   knowledge: 70
   knowledgeYears: 1+ year

@@ -3,6 +3,7 @@ slug: nestjs
 name: NestJS
 featuredImageId: framework/nestjs
 extra:
+  order: 4
   status: adopted
   knowledge: 75
   knowledgeYears: 2+ years

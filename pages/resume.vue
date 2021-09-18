@@ -74,7 +74,7 @@
         <div class="career">
           <h2>Career</h2>
 
-          <div v-for="item in career" :key="item.id" class="item">
+          <div v-for="(item, index) in career" :key="item.id" class="item">
             <div class="item-header">
               <img
                 v-if="item.featuredImage"
@@ -100,7 +100,7 @@
               </div>
             </div>
             <div class="item-content">
-              <p v-text="item.excerpt" class="excerpt" />
+              <p v-text="item.excerpt" v-if="index < 4" class="excerpt" />
               <term-chip v-for="term in item.topTerms" :key="term" :id="term" class="term-chip" />
             </div>
           </div>
@@ -150,7 +150,7 @@ import moment from 'moment'
 import { generateSeoMeta, socialNetworks } from '../utils/seo'
 
 const languages = ['typescript', 'javascript']
-const frameworks = ['vue', 'nuxt', 'nestjs']
+const frameworks = ['nestjs', 'react', 'react-native', 'vue']
 const databases = ['mysql', 'mongodb']
 const brokers = ['rabbitmq', 'kafka']
 const technologies = ['docker', 'kubernetes']
@@ -438,7 +438,7 @@ export default {
           }
 
           .label {
-            min-width: 80px;
+            min-width: 100px;
             margin-right: 1em;
             font-weight: bold;
             font-size: 13px;
