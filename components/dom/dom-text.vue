@@ -7,6 +7,7 @@ import Dom from './dom'
 
 const TRANSFORMATIONS = [
   { regex: /\/shrug/g, value: `¯\\_(ツ)_/¯` },
+  { regex: ':upsidedown:', value: '🙃' },
   { regex: /-->/g, value: '→' },
 ]
 
