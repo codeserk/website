@@ -1,5 +1,5 @@
 ---
-slug: freelance-2015
+slug: university-alicante
 title: Computer Science degree, University of Alicante (5 years)
 featuredImageId: education/ua
 excerpt: "I studied Computer Science (Software and Hardware engineering) at the University of Alicante. Performance: 81%"

@@ -6,7 +6,7 @@ extra:
     order: 1
     status: adopted
     knowledge: 90
-    knowledgeYears: 2+ years
+    knowledgeYears: 3+ years
     icon: ts
     scopes:
         - frontend
